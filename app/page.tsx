@@ -85,7 +85,7 @@ export default function Home() {
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-50" />
                 <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
               </span>
-              系统正常
+              平台就绪
             </div>
             <Button variant="ghost" size="icon" aria-label="设置"><Settings2 /></Button>
             <div className="grid size-8 place-items-center rounded-full bg-gradient-to-br from-cyan-300 to-blue-600 text-xs font-bold text-slate-950">ME</div>
@@ -128,13 +128,18 @@ export default function Home() {
               <h1 className="text-3xl font-semibold tracking-[-0.035em] text-white md:text-4xl">早上好，今天值得关注这些。</h1>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">从噪音中提取信号，把项目、知识、资料和自动化放进同一个可持续生长的系统。</p>
             </div>
-            <Button render={<a href="/daily" />} className="w-fit bg-cyan-300 text-slate-950 hover:bg-cyan-200">查看今日日报 <ArrowUpRight data-icon="inline-end" /></Button>
+            <Button nativeButton={false} render={<a href="/daily" />} className="w-fit bg-cyan-300 text-slate-950 hover:bg-cyan-200">查看今日日报 <ArrowUpRight data-icon="inline-end" /></Button>
+          </div>
+
+          <div className="mb-5 flex items-start gap-3 rounded-xl border border-amber-300/15 bg-amber-300/[0.045] px-4 py-3 text-xs leading-5 text-amber-100/75">
+            <Clock3 className="mt-0.5 size-4 shrink-0 text-amber-300" />
+            <p>当前为平台预览，下面的项目卡仅用于展示信息结构，不代表今日真实榜单。首份日报将在北京时间 09:00 完成采集后替换。</p>
           </div>
 
           <div className="mb-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {[
-              ['今日项目', '10', '已完成筛选'],
-              ['重点信号', '5', '等待 09:00 推送'],
+              ['今日项目', '0', '等待首次采集'],
+              ['重点信号', '0', '等待 09:00 推送'],
               ['资料库', '0', '等待首份 PDF'],
               ['自动任务', '1', '运行正常'],
             ].map(([label, value, note], index) => (
@@ -149,7 +154,7 @@ export default function Home() {
           <div className="grid gap-6 xl:grid-cols-[minmax(0,1.65fr)_minmax(300px,.75fr)]">
             <div className="min-w-0">
               <div className="mb-3 flex items-center justify-between">
-                <div><h2 className="font-semibold text-white">今日焦点</h2><p className="mt-0.5 text-xs text-slate-500">AI · 应用 · Agent Sandbox</p></div>
+                <div><h2 className="font-semibold text-white">信息结构示例</h2><p className="mt-0.5 text-xs text-slate-500">AI · 应用 · Agent Sandbox</p></div>
                 <a href="/daily" className="flex items-center gap-1 text-xs text-cyan-300">全部 10 个 <ChevronRight className="size-3.5" /></a>
               </div>
 
@@ -189,9 +194,9 @@ export default function Home() {
                 <div className="mb-3 flex items-center justify-between"><h2 className="font-semibold text-white">运行状态</h2><span className="text-[10px] text-slate-500">刚刚检查</span></div>
                 <div className="rounded-2xl border border-white/8 bg-card p-5">
                   {[
-                    ['Trending 采集', '正常', '08:21'],
-                    ['内容分析', '已完成', '08:37'],
-                    ['网站发布', '最新', '08:44'],
+                    ['Trending 采集', '等待', '08:15'],
+                    ['内容分析', '等待', '08:30'],
+                    ['网站发布', '已上线', '当前'],
                   ].map(([name, state, time]) => (
                     <div key={name} className="flex items-center py-2.5 text-xs first:pt-0 last:pb-0"><CheckCircle2 className="mr-2.5 size-4 text-emerald-400" /><span className="text-slate-300">{name}</span><span className="ml-auto text-slate-500">{state} · {time}</span></div>
                   ))}
