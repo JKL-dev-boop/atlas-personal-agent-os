@@ -18,6 +18,7 @@ import {
   Star,
   TerminalSquare,
 } from 'lucide-react';
+import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -128,7 +129,7 @@ export default function Home() {
               <h1 className="text-3xl font-semibold tracking-[-0.035em] text-white md:text-4xl">早上好，今天值得关注这些。</h1>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">从噪音中提取信号，把项目、知识、资料和自动化放进同一个可持续生长的系统。</p>
             </div>
-            <Button nativeButton={false} render={<a href="/daily" />} className="w-fit bg-cyan-300 text-slate-950 hover:bg-cyan-200">查看今日日报 <ArrowUpRight data-icon="inline-end" /></Button>
+            <Link href="/daily" className="inline-flex h-9 w-fit items-center justify-center gap-2 rounded-md bg-cyan-300 px-4 text-sm font-medium text-slate-950 transition-colors hover:bg-cyan-200">查看今日日报 <ArrowUpRight className="size-4" /></Link>
           </div>
 
           <div className="mb-5 flex items-start gap-3 rounded-xl border border-amber-300/15 bg-amber-300/[0.045] px-4 py-3 text-xs leading-5 text-amber-100/75">
@@ -155,7 +156,7 @@ export default function Home() {
             <div className="min-w-0">
               <div className="mb-3 flex items-center justify-between">
                 <div><h2 className="font-semibold text-white">信息结构示例</h2><p className="mt-0.5 text-xs text-slate-500">AI · 应用 · Agent Sandbox</p></div>
-                <a href="/daily" className="flex items-center gap-1 text-xs text-cyan-300">全部 10 个 <ChevronRight className="size-3.5" /></a>
+                <Link href="/daily" className="flex items-center gap-1 text-xs text-cyan-300">全部 10 个 <ChevronRight className="size-3.5" /></Link>
               </div>
 
               <div className="overflow-hidden rounded-2xl border border-white/8 bg-card">
@@ -178,7 +179,7 @@ export default function Home() {
 
             <div className="space-y-6">
               <div>
-                <div className="mb-3 flex items-center justify-between"><h2 className="font-semibold text-white">演示资料</h2><a href="/presentations" className="text-xs text-cyan-300">资料库</a></div>
+                <div className="mb-3 flex items-center justify-between"><h2 className="font-semibold text-white">演示资料</h2><Link href="/presentations" className="text-xs text-cyan-300">资料库</Link></div>
                 <div className="presentation-card relative overflow-hidden rounded-2xl border border-white/8 p-5">
                   <div className="relative z-10">
                     <div className="grid size-10 place-items-center rounded-xl border border-violet-300/20 bg-violet-300/10 text-violet-200"><FileText className="size-5" /></div>
