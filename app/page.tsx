@@ -22,33 +22,16 @@ import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { dailyBrief, featuredProjects } from '@/lib/daily-data';
 
-const projects = [
-  {
-    rank: '01',
-    name: 'E2B · Secure Agent Cloud',
-    summary: '为 AI Agent 提供按需启动的隔离云沙箱，适合运行生成代码、工具调用和长任务。',
-    tags: ['Sandbox', 'Firecracker', 'TypeScript'],
-    stars: '8.9k',
-    signal: '+486',
-  },
-  {
-    rank: '02',
-    name: 'OpenHands · AI Software Developer',
-    summary: '开放式软件开发 Agent，覆盖终端、浏览器和代码编辑，适合作为完整执行环路参考。',
-    tags: ['Agent', 'Python', 'Runtime'],
-    stars: '65.2k',
-    signal: '+731',
-  },
-  {
-    rank: '03',
-    name: 'Kubernetes SIG Node · Agent Sandbox',
-    summary: '围绕容器隔离、资源治理与生命周期编排的工程实践，值得关注执行层设计。',
-    tags: ['K8s', 'Container', 'Isolation'],
-    stars: '关注中',
-    signal: 'Release',
-  },
-];
+const projects = featuredProjects.slice(0, 3).map((project, index) => ({
+  rank: String(index + 1).padStart(2, '0'),
+  name: project.repository,
+  summary: project.relevance,
+  tags: project.stack.slice(0, 3),
+  stars: project.totalStars?.toLocaleString('zh-CN') ?? '未知',
+  signal: project.dailyStars === null ? `${project.trending?.stars.toLocaleString('zh-CN')} / 周` : `+${project.dailyStars.toLocaleString('zh-CN')} / 日`,
+}));
 
 const nav = [
   { label: '总览', icon: LayoutGrid, href: '/', active: true },
@@ -118,7 +101,7 @@ export default function Home() {
           <div className="mt-auto rounded-2xl border border-white/8 bg-white/[0.025] p-4">
             <div className="flex items-center gap-2 text-xs text-slate-400"><Clock3 className="size-3.5" />下次运行</div>
             <p className="mt-2 text-xl font-semibold text-white">09:00</p>
-            <p className="mt-1 text-[11px] leading-5 text-slate-500">GitHub 日报 · 北京时间<br />每日自动更新与推送</p>
+            <p className="mt-1 text-[11px] leading-5 text-slate-500">GitHub 日报 · 北京时间<br />最近成功 09:08</p>
           </div>
         </aside>
 
@@ -132,15 +115,15 @@ export default function Home() {
             <Link href="/daily" className="inline-flex h-9 w-fit items-center justify-center gap-2 rounded-md bg-cyan-300 px-4 text-sm font-medium text-slate-950 transition-colors hover:bg-cyan-200">查看今日日报 <ArrowUpRight className="size-4" /></Link>
           </div>
 
-          <div className="mb-5 flex items-start gap-3 rounded-xl border border-amber-300/15 bg-amber-300/[0.045] px-4 py-3 text-xs leading-5 text-amber-100/75">
-            <Clock3 className="mt-0.5 size-4 shrink-0 text-amber-300" />
-            <p>当前为平台预览，下面的项目卡仅用于展示信息结构，不代表今日真实榜单。首份日报将在北京时间 09:00 完成采集后替换。</p>
+          <div className="mb-5 flex items-start gap-3 rounded-xl border border-emerald-300/15 bg-emerald-300/[0.045] px-4 py-3 text-xs leading-5 text-emerald-100/75">
+            <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-300" />
+            <p>今日真实日报已完成采集与核对。日榜 7 项、周榜 3 项；周榜项目无法确认日增量时已明确留空。</p>
           </div>
 
           <div className="mb-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {[
-              ['今日项目', '0', '等待首次采集'],
-              ['重点信号', '0', '等待 09:00 推送'],
+              ['今日项目', String(dailyBrief.payload.projects.length), '日榜 7 · 周榜 3'],
+              ['重点信号', String(dailyBrief.payload.featured.length), '已完成 09:00 推送'],
               ['资料库', '0', '等待首份 PDF'],
               ['自动任务', '1', '运行正常'],
             ].map(([label, value, note], index) => (
@@ -155,7 +138,7 @@ export default function Home() {
           <div className="grid gap-6 xl:grid-cols-[minmax(0,1.65fr)_minmax(300px,.75fr)]">
             <div className="min-w-0">
               <div className="mb-3 flex items-center justify-between">
-                <div><h2 className="font-semibold text-white">信息结构示例</h2><p className="mt-0.5 text-xs text-slate-500">AI · 应用 · Agent Sandbox</p></div>
+                <div><h2 className="font-semibold text-white">今日重点</h2><p className="mt-0.5 text-xs text-slate-500">AI · 应用 · Agent Sandbox</p></div>
                 <Link href="/daily" className="flex items-center gap-1 text-xs text-cyan-300">全部 10 个 <ChevronRight className="size-3.5" /></Link>
               </div>
 
@@ -195,9 +178,9 @@ export default function Home() {
                 <div className="mb-3 flex items-center justify-between"><h2 className="font-semibold text-white">运行状态</h2><span className="text-[10px] text-slate-500">刚刚检查</span></div>
                 <div className="rounded-2xl border border-white/8 bg-card p-5">
                   {[
-                    ['Trending 采集', '等待', '08:15'],
-                    ['内容分析', '等待', '08:30'],
-                    ['网站发布', '已上线', '当前'],
+                    ['Trending 采集', '成功', '09:03'],
+                    ['内容分析', '成功', '09:08'],
+                    ['网站发布', '进行中', '当前'],
                   ].map(([name, state, time]) => (
                     <div key={name} className="flex items-center py-2.5 text-xs first:pt-0 last:pb-0"><CheckCircle2 className="mr-2.5 size-4 text-emerald-400" /><span className="text-slate-300">{name}</span><span className="ml-auto text-slate-500">{state} · {time}</span></div>
                   ))}

@@ -1,0 +1,247 @@
+{
+  "id": "daily-2026-09-06",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-06",
+  "slug": "2026-09-06",
+  "summary": "Agent skills 与工程化 harness 占据今日热榜，重点关注可持续记忆、权限边界、浏览器执行与沙箱网络连接。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-06T01:01:38.131Z",
+  "updatedAt": "2026-09-06T01:08:20.936Z",
+  "payload": {
+    "editionDate": "2026-09-06",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "NousResearch/hermes-agent",
+      "ruvnet/ruflo",
+      "affaan-m/ECC",
+      "ChromeDevTools/chrome-devtools-mcp",
+      "tailscale/tailcat"
+    ],
+    "projects": [
+      {
+        "repository": "NousResearch/hermes-agent",
+        "url": "https://github.com/NousResearch/hermes-agent",
+        "description": "自改进个人 Agent：从经历中创建和迭代 skills，检索历史会话，并可把工作分派给隔离子 Agent。README 列出 local、Docker、SSH、Singularity、Modal、Daytona 和 Vercel Sandbox 七类终端后端。",
+        "category": "ai-agent",
+        "stack": ["Python 3.11-3.13", "SQLite FTS5", "Docker", "SSH", "Agent Skills"],
+        "totalStars": 242016,
+        "dailyStars": 575,
+        "trending": { "period": "daily", "stars": 575 },
+        "heatEvidence": "GitHub Trending 日榜；页面快照显示 242,016 Star、当日新增 575。",
+        "change": "默认分支在采集当日仍有提交；当前 pyproject 版本为 0.21.0，并采用直接依赖精确锁定。",
+        "relevance": "它把持久记忆、skill 自进化、隔离子 Agent 和多种沙箱后端放入同一闭环，最适合用来对照 ATLAS 的会话连续性、后端抽象和休眠/唤醒设计。",
+        "maturity": "MIT、文档站和多平台安装较完整，但一键安装会引入较多工具与供应商集成；生产使用前应收紧凭据、网络和终端权限。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/NousResearch/hermes-agent/blob/main/README.md",
+          "https://github.com/NousResearch/hermes-agent/blob/main/pyproject.toml"
+        ]
+      },
+      {
+        "repository": "ruvnet/ruflo",
+        "url": "https://github.com/ruvnet/ruflo",
+        "description": "面向 Claude Code 与 Codex 的 Agent meta-harness，用路由器、swarm、记忆、MCP、hooks 和守护进程组织多 Agent；仓库还提供安全审计、可观测性、浏览器测试和本地 WASM sandbox 模块。",
+        "category": "ai-agent",
+        "stack": ["TypeScript", "Node.js >=20", "Rust", "WASM", "MCP", "AJV"],
+        "totalStars": 70698,
+        "dailyStars": 136,
+        "trending": { "period": "daily", "stars": 136 },
+        "heatEvidence": "GitHub Trending 日榜；页面快照显示 70,698 Star、当日新增 136。",
+        "release": "v3.38.21 · 2026-09-02",
+        "change": "近期版本持续迭代；README 明确区分轻量插件路径和包含完整 MCP/hooks/daemon 的 CLI 路径。",
+        "relevance": "适合研究 Agent 路由、群体调度、跨会话记忆、工具面治理，以及 logs/traces/metrics 如何成为 harness 的一等能力。",
+        "maturity": "功能面和发布节奏成熟，但工具数量和插件组合非常庞大，认知与攻击面都高；应先读架构并只启用最小模块。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/ruvnet/ruflo/blob/main/README.md",
+          "https://github.com/ruvnet/ruflo/blob/main/package.json",
+          "https://github.com/ruvnet/ruflo/releases/tag/v3.38.21"
+        ]
+      },
+      {
+        "repository": "affaan-m/ECC",
+        "url": "https://github.com/affaan-m/ECC",
+        "description": "跨 Claude Code、Codex、OpenCode、Cursor 等 harness 的工程系统，组合计划、测试、实现、复核、记忆和持续改进，并提供 AgentShield 扫描 prompts、hooks、MCP、权限与 secrets。",
+        "category": "ai-agent",
+        "stack": ["JavaScript", "Node.js >=18", "Yarn 4", "AJV", "SQL.js", "Agent Skills"],
+        "totalStars": 249914,
+        "dailyStars": 1314,
+        "trending": { "period": "daily", "stars": 1314 },
+        "heatEvidence": "GitHub Trending 日榜且同时进入周榜；页面快照显示 249,914 Star、当日新增 1,314、本周新增 5,445。",
+        "release": "2.2",
+        "change": "2.2 增加面向 Claude Code、Codex 和 Kimi Code 的引导式安装；README 强调只选一种安装路径，避免重复 hooks 与 skills。",
+        "relevance": "其“共享语言文档 + 计划/测试/复核 + 经验沉淀”模式与 ATLAS living spec 高度一致；AgentShield 也可作为插件供应链和权限扫描参考。",
+        "maturity": "文档和跨 harness 适配广，但包含 68 agents、286 skills 和运行时 hooks，整体面非常大；引入前应按需裁剪并审计官方来源。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/trending?since=weekly",
+          "https://github.com/affaan-m/ECC/blob/main/README.md",
+          "https://github.com/affaan-m/ECC/blob/main/package.json"
+        ]
+      },
+      {
+        "repository": "anomalyco/opencode",
+        "url": "https://github.com/anomalyco/opencode",
+        "description": "开源 AI 编码 Agent，提供终端与桌面入口；内置 build Agent 和只读 plan Agent，并在执行 bash 前请求权限，另有通用子 Agent 处理复杂检索和多步任务。",
+        "category": "application",
+        "stack": ["TypeScript", "Bun", "Terminal UI", "Desktop", "Multi-provider"],
+        "totalStars": 204681,
+        "dailyStars": 725,
+        "trending": { "period": "daily", "stars": 725 },
+        "heatEvidence": "GitHub Trending 日榜；页面快照显示 204,681 Star、当日新增 725。",
+        "release": "v1.18.29 · 2026-09-04",
+        "change": "采集时默认开发分支仍有当日提交，最新 Release 为 v1.18.29。",
+        "relevance": "plan/read-only 与 build/full-access 的角色拆分，是 ATLAS 将分析权与执行权分开的直接参考；bash 审批边界也值得对照。",
+        "maturity": "高 Star、持续 Release、多种安装方式和桌面端表明工程化较强；但开发分支变化快，接入前需确认权限默认值和升级兼容性。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/anomalyco/opencode/blob/dev/README.md",
+          "https://github.com/anomalyco/opencode/releases/tag/v1.18.29"
+        ]
+      },
+      {
+        "repository": "ChromeDevTools/chrome-devtools-mcp",
+        "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "description": "把 Chrome DevTools 通过 MCP 暴露给编码 Agent，可执行页面控制、网络/控制台调试、截图和性能分析，并提供 headless、slim、isolated 等运行参数。",
+        "category": "sandbox-infra",
+        "stack": ["TypeScript", "Node.js", "MCP", "Puppeteer", "Chrome for Testing"],
+        "totalStars": 51069,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 958 },
+        "heatEvidence": "GitHub Trending 周榜；页面快照显示 51,069 Star、本周新增 958。日增量没有可靠日榜数据，记为未知。",
+        "change": "周榜持续热度；README 当前明确支持 Chrome/Chrome for Testing，并提供 isolated、slim、headless 与关闭遥测的配置。",
+        "relevance": "它提供浏览器型 sandbox 的标准执行接口和调试/性能可观测性，可直接参考工具颗粒度、会话隔离、网络观测与证据采集。",
+        "maturity": "由 ChromeDevTools 组织维护、接口清晰；但 MCP 客户端可读取和修改浏览器中的数据，必须使用独立 profile，避免接触个人登录态。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/README.md",
+          "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/package.json"
+        ]
+      },
+      {
+        "repository": "tailscale/tailcat",
+        "url": "https://github.com/tailscale/tailcat",
+        "description": "把 Tailscale 开源数据平面重组为类似 netcat 的点对点传输工具，不依赖 Tailscale 控制平面；连接元数据在带外交换，并支持 DERP、自建 relay、容器镜像和浏览器 WASM 演示。",
+        "category": "sandbox-infra",
+        "stack": ["Go 1.27", "WireGuard", "DERP", "WebAssembly", "Container"],
+        "totalStars": 6372,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 3187 },
+        "heatEvidence": "GitHub Trending 周榜；页面快照显示 6,372 Star、本周新增 3,187。日增量没有可靠日榜数据，记为未知。",
+        "release": "v0.6.0 · 2026-09-04",
+        "change": "v0.6.0 于采集前两天发布；go.mod 使用 Tailscale/WireGuard、gVisor 等网络基础组件。",
+        "relevance": "可作为临时 Agent sandbox 之间传输日志、制品或调试流量的轻控制面网络原语；其带外握手思路有利于保持执行环境短生命周期。",
+        "maturity": "Tailscale 官方组织维护并提供多种分发形态，但项目明确不是完整控制平面，也不替代身份、策略、审计和租户隔离。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/tailscale/tailcat/blob/main/README.md",
+          "https://github.com/tailscale/tailcat/blob/main/go.mod",
+          "https://github.com/tailscale/tailcat/releases/tag/v0.6.0"
+        ]
+      },
+      {
+        "repository": "mattpocock/skills",
+        "url": "https://github.com/mattpocock/skills",
+        "description": "面向真实工程工作的轻量、可组合 Agent skills，覆盖需求追问、共享术语、调试和代码审查；可复制到项目中自行修改，也可作为托管插件订阅更新。",
+        "category": "ai-agent",
+        "stack": ["Shell", "Markdown", "Agent Skills", "Claude Code", "Codex"],
+        "totalStars": 252655,
+        "dailyStars": 2692,
+        "trending": { "period": "daily", "stars": 2692 },
+        "heatEvidence": "GitHub Trending 日榜第 1；页面快照显示 252,655 Star、当日新增 2,692，为今日最高增量。",
+        "release": "v1.2.3 · 2026-08-06",
+        "change": "仓库近期仍有更新；其 README 将项目共享语言文档列为减少 Agent 沟通损耗的核心做法。",
+        "relevance": "适合继续完善 ATLAS 的跨会话入口、需求澄清、术语表与小而可组合的维护技能，避免把所有规则塞进单一巨型提示。",
+        "maturity": "MIT、安装路径清楚、采用普通文件便于审计；但同时使用插件与复制安装会产生重复 skills，且不同 harness 的加载行为需实测。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/mattpocock/skills/blob/main/README.md",
+          "https://github.com/mattpocock/skills/releases/tag/v1.2.3"
+        ]
+      },
+      {
+        "repository": "anthropics/skills",
+        "url": "https://github.com/anthropics/skills",
+        "description": "Anthropic 的公开 Agent Skills 实现与示例库。每个 skill 用独立目录封装 SKILL.md、脚本和资源，并包含规范、模板以及文档、PDF、PPTX、XLSX 等复杂能力参考。",
+        "category": "ai-agent",
+        "stack": ["Python", "Markdown", "Agent Skills", "Scripts", "Resources"],
+        "totalStars": 174569,
+        "dailyStars": 475,
+        "trending": { "period": "daily", "stars": 475 },
+        "heatEvidence": "GitHub Trending 日榜；页面快照显示 174,569 Star、当日新增 475。",
+        "change": "仓库近期更新；README 将 spec、template 与示例 skills 分开，并明确复杂文档 skills 的授权不同。",
+        "relevance": "适合参考 ATLAS 后续把日报、PDF 发布、知识整理等能力拆成自包含 skill 包，并通过渐进加载控制上下文占用。",
+        "maturity": "组织官方示例且包含生产能力参考，但 README 明确其主要用于演示/教育，关键任务仍需自行测试；各子目录许可证不能一概而论。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/anthropics/skills/blob/main/README.md",
+          "https://github.com/anthropics/skills/tree/main/spec"
+        ]
+      },
+      {
+        "repository": "magnitudedev/magnitude",
+        "url": "https://github.com/magnitudedev/magnitude",
+        "description": "面向 Agent 的本地模型推理服务：检测硬件、推荐适配模型，按需下载和调优，并在请求时加载、空闲或内存紧张时卸载，可接入 Codex、OpenCode、Hermes 等 harness。",
+        "category": "application",
+        "stack": ["TypeScript", "Node.js", "Local inference", "Model catalog", "CLI"],
+        "totalStars": 3211,
+        "dailyStars": 674,
+        "trending": { "period": "daily", "stars": 674 },
+        "heatEvidence": "GitHub Trending 日榜且进入周榜；页面快照显示 3,211 Star、当日新增 674、本周新增 1,396。",
+        "release": "@magnitudedev/cli@0.0.11 · 2026-09-02",
+        "change": "最新 CLI 版本在本周发布，默认分支采集当日仍有提交。",
+        "relevance": "其按硬件画像进行模型选择、按需加载和内存压力卸载，适合借鉴 sandbox 节点的模型驻留策略、冷启动权衡与资源调度。",
+        "maturity": "增长很快、Apache-2.0 且能离线运行，但版本仍为 0.0.x，硬件覆盖、模型质量和长期兼容性需要实测。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/trending?since=weekly",
+          "https://github.com/magnitudedev/magnitude/blob/main/README.md",
+          "https://github.com/magnitudedev/magnitude/releases/tag/%40magnitudedev%2Fcli%400.0.11"
+        ]
+      },
+      {
+        "repository": "THU-MAIC/OpenMAIC",
+        "url": "https://github.com/THU-MAIC/OpenMAIC",
+        "description": "开源多 Agent 互动课堂，可从主题或资料生成课程、幻灯片、测验、模拟和 AI 教师/同学；v1.0.0 新增可持续会话的 Agent workbench、20 个内置 skills 和可插拔持久化。",
+        "category": "application",
+        "stack": ["TypeScript", "pnpm", "Multi-agent", "Pluggable persistence", "Local AI"],
+        "totalStars": 31937,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 10109 },
+        "heatEvidence": "GitHub Trending 周榜第 2；页面快照显示 31,937 Star、本周新增 10,109。日增量没有可靠日榜数据，记为未知。",
+        "release": "v1.0.0 · 2026-08-27",
+        "change": "v1.0.0 增加聊天式课程 Agent、耐久会话、会话材料、20 个 skills、PPTX 导入和 provider-neutral 服务能力。",
+        "relevance": "它展示了多 Agent 最终如何落到真实产品交互、耐久会话和结构化制品，而不只是后台编排；可参考任务状态与用户可控修订。",
+        "maturity": "已有在线演示、版本日志和较完整自托管说明；媒体、ASR/TTS、搜索和模型提供商很多，部署成本与 SSRF/文件处理边界需重点评估。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/THU-MAIC/OpenMAIC/blob/main/README.md",
+          "https://github.com/THU-MAIC/OpenMAIC/releases/tag/v1.0.0"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-06T01:01:38.131Z",
+      "completedAt": "2026-09-06T01:08:20.936Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-06",
+      "notes": [
+        "日榜与周榜来自运行时保存的 GitHub Trending 官方页面快照。",
+        "总 Star 与 Trending 增量按页面采集时点记录；页面随后变化属于正常现象。",
+        "周榜项目没有可靠日增量，因此 dailyStars 为 null。",
+        "这是 ATLAS 第一份快照，重复项目变化比较从下一期开始。"
+      ]
+    }
+  }
+}

@@ -31,7 +31,13 @@ export interface GitHubProjectSnapshot {
   stack: string[];
   totalStars: number | null;
   dailyStars: number | null;
+  trending?: {
+    period: 'daily' | 'weekly';
+    stars: number;
+  };
+  heatEvidence: string;
   release?: string;
+  change?: string;
   relevance: string;
   maturity: string;
   recommendation: '值得试跑' | '值得读源码' | '简单了解';
@@ -48,6 +54,7 @@ export interface DailyBriefPayload {
     completedAt?: string;
     status: RunStatus;
     sourceDate: string;
+    notes?: string[];
     error?: string;
   };
 }

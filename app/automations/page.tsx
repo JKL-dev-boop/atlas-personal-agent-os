@@ -4,10 +4,10 @@ import { Badge } from '@/components/ui/badge';
 import { SectionShell } from '@/components/section-shell';
 
 const pipeline = [
-  ['08:15', '采集', 'Trending、周榜、Release 与领域补充项目'],
-  ['08:30', '验证', 'README、文档、依赖、成熟度与重复变化'],
-  ['08:45', '发布', '完整 10 项日报、归档与网站状态'],
-  ['09:00', '推送', '最值得看的 5 个项目与一句推荐理由'],
+  ['09:01', '采集', 'Trending 日榜、周榜与项目元数据'],
+  ['09:03', '验证', 'README、依赖、Release 与限制'],
+  ['09:08', '归档', '完整 10 项日报与首个项目快照'],
+  ['现在', '发布', 'GitHub、网站与 5 项重点通知'],
 ];
 
 export default function AutomationsPage() {
@@ -29,7 +29,7 @@ export default function AutomationsPage() {
         <aside className="space-y-4">
           <div className="rounded-2xl border border-white/8 bg-card p-5"><Waypoints className="size-4 text-cyan-300" /><p className="mt-5 text-sm font-medium text-white">解耦执行</p><p className="mt-2 text-xs leading-5 text-slate-500">网站发布失败不会阻止消息推送；推送失败也不会丢失已经生成的日报。</p></div>
           <div className="rounded-2xl border border-white/8 bg-card p-5"><Send className="size-4 text-violet-300" /><p className="mt-5 text-sm font-medium text-white">初始渠道</p><p className="mt-2 text-xs leading-5 text-slate-500">先在当前 Codex 任务中定时推送，后续可按需连接邮件或其他通知渠道。</p></div>
-          <p className="flex items-center gap-2 px-1 text-[11px] text-slate-500"><CheckCircle2 className="size-3.5 text-emerald-400" />时间已确认为北京时间 09:00</p>
+          <p className="flex items-center gap-2 px-1 text-[11px] text-slate-500"><CheckCircle2 className="size-3.5 text-emerald-400" />2026-09-06 首次运行已完成采集与归档</p>
         </aside>
       </div>
     </SectionShell>

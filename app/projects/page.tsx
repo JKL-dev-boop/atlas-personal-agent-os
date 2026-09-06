@@ -1,6 +1,8 @@
 import { GitCompareArrows, Radar, Star } from 'lucide-react';
 
 import { SectionShell } from '@/components/section-shell';
+import { Badge } from '@/components/ui/badge';
+import { dailyBrief } from '@/lib/daily-data';
 
 export default function ProjectsPage() {
   return (
@@ -15,7 +17,19 @@ export default function ProjectsPage() {
           return <article key={title as string} className="rounded-2xl border border-white/8 bg-card p-6"><CardIcon className="size-5 text-cyan-300" /><h2 className="mt-8 text-sm font-semibold text-white">{title as string}</h2><p className="mt-2 text-xs leading-5 text-slate-500">{description as string}</p></article>;
         })}
       </div>
-      <div className="mt-5 rounded-2xl border border-dashed border-white/10 px-6 py-12 text-center text-xs text-slate-500">项目会在首次日报采集后自动进入雷达。</div>
+      <div className="mt-5 overflow-hidden rounded-2xl border border-white/8 bg-card">
+        <div className="flex items-center justify-between border-b border-white/7 px-5 py-4">
+          <div><h2 className="text-sm font-semibold text-white">首批跟踪项目</h2><p className="mt-1 text-[11px] text-slate-500">基线快照 · 2026-09-06</p></div>
+          <Badge className="bg-emerald-400/10 text-emerald-300">10 个</Badge>
+        </div>
+        {dailyBrief.payload.projects.map((project, index) => (
+          <a key={project.repository} href={project.url} target="_blank" rel="noreferrer" className={`grid gap-3 px-5 py-4 transition-colors hover:bg-white/[0.025] sm:grid-cols-[32px_minmax(0,1fr)_auto] ${index ? 'border-t border-white/7' : ''}`}>
+            <span className="font-mono text-[10px] text-slate-600">{String(index + 1).padStart(2, '0')}</span>
+            <div className="min-w-0"><p className="truncate text-xs font-medium text-slate-200">{project.repository}</p><p className="mt-1 truncate text-[11px] text-slate-500">{project.change}</p></div>
+            <span className="text-[11px] text-slate-500">{project.totalStars?.toLocaleString('zh-CN') ?? '未知'} ★</span>
+          </a>
+        ))}
+      </div>
     </SectionShell>
   );
 }
