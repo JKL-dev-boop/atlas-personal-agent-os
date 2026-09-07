@@ -2,7 +2,7 @@ import { ArrowUpRight, CheckCircle2, Clock3, Sparkles, Star } from 'lucide-react
 
 import { SectionShell } from '@/components/section-shell';
 import { Badge } from '@/components/ui/badge';
-import { dailyBrief } from '@/lib/daily-data';
+import { dailyBrief, dailyDisplay } from '@/lib/daily-data';
 
 const categoryLabels = {
   'ai-agent': 'AI / Agent',
@@ -26,18 +26,18 @@ export default function DailyPage() {
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="font-semibold text-white">2026 年 9 月 6 日</h2>
+              <h2 className="font-semibold text-white">{dailyDisplay.editionDate}</h2>
               <Badge className="bg-emerald-400/10 text-emerald-300"><CheckCircle2 />采集成功</Badge>
             </div>
             <p className="mt-2 max-w-3xl text-xs leading-5 text-slate-400">{dailyBrief.summary}</p>
           </div>
-          <p className="flex items-center gap-2 text-[11px] text-slate-500"><Clock3 className="size-3.5" />Asia/Shanghai · 09:08 完成</p>
+          <p className="flex items-center gap-2 text-[11px] text-slate-500"><Clock3 className="size-3.5" />{payload.timezone} · {dailyDisplay.completedTime} 完成</p>
         </div>
         <div className="mt-5 grid gap-3 sm:grid-cols-3">
           {[
-            ['完整项目', '10', '日榜 7 · 周榜 3'],
-            ['重点推荐', '5', '优先匹配 Agent Sandbox'],
-            ['可信日增量', '7', '周榜项目日增量留空'],
+            ['完整项目', String(payload.projects.length), `日榜 ${dailyDisplay.dailyCount} · 周榜 ${dailyDisplay.weeklyCount}`],
+            ['重点推荐', String(payload.featured.length), '优先匹配 Agent Sandbox'],
+            ['可信日增量', String(dailyDisplay.trustedDailyDeltaCount), '来自日榜或连续快照'],
           ].map(([label, value, note]) => (
             <div key={label} className="rounded-xl border border-white/7 bg-white/[0.025] p-4">
               <p className="text-[11px] text-slate-500">{label}</p>

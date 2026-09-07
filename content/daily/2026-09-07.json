@@ -1,0 +1,249 @@
+{
+  "id": "daily-2026-09-07",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-07",
+  "slug": "2026-09-07",
+  "summary": "今天的强信号从通用 Agent 框架转向可验证架构图、本地推理与本地优先工作台；同时出现一个重要反例：热门仓库本身也可能已经废弃，阅读 README 比只看 Star 更重要。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-07T01:00:59.986Z",
+  "updatedAt": "2026-09-07T01:05:12.346Z",
+  "payload": {
+    "editionDate": "2026-09-07",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "tt-a1i/archify",
+      "magnitudedev/magnitude",
+      "aipoch/open-science",
+      "cathrynlavery/diagram-design",
+      "OpenWhispr/openwhispr"
+    ],
+    "projects": [
+      {
+        "repository": "tt-a1i/archify",
+        "url": "https://github.com/tt-a1i/archify",
+        "description": "把代码库或系统描述转换为可验证的交互式系统地图。Agent 先生成带类型的 JSON IR，再由 Node.js 渲染器确定性编译为自包含 HTML/SVG，并可导出 PNG、SVG、WebM 与分享卡。",
+        "category": "ai-agent",
+        "stack": ["Node.js", "JavaScript", "Typed JSON IR", "HTML/SVG", "Agent Skills"],
+        "totalStars": 50818,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 17190 },
+        "heatEvidence": "GitHub Trending 周榜第 1；页面快照显示 50,818 Star、本周新增 17,190。未进入日榜，日增量记为未知。",
+        "release": "v2.16.0 · 2026-08-30",
+        "change": "首次收录；默认分支已标注 v2.17.0-dev.1，并提供 Before / Delta / After 架构差异和 revision-verified 源码跳转。",
+        "relevance": "适合为 sandbox 生命周期、工具调用链和网络边界生成可审查的拓扑证据；typed IR 与确定性验证能降低 Agent 绘图时虚构关系的风险。",
+        "maturity": "MIT、示例与验证场景丰富，且输出可离线分享；但代码关系图仍只证明仓库中的静态事实，不能代替运行时 tracing 或安全审计。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/tt-a1i/archify/blob/main/README.md",
+          "https://github.com/tt-a1i/archify/releases/tag/v2.16.0"
+        ]
+      },
+      {
+        "repository": "magnitudedev/magnitude",
+        "url": "https://github.com/magnitudedev/magnitude",
+        "description": "为 Agent 提供本地模型推理服务：检测硬件、推荐适配模型、下载并调优，按请求加载、空闲或内存紧张时卸载，可接入 Codex、OpenCode、Hermes 等 harness。",
+        "category": "sandbox-infra",
+        "stack": ["TypeScript", "Bun", "Rust", "Local inference", "OpenTelemetry"],
+        "totalStars": 3676,
+        "dailyStars": 604,
+        "trending": { "period": "daily", "stars": 604 },
+        "heatEvidence": "GitHub Trending 日榜且进入周榜；页面快照显示 3,676 Star、当日新增 604、本周新增 1,961。较昨日 ATLAS 快照净增 465 Star。",
+        "release": "@magnitudedev/cli@0.0.11 · 2026-09-02",
+        "change": "连续第二天收录：总 Star 由 3,211 增至 3,676，周增量由 1,396 升至 1,961；当前 monorepo 已明确包含 Rust 推理层、benchmark、tracing 与模型适配检查。",
+        "relevance": "其硬件画像、模型适配、JIT 加载与内存压力卸载机制，可直接借鉴到 sandbox 节点的模型驻留、冷启动和资源调度策略。",
+        "maturity": "Apache-2.0、离线优先且已有多 harness 集成，但版本仍是 0.0.x，Windows 依赖 WSL；硬件覆盖和质量/吞吐承诺需在目标机器实测。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/trending?since=weekly",
+          "https://github.com/magnitudedev/magnitude/blob/main/README.md",
+          "https://github.com/magnitudedev/magnitude/blob/main/package.json"
+        ]
+      },
+      {
+        "repository": "aipoch/open-science",
+        "url": "https://github.com/aipoch/open-science",
+        "description": "本地优先、模型无关的科学研究工作台，把文献、文件、Python/R 代码执行、科学数据连接器、表格图形和可追溯产物放进同一桌面项目。",
+        "category": "application",
+        "stack": ["TypeScript", "Electron", "React", "Prisma", "Python/R", "MCP"],
+        "totalStars": 3857,
+        "dailyStars": 146,
+        "trending": { "period": "daily", "stars": 146 },
+        "heatEvidence": "GitHub Trending 日榜；页面快照显示 3,857 Star、当日新增 146。",
+        "release": "v0.25.1 · 2026-09-03",
+        "change": "首次收录；默认分支 package 版本已到 0.26.0，README 预告 Slurm/SSH 远程计算与文献库，但 Releases 的 latest 仍是 v0.25.1，需区分开发态与可下载版本。",
+        "relevance": "它把 Agent、notebook 网络沙箱、远程 Slurm/SSH、权限确认与 provenance 组合成产品，可参考执行隔离、产物追踪和长任务恢复的完整用户体验。",
+        "maturity": "Apache-2.0、跨平台安装和测试面较完整；集成模型、搜索、远程主机和大量科学依赖，凭据、出网、SSRF 与代码执行边界需要逐层审计。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/aipoch/open-science/blob/main/README.md",
+          "https://github.com/aipoch/open-science/blob/main/package.json",
+          "https://github.com/aipoch/open-science/releases/tag/v0.25.1"
+        ]
+      },
+      {
+        "repository": "cathrynlavery/diagram-design",
+        "url": "https://github.com/cathrynlavery/diagram-design",
+        "description": "面向 Codex、Claude Code 等 Agent 的编辑型图表 skill，提供 39 种图表语法、亮暗主题和品牌适配，默认生成不依赖外部资源的静态 HTML + SVG。",
+        "category": "ai-agent",
+        "stack": ["Agent Skills", "HTML", "SVG", "Markdown", "No-build output"],
+        "totalStars": 32378,
+        "dailyStars": 620,
+        "trending": { "period": "daily", "stars": 620 },
+        "heatEvidence": "GitHub Trending 日榜；页面快照显示 32,378 Star、当日新增 620。",
+        "change": "首次收录；README 标注 2.5.10 新增 Sankey、Wardley map、部署图、依赖图、UML class 与数据库 schema 等 10 种布局。",
+        "relevance": "可用于快速表达 sandbox 的信任边界、部署拓扑、队列与策略路径；自包含静态产物也便于归档进 ATLAS 或随 PDF 一起公开分享。",
+        "maturity": "无需构建、输出易审计且类型覆盖广；它是设计 skill 而非拓扑验证器，Agent 仍可能在输入事实不足时生成看似漂亮但不准确的图。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/cathrynlavery/diagram-design/blob/main/README.md"
+        ]
+      },
+      {
+        "repository": "OpenWhispr/openwhispr",
+        "url": "https://github.com/OpenWhispr/openwhispr",
+        "description": "跨平台语音转文字桌面应用，可用本地 Whisper、NVIDIA Parakeet 等模型离线处理，也提供会议转录、说话人识别、笔记、语音 Agent、公共 API 与 MCP。",
+        "category": "application",
+        "stack": ["Electron 41", "React 19", "TypeScript", "SQLite", "whisper.cpp", "MCP"],
+        "totalStars": 7370,
+        "dailyStars": 121,
+        "trending": { "period": "daily", "stars": 121 },
+        "heatEvidence": "GitHub Trending 日榜；页面快照显示 7,370 Star、当日新增 121。",
+        "release": "v1.9.2 · 2026-08-29",
+        "change": "首次收录；README 明确本地与云端双路径、Node.js 24+，并把语音 Agent、笔记 API/MCP、团队分享与企业策略放在同一产品内。",
+        "relevance": "适合参考本地敏感数据处理、模型/云端可切换、长音频任务和桌面工具接入 Agent 的权限设计，尤其是屏幕上下文与自动粘贴的显式授权。",
+        "maturity": "MIT、安装包和文档齐全，但原生语音、GPU、跨平台热键与会议检测使构建链很重；启用云模型、屏幕截图或团队分享会改变隐私边界。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/OpenWhispr/openwhispr/blob/main/README.md",
+          "https://github.com/OpenWhispr/openwhispr/blob/main/package.json",
+          "https://github.com/OpenWhispr/openwhispr/releases/tag/v1.9.2"
+        ]
+      },
+      {
+        "repository": "openai/skills",
+        "url": "https://github.com/openai/skills",
+        "description": "曾用于分发 Codex Agent Skills 的目录，今天仍进入热榜，但 README 已明确仓库废弃，并把当前示例与分发方式迁移到 openai/plugins 和最新插件文档。",
+        "category": "ai-agent",
+        "stack": ["Python", "Markdown", "Agent Skills", "Scripts", "Resources"],
+        "totalStars": 25621,
+        "dailyStars": 46,
+        "trending": { "period": "daily", "stars": 46 },
+        "heatEvidence": "GitHub Trending 日榜；页面快照显示 25,621 Star、当日新增 46。",
+        "change": "首次收录；这是重要的迁移信号而非新能力：README 明确 deprecated，当前 Codex skill/plugin 示例应转向 openai/plugins。",
+        "relevance": "对 ATLAS 的直接启示是把仓库状态与迁移说明纳入采集，不能因官方组织、高 Star 或进入热榜就自动判定为推荐依赖。",
+        "maturity": "历史内容仍可读，但不应作为新集成入口；采用其中任何 skill 前还需逐目录核对许可证，并迁移到当前插件机制。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/openai/skills/blob/main/README.md",
+          "https://github.com/openai/plugins"
+        ]
+      },
+      {
+        "repository": "BraveOPotato/FckSignups",
+        "url": "https://github.com/BraveOPotato/FckSignups",
+        "description": "现名 NoSignups 的免注册开源 Web 工具目录，按生产力、设计、开发、隐私、数据等分类，要求候选工具无需账号即可直接使用。",
+        "category": "application",
+        "stack": ["React 19", "TypeScript", "Vite 8", "Static catalog"],
+        "totalStars": 3315,
+        "dailyStars": 436,
+        "trending": { "period": "daily", "stars": 436 },
+        "heatEvidence": "GitHub Trending 日榜；页面快照显示 3,315 Star、当日新增 436。",
+        "change": "首次收录；README 已改用 NoSignups 品牌，目录超过 200 个工具，并用结构化 schema 管理分类、许可证、源码与不推荐原因。",
+        "relevance": "其“无需注册、可直接试用、明确许可证与不推荐原因”的目录模型可借鉴到 ATLAS 项目雷达，形成低摩擦试跑清单和负面证据。",
+        "maturity": "前端简单、容易自托管，但内容审核主要依赖社区提交；免注册不等于隐私安全，外链工具的代码、网络请求和数据处理仍需独立核验。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/BraveOPotato/FckSignups/blob/main/README.md",
+          "https://github.com/BraveOPotato/FckSignups/blob/main/package.json"
+        ]
+      },
+      {
+        "repository": "affaan-m/ECC",
+        "url": "https://github.com/affaan-m/ECC",
+        "description": "跨 Claude Code、Codex、OpenCode、Cursor 等 harness 的 Agent 工程系统，组合计划、测试、复核、记忆、安全扫描和持续改进。",
+        "category": "ai-agent",
+        "stack": ["JavaScript", "Node.js >=18", "Yarn 4", "AJV", "Agent Skills"],
+        "totalStars": 251347,
+        "dailyStars": 1485,
+        "trending": { "period": "daily", "stars": 1485 },
+        "heatEvidence": "GitHub Trending 日榜且进入周榜；页面快照显示 251,347 Star、当日新增 1,485、本周新增 6,394。较昨日 ATLAS 快照净增 1,433 Star。",
+        "release": "v2.2.0",
+        "change": "连续第二天收录是因为增长继续加速：日榜增量由 1,314 升至 1,485，周榜增量由 5,445 升至 6,394；未发现比 v2.2.0 更新的 Release。",
+        "relevance": "其 living docs、计划/测试/复核和 AgentShield 权限扫描与 ATLAS 开发规范高度相关，可继续作为多 harness 工程治理对照。",
+        "maturity": "文档和适配面广，但 agents、skills 与 hooks 数量庞大；热度上升不等于风险下降，引入时仍应只选择最小子集并审计来源。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/trending?since=weekly",
+          "https://github.com/affaan-m/ECC/blob/main/README.md",
+          "https://github.com/affaan-m/ECC/releases/tag/v2.2.0"
+        ]
+      },
+      {
+        "repository": "ChromeDevTools/chrome-devtools-mcp",
+        "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "description": "通过 MCP 把 Chrome DevTools 暴露给编码 Agent，覆盖页面控制、控制台/网络调试、截图与性能分析，并支持 headless、slim、isolated 等运行参数。",
+        "category": "sandbox-infra",
+        "stack": ["TypeScript", "Node.js", "MCP", "Puppeteer", "Chrome for Testing"],
+        "totalStars": 51160,
+        "dailyStars": 91,
+        "trending": { "period": "weekly", "stars": 965 },
+        "heatEvidence": "GitHub Trending 周榜；页面快照显示 51,160 Star、本周新增 965。日增量 91 来自 9 月 6 日与 9 月 7 日 ATLAS 连续快照差值。",
+        "release": "chrome-devtools-mcp-v1.8.0 · 2026-08-25",
+        "change": "连续第二天收录：总 Star 由 51,069 增至 51,160，周增量由 958 微升至 965；最新 Release 未变化。",
+        "relevance": "可直接参考浏览器 sandbox 的工具颗粒度、profile 隔离、网络观测、性能证据和失败复现接口。",
+        "maturity": "ChromeDevTools 官方组织维护且接口稳定增长；MCP 客户端能读取和修改浏览器数据，必须用独立 profile，避免接触个人登录态。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/README.md",
+          "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/package.json",
+          "https://github.com/ChromeDevTools/chrome-devtools-mcp/releases/tag/chrome-devtools-mcp-v1.8.0"
+        ]
+      },
+      {
+        "repository": "tailscale/tailcat",
+        "url": "https://github.com/tailscale/tailcat",
+        "description": "把 Tailscale 开源数据平面重组为类似 netcat 的点对点传输工具，不依赖 Tailscale 控制平面；支持 DERP、自建 relay、容器镜像和浏览器 WASM 演示。",
+        "category": "sandbox-infra",
+        "stack": ["Go", "WireGuard", "DERP", "WebAssembly", "Container"],
+        "totalStars": 6543,
+        "dailyStars": 171,
+        "trending": { "period": "weekly", "stars": 2467 },
+        "heatEvidence": "GitHub Trending 周榜；页面快照显示 6,543 Star、本周新增 2,467。日增量 171 来自 9 月 6 日与 9 月 7 日 ATLAS 连续快照差值。",
+        "release": "v0.6.0 · 2026-09-04",
+        "change": "连续第二天收录：总 Star 由 6,372 增至 6,543；滚动周窗口增量从 3,187 降至 2,467，不代表项目倒退，最新 Release 未变化。",
+        "relevance": "可作为短生命周期 Agent sandbox 间传输日志、制品或调试流量的网络原语；带外握手有助于保持执行环境轻量。",
+        "maturity": "Tailscale 官方组织维护且分发形态多，但它不是完整控制平面，也不提供完整身份、策略、审计或租户隔离。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/tailscale/tailcat/blob/main/README.md",
+          "https://github.com/tailscale/tailcat/blob/main/go.mod",
+          "https://github.com/tailscale/tailcat/releases/tag/v0.6.0"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-07T01:00:59.986Z",
+      "completedAt": "2026-09-07T01:05:12.346Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-07",
+      "notes": [
+        "日榜与周榜来自运行时保存的 GitHub Trending 官方页面快照。",
+        "总 Star 与 Trending 增量按页面采集时点记录；页面随后变化属于正常现象。",
+        "周榜项目的 dailyStars 仅在昨日也有 ATLAS 精确快照时用连续快照差值计算，否则留空。",
+        "重复收录 4 个项目，均在本次变化中说明热度、版本或继续关注的原因。",
+        "openai/skills 虽进入日榜，但 README 已标记废弃；日报将其作为迁移警示，不作为新依赖推荐。"
+      ]
+    }
+  }
+}

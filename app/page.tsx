@@ -22,7 +22,7 @@ import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { dailyBrief, featuredProjects } from '@/lib/daily-data';
+import { dailyBrief, dailyDisplay, featuredProjects } from '@/lib/daily-data';
 
 const projects = featuredProjects.slice(0, 3).map((project, index) => ({
   rank: String(index + 1).padStart(2, '0'),
@@ -101,14 +101,14 @@ export default function Home() {
           <div className="mt-auto rounded-2xl border border-white/8 bg-white/[0.025] p-4">
             <div className="flex items-center gap-2 text-xs text-slate-400"><Clock3 className="size-3.5" />下次运行</div>
             <p className="mt-2 text-xl font-semibold text-white">09:00</p>
-            <p className="mt-1 text-[11px] leading-5 text-slate-500">GitHub 日报 · 北京时间<br />最近成功 09:08</p>
+            <p className="mt-1 text-[11px] leading-5 text-slate-500">GitHub 日报 · 北京时间<br />最近成功 {dailyDisplay.completedTime}</p>
           </div>
         </aside>
 
         <section className="min-w-0 px-4 py-7 md:px-7 xl:px-10">
           <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <div className="mb-2 flex items-center gap-2 text-xs text-cyan-300"><span className="h-px w-6 bg-cyan-300/60" /> 2026年9月6日 · 星期日</div>
+              <div className="mb-2 flex items-center gap-2 text-xs text-cyan-300"><span className="h-px w-6 bg-cyan-300/60" /> {dailyDisplay.editionDateWithWeekday}</div>
               <h1 className="text-3xl font-semibold tracking-[-0.035em] text-white md:text-4xl">早上好，今天值得关注这些。</h1>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">从噪音中提取信号，把项目、知识、资料和自动化放进同一个可持续生长的系统。</p>
             </div>
@@ -117,13 +117,13 @@ export default function Home() {
 
           <div className="mb-5 flex items-start gap-3 rounded-xl border border-emerald-300/15 bg-emerald-300/[0.045] px-4 py-3 text-xs leading-5 text-emerald-100/75">
             <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-300" />
-            <p>今日真实日报已完成采集与核对。日榜 7 项、周榜 3 项；周榜项目无法确认日增量时已明确留空。</p>
+            <p>今日真实日报已完成采集与核对。日榜 {dailyDisplay.dailyCount} 项、周榜 {dailyDisplay.weeklyCount} 项；日增量仅使用日榜或连续快照的可信数据。</p>
           </div>
 
           <div className="mb-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {[
-              ['今日项目', String(dailyBrief.payload.projects.length), '日榜 7 · 周榜 3'],
-              ['重点信号', String(dailyBrief.payload.featured.length), '已完成 09:00 推送'],
+              ['今日项目', String(dailyBrief.payload.projects.length), `日榜 ${dailyDisplay.dailyCount} · 周榜 ${dailyDisplay.weeklyCount}`],
+              ['重点信号', String(dailyBrief.payload.featured.length), `日报 ${dailyDisplay.completedTime} 完成`],
               ['资料库', '0', '等待首份 PDF'],
               ['自动任务', '1', '运行正常'],
             ].map(([label, value, note], index) => (
@@ -178,9 +178,9 @@ export default function Home() {
                 <div className="mb-3 flex items-center justify-between"><h2 className="font-semibold text-white">运行状态</h2><span className="text-[10px] text-slate-500">刚刚检查</span></div>
                 <div className="rounded-2xl border border-white/8 bg-card p-5">
                   {[
-                    ['Trending 采集', '成功', '09:03'],
-                    ['内容分析', '成功', '09:08'],
-                    ['网站发布', '进行中', '当前'],
+                    ['Trending 采集', '成功', '今日'],
+                    ['内容分析', '成功', dailyDisplay.completedTime],
+                    ['网站发布', '已同步', '今日'],
                   ].map(([name, state, time]) => (
                     <div key={name} className="flex items-center py-2.5 text-xs first:pt-0 last:pb-0"><CheckCircle2 className="mr-2.5 size-4 text-emerald-400" /><span className="text-slate-300">{name}</span><span className="ml-auto text-slate-500">{state} · {time}</span></div>
                   ))}

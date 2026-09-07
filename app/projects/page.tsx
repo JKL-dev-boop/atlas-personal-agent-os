@@ -2,7 +2,7 @@ import { GitCompareArrows, Radar, Star } from 'lucide-react';
 
 import { SectionShell } from '@/components/section-shell';
 import { Badge } from '@/components/ui/badge';
-import { dailyBrief } from '@/lib/daily-data';
+import { dailyBrief, dailyDisplay } from '@/lib/daily-data';
 
 export default function ProjectsPage() {
   return (
@@ -19,8 +19,8 @@ export default function ProjectsPage() {
       </div>
       <div className="mt-5 overflow-hidden rounded-2xl border border-white/8 bg-card">
         <div className="flex items-center justify-between border-b border-white/7 px-5 py-4">
-          <div><h2 className="text-sm font-semibold text-white">首批跟踪项目</h2><p className="mt-1 text-[11px] text-slate-500">基线快照 · 2026-09-06</p></div>
-          <Badge className="bg-emerald-400/10 text-emerald-300">10 个</Badge>
+          <div><h2 className="text-sm font-semibold text-white">最新跟踪项目</h2><p className="mt-1 text-[11px] text-slate-500">最新快照 · {dailyDisplay.editionDate}</p></div>
+          <Badge className="bg-emerald-400/10 text-emerald-300">{dailyBrief.payload.projects.length} 个</Badge>
         </div>
         {dailyBrief.payload.projects.map((project, index) => (
           <a key={project.repository} href={project.url} target="_blank" rel="noreferrer" className={`grid gap-3 px-5 py-4 transition-colors hover:bg-white/[0.025] sm:grid-cols-[32px_minmax(0,1fr)_auto] ${index ? 'border-t border-white/7' : ''}`}>
