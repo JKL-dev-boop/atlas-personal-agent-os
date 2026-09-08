@@ -1,5 +1,5 @@
 import type { ContentRecord, DailyBriefPayload } from './content-model';
-import dailyBriefJson from '@/content/daily/2026-09-07.json';
+import dailyBriefJson from '@/content/daily/2026-09-08.json';
 
 export const dailyBrief = dailyBriefJson as ContentRecord<DailyBriefPayload>;
 
