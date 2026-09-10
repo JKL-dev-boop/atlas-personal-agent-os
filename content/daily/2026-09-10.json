@@ -1,0 +1,253 @@
+{
+  "id": "daily-2026-09-10",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-10",
+  "slug": "2026-09-10",
+  "summary": "今天的强信号是个人与团队 Agent 基础设施继续上移：共享 skills 与规范、硬件适配、本地模型分层、桌面监督和持久知识库开始形成可组合的 Agent OS 组件。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-10T13:48:39.079Z",
+  "updatedAt": "2026-09-10T14:00:38.737Z",
+  "payload": {
+    "editionDate": "2026-09-10",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "Tencent/teamai-cli",
+      "AlexsJones/llmfit",
+      "JustVugg/colibri",
+      "vastsa/PI-Desktop",
+      "nashsu/llm_wiki"
+    ],
+    "projects": [
+      {
+        "repository": "Tencent/teamai-cli",
+        "url": "https://github.com/Tencent/teamai-cli",
+        "description": "用 Git 仓库统一管理团队的 skills、rules、docs、env、agents、hooks、MCP 与知识，并同步到 Codex、Claude Code、Cursor、OpenCode 等多种 Agent harness。",
+        "category": "ai-agent",
+        "stack": ["TypeScript", "Node.js", "Git", "Tree-sitter WASM", "Zod", "Multi-harness"],
+        "totalStars": 3554,
+        "dailyStars": 837,
+        "trending": { "period": "daily", "stars": 837 },
+        "heatEvidence": "GitHub Trending 日榜；21:49 左右页面快照显示 3,554 Star、当日新增 837。",
+        "release": "v0.23.1 · 2026-09-09",
+        "change": "首次收录；采集时 package 主分支版本为 0.22.0，但最新 Release 已到 v0.23.1，显示主分支清单与发行产物存在短暂版本差异。",
+        "relevance": "它与 ATLAS 的 living spec、开发规范和跨会话入口高度吻合，可参考基于 Git 的审核/分发、角色与标签订阅以及多 harness 路径映射。",
+        "maturity": "腾讯组织维护、MIT、CI 与多 Git 服务支持较完整；Team Context/Improvement 仍标记 beta，自动 pull 的规则、hooks 和 MCP 在执行前仍应审查差异。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/Tencent/teamai-cli/blob/main/README.md",
+          "https://github.com/Tencent/teamai-cli/blob/main/package.json",
+          "https://github.com/Tencent/teamai-cli/releases/tag/v0.23.1"
+        ]
+      },
+      {
+        "repository": "AlexsJones/llmfit",
+        "url": "https://github.com/AlexsJones/llmfit",
+        "description": "检测 CPU、RAM、GPU/VRAM 和加速器配置，为本地 LLM 的量化、上下文长度、质量、速度与内存占用打分，并提供 TUI、Web 面板和 REST API。",
+        "category": "sandbox-infra",
+        "stack": ["Rust", "TUI", "REST API", "Ollama", "llama.cpp", "MLX"],
+        "totalStars": 35548,
+        "dailyStars": 247,
+        "trending": { "period": "daily", "stars": 247 },
+        "heatEvidence": "GitHub Trending 日榜；21:49 左右页面快照显示 35,548 Star、当日新增 247。",
+        "release": "v1.1.15 · 2026-09-10",
+        "change": "首次收录且当日发布 v1.1.15；新能力允许在本机实测 tok/s、保存结果并通过 PR 回馈硬件数据库，使推荐从估算逐步转向实测。",
+        "relevance": "适合成为 Agent sandbox 调度前的节点能力探测器：先以 API 获取硬件画像和模型适配度，再决定模型、量化、并发和运行时。",
+        "maturity": "MIT、跨平台预编译、签名和 CI 较完整；模型速度仍受具体后端、上下文与负载影响，社区 benchmark 需要硬件指纹、版本和测量方法共同校验。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/AlexsJones/llmfit/blob/main/README.md",
+          "https://github.com/AlexsJones/llmfit/blob/main/Cargo.toml",
+          "https://github.com/AlexsJones/llmfit/releases/tag/v1.1.15"
+        ]
+      },
+      {
+        "repository": "JustVugg/colibri",
+        "url": "https://github.com/JustVugg/colibri",
+        "description": "纯 C 的超大 MoE 模型推理引擎，把 NVMe、RAM 与 VRAM 视为统一分层内存，通过专家热度、预取和异构执行在消费级设备上运行 125B 到 2.8T 参数模型。",
+        "category": "sandbox-infra",
+        "stack": ["C", "Python 3.10+", "CUDA", "Metal", "NVMe streaming", "MoE"],
+        "totalStars": 27310,
+        "dailyStars": 157,
+        "trending": { "period": "daily", "stars": 157 },
+        "heatEvidence": "GitHub Trending 日榜；21:49 左右页面快照显示 27,310 Star、当日新增 157。",
+        "release": "v1.10.2 · 2026-09-06",
+        "change": "首次收录；README 明确支持八个 MoE 家族，并将 expert LRU、提前一层预取、双 SSD、CPU/GPU 重叠和 token-exact 验证作为可测量策略而非固定承诺。",
+        "relevance": "它提供了模型权重多级放置与按热度调度的极端案例，可借鉴到 sandbox 的内存/磁盘分层、冷启动预热、资源指标和质量不降级约束。",
+        "maturity": "Apache-2.0、项目自标 beta 且强调可复现实验，但明确没有速度 SLA；运行超大模型仍需要大量存储、带宽和耐心，不应把“能运行”等同于交互可用。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/JustVugg/colibri/blob/main/README.md",
+          "https://github.com/JustVugg/colibri/blob/main/pyproject.toml",
+          "https://github.com/JustVugg/colibri/releases/tag/v1.10.2"
+        ]
+      },
+      {
+        "repository": "vastsa/PI-Desktop",
+        "url": "https://github.com/vastsa/PI-Desktop",
+        "description": "本地优先的编码 Agent 桌面工作台，把项目、会话、review、文件、预览、通知、skills、MCP、子 Agent 和插件集中在一个可监督界面。",
+        "category": "application",
+        "stack": ["Electron", "TypeScript", "Rust host core", "pnpm", "MCP", "Plugin system"],
+        "totalStars": 2119,
+        "dailyStars": 636,
+        "trending": { "period": "daily", "stars": 636 },
+        "heatEvidence": "GitHub Trending 日榜；21:49 左右页面快照显示 2,119 Star、当日新增 636。",
+        "change": "首次收录；package 版本为 0.14.6，提供 Agent、Plan、Goal 三种工作模式以及 permission、review、长时会话、subagent 和 supervision 的独立端到端测试。",
+        "relevance": "这是与 ATLAS 产品形态最接近的参考：个人 Agent OS、项目入口、权限层、Goal 审批、插件扩展与长期会话都已落到桌面交互。",
+        "maturity": "LGPL-3.0-or-later，跨平台且测试覆盖面可见，但 README 明确处于 Early Preview；API、插件接口和桌面行为可能变化，暂不适合作为稳定底座。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/vastsa/PI-Desktop/blob/main/README.md",
+          "https://github.com/vastsa/PI-Desktop/blob/main/package.json",
+          "https://github.com/vastsa/PI-Desktop/blob/main/Cargo.toml"
+        ]
+      },
+      {
+        "repository": "nashsu/llm_wiki",
+        "url": "https://github.com/nashsu/llm_wiki",
+        "description": "跨平台个人知识库：把原始文档增量编译为带来源、wikilink 和图谱的持久 Wiki，并提供多格式导入、队列恢复、向量检索、桌面 Agent、MCP 与 Obsidian 兼容目录。",
+        "category": "application",
+        "stack": ["Tauri 2", "Rust", "React 19", "TypeScript", "LanceDB", "MCP"],
+        "totalStars": 17863,
+        "dailyStars": 94,
+        "trending": { "period": "daily", "stars": 94 },
+        "heatEvidence": "GitHub Trending 日榜；21:49 左右页面快照显示 17,863 Star、当日新增 94。",
+        "release": "v0.6.11 · 2026-08-25",
+        "change": "首次收录；当前 0.6.11 版本包含两阶段 ingest、PDF 图片理解、4 信号知识图谱、持久队列崩溃恢复、源目录监控和本地 API/MCP。",
+        "relevance": "可直接参考 ATLAS 知识库的 Raw Sources → Wiki → Schema 三层模型、purpose.md、增量更新、来源追溯、失败恢复和跨设备归档。",
+        "maturity": "桌面、解析、图谱与 Agent 能力已很完整，但 0.x 且依赖模型、PDF 解析器和可选搜索服务；自动生成 Wiki 会累积错误，需要 lint、来源跳转与人工 review。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/nashsu/llm_wiki/blob/main/README.md",
+          "https://github.com/nashsu/llm_wiki/blob/main/package.json",
+          "https://github.com/nashsu/llm_wiki/releases/tag/v0.6.11"
+        ]
+      },
+      {
+        "repository": "diegosouzapw/OmniRoute",
+        "url": "https://github.com/diegosouzapw/OmniRoute",
+        "description": "兼容 OpenAI API 的多模型网关，统一大量云端与免费 provider，提供配额感知路由、自动 fallback、压缩、MCP/A2A、桌面端和 PWA。",
+        "category": "ai-agent",
+        "stack": ["TypeScript", "Node.js 22/24/26", "Next.js 16", "Docker", "MCP/A2A", "Playwright"],
+        "totalStars": 63886,
+        "dailyStars": 591,
+        "trending": { "period": "daily", "stars": 591 },
+        "heatEvidence": "GitHub Trending 日榜；21:49 左右页面快照显示 63,886 Star、当日新增 591。",
+        "release": "v3.8.50 · 2026-08-26",
+        "change": "首次收录；主分支 package 已为 3.8.51，README 显示 provider 数继续扩展到 356，并增加多模态桥接、Quota-Share 与实时配额遥测。",
+        "relevance": "配额感知 fallback、provider 健康度和实时用量可参考 ATLAS 的模型路由与成本治理；统一端点也能降低不同 sandbox worker 的配置差异。",
+        "maturity": "MIT、测试与部署脚本庞大，但“免费额度”会受地区、条款和共享池变化影响；凭据集中到网关会形成高价值目标，必须加密、最小权限并审查 provider 条款。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/diegosouzapw/OmniRoute/blob/main/README.md",
+          "https://github.com/diegosouzapw/OmniRoute/blob/main/package.json",
+          "https://github.com/diegosouzapw/OmniRoute/releases/tag/v3.8.50"
+        ]
+      },
+      {
+        "repository": "obra/superpowers",
+        "url": "https://github.com/obra/superpowers",
+        "description": "面向编码 Agent 的可组合 skills 与软件开发方法，要求先澄清需求和确认设计，再制定实现计划、执行红绿 TDD，并用子 Agent 分工和复核。",
+        "category": "ai-agent",
+        "stack": ["Agent Skills", "Shell", "JavaScript", "TDD", "Multi-harness"],
+        "totalStars": 284445,
+        "dailyStars": 731,
+        "trending": { "period": "daily", "stars": 731 },
+        "heatEvidence": "GitHub Trending 日榜；21:49 左右页面快照显示 284,445 Star、当日新增 731。",
+        "release": "v6.3.0 · 2026-08-12",
+        "change": "首次收录；当前 6.3.0 支持 Codex plugin marketplace、Claude Code、Cursor、OpenCode、Pi 等多个 harness，并把设计确认、计划、TDD、调试与 review 拆成组合技能。",
+        "relevance": "其 spec → plan → implementation → review 流程与 ATLAS 规范一致，可用于检视我们是否把验收、测试和人工确认放在正确阶段。",
+        "maturity": "许可证与多 harness 安装路径清楚、社区热度高，但方法论带有强流程偏好；是否启用子 Agent 和严格 TDD 应按任务规模决定，不能机械套用。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/obra/superpowers/blob/main/README.md",
+          "https://github.com/obra/superpowers/blob/main/package.json",
+          "https://github.com/obra/superpowers/releases/tag/v6.3.0"
+        ]
+      },
+      {
+        "repository": "vercel-labs/skills",
+        "url": "https://github.com/vercel-labs/skills",
+        "description": "开放 Agent Skills 生态的安装与临时使用 CLI，支持 GitHub、GitLab、任意 Git、私有仓库、本地路径和压缩包，并适配 Codex 等 79 类 Agent。",
+        "category": "ai-agent",
+        "stack": ["TypeScript", "Node.js", "Git", "Archive extraction", "Multi-agent adapters"],
+        "totalStars": 30930,
+        "dailyStars": 125,
+        "trending": { "period": "daily", "stars": 125 },
+        "heatEvidence": "GitHub Trending 日榜；21:49 左右页面快照显示 30,930 Star、当日新增 125。",
+        "release": "v1.5.25 · 2026-09-08",
+        "change": "首次收录；当前 1.5.25 支持 `skills use` 临时加载、私有仓库认证回退，以及下载 10 MiB、解压 25 MiB、最多 1000 文件的默认防护上限。",
+        "relevance": "可参考 ATLAS 后续 skill 注册表的来源解析、临时使用、安装作用域、认证隔离和压缩包资源限制，避免把第三方 skill 无界写入工作区。",
+        "maturity": "由 Vercel Labs 维护且适配面广；安装 skill 本质上引入外部指令、脚本与资源，支持私有源不代表安全，仍需来源锁定、差异审查与沙箱验证。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/vercel-labs/skills/blob/main/README.md",
+          "https://github.com/vercel-labs/skills/blob/main/package.json",
+          "https://github.com/vercel-labs/skills/releases/tag/v1.5.25"
+        ]
+      },
+      {
+        "repository": "bilawalsidhu/gods-eye-view",
+        "url": "https://github.com/bilawalsidhu/gods-eye-view",
+        "description": "在浏览器三维地球上聚合公开飞机、船舶、卫星、地震、道路和摄像头信号，并用实时语音 Agent 控制图层、相机、标注和分享状态。",
+        "category": "application",
+        "stack": ["JavaScript", "Node.js 24/26", "WebGL/3D globe", "Realtime voice agent", "Public data feeds"],
+        "totalStars": 22585,
+        "dailyStars": 1588,
+        "trending": { "period": "daily", "stars": 1588 },
+        "heatEvidence": "GitHub Trending 日榜；21:49 左右页面快照显示 22,585 Star、当日新增 1,588。",
+        "release": "v0.1.1 · 2026-09-01",
+        "change": "首次收录；README 区分真实、定期刷新、聚合模拟和粗略估算的数据层，并提供可序列化的相机/图层/目标分享链接。",
+        "relevance": "适合参考复杂实时数据如何模块化加载、标注来源可信度、序列化可分享状态，以及语音 Agent 如何控制高信息密度可视化界面。",
+        "maturity": "可无 key 启动且文档详细，但部分图层依赖第三方配额或商业条款；交通与摄像机姿态等并非全部实时精确，不能将演示界面当成权威态势系统。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/bilawalsidhu/gods-eye-view/blob/main/README.md",
+          "https://github.com/bilawalsidhu/gods-eye-view/releases/tag/v0.1.1"
+        ]
+      },
+      {
+        "repository": "openai/plugins",
+        "url": "https://github.com/openai/plugins",
+        "description": "OpenAI 官方 Codex plugin 示例与默认 marketplace；每个插件以 manifest 为入口，可组合 skills、apps、MCP、agents、commands、hooks 和 assets。",
+        "category": "ai-agent",
+        "stack": ["Codex Plugins", "JavaScript", "JSON manifests", "MCP", "Skills", "Apps"],
+        "totalStars": 6350,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 753 },
+        "heatEvidence": "GitHub Trending 周榜；21:49 左右页面快照显示 6,350 Star、本周新增 753。缺少 9 月 9 日连续快照且未进日榜，日增量记为未知。",
+        "change": "首次收录；这是此前 openai/skills 废弃后的正式迁移目标，README 展示 Figma、Notion、iOS/macOS/Web、Expo、Netlify、Remotion 和 Google Slides 等较完整示例。",
+        "relevance": "它是 ATLAS 将日报、PDF、知识库和 sandbox 能力拆成可安装插件时最直接的官方结构参考，尤其适合 manifest、权限与多表面组合设计。",
+        "maturity": "OpenAI 官方示例且已进入周榜，但示例仓库不是所有插件的稳定性保证；每个插件的 MCP、app 权限、hooks 和依赖仍需分别审核。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/openai/plugins/blob/main/README.md",
+          "https://github.com/openai/plugins/tree/main/plugins"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-10T13:48:39.079Z",
+      "completedAt": "2026-09-10T14:00:38.737Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-10",
+      "notes": [
+        "本次自动任务在北京时间约 21:49 触发，晚于约定的 09:00；所有时间与页面快照均按实际采集时点记录。",
+        "日榜与周榜来自运行时保存的 GitHub Trending 官方页面快照；本期为日榜 9 项、周榜 1 项。",
+        "9 月 9 日没有成功归档，本站不存在连续日快照；周榜项目的 dailyStars 因此不做跨两日估算。",
+        "本期 10 个项目均未出现在最近一期 9 月 8 日日报中，不存在连续重复推荐。",
+        "总 Star 与 Trending 增量按页面采集时点记录；页面随后变化属于正常现象。"
+      ]
+    }
+  }
+}
