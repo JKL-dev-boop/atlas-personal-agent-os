@@ -1,0 +1,255 @@
+{
+  "id": "daily-2026-09-11",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-11",
+  "slug": "2026-09-11",
+  "summary": "今天的主线是 Agent 工作流继续产品化：规范驱动开发、可复现研究、持久沙箱与知识运行时开始从单点工具组合成可审计、可恢复的个人工作系统。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-11T14:13:35.963Z",
+  "updatedAt": "2026-09-11T14:25:05.620Z",
+  "payload": {
+    "editionDate": "2026-09-11",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "github/spec-kit",
+      "alphaXiv/OpenResearch",
+      "jordan-gibbs/hyperresearch",
+      "Tencent/WeKnora",
+      "p1neappleXpress/OpenFlux"
+    ],
+    "projects": [
+      {
+        "repository": "github/spec-kit",
+        "url": "https://github.com/github/spec-kit",
+        "description": "GitHub 的规范驱动开发工具包，把原则、需求、计划、任务、实现与收敛检查组织成可由多种编码 Agent 执行和扩展的工作流。",
+        "category": "ai-agent",
+        "stack": ["Python 3.11+", "Typer", "Markdown templates", "Agent integrations", "PowerShell/Bash"],
+        "totalStars": 135567,
+        "dailyStars": 985,
+        "trending": { "period": "daily", "stars": 985 },
+        "heatEvidence": "GitHub Trending 日榜；22:14 左右页面快照显示 135,567 Star、当日新增 985。",
+        "release": "v1.0.6 · 2026-09-10",
+        "change": "首次收录；刚发布 v1.0.6，当前 CLI 已包含可离线分发的核心模板、agent-context/assess/bug 扩展、工作流与 preset。",
+        "relevance": "它与 ATLAS_SPEC、AGENTS 入口和增量需求开发机制高度一致，可借鉴 constitution → spec → plan → tasks → implement → converge 的显式收敛门禁。",
+        "maturity": "GitHub 官方、已到 1.0 并提供多 Agent 集成；流程产物较多，轻量任务需要选用精简 preset，避免文档维护成本超过变更价值。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/github/spec-kit/blob/main/README.md",
+          "https://github.com/github/spec-kit/blob/main/pyproject.toml",
+          "https://github.com/github/spec-kit/releases/tag/v1.0.6"
+        ]
+      },
+      {
+        "repository": "alphaXiv/OpenResearch",
+        "url": "https://github.com/alphaXiv/OpenResearch",
+        "description": "本地优先的研究 Agent 工作台，为 Claude Code、Codex 和 OpenCode 提供并行会话、隔离 Git worktree、实验谱系、运行日志与不可变归档。",
+        "category": "ai-agent",
+        "stack": ["Rust", "TypeScript", "Git worktree", "SSH", "Slurm/Kubernetes/Ray"],
+        "totalStars": 1093,
+        "dailyStars": 210,
+        "trending": { "period": "daily", "stars": 210 },
+        "heatEvidence": "GitHub Trending 日榜；22:14 左右页面快照显示 1,093 Star、当日新增 210。",
+        "release": "v0.1.122 · 2026-09-10",
+        "change": "首次收录且前一日发布 v0.1.122；同一提交快照可在本地、SSH、Slurm、Kubernetes、Ray、Modal 等执行，并保留实验分支和证据链。",
+        "relevance": "对 ATLAS 的长期任务尤其有价值：把每次 Agent 尝试放进独立 worktree，以提交、运行和产物建立谱系，再将算力后端与交互界面解耦。",
+        "maturity": "产品方向完整但仍是 0.1.x；Windows 支持处于 beta，远端服务仅绑定 loopback 且没有应用级认证，多用户主机上需要额外隔离。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/alphaXiv/OpenResearch/blob/main/README.md",
+          "https://github.com/alphaXiv/OpenResearch/blob/main/Cargo.toml",
+          "https://github.com/alphaXiv/OpenResearch/releases/tag/v0.1.122"
+        ]
+      },
+      {
+        "repository": "jordan-gibbs/hyperresearch",
+        "url": "https://github.com/jordan-gibbs/hyperresearch",
+        "description": "把 Claude Code 变成深度研究 Agent，以分层 16 步流水线完成检索、矛盾分析、多稿综合、对抗审阅、逐句引文核验和断点恢复。",
+        "category": "ai-agent",
+        "stack": ["Python 3.11-3.13", "Claude Code skills", "SQLite", "Markdown vault", "Parallel subagents"],
+        "totalStars": 2299,
+        "dailyStars": 118,
+        "trending": { "period": "daily", "stars": 118 },
+        "heatEvidence": "GitHub Trending 日榜；22:14 左右页面快照显示 2,299 Star、当日新增 118。",
+        "release": "v0.9.1 · 2026-07-25",
+        "change": "首次收录；README 当前提供 light/full/dissertation 三档预算，把每个来源落到可检索 vault，并以 manifest 支持崩溃后从准确步骤恢复。",
+        "relevance": "可借鉴其按阶段加载 skill、持久证据库、预算分档和可恢复 manifest，降低长链 Agent 因上下文衰减而漏步骤或重复采集。",
+        "maturity": "MIT、已发 PyPI，但榜单成绩来自项目方内部 pilot，第三方验证仍待完成；完整档耗时和模型调用成本高，不适合每个日报条目都套用。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/jordan-gibbs/hyperresearch/blob/main/README.md",
+          "https://github.com/jordan-gibbs/hyperresearch/blob/main/pyproject.toml",
+          "https://github.com/jordan-gibbs/hyperresearch/releases/tag/v0.9.1"
+        ]
+      },
+      {
+        "repository": "Tencent/WeKnora",
+        "url": "https://github.com/Tencent/WeKnora",
+        "description": "企业级自托管知识与 Agent 平台，结合 RAG、ReAct、自动 Wiki、长期记忆、MCP、任务队列和会话持久的 Docker/E2B/Cube 沙箱。",
+        "category": "sandbox-infra",
+        "stack": ["Go 1.26", "Vue/TypeScript", "PostgreSQL/pgvector", "Redis/Asynq", "Docker/E2B/Cube", "Langfuse"],
+        "totalStars": 22270,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 815 },
+        "heatEvidence": "GitHub Trending 周榜；22:14 左右页面快照显示 22,270 Star、本周新增 815。未进日榜，且没有 9 月 10 日该项目快照，日增量记为未知。",
+        "release": "v0.8.0",
+        "change": "首次收录；v0.8.0 新增会话持久 Docker/E2B/Cube 后端、租户网络策略、skill 快照、长期记忆、上下文压缩及 worker-pool 治理。",
+        "relevance": "这是本期最贴近 Agent sandbox 的工程样本：沙箱后端抽象、每租户网络策略、会话持久化、skill 快照、任务队列、失败重试与 Langfuse 可观测性可成组参考。",
+        "maturity": "腾讯维护、MIT，功能面和安全加固较广；部署组件多且配置面大，默认 Docker 需显式启用，生产使用必须逐项审查网络策略、凭据和多租户边界。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/Tencent/WeKnora/blob/main/README.md",
+          "https://github.com/Tencent/WeKnora/blob/main/go.mod",
+          "https://github.com/Tencent/WeKnora/releases/tag/v0.8.0"
+        ]
+      },
+      {
+        "repository": "p1neappleXpress/OpenFlux",
+        "url": "https://github.com/p1neappleXpress/OpenFlux",
+        "description": "研究型 TCP 隧道：SOCKS5 客户端经可插拔传输连接出口节点，实验使用文档协作光标消息或 WebRTC DataChannel 承载网络流量。",
+        "category": "sandbox-infra",
+        "stack": ["Go 1.26", "gVisor", "Pion WebRTC", "SOCKS5", "gopacket", "LZ4"],
+        "totalStars": 969,
+        "dailyStars": 201,
+        "trending": { "period": "daily", "stars": 201 },
+        "heatEvidence": "GitHub Trending 日榜；22:14 左右页面快照显示 969 Star、当日新增 201。",
+        "release": "0.0.1",
+        "change": "首次收录；当前只发布 0.0.1，README 明确列出账号封禁、法律合规、流量泄露和出口节点需要 root 等风险。",
+        "relevance": "适合从防御和架构角度研究 sandbox egress：传输层插件化、出口集中治理、连接指标和异常通道检测；不应直接作为绕过访问控制的方案。",
+        "maturity": "高度实验性且安全/合规风险高，出口节点需要 root，第三方平台可检测并封禁账号；仅建议在自有隔离实验环境阅读和验证。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/p1neappleXpress/OpenFlux/blob/main/README.md",
+          "https://github.com/p1neappleXpress/OpenFlux/blob/main/go.mod",
+          "https://github.com/p1neappleXpress/OpenFlux/releases/tag/0.0.1"
+        ]
+      },
+      {
+        "repository": "melgarafael/DeskcommCRM",
+        "url": "https://github.com/melgarafael/DeskcommCRM",
+        "description": "面向 WhatsApp 销售团队的开源 AI CRM，用多 Agent 完成接待、资格判断、跟进、知识检索和自动化，并支持 Docker 自托管与多租户。",
+        "category": "application",
+        "stack": ["Next.js 16", "TypeScript", "Supabase/PostgreSQL", "Redis", "WAHA", "Docker"],
+        "totalStars": 1138,
+        "dailyStars": 126,
+        "trending": { "period": "daily", "stars": 126 },
+        "heatEvidence": "GitHub Trending 日榜；22:14 左右页面快照显示 1,138 Star、当日新增 126。",
+        "release": "v1.18.1",
+        "change": "首次收录；当前 package 为 0.1.0，而发行标签已到 v1.18.1，需注意应用版本和 npm 元数据并非同一版本线。",
+        "relevance": "可参考多租户 Agent、知识库、定时跟进、人工接管和消息渠道如何组成可运营产品，也能作为 ATLAS 应用模块的权限与审计案例。",
+        "maturity": "功能覆盖较完整并提供幂等安装，但面向巴西/葡语销售场景，WhatsApp 接入、LGPD、第三方服务与合作链接需要单独评估；版本元数据也需进一步厘清。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/melgarafael/DeskcommCRM/blob/main/README.md",
+          "https://github.com/melgarafael/DeskcommCRM/blob/main/package.json",
+          "https://github.com/melgarafael/DeskcommCRM/releases/tag/v1.18.1"
+        ]
+      },
+      {
+        "repository": "jihe520/MathModelAgent",
+        "url": "https://github.com/jihe520/MathModelAgent",
+        "description": "面向数学建模竞赛的桌面 Agent，把 Claude Code、建模 skills、Jupyter、RAG、多 Agent 与 Typst/PDF 报告生成组合成九步可验证流程。",
+        "category": "ai-agent",
+        "stack": ["Python", "Claude Code", "Jupyter", "LiteLLM", "ChromaDB", "E2B/Daytona", "Typst"],
+        "totalStars": 4769,
+        "dailyStars": 132,
+        "trending": { "period": "daily", "stars": 132 },
+        "heatEvidence": "GitHub Trending 日榜；22:14 左右页面快照显示 4,769 Star、当日新增 132。",
+        "release": "v0.0.19",
+        "change": "首次收录；当前工作流把本地 Jupyter 与 E2B/Daytona 云代码解释器并列，并加入 6 类人工决策点、四层容错及 PDF 视觉检查。",
+        "relevance": "其执行后端切换、人工决策门、逐步验证与最终 PDF 视觉 QA，能直接参考到 ATLAS 的计算任务和演示文档流水线。",
+        "maturity": "0.0.x 早期版本，依赖 Claude Code、外部模型和可选云沙箱；数学结论、代码结果与生成论文仍需人工复核，模板丰富不等于竞赛质量保证。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/jihe520/MathModelAgent/blob/main/README.md",
+          "https://github.com/jihe520/MathModelAgent/releases/tag/v0.0.19"
+        ]
+      },
+      {
+        "repository": "pascalorg/editor",
+        "url": "https://github.com/pascalorg/editor",
+        "description": "本地优先的浏览器/CLI 3D 建筑编辑器，使用 WebGPU 渲染，并通过带认证的 MCP 服务让 Agent 读取和修改场景。",
+        "category": "application",
+        "stack": ["React Three Fiber", "WebGPU", "TypeScript 6", "Bun/Turborepo", "MCP", "SQLite"],
+        "totalStars": 23369,
+        "dailyStars": 83,
+        "trending": { "period": "daily", "stars": 83 },
+        "heatEvidence": "GitHub Trending 日榜；22:14 左右页面快照显示 23,369 Star、当日新增 83。",
+        "release": "v0.9.1；CLI 预览 1.0.0-beta.2.status.0",
+        "change": "首次收录；README 当前区分较旧 npm beta 与经过 SHA-256 校验的 GitHub CLI 预览，并提供本地和托管 MCP 两种连接方式。",
+        "relevance": "是 Agent 控制高状态可视应用的好案例：本地服务、认证 MCP、场景共享、单活客户端约束、产物摘要校验和人类 claim/status 交接都值得参考。",
+        "maturity": "MIT 且工程检查丰富，但预览版本与 npm 版本存在能力差异；本地服务会在客户端间共享活动场景，并行 Agent 必须使用不同数据目录与进程。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/pascalorg/editor/blob/main/README.md",
+          "https://github.com/pascalorg/editor/blob/main/package.json",
+          "https://github.com/pascalorg/editor/releases/tag/v0.9.1"
+        ]
+      },
+      {
+        "repository": "humanlayer/skills",
+        "url": "https://github.com/humanlayer/skills",
+        "description": "HumanLayer 的仓库级 Agent Skills 集合，覆盖指令文件改写、React 类型收窄、迭代式编码循环与传感器—控制器—执行器式 Agent 控制环。",
+        "category": "ai-agent",
+        "stack": ["Agent Skills", "Markdown", "GitHub Actions", "Claude Code", "Control loops"],
+        "totalStars": 3739,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 2609 },
+        "heatEvidence": "GitHub Trending 周榜；22:14 左右页面快照显示 3,739 Star、本周新增 2,609。未进日榜，且没有连续快照，日增量记为未知。",
+        "change": "首次收录；当前最相关的两个 skill 会生成带 prompt、memory 和参考模板的迭代式 GitHub Actions，或先访谈再搭建可定时运行的控制环。",
+        "relevance": "可帮助 ATLAS 将自动化明确拆成 sensor、controller、actuator 与 disturbance，并把长期循环的记忆、停止条件和人工审批留在仓库内。",
+        "maturity": "仓库小而聚焦，尚无正式 Release；skill 会改写仓库指令和工作流，安装前应固定来源、审查文本与权限，并先在非生产分支试跑。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/humanlayer/skills/blob/main/README.md",
+          "https://github.com/humanlayer/skills/tree/main/skills"
+        ]
+      },
+      {
+        "repository": "ChromeDevTools/chrome-devtools-mcp",
+        "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "description": "Google 维护的 Chrome DevTools MCP/CLI，让 Agent 通过 Puppeteer 控制真实浏览器，并读取网络、控制台、截图、性能 trace 与 Lighthouse 洞察。",
+        "category": "sandbox-infra",
+        "stack": ["TypeScript", "Node.js LTS", "MCP SDK", "Puppeteer", "Chrome DevTools", "Lighthouse"],
+        "totalStars": 51641,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 791 },
+        "heatEvidence": "GitHub Trending 周榜；22:14 左右页面快照显示 51,641 Star、本周新增 791。未进日榜，且没有 9 月 10 日快照，日增量记为未知。",
+        "release": "chrome-devtools-mcp-v1.9.0",
+        "change": "再次关注：距 9 月 7 日收录已隔四天，本周仍新增 791；当前 1.9.0 增加独立 CLI、slim/headless 模式，并明确默认用量统计与 CrUX 查询的关闭方式。",
+        "relevance": "可作为 ATLAS 网站发布后的浏览器验收层：隔离浏览器配置，采集控制台/网络/截图/性能证据，并把工具暴露的数据面纳入 sandbox 权限模型。",
+        "maturity": "Google 维护、Apache-2.0、测试与打包较完整；MCP 客户端可以看到并修改浏览器中的数据，默认还有独立用量统计，处理敏感会话时必须隔离 profile 并显式关闭遥测。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/README.md",
+          "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/package.json",
+          "https://github.com/ChromeDevTools/chrome-devtools-mcp/releases/tag/chrome-devtools-mcp-v1.9.0"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-11T14:13:35.963Z",
+      "completedAt": "2026-09-11T14:25:05.620Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-11",
+      "notes": [
+        "本次自动任务在北京时间约 22:13 触发，晚于约定的 09:00；所有时间与页面快照均按实际采集时点记录。",
+        "日榜与周榜来自运行时保存的 GitHub Trending 官方页面快照；本期为日榜 7 项、周榜 3 项。",
+        "为避免连续重复，本期跳过 9 月 10 日已收录且仍在日榜的 PI-Desktop、llm_wiki、superpowers 与 gods-eye-view。",
+        "ChromeDevTools/chrome-devtools-mcp 距上次收录已隔四天；因持续进入周榜且 1.9.0 的 CLI、遥测边界值得再次关注而收录。",
+        "周榜补充项未进当日日榜，且缺少连续两日项目快照，dailyStars 均记为未知，不以周增量冒充日增量。",
+        "总 Star 与 Trending 增量按页面采集时点记录；页面随后变化属于正常现象。"
+      ]
+    }
+  }
+}
