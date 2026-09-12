@@ -1,0 +1,254 @@
+{
+  "id": "daily-2026-09-12",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-12",
+  "slug": "2026-09-12",
+  "summary": "今天的强信号是 Agent 从文本和代码继续进入高权限执行面：并行 worktree、隔离安全测试、CAD/机器人文件、音乐生成与交易工具都要求更清晰的权限、检查点和人工接管。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-12T11:57:43.831Z",
+  "updatedAt": "2026-09-12T12:06:40.348Z",
+  "payload": {
+    "editionDate": "2026-09-12",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "max-sixty/worktrunk",
+      "vxcontrol/pentagi",
+      "earthtojake/text-to-cad",
+      "multimodal-art-projection/YuE",
+      "SnailSploit/Claude-Red"
+    ],
+    "projects": [
+      {
+        "repository": "max-sixty/worktrunk",
+        "url": "https://github.com/max-sixty/worktrunk",
+        "description": "面向并行 AI Agent 的 Git worktree 管理 CLI，用分支名完成创建、切换、合并和清理，并提供 hooks、每 worktree 端口、缓存共享和 CI/差异概览。",
+        "category": "sandbox-infra",
+        "stack": ["Rust", "Git worktree", "CLI", "Hooks", "GitHub/GitLab"],
+        "totalStars": 7019,
+        "dailyStars": 44,
+        "trending": { "period": "daily", "stars": 44 },
+        "heatEvidence": "GitHub Trending 日榜；19:58 左右页面快照显示 7,019 Star、当日新增 44。",
+        "release": "v0.77.0 · 2026-09-09（北京时间）",
+        "change": "首次收录；当前版本把 worktree 创建、Agent 启动、合并和清理串成短命令，并能为每个 worktree 分配稳定端口、复制忽略文件和显示 CI 状态。",
+        "relevance": "可作为 ATLAS 并行 Agent 的源码隔离层：每个任务独占 worktree 和端口，共享可重建缓存，同时把合并、清理和 hooks 纳入可审计生命周期。",
+        "maturity": "MIT/Apache-2.0 双许可、CI 和文档较完整，但 hooks 可执行任意本机命令；自动清理前必须确认分支合并状态，缓存共享也不能替代依赖隔离。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/max-sixty/worktrunk/blob/main/README.md",
+          "https://github.com/max-sixty/worktrunk/blob/main/Cargo.toml",
+          "https://github.com/max-sixty/worktrunk/releases/tag/v0.77.0"
+        ]
+      },
+      {
+        "repository": "vxcontrol/pentagi",
+        "url": "https://github.com/vxcontrol/pentagi",
+        "description": "面向授权渗透测试的多 Agent 平台，在 Docker 沙箱中调度 20 多种安全工具，持久化命令和输出，并提供任务监督、长期记忆、REST/GraphQL API 与监控。",
+        "category": "sandbox-infra",
+        "stack": ["Go", "Docker Compose", "PostgreSQL/pgvector", "Grafana/Prometheus", "Neo4j/Graphiti", "REST/GraphQL"],
+        "totalStars": 23082,
+        "dailyStars": 250,
+        "trending": { "period": "daily", "stars": 250 },
+        "heatEvidence": "GitHub Trending 日榜；19:58 左右页面快照显示 23,082 Star、当日新增 250。",
+        "release": "v2.1.0 · 2026-05-30（北京时间）",
+        "change": "首次收录；README 当前明确 Docker 隔离、Agent execution monitoring、按任务选择镜像、多实例 tenant_id、持久命令输出和 Prometheus/Grafana 可观测性。",
+        "relevance": "它集中展示了高风险 Agent sandbox 应有的能力：专用工具镜像、宿主 Docker 访问边界、执行监督、完整审计记录、资源监控和多实例隔离。",
+        "maturity": "自托管能力丰富，但自动渗透测试具有明显双重用途；只能用于明确授权目标，Docker 隔离也不等于绝对安全，宿主 socket、网络出口和凭据必须额外收紧。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/vxcontrol/pentagi/blob/master/README.md",
+          "https://github.com/vxcontrol/pentagi/releases/tag/v2.1.0"
+        ]
+      },
+      {
+        "repository": "earthtojake/text-to-cad",
+        "url": "https://github.com/earthtojake/text-to-cad",
+        "description": "面向 CAD、CAE、CAM 与机器人描述文件的 Agent Skills 库，可生成和检查 STEP/STL/3MF/GLB、DXF、URDF、SRDF、SDF 与 G-code，并在本地预览和交接产物。",
+        "category": "ai-agent",
+        "stack": ["Agent Skills", "Python 3.11+", "cadgen 0.5.1", "STEP/URDF/SDF", "Local CAD viewer"],
+        "totalStars": 15388,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 1071 },
+        "heatEvidence": "GitHub Trending 周榜；19:58 左右页面快照显示 15,388 Star、本周新增 1,071。未进日榜且没有 9 月 11 日连续快照，日增量记为未知。",
+        "release": "v0.5.1 · 2026-09-09（北京时间）",
+        "change": "首次收录；当前 skills 已覆盖零件检索、可制造性检查、真实 slicer、机器人描述与 MoveIt2 配置，CAD 依赖固定到 cadgen 0.5.1。",
+        "relevance": "这是 Agent 从数字文件走向物理动作的典型边界：几何生成、格式验证、本地可视复核、切片和最终设备执行应分阶段，并在真正打印前保留人工批准。",
+        "maturity": "MIT、有测试和固定依赖，但生成可通过格式校验仍不代表机械安全或可制造；Bambu 等设备动作必须 dry-run、检查材料/尺寸/碰撞后再由人确认。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/earthtojake/text-to-cad/blob/main/README.md",
+          "https://github.com/earthtojake/text-to-cad/blob/main/skills/cad/requirements.txt",
+          "https://github.com/earthtojake/text-to-cad/releases/tag/v0.5.1"
+        ]
+      },
+      {
+        "repository": "multimodal-art-projection/YuE",
+        "url": "https://github.com/multimodal-art-projection/YuE",
+        "description": "YuE2 先把歌词和风格变成可编辑旋律/和弦计划，再分阶段生成语义 token、声学 latent 和 48kHz 立体声音频，支持翻唱与 Agent 对话式编辑。",
+        "category": "application",
+        "stack": ["Python 3.10/3.12", "PyTorch 2.10", "Transformers", "Flow matching", "VAE", "vLLM/Triton"],
+        "totalStars": 7021,
+        "dailyStars": 193,
+        "trending": { "period": "daily", "stars": 193 },
+        "heatEvidence": "GitHub Trending 日榜；19:58 左右页面快照显示 7,021 Star、当日新增 193。",
+        "release": "yue2-v0.1.6 · 2026-09-10（北京时间）",
+        "change": "首次收录；0.1.6 暴露 plan → generate_semantic → synthesize → decode 分阶段 API，并保存乐谱、token、latent、生成设置和模型身份以便复现。",
+        "relevance": "可借鉴到长耗时 sandbox 任务：把单次黑盒生成拆成可检查、可缓存、可复跑的阶段，让人或 Agent 在昂贵渲染前修改中间计划。",
+        "maturity": "Apache-2.0 代码但另有模型许可，运行要求 Linux、BF16 NVIDIA GPU 和约 24GB VRAM；项目方 benchmark 需要结合协议解读，输出还涉及音乐版权与声音相似性风险。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/multimodal-art-projection/YuE/blob/main/README.md",
+          "https://github.com/multimodal-art-projection/YuE/blob/main/pyproject.toml",
+          "https://github.com/multimodal-art-projection/YuE/releases/tag/yue2-v0.1.6"
+        ]
+      },
+      {
+        "repository": "SnailSploit/Claude-Red",
+        "url": "https://github.com/SnailSploit/Claude-Red",
+        "description": "面向 Claude 的 78 个进攻安全 SKILL.md，覆盖 Web、身份、云、容器/Kubernetes、供应链、CI/CD、AI 安全、漏洞利用与报告方法。",
+        "category": "ai-agent",
+        "stack": ["Claude Skills", "Markdown", "Shell installer", "OWASP/red-team tooling", "23 security categories"],
+        "totalStars": 3347,
+        "dailyStars": 99,
+        "trending": { "period": "daily", "stars": 99 },
+        "heatEvidence": "GitHub Trending 日榜；19:58 左右页面快照显示 3,347 Star、当日新增 99。",
+        "release": "v0.3.0 · 2026-08-30",
+        "change": "首次收录；当前包含容器逃逸、Kubernetes、CI/CD、供应链和 Prompt Injection 等高风险技能，并按对话触发按需加载。",
+        "relevance": "它是 ATLAS skill 安全模型的压力测试样本：安装即引入高权限方法论，必须把来源审查、最小工具、目标授权、网络隔离和逐次批准放在技能文本之上。",
+        "maturity": "MIT 且分类清楚，但本质是双重用途攻击知识库，不应全局无审查安装；仅限自有或明确授权环境，不能让 skill 的文字声明替代系统级权限控制。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/SnailSploit/Claude-Red/blob/main/README.md",
+          "https://github.com/SnailSploit/Claude-Red/tree/main/Skills",
+          "https://github.com/SnailSploit/Claude-Red/releases/tag/v0.3.0"
+        ]
+      },
+      {
+        "repository": "alsk1992/CloddsBot",
+        "url": "https://github.com/alsk1992/CloddsBot",
+        "description": "自托管 AI 交易终端，通过对话连接预测市场、加密现货、永续合约、Solana/EVM DeFi 与 21 种消息渠道，并提供策略、套利、跟单和持久聊天。",
+        "category": "application",
+        "stack": ["TypeScript 5.3", "Node.js 22+", "Claude SDK", "SQLite", "Solana/EVM SDKs", "Messaging gateways"],
+        "totalStars": 2314,
+        "dailyStars": 377,
+        "trending": { "period": "daily", "stars": 377 },
+        "heatEvidence": "GitHub Trending 日榜；19:58 左右页面快照显示 2,314 Star、当日新增 377。",
+        "release": "v1.9.1 · 2026-09-12",
+        "change": "首次收录且今日发布 v1.9.1；package 描述 119 个 skills，包含持久 WebChat、上下文压缩和大量链上/交易所 SDK，安装产物来自 GitHub Release 而非旧 npm 包。",
+        "relevance": "可作为高影响 Agent 的反例与设计样本：行情读取、策略建议、模拟、下单和资金转移必须拆权限，限制仓位/杠杆，并为每笔不可逆动作保留人工确认和审计。",
+        "maturity": "MIT 且接口面广，但项目由 hackathon 在短期内起步，依赖和资金权限极大；不应连接真实资产试跑，200x 杠杆、复制交易与私钥管理都有重大财务风险。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/alsk1992/CloddsBot/blob/main/README.md",
+          "https://github.com/alsk1992/CloddsBot/blob/main/package.json",
+          "https://github.com/alsk1992/CloddsBot/releases/tag/v1.9.1"
+        ]
+      },
+      {
+        "repository": "Shubhamsaboo/awesome-llm-apps",
+        "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+        "description": "100 多个可运行的 AI Agent、Agent Skills 与 RAG 应用样例库，覆盖多模型、语音、多 Agent、长期运行、评测和具体行业场景。",
+        "category": "ai-agent",
+        "stack": ["Python", "Streamlit", "Agent Skills", "RAG", "Claude/Gemini/GPT/open models"],
+        "totalStars": 137347,
+        "dailyStars": 237,
+        "trending": { "period": "daily", "stars": 237 },
+        "heatEvidence": "GitHub Trending 日榜；19:58 左右页面快照显示 137,347 Star、当日新增 237。",
+        "change": "首次收录；当前首页新增项目复盘、首读者、范围蔓延检测、依赖检查和自改进 skill 等样例，并声称每个 skill 经过安全与 eval CI 门禁。",
+        "relevance": "适合作为 ATLAS 的场景样本集和 eval 灵感库，尤其可参考 scope creep、dependency doctor 和 self-improving skill 的输入输出设计，但不宜把整仓库直接作为依赖。",
+        "maturity": "Apache-2.0、样例多且更新活跃，但各子项目的质量、依赖和密钥需求不同；“端到端测试”仍需逐目录验证，复制模板前要单独审查许可证、提示与外部服务。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/main/README.md",
+          "https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills"
+        ]
+      },
+      {
+        "repository": "nab138/iloader",
+        "url": "https://github.com/nab138/iloader",
+        "description": "跨平台 iOS 侧载与配对文件管理工具，可安装 SideStore/IPA、导入证书和 pairing 文件，并查看或撤销开发证书与 App ID。",
+        "category": "application",
+        "stack": ["Tauri 2", "Rust", "React 19", "TypeScript 6", "Vite 8", "usbmuxd"],
+        "totalStars": 2996,
+        "dailyStars": 209,
+        "trending": { "period": "daily", "stars": 209 },
+        "heatEvidence": "GitHub Trending 日榜；19:58 左右页面快照显示 2,996 Star、当日新增 209。",
+        "release": "v2.3.3 · 2026-09-11（北京时间）",
+        "change": "首次收录；当前 2.3.3 支持 Windows、macOS、Linux/NixOS，集成更新器和本地日志，并明确只有项目仓库与 iloader.app 是官方分发源。",
+        "relevance": "对 sandbox 的参考主要在设备桥接与凭据边界：USB 设备、Apple ID、证书、pairing 文件和本地日志都应作为敏感能力单独授权和隔离。",
+        "maturity": "功能路径清楚且跨平台，但依赖 Apple 私有开发端点和设备信任；安装 IPA、处理账号和证书具有账户与供应链风险，应只从官方来源下载并使用低权限测试账号。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/nab138/iloader/blob/main/README.md",
+          "https://github.com/nab138/iloader/blob/main/package.json",
+          "https://github.com/nab138/iloader/releases/tag/v2.3.3"
+        ]
+      },
+      {
+        "repository": "Sonarr/Sonarr",
+        "url": "https://github.com/Sonarr/Sonarr",
+        "description": "成熟的跨平台剧集 PVR，持续监控 RSS、自动抓取和升级媒体质量、处理下载失败、重命名文件，并联动下载器、Kodi 与 Plex。",
+        "category": "application",
+        "stack": ["C#/.NET 6", "React", "SQLite", "RSS", "Usenet/BitTorrent integrations"],
+        "totalStars": 15834,
+        "dailyStars": 228,
+        "trending": { "period": "daily", "stars": 228 },
+        "heatEvidence": "GitHub Trending 日榜；19:58 左右页面快照显示 15,834 Star、当日新增 228。",
+        "release": "v4.0.19.2979 · 2026-06-27（北京时间）",
+        "change": "首次收录；项目不是 AI 工具，但长期运行的 RSS 监控、质量策略、失败重试、重命名与下游媒体库通知形成了成熟自动化闭环。",
+        "relevance": "值得从普通自动化产品反向学习 Agent 系统：事件发现、规则筛选、幂等处理、失败换源、质量升级与下游通知都应是确定性控制层，而非完全交给模型。",
+        "maturity": "2010 年起维护、GPL-3.0、跨平台生态成熟；它连接下载器并操作媒体文件，仍需限制目录权限、网络暴露和自动删除/升级策略，同时遵守所在地版权规则。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/Sonarr/Sonarr/blob/develop/README.md",
+          "https://github.com/Sonarr/Sonarr/blob/develop/global.json",
+          "https://github.com/Sonarr/Sonarr/releases/tag/v4.0.19.2979"
+        ]
+      },
+      {
+        "repository": "petergyang/no-ai-slop",
+        "url": "https://github.com/petergyang/no-ai-slop",
+        "description": "面向写作的 Agent Skill，检测并移除 20 多类模板化 AI 腔，同时要求保留作者词汇、节奏、幽默与不完美，并附带自检 eval。",
+        "category": "ai-agent",
+        "stack": ["Agent Skill", "Markdown", "Codex/ChatGPT plugin", "Python build validator", "Eval checklist"],
+        "totalStars": 8508,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 1255 },
+        "heatEvidence": "GitHub Trending 周榜；19:58 左右页面快照显示 8,508 Star、本周新增 1,255。未进日榜且没有连续快照，日增量记为未知。",
+        "release": "v1.0.6 · 2026-08-02（北京时间）",
+        "change": "首次收录；仓库把编辑规则、检测模式、eval 和 Codex plugin manifest 分开，并要求列出修改而不是静默重写。",
+        "relevance": "可参考 ATLAS 内容生成的风格质量门：将可检测的坏模式写成 eval，输出修改说明，并把“保留个人声音”作为约束，而不是只追求统一流畅。",
+        "maturity": "MIT、范围小且规则透明，但语言风格具有主观性，英文模式不能直接等价到中文；适合作为人工编辑辅助，不应把规则命中当成 AI 作者身份检测。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/petergyang/no-ai-slop/blob/main/README.md",
+          "https://github.com/petergyang/no-ai-slop/blob/main/skills/no-ai-slop/eval.md",
+          "https://github.com/petergyang/no-ai-slop/releases/tag/v1.0.6"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-12T11:57:43.831Z",
+      "completedAt": "2026-09-12T12:06:40.348Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-12",
+      "notes": [
+        "本次自动任务在北京时间约 19:57 触发，晚于约定的 09:00；所有时间与页面快照均按实际采集时点记录。",
+        "日榜与周榜来自运行时保存的 GitHub Trending 官方页面快照；本期为日榜 8 项、周榜 2 项。",
+        "为避免连续重复，本期跳过 9 月 11 日已收录且今天仍在榜的 DeskcommCRM、MathModelAgent、OpenFlux、WeKnora、humanlayer/skills 与 Chrome DevTools MCP 等项目。",
+        "周榜补充项未进当日日榜，且缺少连续两日项目快照，dailyStars 均记为未知，不以周增量冒充日增量。",
+        "所有入选项目均未出现在 9 月 11 日日报中；总 Star 与 Trending 增量按页面采集时点记录。"
+      ]
+    }
+  }
+}
