@@ -1,0 +1,249 @@
+{
+  "id": "daily-2026-09-14",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-14",
+  "slug": "2026-09-14",
+  "summary": "今天的主线是 Agent 工程开始补齐控制面：多 Agent 舰队监督、上下文外置、确定性代码审查、技能供应链校验和多媒体流水线都在把模型决策约束到可观察、可恢复的系统中。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-14T01:00:46.259Z",
+  "updatedAt": "2026-09-14T01:08:19.436Z",
+  "payload": {
+    "editionDate": "2026-09-14",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "kunchenguid/firstmate",
+      "mksglu/context-mode",
+      "alibaba/open-code-review",
+      "tech-leads-club/agent-skills",
+      "calesthio/OpenMontage"
+    ],
+    "projects": [
+      {
+        "repository": "kunchenguid/firstmate",
+        "url": "https://github.com/kunchenguid/firstmate",
+        "description": "以一个“first mate”统一调度多个编码 Agent 的可移植 Agent distro，为每个任务创建独立 worktree 和可见终端会话，监督完成后交付 PR、受控本地合并或调查报告。",
+        "category": "sandbox-infra",
+        "stack": ["AGENTS.md", "Shell", "Git worktree", "tmux/zellij/cmux", "SSH", "Multi-harness"],
+        "totalStars": 5747,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 778 },
+        "heatEvidence": "GitHub Trending 周榜；09:01 左右页面快照显示 5,747 Star、本周新增 778。未进日榜且 9 月 13 日无成功快照，日增量记为未知。",
+        "change": "首次收录；当前设计包含 ship/scout 两类任务、no-mistakes/direct-PR/local-only 模式、事件驱动 watcher、持久 secondmate 和重启后磁盘状态对账。",
+        "relevance": "它几乎是 ATLAS 多 Agent 控制面的直接参考：单一人机接口、任务分型、独立 worktree、零 token 事件监督、远端主机隔离和明确合并授权。",
+        "maturity": "规则和恢复语义很细，但它是由仓库内指令、skills 与脚本组成的 distro，不是强隔离 runtime；依赖 GitHub CLI、终端后端和具体 harness，启用 +yolo 前必须评审权限。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/kunchenguid/firstmate/blob/main/README.md",
+          "https://github.com/kunchenguid/firstmate/blob/main/docs/architecture.md",
+          "https://github.com/kunchenguid/firstmate/blob/main/AGENTS.md"
+        ]
+      },
+      {
+        "repository": "mksglu/context-mode",
+        "url": "https://github.com/mksglu/context-mode",
+        "description": "MCP 上下文控制层，把大体积网页、日志和文件处理留在沙箱内，仅返回摘要；同时将编辑、Git、任务、错误和用户决策写入 SQLite/FTS5，支持压缩后的相关记忆检索。",
+        "category": "sandbox-infra",
+        "stack": ["MCP server", "TypeScript", "SQLite/FTS5", "BM25", "Sandboxed execution", "17 clients"],
+        "totalStars": 22626,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 2102 },
+        "heatEvidence": "GitHub Trending 周榜；09:01 左右页面快照显示 22,626 Star、本周新增 2,102。未进日榜且 9 月 13 日无成功快照，日增量记为未知。",
+        "release": "v1.0.169 · 2026-06-30（北京时间）",
+        "change": "首次收录；README 当前将原始数据隔离、会话连续性、以代码聚合数据和不强制最终文风分成四个独立目标，并声明新会话默认清除旧状态。",
+        "relevance": "可直接参考 ATLAS 的长任务上下文策略：原始数据不进模型窗口、事件持久化后按相关性检索、继续与新会话语义分开，并让脚本完成聚合计算。",
+        "maturity": "已到 1.0 且支持多客户端，但采用 Elastic License 2.0；其 98% 节省是项目方场景数据，沙箱执行器、SQLite 中的敏感内容和自动路由规则仍需独立安全评估。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/mksglu/context-mode/blob/main/README.md",
+          "https://github.com/mksglu/context-mode/releases/tag/v1.0.169"
+        ]
+      },
+      {
+        "repository": "alibaba/open-code-review",
+        "url": "https://github.com/alibaba/open-code-review",
+        "description": "阿里开源的 AI 代码审查 CLI，以确定性逻辑负责文件选择、分组、规则匹配、定位和反思，再让带工具 Agent 检索上下文并输出行级结构化意见。",
+        "category": "ai-agent",
+        "stack": ["Go", "Node.js launcher", "Git 2.41+", "LLM tool use", "GitHub Actions", "AACR-Bench"],
+        "totalStars": 23521,
+        "dailyStars": 443,
+        "trending": { "period": "daily", "stars": 443 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 23,521 Star、当日新增 443。",
+        "release": "v1.12.0 · 2026-09-12",
+        "change": "首次收录；当前版本提供 diff 与全文件 scan，按相关文件拆成隔离子 Agent，并公开 200 个真实 PR、10 种语言、1,505 个标注缺陷的 AACR-Bench。",
+        "relevance": "其“确定性约束 × Agent 判断”非常适合 ATLAS：不可漏的枚举、定位和 schema 由代码保证，模型只负责需要动态上下文和语义判断的部分。",
+        "maturity": "来自阿里内部大规模使用、Apache-2.0 且获 OpenSSF Gold；项目方 benchmark 仍需复现，强调 Precision 会牺牲 Recall，不能替代测试、静态分析和人工 review。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/alibaba/open-code-review/blob/main/README.md",
+          "https://github.com/alibaba/open-code-review/blob/main/package.json",
+          "https://github.com/alibaba/open-code-review/releases/tag/v1.12.0"
+        ]
+      },
+      {
+        "repository": "tech-leads-club/agent-skills",
+        "url": "https://github.com/tech-leads-club/agent-skills",
+        "description": "面向多种编码 Agent 的受管理技能注册表，提供纯文本开源 skill、静态扫描、内容哈希、锁文件、路径与符号链接防护、审计记录及 MCP 访问。",
+        "category": "ai-agent",
+        "stack": ["TypeScript", "Node.js 22+", "Nx", "MCP", "Snyk Agent Scan", "Content-addressed lockfile"],
+        "totalStars": 5656,
+        "dailyStars": 265,
+        "trending": { "period": "daily", "stars": 265 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 5,656 Star、当日新增 265。",
+        "release": "skills-catalog-v0.17.8 · 2026-09-10",
+        "change": "首次收录；当前 threat model 强调无二进制、CI 静态分析、不可变哈希、输入清理、路径隔离、symlink guard、原子锁文件和安装审计。",
+        "relevance": "可作为 ATLAS 未来插件与 skill 注册表的供应链基线：安装前扫描、固定内容哈希、限制写入路径、审计来源，并把技能文本视为不可信输入。",
+        "maturity": "MIT、有自动发布和安全文档，但仓库宣称的漏洞比例和“安全”结论需核查其报告与规则覆盖；静态扫描不能发现所有提示注入或运行时副作用。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/tech-leads-club/agent-skills/blob/main/README.md",
+          "https://github.com/tech-leads-club/agent-skills/blob/main/SECURITY.md",
+          "https://github.com/tech-leads-club/agent-skills/releases/tag/skills-catalog-v0.17.8"
+        ]
+      },
+      {
+        "repository": "calesthio/OpenMontage",
+        "url": "https://github.com/calesthio/OpenMontage",
+        "description": "开源 Agent 视频制作系统，让编码助手完成研究、脚本、素材生成/检索、剪辑和合成，可组合真实库存视频、生成模型、Remotion、FFmpeg 与 Blender。",
+        "category": "application",
+        "stack": ["Agent workflows", "Remotion", "FFmpeg", "Blender", "Python/TypeScript", "Multiple media providers"],
+        "totalStars": 58437,
+        "dailyStars": 380,
+        "trending": { "period": "daily", "stars": 380 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 58,437 Star、当日新增 380。",
+        "change": "首次收录；当前 README 展示从开放素材检索到生成视频、配音、字幕、3D 动画和最终渲染的多条 pipeline，并公开部分示例的模型成本。",
+        "relevance": "适合研究长时多工具任务的编排：素材许可与 provenance、分镜检查点、模型成本预算、渲染队列、可恢复中间产物和最终人工验收缺一不可。",
+        "maturity": "AGPL-3.0、案例丰富但尚无正式 Release；依赖大量外部模型与媒体来源，示例成本不是稳定报价，生成内容、音乐、声音和库存素材都需单独核对许可。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/calesthio/OpenMontage/blob/main/README.md",
+          "https://github.com/calesthio/OpenMontage/blob/main/AGENT_GUIDE.md",
+          "https://github.com/calesthio/OpenMontage/blob/main/docs/PROVIDERS.md"
+        ]
+      },
+      {
+        "repository": "debpalash/VoiceStudio",
+        "url": "https://github.com/debpalash/VoiceStudio",
+        "description": "本地优先的语音制作工作台，整合 16 个 TTS、11 个 ASR、声音克隆、视频配音、听写和长音频生产，并提供桌面、REST/SSE/WebSocket、OpenAI 兼容 API 与 MCP。",
+        "category": "application",
+        "stack": ["Python", "Bun/TypeScript", "Tauri/Electron rewrite", "Docker", "CUDA/MPS/ROCm", "MCP"],
+        "totalStars": 26846,
+        "dailyStars": 2632,
+        "trending": { "period": "daily", "stars": 2632 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 26,846 Star、当日新增 2,632。",
+        "release": "v0.5.2 · 2026-09-11（北京时间）",
+        "change": "首次收录；0.5.2 处于 active beta，支持本地与远程 worker、多种 GPU 后端、模型卸载/显存释放，并正在进行 Electron 桌面重写。",
+        "relevance": "可参考 GPU sandbox 的模型缓存、按需加载、远程 worker、统一执行 API 和显存回收；声音克隆还要求身份授权、来源记录和输出水印策略。",
+        "maturity": "AGPL-3.0 应用、模型各自许可；功能广但仍是 beta 且桌面架构迁移中，Linux 镜像只支持 AMD64，实际 646 种语言的质量取决于具体引擎。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/debpalash/VoiceStudio/blob/main/README.md",
+          "https://github.com/debpalash/VoiceStudio/blob/main/package.json",
+          "https://github.com/debpalash/VoiceStudio/releases/tag/v0.5.2"
+        ]
+      },
+      {
+        "repository": "huggingface/transformers",
+        "url": "https://github.com/huggingface/transformers",
+        "description": "覆盖文本、视觉、音频、视频和多模态模型的统一模型定义框架，把同一模型接到训练框架、推理引擎与 Hugging Face Hub 的百万级 checkpoints。",
+        "category": "ai-agent",
+        "stack": ["Python 3.10+", "PyTorch 2.5+", "Transformers 5", "Hugging Face Hub", "vLLM/SGLang/TGI"],
+        "totalStars": 165523,
+        "dailyStars": 152,
+        "trending": { "period": "daily", "stars": 152 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 165,523 Star、当日新增 152。",
+        "release": "v5.17.0 · 2026-09-09",
+        "change": "首次收录于 ATLAS 日报；当前 v5.17.0 继续作为训练与推理生态的模型定义枢纽，README 要求 Python 3.10+ 与 PyTorch 2.5+。",
+        "relevance": "对 sandbox 调度的价值在于统一模型元数据与加载接口，但运行时仍需根据模型卡、权重大小、设备精度和后端兼容性做节点选择、缓存和资源限额。",
+        "maturity": "Apache-2.0、生态成熟且测试规模大；库许可不覆盖模型权重许可，远程模型代码、海量依赖和大权重下载都需要固定 revision、禁用不可信代码并设置配额。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/huggingface/transformers/blob/main/README.md",
+          "https://github.com/huggingface/transformers/blob/main/pyproject.toml",
+          "https://github.com/huggingface/transformers/releases/tag/v5.17.0"
+        ]
+      },
+      {
+        "repository": "tonhowtf/omniget",
+        "url": "https://github.com/tonhowtf/omniget",
+        "description": "跨平台本地下载与媒体学习工具，把 yt-dlp、FFmpeg、torrent、转录、字幕、阅读器、笔记和间隔复习整合进一个桌面应用。",
+        "category": "application",
+        "stack": ["Tauri", "Rust", "Svelte", "yt-dlp", "FFmpeg", "Whisper"],
+        "totalStars": 11667,
+        "dailyStars": 507,
+        "trending": { "period": "daily", "stars": 507 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 11,667 Star、当日新增 507。",
+        "release": "v0.9.2 · 2026-09-11",
+        "change": "首次收录；当前支持 1,800 多站点、断点续传与退避重试、浏览器 cookies、108 个本地工具和下载后的转录/学习流程，并声明默认不记录下载遥测。",
+        "relevance": "适合作为本地工具 sandbox 案例：自动下载二进制、导入浏览器 cookies、处理不可信媒体和写入大文件应分别设置来源校验、凭据隔离、磁盘配额与内容扫描。",
+        "maturity": "GPL-3.0、产品面完整但仍为 0.9；下载受平台条款和版权约束，浏览器 cookies 权限敏感，自动更新 yt-dlp/FFmpeg 也引入供应链风险。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/tonhowtf/omniget/blob/main/README.md",
+          "https://github.com/tonhowtf/omniget/releases/tag/v0.9.2"
+        ]
+      },
+      {
+        "repository": "ever-co/ever-gauzy",
+        "url": "https://github.com/ever-co/ever-gauzy",
+        "description": "开源多组织业务管理平台，覆盖 ERP、CRM、HRM、招聘、项目、工时、财务、库存、权限、报告和桌面计时器，并提供 headless API。",
+        "category": "application",
+        "stack": ["TypeScript", "NestJS", "Angular/Ionic", "Electron", "PostgreSQL/SQLite", "Nx monorepo"],
+        "totalStars": 5083,
+        "dailyStars": 191,
+        "trending": { "period": "daily", "stars": 191 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 5,083 Star、当日新增 191。",
+        "release": "v111.0.11 · 2026-07-05（北京时间）",
+        "change": "首次收录；当前仍以完整业务平台为主，README 新近重点宣传独立的 Ever Works agentic runtime，不应把后者功能误算入本仓库。",
+        "relevance": "可参考 ATLAS 走向个人 OS 后如何处理多模块实体、角色权限、审批、审计和 headless API；它也提醒“大而全”必须有清晰模块边界。",
+        "maturity": "AGPL-3.0、业务模块和部署形态丰富，但系统庞大、文档部分仍 WIP，官方 SaaS 标记 Alpha；引入其模式应拆解学习而非整体复制。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/ever-co/ever-gauzy/blob/develop/README.md",
+          "https://github.com/ever-co/ever-gauzy/releases/tag/v111.0.11"
+        ]
+      },
+      {
+        "repository": "asgeirtj/system_prompts_leaks",
+        "url": "https://github.com/asgeirtj/system_prompts_leaks",
+        "description": "按厂商与产品整理据称被泄露或捕获的系统提示、工具定义和 Agent 指令，覆盖 ChatGPT、Codex、Claude、Gemini、Grok 等产品。",
+        "category": "ai-agent",
+        "stack": ["Markdown archive", "Prompt research", "Git history", "Vendor taxonomy"],
+        "totalStars": 66031,
+        "dailyStars": 706,
+        "trending": { "period": "daily", "stars": 706 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 66,031 Star、当日新增 706。",
+        "change": "首次收录；README 标注 9 月 13 日新增 ChatGPT Work Codex local 与 Gemini 3.8 Flash 条目，但仓库没有正式 Release，真实性和版本对应关系需独立验证。",
+        "relevance": "可用于比较 Agent 产品如何表达权限、工具和停止条件，也可构造 Prompt Injection 防御测试；不能复制其中内容来猜测或绕过真实系统边界。",
+        "maturity": "资料量大但来源性质敏感且真实性不一，内容可能过时、伪造或涉及条款/版权；只适合作为未验证研究线索，不应视为官方规范或生产配置。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/asgeirtj/system_prompts_leaks/blob/main/README.md"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-14T01:00:46.259Z",
+      "completedAt": "2026-09-14T01:08:19.436Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-14",
+      "notes": [
+        "本次自动任务于北京时间约 09:00 正常触发；所有时间和榜单数字按 09:01 左右实际页面快照记录。",
+        "9 月 13 日运行在完成发布前被新的定时触发覆盖，未形成成功日报；最新可比较的成功归档是 9 月 12 日。",
+        "本期为日榜 8 项、周榜 2 项；周榜项目缺少 9 月 13 日连续快照，dailyStars 记为未知。",
+        "为减少与最近成功一期重复，本期跳过仍在榜的 PentAGI、YuE、Claude-Red、Worktrunk、text-to-cad 与 no-ai-slop。",
+        "所有入选项目均未出现在 9 月 12 日日报中；总 Star 与 Trending 增量按页面采集时点记录。"
+      ]
+    }
+  }
+}
