@@ -1,0 +1,252 @@
+{
+  "id": "daily-2026-09-15",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-15",
+  "slug": "2026-09-15",
+  "summary": "今天的主线是把 Agent 从单机助手接入真实世界：多 Agent 仿真、跨平台信息获取、证据边界、局域网传输、秘密管理和边缘感知都在考验权限分层与可验证执行。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-15T01:00:08.592Z",
+  "updatedAt": "2026-09-15T01:08:45.828Z",
+  "payload": {
+    "editionDate": "2026-09-15",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "666ghj/MiroFish",
+      "Panniantong/Agent-Reach",
+      "rlaope/oh-my-hermes",
+      "ruvnet/RuView",
+      "THU-MAIC/OpenMAIC"
+    ],
+    "projects": [
+      {
+        "repository": "666ghj/MiroFish",
+        "url": "https://github.com/666ghj/MiroFish",
+        "description": "多 Agent 群体智能预测引擎：从报告、新闻或故事构建 GraphRAG 与角色画像，让大量带长期记忆的 Agent 在虚拟世界中互动，再由 ReportAgent 汇总演化路径与预测结论。",
+        "category": "ai-agent",
+        "stack": ["Python 3.11-3.12", "Node.js 18+", "GraphRAG", "Multi-agent simulation", "Docker", "uv"],
+        "totalStars": 73149,
+        "dailyStars": 560,
+        "trending": { "period": "daily", "stars": 560 },
+        "heatEvidence": "GitHub Trending 日榜；09:00 左右页面快照显示 73,149 Star、当日新增 560。",
+        "release": "v0.1.2 · 2026-03-07",
+        "change": "首次收录；当前流程覆盖图谱构建、环境配置、双平台模拟、报告生成与模拟世界追问，并提供 Docker 部署。",
+        "relevance": "适合研究大规模 Agent sandbox 的角色隔离、共享世界状态、长时记忆、批量调度和可追溯报告；仿真输入与结论还应保留完整 provenance。",
+        "maturity": "工程链路较完整，但“预测”来自设定与模型行为，不等同于现实因果或统计预测；大规模模拟的成本、可重复性与偏差仍需独立评测。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/666ghj/MiroFish/blob/main/README.md",
+          "https://github.com/666ghj/MiroFish/releases/tag/v0.1.2"
+        ]
+      },
+      {
+        "repository": "Panniantong/Agent-Reach",
+        "url": "https://github.com/Panniantong/Agent-Reach",
+        "description": "为 AI Agent 补齐互联网访问能力的 Python 工具层，通过最佳路径与降级路径读取网页、GitHub、RSS、YouTube、X、Reddit、小红书和 Bilibili 等来源，并提供 doctor 诊断。",
+        "category": "sandbox-infra",
+        "stack": ["Python 3.10+", "CLI", "Browser cookies", "Proxy fallback", "Multi-platform adapters"],
+        "totalStars": 81255,
+        "dailyStars": 651,
+        "trending": { "period": "daily", "stars": 651 },
+        "heatEvidence": "GitHub Trending 日榜；09:00 左右页面快照显示 81,255 Star、当日新增 651。",
+        "release": "v1.5.0 · 2026-06-11",
+        "change": "首次收录；当前 README 强调一键安装、平台适配与逐项健康诊断，部分受限站点需要 cookies 或代理。",
+        "relevance": "可作为 ATLAS 外部信息连接层的反例与参考：按域名路由工具、显式降级、健康检查、cookie 隔离、速率限制和失败原因都应进入控制面。",
+        "maturity": "覆盖面很广且 MIT 开源，但安装说明包含远程脚本，cookies、代理与反爬路径会扩大凭据和供应链风险，也必须遵守各平台条款。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/Panniantong/Agent-Reach/blob/main/README.md",
+          "https://github.com/Panniantong/Agent-Reach/releases/tag/v1.5.0"
+        ]
+      },
+      {
+        "repository": "rlaope/oh-my-hermes",
+        "url": "https://github.com/rlaope/oh-my-hermes",
+        "description": "构建在 Hermes Agent 之上的工作流操作层，将规划、研究、创作、编码、交付和项目记忆组织成可复用能力，并强调事实、推断与未知之间的证据边界。",
+        "category": "ai-agent",
+        "stack": ["Hermes Agent", "Skills", "Shell", "PowerShell", "Markdown workflows", "Project memory"],
+        "totalStars": 2041,
+        "dailyStars": 77,
+        "trending": { "period": "daily", "stars": 77 },
+        "heatEvidence": "GitHub Trending 日榜；09:00 左右页面快照显示 2,041 Star、当日新增 77。",
+        "release": "v2.0.3 · 2026-09-12",
+        "change": "首次收录；2.x 将专业工作流、显式交接和证据纪律叠加到 Hermes 原生能力上，而不是重新实现底层 Agent。",
+        "relevance": "对 ATLAS 最有价值的是能力分层和证据标记：底层执行器保持可替换，上层工作流负责路由、交接、记忆与结果置信度。",
+        "maturity": "设计文档清晰但社区仍小；安装命令会直接执行远程脚本，必须固定提交、先审查内容并限制写入范围，不能把 skill 文本视为可信代码。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/rlaope/oh-my-hermes/blob/main/README.md",
+          "https://github.com/rlaope/oh-my-hermes/releases/tag/v2.0.3"
+        ]
+      },
+      {
+        "repository": "localsend/localsend",
+        "url": "https://github.com/localsend/localsend",
+        "description": "无需云端账号或中心服务器的跨平台局域网文件与消息传输应用，通过本地发现、REST API 与 HTTPS 在 Windows、macOS、Linux、Android 和 iOS 等设备间分享内容。",
+        "category": "application",
+        "stack": ["Flutter", "Dart", "REST API", "HTTPS", "mDNS/local discovery", "Cross-platform"],
+        "totalStars": 91324,
+        "dailyStars": 251,
+        "trending": { "period": "daily", "stars": 251 },
+        "heatEvidence": "GitHub Trending 日榜；09:00 左右页面快照显示 91,324 Star、当日新增 251。",
+        "release": "v1.18.2 · 2026-08-21",
+        "change": "首次收录；当前稳定版延续无互联网依赖、本地网络传输与多平台打包路线。",
+        "relevance": "可借鉴 ATLAS 在个人设备间分发 PDF 和产物：先本地发现，再进行设备授权、端到端会话保护、接收确认与文件安全扫描。",
+        "maturity": "用户规模与平台覆盖较成熟，但局域网并不天然可信；设备发现、接收端确认、防火墙和陌生文件处理仍要单独设防。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/localsend/localsend/blob/main/README.md",
+          "https://github.com/localsend/localsend/blob/main/pubspec.yaml",
+          "https://github.com/localsend/localsend/releases/tag/v1.18.2"
+        ]
+      },
+      {
+        "repository": "dani-garcia/vaultwarden",
+        "url": "https://github.com/dani-garcia/vaultwarden",
+        "description": "兼容 Bitwarden 客户端 API 的轻量自托管密码库服务，提供组织、角色、事件日志、双因素认证、紧急访问与管理后台，适合资源有限的个人服务器。",
+        "category": "sandbox-infra",
+        "stack": ["Rust", "Docker/OCI", "Bitwarden API", "SQLite/MySQL/PostgreSQL", "Reverse proxy", "WebSocket"],
+        "totalStars": 67526,
+        "dailyStars": 115,
+        "trending": { "period": "daily", "stars": 115 },
+        "heatEvidence": "GitHub Trending 日榜；09:00 左右页面快照显示 67,526 Star、当日新增 115。",
+        "release": "1.37.3 · 2026-09-13",
+        "change": "首次收录；最新版本仍以容器部署、持久卷和反向代理 HTTPS 为主要自托管路径。",
+        "relevance": "它可成为 ATLAS 凭据层的候选参考，但 Agent 不应获得完整密码库；更安全的模式是按任务签发短期、只读或最小作用域凭据并留下审计。",
+        "maturity": "项目成熟且兼容面广，但属于非官方 Bitwarden 服务端；升级、备份、恢复、HTTPS、管理口令和暴露面都由自托管者负责。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/dani-garcia/vaultwarden/blob/main/README.md",
+          "https://github.com/dani-garcia/vaultwarden/blob/main/Cargo.toml",
+          "https://github.com/dani-garcia/vaultwarden/releases/tag/1.37.3"
+        ]
+      },
+      {
+        "repository": "ruvnet/RuView",
+        "url": "https://github.com/ruvnet/RuView",
+        "description": "利用 Wi-Fi CSI 与边缘设备进行无摄像头空间感知，覆盖存在检测、姿态、活动、呼吸与跌倒等场景，并连接 Home Assistant、Matter 和常见智能家居生态。",
+        "category": "sandbox-infra",
+        "stack": ["Rust 1.85+", "ESP32", "Wi-Fi CSI", "Edge inference", "Docker multi-arch", "Home Assistant/Matter"],
+        "totalStars": 93841,
+        "dailyStars": 383,
+        "trending": { "period": "daily", "stars": 383 },
+        "heatEvidence": "GitHub Trending 日榜；09:00 左右页面快照显示 93,841 Star、当日新增 383。",
+        "release": "v2655 · 2026-09-11",
+        "change": "首次收录；仓库同时提供 RuView MetaHarness，以来源引用、只读默认、显式写入确认和确定性验证约束 Claude/Codex 辅助工作。",
+        "relevance": "它把物理世界传感器、边缘推理和 Agent 工具权限放进同一体系，适合研究硬件沙箱、设备身份、数据最小化、人工确认与证据非指令原则。",
+        "maturity": "代码与文档体量大且会主动标注合成数据和未验证指标，但部分模型效果有限、部分运行链路仍是 stub；版本号增长很快，生产使用前需硬件复测。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/ruvnet/RuView/blob/main/README.md",
+          "https://github.com/ruvnet/RuView/blob/main/Cargo.toml",
+          "https://github.com/ruvnet/RuView/releases/tag/v2655"
+        ]
+      },
+      {
+        "repository": "OpenBMB/VoxCPM",
+        "url": "https://github.com/OpenBMB/VoxCPM",
+        "description": "基于扩散自回归建模的 tokenizer-free 语音生成模型，提供多语言文本转语音、声音设计、零样本克隆、48kHz 输出和实时流式推理。",
+        "category": "application",
+        "stack": ["Python 3.10-3.12", "PyTorch 2.5+", "CUDA 12+", "vLLM Omni", "OpenAI-compatible API", "2B model"],
+        "totalStars": 37366,
+        "dailyStars": 216,
+        "trending": { "period": "daily", "stars": 216 },
+        "heatEvidence": "GitHub Trending 日榜；09:00 左右页面快照显示 37,366 Star、当日新增 216。",
+        "release": "2.0.3 · 2026-05-11",
+        "change": "首次收录；VoxCPM2 提供 30 种语言、流式服务和兼容 OpenAI 的接口，并声明代码与权重采用 Apache-2.0。",
+        "relevance": "可用于 ATLAS 的 GPU 任务调度、模型冷启动、权重缓存和统一语音 API；声音克隆任务必须携带授权、来源与审计元数据。",
+        "maturity": "模型和推理接口较完整，但对 CUDA 与显存有要求；多语言质量需按语言实测，声音克隆还涉及冒充、同意和滥用防护。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/OpenBMB/VoxCPM/blob/main/README.md",
+          "https://github.com/OpenBMB/VoxCPM/blob/main/pyproject.toml",
+          "https://github.com/OpenBMB/VoxCPM/releases/tag/2.0.3"
+        ]
+      },
+      {
+        "repository": "reconurge/flowsint",
+        "url": "https://github.com/reconurge/flowsint",
+        "description": "面向合规调查的开源 OSINT 图谱工作台，将实体、关系与检索结果组织成可探索的图，并支持本地 Docker Compose 部署。",
+        "category": "application",
+        "stack": ["TypeScript/Node.js", "Python", "PostgreSQL", "Redis", "Neo4j", "Docker Compose"],
+        "totalStars": 8341,
+        "dailyStars": 280,
+        "trending": { "period": "daily", "stars": 280 },
+        "heatEvidence": "GitHub Trending 日榜；09:00 左右页面快照显示 8,341 Star、当日新增 280。",
+        "release": "v1.2.12（最新标签；发布日期未可靠取得）",
+        "change": "首次收录；当前部署文档明确要求公网暴露前更换认证密钥、主 vault key、Neo4j 密码和主机白名单，并包含 DNS rebinding 防护。",
+        "relevance": "适合 ATLAS 的调查型 Agent：图谱化中间证据、来源回链、任务隔离和本地持久化比只输出一段答案更可审计。",
+        "maturity": "仍处早期开发；OSINT 数据可能包含个人信息或错误关联，必须限定合法用途、采集范围、保存期限与人工复核。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/reconurge/flowsint/blob/main/README.md",
+          "https://github.com/reconurge/flowsint/blob/main/docker-compose.yml",
+          "https://github.com/reconurge/flowsint/releases/tag/v1.2.12"
+        ]
+      },
+      {
+        "repository": "openai/plugins",
+        "url": "https://github.com/openai/plugins",
+        "description": "OpenAI 官方维护的 Codex 插件示例集合，展示如何把 skills、MCP 服务、apps、agents、commands、hooks 与资产封装成可发现、可安装的插件。",
+        "category": "ai-agent",
+        "stack": ["Codex plugins", "SKILL.md", "MCP", "Apps", "JSON manifests", "Marketplace catalog"],
+        "totalStars": 6706,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 1233 },
+        "heatEvidence": "GitHub Trending 周榜补充；09:00 左右页面快照显示 6,706 Star、本周新增 1,233。未进日榜，日增量记为未知。",
+        "change": "继 9 月 10 日后再次收录；持续进入周榜，且当前示例已覆盖 Figma、Notion、Web、iOS/macOS、Expo、Netlify、Remotion 与 Google Slides 等组合。",
+        "relevance": "它为 ATLAS 的扩展系统给出直接结构参考：最小 manifest、能力按需装配、应用连接声明、独立 marketplace 与清晰资产边界。",
+        "maturity": "官方示例价值高但不是完整的安全注册表；安装第三方插件仍需审查 skills、MCP 命令、hooks、网络权限和凭据范围。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/openai/plugins/blob/main/README.md",
+          "https://github.com/openai/plugins/tree/main/plugins"
+        ]
+      },
+      {
+        "repository": "THU-MAIC/OpenMAIC",
+        "url": "https://github.com/THU-MAIC/OpenMAIC",
+        "description": "开源多 Agent 互动课堂系统，从一句需求或一份文档生成包含幻灯片、测验、仿真、项目式学习、AI 教师与同学的可编辑课程，并可导出 PPTX/HTML。",
+        "category": "application",
+        "stack": ["Next.js 16", "React 19", "TypeScript 5", "LangGraph 1.1", "Tailwind CSS 4", "Node.js 22.19+"],
+        "totalStars": 36831,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 3950 },
+        "heatEvidence": "GitHub Trending 周榜补充；09:00 左右页面快照显示 36,831 Star、本周新增 3,950。未进日榜，日增量记为未知。",
+        "release": "v1.0.2（最新标签；发布日期未可靠取得）",
+        "change": "首次收录；1.0 系列加入服务端持久会话，可跨重启暂停、恢复和转向任务，并扩展到 20 个技能与多供应商模型。",
+        "relevance": "它与 ATLAS 的 PPT/PDF 和个人知识站目标高度契合：可借鉴内容生成流水线、耐久会话、人工编辑检查点、产物导出与课程级权限边界。",
+        "maturity": "已到 1.0 且产品形态完整，但依赖多种模型与 API key；生成课程的事实、版权、题目质量和年龄适配仍需要人工审校。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/THU-MAIC/OpenMAIC/blob/main/README.md",
+          "https://github.com/THU-MAIC/OpenMAIC/blob/main/package.json",
+          "https://github.com/THU-MAIC/OpenMAIC/releases/tag/v1.0.2"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-15T01:00:08.592Z",
+      "completedAt": "2026-09-15T01:08:45.828Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-15",
+      "notes": [
+        "本次自动任务于北京时间约 09:00 正常触发；榜单数字按 09:00 左右实际页面快照记录。",
+        "本期为日榜 8 项、周榜补充 2 项；周榜项目 dailyStars 记为未知，未把周增量冒充日增量。",
+        "为避免连续重复，本期跳过 9 月 14 日已收录且仍在榜的 OpenCodeReview、VoiceStudio、Agent Skills、Transformers、Ever Gauzy、system_prompts_leaks、firstmate 与 context-mode。",
+        "本期 10 项均未出现在 9 月 14 日日报；openai/plugins 距上次收录已隔多期，并因持续周榜热度及当前插件示例再次关注。",
+        "README、文档和安装说明均按不可信外部资料读取，未执行任何仓库提供的远程脚本。"
+      ]
+    }
+  }
+}
