@@ -1,0 +1,254 @@
+{
+  "id": "daily-2026-09-16",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-16",
+  "slug": "2026-09-16",
+  "summary": "今天的主线是 Agent 工程的可控执行：会话与提交建立谱系、工具权限分级、隔离 worktree 与多算力后端、危险样本沙箱，以及可评测的技能规则正在形成一套更完整的控制面。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-16T01:00:31.368Z",
+  "updatedAt": "2026-09-16T01:08:04.419Z",
+  "payload": {
+    "editionDate": "2026-09-16",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "pacifio/atlas",
+      "earendil-works/pi",
+      "danny-avila/LibreChat",
+      "alphaXiv/OpenResearch",
+      "NationalSecurityAgency/ghidra"
+    ],
+    "projects": [
+      {
+        "repository": "pacifio/atlas",
+        "url": "https://github.com/pacifio/atlas",
+        "description": "面向编码 Agent 的源码控制工作台，把每次 Claude Code、Codex、原生 Agent 或 ACP Agent 会话与其提交、提示、工具调用和文件变更关联成可查询 checkpoint，并在不同 Agent 间共享本地记忆。",
+        "category": "ai-agent",
+        "stack": ["Tauri", "Rust", "TypeScript", "React/Vite", "SQLite", "ACP"],
+        "totalStars": 4629,
+        "dailyStars": 91,
+        "trending": { "period": "daily", "stars": 91 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 4,629 Star、当日新增 91。",
+        "release": "alpha-0.3.1 · 2026-09-06",
+        "change": "首次收录；当前会把任何工具产生的 Git commit 回链到会话 checkpoint，磁盘上以 Markdown、JSONL 与本地 SQLite 保存上下文，并在落盘前清理 secrets。",
+        "relevance": "它几乎对应 ATLAS 的开发审计层：不拦截 Git，而是观察提交并补齐执行者、上下文、工具调用和失败尝试；这比仅保存最终 diff 更利于恢复与问责。",
+        "maturity": "仍标为 alpha，官方只支持 macOS，Linux/Windows 构建未经测试；会话记录本身可能含敏感信息，所谓 secret scrub 不能替代路径隔离、保留期限和访问控制。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/pacifio/atlas/blob/main/README.md",
+          "https://github.com/pacifio/atlas/blob/main/ARCHITECTURE.md",
+          "https://github.com/pacifio/atlas/releases/tag/alpha-0.3.1"
+        ]
+      },
+      {
+        "repository": "earendil-works/pi",
+        "url": "https://github.com/earendil-works/pi",
+        "description": "模块化 AI Agent harness，包含统一多模型 API、工具调用与状态管理核心、编码 Agent CLI、TUI、RPC/插件运行时和厂商中立的遥测契约。",
+        "category": "sandbox-infra",
+        "stack": ["TypeScript", "Node.js", "Agent SDK", "TUI", "OpenTelemetry-style contracts", "Docker/micro-VM"],
+        "totalStars": 105713,
+        "dailyStars": 458,
+        "trending": { "period": "daily", "stars": 458 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 105,713 Star、当日新增 458。",
+        "release": "v0.85.1 · 2026-09-05",
+        "change": "首次收录；仓库明确声明自身不提供文件、进程、网络或凭据权限系统，并分别给出 Gondolin 微虚拟机、整进程 Docker 和 OpenShell 策略沙箱三种隔离方式。",
+        "relevance": "这是很好的责任边界样本：Agent loop 与隔离层解耦，宿主保留模型凭据时可只把工具调用路由进 micro-VM，也可将整进程放进策略沙箱。",
+        "maturity": "包与测试体系较完整且发布频繁，但默认继承启动用户的全部权限；若直接裸跑，能力丰富反而扩大攻击面，生产使用必须外接 sandbox 与秘密代理。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/earendil-works/pi/blob/main/README.md",
+          "https://github.com/earendil-works/pi/blob/main/package.json",
+          "https://github.com/earendil-works/pi/releases/tag/v0.85.1"
+        ]
+      },
+      {
+        "repository": "danny-avila/LibreChat",
+        "url": "https://github.com/danny-avila/LibreChat",
+        "description": "可自托管的多模型 AI 对话与 Agent 平台，统一主流模型、MCP、Skills、Artifacts、代码解释器、自定义 Actions、检索和多用户认证。",
+        "category": "application",
+        "stack": ["TypeScript/JavaScript", "React", "Node.js", "MongoDB", "Docker Compose", "MCP/OIDC/OpenTelemetry"],
+        "totalStars": 43841,
+        "dailyStars": 254,
+        "trending": { "period": "daily", "stars": 254 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 43,841 Star、当日新增 254。",
+        "release": "README 当前版本区：v0.8.8-rc3（GitHub 无 latest Release）",
+        "change": "首次收录；当前 RC 加入 Agent 管理 API、附加 workspace、文件写入与命令执行 Ask/Allow/Deny、后台工具取消、上下文用量和关联日志导出。",
+        "relevance": "可直接参考 ATLAS 的多租户 Agent 控制面：机器身份 OIDC、角色与 Agent 访问控制、代码动作审批、超时、工具取消、上下文成本和 trace 关联。",
+        "maturity": "功能面与部署文档较成熟，但当前亮点处于 RC，附加 workspace 仍标为高度实验；Full access 只应授予隔离环境，并应先验证取消、越权与审计语义。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/danny-avila/LibreChat/blob/main/README.md",
+          "https://github.com/danny-avila/LibreChat/blob/main/package.json",
+          "https://github.com/danny-avila/LibreChat/blob/main/tool-intent-spec.md"
+        ]
+      },
+      {
+        "repository": "alphaXiv/OpenResearch",
+        "url": "https://github.com/alphaXiv/OpenResearch",
+        "description": "本地优先的研究 Agent 工作台，让多个编码 Agent 在隔离 worktree 中并行提出假设、运行实验和产出研究资料，以 Git 原生实验树保留运行谱系与证据。",
+        "category": "ai-agent",
+        "stack": ["Rust", "TypeScript", "Git worktree", "SQLite", "SSH", "Slurm/Kubernetes/Ray"],
+        "totalStars": 3364,
+        "dailyStars": 531,
+        "trending": { "period": "daily", "stars": 531 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 3,364 Star、当日新增 531。",
+        "release": "v0.2.2 · 2026-09-14",
+        "change": "继 9 月 11 日后再次收录：版本已从 v0.1.122 升至 v0.2.2，并重新进入日榜；当前提供各平台预编译包与 checksum，同时延续本地、SSH、Slurm、Kubernetes、Ray 等执行后端。",
+        "relevance": "其不可变提交归档、实验分支、独立 worktree 和可替换算力后端是 ATLAS 长时 Agent 实验室的直接参考，可将失败尝试也变成可复现资产。",
+        "maturity": "迭代很快但仍为 0.2；Windows 支持是 beta，远端服务只绑定 loopback 且无应用级认证，多用户主机仍需额外账户或容器隔离。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/alphaXiv/OpenResearch/blob/main/README.md",
+          "https://github.com/alphaXiv/OpenResearch/blob/main/Cargo.toml",
+          "https://github.com/alphaXiv/OpenResearch/releases/tag/v0.2.2"
+        ]
+      },
+      {
+        "repository": "NationalSecurityAgency/ghidra",
+        "url": "https://github.com/NationalSecurityAgency/ghidra",
+        "description": "NSA 维护的跨平台软件逆向工程框架，支持反汇编、反编译、图分析、脚本与自动化处理，可扩展到多种处理器指令集和可执行文件格式。",
+        "category": "sandbox-infra",
+        "stack": ["Java/JDK 25", "Gradle", "Python/PyGhidra", "C/C++", "Headless automation", "Docker"],
+        "totalStars": 76711,
+        "dailyStars": 725,
+        "trending": { "period": "daily", "stars": 725 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 76,711 Star、当日新增 725。",
+        "release": "Ghidra 12.1.3 · 2026-08-18",
+        "change": "首次收录；当前 12.1.3 提供官方发布包 SHA-256，README 同时明确要求先阅读安全公告，避免在存在已知漏洞的版本上分析不可信文件。",
+        "relevance": "对 Agent sandbox 的价值不只在自动逆向 API，更在危险输入治理：APK、固件和恶意样本应进入无网、只读输入、限制 CPU/内存/时间且一次性的分析环境。",
+        "maturity": "Apache-2.0、生态成熟且可 headless 自动化；但逆向对象天然高风险，Ghidra 本身也曾有安全漏洞，插件、脚本和样本都不能在个人主机权限下直接运行。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/NationalSecurityAgency/ghidra/blob/master/README.md",
+          "https://github.com/NationalSecurityAgency/ghidra/blob/master/build.gradle",
+          "https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_12.1.3_build"
+        ]
+      },
+      {
+        "repository": "Homebrew/BrewUI",
+        "url": "https://github.com/Homebrew/BrewUI",
+        "description": "Homebrew 官方 macOS 图形界面，让用户发现、安装、更新和管理软件包，同时展示底层 brew 操作，不把命令执行隐藏在 UI 后面。",
+        "category": "application",
+        "stack": ["Swift 6", "SwiftUI", "Swift Package Manager", "Homebrew CLI", "Homebrew JSON API", "macOS 26+"],
+        "totalStars": 1365,
+        "dailyStars": 271,
+        "trending": { "period": "daily", "stars": 271 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 1,365 Star、当日新增 271。",
+        "release": "v0.4.2 · 2026-09-15",
+        "change": "首次收录；昨日版本改为通过隔离 zsh 运行 Homebrew，禁用用户和系统可选启动文件，清理环境并把 PATH 限制到 brew、/usr/bin 与 /bin。",
+        "relevance": "这是桌面 Agent 调用 CLI 的实用范式：明确展示命令、清理继承环境、限制 PATH、把配置放进可审查文件，并将诊断结果反馈到 UI。",
+        "maturity": "Homebrew 官方、标记稳定且持续开发，但仅支持 macOS Tahoe 26+；/etc/zshenv 仍是不可禁用的系统入口，环境隔离并非完整安全沙箱。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/Homebrew/BrewUI/blob/main/README.md",
+          "https://github.com/Homebrew/BrewUI/blob/main/Package.swift",
+          "https://github.com/Homebrew/BrewUI/releases/tag/v0.4.2"
+        ]
+      },
+      {
+        "repository": "MG1937/ASC",
+        "url": "https://github.com/MG1937/ASC",
+        "description": "面向 Agent 与移动安全研究者的 Android 按需反编译前端，直接把 APK/DEX 当作可查询数据库，仅抽取命中的字节码及依赖，避免传统全量索引。",
+        "category": "sandbox-infra",
+        "stack": ["Python", "PyPI CLI", "DEX/APK", "Deflate/Huffman parsing", "On-demand decompilation", "R8 analysis"],
+        "totalStars": 1179,
+        "dailyStars": 129,
+        "trending": { "period": "daily", "stars": 129 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 1,179 Star、当日新增 129。",
+        "change": "首次收录；当前提供 getclass、getmanifest 与 findrefs CLI，并以 352MB 商业 APK 展示项目方基准：交叉引用 1.79 秒、目标类反编译 177 毫秒、141MB 内存。",
+        "relevance": "按需解析非常适合沙箱执行接口：Agent 不必先构建昂贵全局索引，可按查询领取最小数据切片，降低冷启动、内存占用和不可信输入驻留范围。",
+        "maturity": "无正式 GitHub Release、提交历史和社区规模较小；性能数字来自项目方单一案例，格式兼容性、抗畸形输入和正确性需要独立 fuzz 与对照验证。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/MG1937/ASC/blob/main/README.md",
+          "https://github.com/MG1937/ASC/blob/main/pyproject.toml"
+        ]
+      },
+      {
+        "repository": "addyosmani/agent-skills",
+        "url": "https://github.com/addyosmani/agent-skills",
+        "description": "跨多种编码 Agent 的工程技能包，覆盖需求澄清、规范驱动、测试、审查、安全、可观测性和交付，以步骤、验证门禁与反合理化表约束执行。",
+        "category": "ai-agent",
+        "stack": ["SKILL.md", "Codex/Claude/Cursor plugins", "Node.js tooling", "Agent adapters", "Evals", "Markdown references"],
+        "totalStars": 94806,
+        "dailyStars": 307,
+        "trending": { "period": "daily", "stars": 307 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 94,806 Star、当日新增 307。",
+        "release": "0.6.9 · 2026-09-05",
+        "change": "首次收录；0.6.9 加入被拒 skill 变更的追加式账本与对应 eval 分数，并强化破坏性路径的 symlink/允许根/深度/所有权检查及跨实例共享限流。",
+        "relevance": "可借鉴 ATLAS 的 living guide：技能变更不能只看文字是否合理，而应绑定 eval、保留被拒方案、区分可移植 frontmatter 与各 Agent 的运行时权限。",
+        "maturity": "覆盖 25 个技能和大量客户端，但技能本质仍是可执行指令供应链；单 skill 安装还存在共享 references 丢失的可移植性缺口，使用前需固定版本并审查 hooks。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/addyosmani/agent-skills/blob/main/README.md",
+          "https://github.com/addyosmani/agent-skills/blob/main/package.json",
+          "https://github.com/addyosmani/agent-skills/releases/tag/0.6.9"
+        ]
+      },
+      {
+        "repository": "ayghri/i-have-adhd",
+        "url": "https://github.com/ayghri/i-have-adhd",
+        "description": "面向编码助手的输出交互 skill，用十条规则要求先给下一步、编号操作、抑制旁支、持续重述状态并以一个具体动作结尾，降低答案的阅读与启动成本。",
+        "category": "ai-agent",
+        "stack": ["SKILL.md", "Codex/Claude plugins", "Multi-client adapters", "Node.js hooks", "Evals", "Localization"],
+        "totalStars": 46267,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 17880 },
+        "heatEvidence": "GitHub Trending 周榜补充；09:01 左右页面快照显示 46,267 Star、本周新增 17,880。未进日榜，日增量记为未知。",
+        "change": "首次收录；当前仓库包含 Codex、Claude、Cursor、OpenCode 等适配、多个语言版本以及独立 evals/tests，而不是只有一段提示词。",
+        "relevance": "提醒 ATLAS 的 Agent UX 也需要评测：任务结果正确之外，还应测首屏是否给出动作、失败是否平实、步骤是否有限，以及中断恢复时能否快速重建状态。",
+        "maturity": "MIT、适配面广但无正式 Release；固定十条规则可能不适合研究报告或复杂设计讨论，用户体验收益应按任务类型和真实用户反馈评估。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/ayghri/i-have-adhd/blob/main/README.md",
+          "https://github.com/ayghri/i-have-adhd/blob/main/skills/i-have-adhd/SKILL.md",
+          "https://github.com/ayghri/i-have-adhd/tree/main/evals"
+        ]
+      },
+      {
+        "repository": "DietrichGebert/ponytail",
+        "url": "https://github.com/DietrichGebert/ponytail",
+        "description": "用“先不做、再复用、再标准库、再原生能力、最后才写最小实现”的阶梯约束编码 Agent，目标是减少过度设计而不裁掉验证、安全、错误处理或可访问性。",
+        "category": "ai-agent",
+        "stack": ["Agent skills/plugins", "Node.js hooks", "Promptfoo evals", "Python checks", "Multi-agent adapters", "Markdown rules"],
+        "totalStars": 139393,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 7499 },
+        "heatEvidence": "GitHub Trending 周榜补充；09:01 左右页面快照显示 139,393 Star、本周新增 7,499。未进日榜，日增量记为未知。",
+        "release": "v4.10.0 · 2026-09-14",
+        "change": "首次收录；v4.10.0 新增原生 Cursor hooks 与 Grok Build 适配，并修正 VS Code Copilot 检测；仓库还公开 12 个真实任务、每任务 4 次的 agentic 对照基准及局限。",
+        "relevance": "它提供了可量化的 Agent 成本优化路径：以相同任务对照 LOC、token、费用、耗时与安全门槛，比仅要求“简洁”更容易纳入 ATLAS eval。",
+        "maturity": "测试与局限披露较认真，但 54% 少代码等数字仍来自特定仓库、模型和样本；hooks 会持续注入规则并影响子 Agent，安装前应审查作用域与卸载残留。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/DietrichGebert/ponytail/blob/main/README.md",
+          "https://github.com/DietrichGebert/ponytail/blob/main/benchmarks/results/2026-06-18-agentic.md",
+          "https://github.com/DietrichGebert/ponytail/releases/tag/v4.10.0"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-16T01:00:31.368Z",
+      "completedAt": "2026-09-16T01:08:04.419Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-16",
+      "notes": [
+        "本次自动任务于北京时间约 09:00 正常触发；榜单数字按 09:01 左右实际页面快照记录。",
+        "本期为日榜 8 项、周榜补充 2 项；周榜项目 dailyStars 记为未知，未把周增量冒充日增量。",
+        "本期 10 项均未出现在 9 月 15 日日报中；为减少近期重复，跳过仍在榜的 OpenCodeReview、VoiceStudio、Ever Gauzy 与 OmniGet。",
+        "OpenResearch 距上次收录已隔多期；因从 v0.1.122 升至 v0.2.2 并重新进入日榜而再次关注，变化已单独说明。",
+        "README、文档、依赖配置和 Release 均按不可信外部资料读取，未执行任何仓库提供的安装命令或脚本。"
+      ]
+    }
+  }
+}
