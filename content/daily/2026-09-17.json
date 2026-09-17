@@ -1,0 +1,248 @@
+{
+  "id": "daily-2026-09-17",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-17",
+  "slug": "2026-09-17",
+  "summary": "今天的主线是把 Agent 从‘能调用工具’推进到‘可验证地执行’：安全审计引入独立复核与覆盖账本，编码 Agent 补齐恢复与可观测性，虚拟手机和多 Agent 决策系统则展示了隔离、检查点与诚实失败的重要性。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-17T01:01:23.472Z",
+  "updatedAt": "2026-09-17T01:09:01.817Z",
+  "payload": {
+    "editionDate": "2026-09-17",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "cloudflare/security-audit-skill",
+      "Lakr233/vphone-cli",
+      "anthropics/claude-code",
+      "cline/cline",
+      "TauricResearch/TradingAgents"
+    ],
+    "projects": [
+      {
+        "repository": "cloudflare/security-audit-skill",
+        "url": "https://github.com/cloudflare/security-audit-skill",
+        "description": "Cloudflare 发布的编码 Agent 安全审计技能，以架构勘察、分区 hunting、独立验证、结构化 findings 和最终复核六个阶段寻找可利用漏洞，并用覆盖账本记录已审查与仍缺口的区域。",
+        "category": "sandbox-infra",
+        "stack": ["Agent Skill", "Markdown workflows", "JSON Schema", "Node.js validators", "Coverage ledger"],
+        "totalStars": 7257,
+        "dailyStars": 927,
+        "trending": { "period": "daily", "stars": 927 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 7,257 Star、当日新增 927。",
+        "change": "首次收录；其验证者会主动尝试推翻候选漏洞，并将结论分为 confirmed、needs_validation 与 rejected；目标控制的构建或测试若没有操作系统级隔离，只能保留为待验证。",
+        "relevance": "可直接借鉴到 ATLAS 的高风险 Agent：把发现者与验证者隔离、把覆盖范围落成机器可读账本，并明确无网、环境变量白名单、资源限制和仅临时目录可写等执行门槛。",
+        "maturity": "MIT、零依赖验证器且方法完整，但仓库仅十余次提交、没有正式 Release；skill 只能约束流程，不能替代真正的容器、微虚拟机或主机权限控制。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/cloudflare/security-audit-skill/blob/main/README.md",
+          "https://github.com/cloudflare/security-audit-skill/blob/main/SKILL.md"
+        ]
+      },
+      {
+        "repository": "abue-ammar/tinycast",
+        "url": "https://github.com/abue-ammar/tinycast",
+        "description": "原生 macOS 启动器，使用 SwiftUI 与 AppKit 实现应用启动、文件搜索、剪贴板、快捷命令、窗口管理、AI 对话和 Raycast 扩展运行，强调无 Electron、无遥测和低内存占用。",
+        "category": "application",
+        "stack": ["Swift", "SwiftUI", "AppKit", "Apple Shortcuts", "Raycast extensions"],
+        "totalStars": 5600,
+        "dailyStars": 1179,
+        "trending": { "period": "daily", "stars": 1179 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 5,600 Star、当日新增 1,179。",
+        "release": "v0.10.23 · 2026-09-13",
+        "change": "首次收录；最新版本补充受保护资源 entitlement 检查、可过期 OAuth token、测试超时与进度反馈，并调整相机和日历权限。",
+        "relevance": "它把本地工具、插件和 AI 集成在一个轻量控制面中，适合作为 ATLAS 桌面入口参考；权限声明、OAuth 生命周期和扩展边界尤其值得观察。",
+        "maturity": "功能丰富但仅维护 macOS 26，应用为自签名；辅助功能、剪贴板、Shell 命令和第三方扩展都拥有较高本机权限，安装与自动执行需显式授权。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/abue-ammar/tinycast/blob/main/README.md",
+          "https://github.com/abue-ammar/tinycast/releases/tag/v0.10.23"
+        ]
+      },
+      {
+        "repository": "Lakr233/vphone-cli",
+        "url": "https://github.com/Lakr233/vphone-cli",
+        "description": "基于 Apple Virtualization.framework 与 PCC 研究虚拟机基础设施，在 Apple Silicon Mac 上创建、克隆、导入导出和启动虚拟 iPhone，提供从固件下载、修补、DFU 恢复到首启的自动化流水线。",
+        "category": "sandbox-infra",
+        "stack": ["Swift", "Apple Virtualization.framework", "Python", "APFS clone", "iOS firmware tooling"],
+        "totalStars": 13346,
+        "dailyStars": 547,
+        "trending": { "period": "daily", "stars": 547 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 13,346 Star、当日新增 547。",
+        "release": "v1.0.14 · 2026-09-10",
+        "change": "首次收录；最新版本会在把导入虚拟机移入本地库前校验 manifest，并更新 iOS 目录；CLI 支持 APFS 快速克隆、独立设备身份和 JSON 输出。",
+        "relevance": "虚拟手机的快速创建、克隆、销毁和身份重置，是移动端 Agent 测试沙箱的直接样板；配置、镜像与运行状态分离也便于调度和回收。",
+        "maturity": "MIT 且已有完整 CLI，但依赖 macOS 15+、Apple Silicon、Xcode/iOS SDK，并要求放宽 SIP/AMFI、使用私有 entitlement；固件修补与越狱变体不宜在日常主机上启用。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/Lakr233/vphone-cli/blob/main/README.md",
+          "https://github.com/Lakr233/vphone-cli/blob/main/Package.swift",
+          "https://github.com/Lakr233/vphone-cli/releases/tag/v1.0.14"
+        ]
+      },
+      {
+        "repository": "anthropics/knowledge-work-plugins",
+        "url": "https://github.com/anthropics/knowledge-work-plugins",
+        "description": "Anthropic 的知识工作插件集合，以 skills、connectors、slash commands 与 subagents 为销售、客服、产品、市场、法务、财务和数据等岗位组合专用工作流。",
+        "category": "ai-agent",
+        "stack": ["Claude Cowork", "Claude Code", "Skills", "MCP/connectors", "Subagents"],
+        "totalStars": 24287,
+        "dailyStars": 110,
+        "trending": { "period": "daily", "stars": 110 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 24,287 Star、当日新增 110。",
+        "change": "首次收录；仓库按岗位拆分十余个可组合插件，并展示 Slack、Notion、Jira、Microsoft 365、HubSpot、Snowflake、Databricks 和 Figma 等连接方式。",
+        "relevance": "适合参考 ATLAS 的模块化扩展：把领域知识、工具连接、命令和子 Agent 封装为版本化插件，同时保持不同角色的数据与权限边界。",
+        "maturity": "Apache-2.0、由 Anthropic 提供，但更多是可定制范例而非完整企业治理产品；跨系统连接器权限面很大，法务、财务等输出仍需人工复核。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/anthropics/knowledge-work-plugins/blob/main/README.md"
+        ]
+      },
+      {
+        "repository": "anthropics/claude-code",
+        "url": "https://github.com/anthropics/claude-code",
+        "description": "运行在终端、IDE 与 GitHub 工作流中的编码 Agent，支持工具调用、hooks、插件、MCP、后台任务和遥测；仓库主要承载发行、文档、插件与问题追踪。",
+        "category": "ai-agent",
+        "stack": ["Terminal/IDE client", "Native installer", "Plugins/hooks", "MCP", "OpenTelemetry"],
+        "totalStars": 145508,
+        "dailyStars": 165,
+        "trending": { "period": "daily", "stars": 165 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 145,508 Star、当日新增 165。",
+        "release": "v2.1.274 · 2026-09-17",
+        "change": "首次收录；今日版本加入临界内存提示、MCP 首轮等待上限与刷新修复、OpenTelemetry effort 属性、设置来源事件脱敏，以及损坏 tool_use_id、后台任务、token 刷新和 compaction 恢复的自愈修复。",
+        "relevance": "这些修复正好覆盖长时 Agent 的关键运行面：内存压力、工具启动超时、权限错误解释、执行 trace、后台任务恢复和会话损坏后的继续运行。",
+        "maturity": "使用广泛且发布频繁，但该仓库并非完整客户端源码，许可和数据处理受 Anthropic 条款约束；它能执行本地工具，插件、MCP 与自动授权仍应在最小权限环境中使用。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/anthropics/claude-code/blob/main/README.md",
+          "https://github.com/anthropics/claude-code/releases/tag/v2.1.274"
+        ]
+      },
+      {
+        "repository": "roboflow/supervision",
+        "url": "https://github.com/roboflow/supervision",
+        "description": "模型无关的 Python 计算机视觉工具箱，为分类、检测、分割、跟踪、数据集和视频处理提供统一数据结构、标注器与常用流水线，可衔接多种训练和推理框架。",
+        "category": "application",
+        "stack": ["Python 3.10+", "NumPy/OpenCV", "Ultralytics", "Transformers", "Video pipelines"],
+        "totalStars": 50599,
+        "dailyStars": 260,
+        "trending": { "period": "daily", "stars": 260 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 50,599 Star、当日新增 260。",
+        "release": "v0.30.3 · 2026-09-14",
+        "change": "首次收录；最新修复覆盖非有限关键点、反向框坐标、空检测帧、视频 max_frames 挂起和整数溢出，避免静默产生错误 NMS、mAP 或 CSV 结果。",
+        "relevance": "适合作为视觉 Agent 的确定性工具层；对异常坐标、空结果和视频边界的显式校验说明 sandbox 不只要隔离资源，也要防止错误数据继续驱动物理动作。",
+        "maturity": "MIT、生态成熟，但模型和连接器许可各异；不可信图片与视频解析、GPU/CPU/内存消耗及外部 API key 仍需独立资源限制和秘密注入。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/roboflow/supervision/blob/develop/README.md",
+          "https://github.com/roboflow/supervision/blob/develop/pyproject.toml",
+          "https://github.com/roboflow/supervision/releases/tag/0.30.3"
+        ]
+      },
+      {
+        "repository": "supabase/supabase",
+        "url": "https://github.com/supabase/supabase",
+        "description": "以 Postgres 为核心的开源后端平台，组合认证、REST/GraphQL API、Realtime、存储、数据库与边缘函数、向量能力、日志和管理面板，可使用托管服务或自托管。",
+        "category": "sandbox-infra",
+        "stack": ["PostgreSQL", "PostgREST", "GoTrue/Auth", "Realtime", "Edge Functions", "TypeScript"],
+        "totalStars": 109734,
+        "dailyStars": 120,
+        "trending": { "period": "daily", "stars": 120 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 109,734 Star、当日新增 120。",
+        "release": "Developer Update v1.26.08 · 2026-08-07",
+        "change": "首次收录；近期开发更新包含 CDC 到 BigQuery、统一日志、Grafana Cloud 可观测性、Agent evals、可搜索字段加密和 Edge Functions 指标，并开始阻止 Realtime 订阅表的破坏性 schema 变更。",
+        "relevance": "可作为 ATLAS 的持久化、身份、对象存储、事件流与观测底座参考；RLS、服务角色和边缘函数边界能映射到每个 Agent 的最小数据权限。",
+        "maturity": "产品与社区成熟，但自托管组件多、运维复杂；service role、RLS、Secret 和日志脱敏配置错误会扩大数据面，且仓库更新编号不等于单一可部署产品版本。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/supabase/supabase/blob/master/README.md",
+          "https://github.com/supabase/supabase/releases/tag/v1.26.08"
+        ]
+      },
+      {
+        "repository": "cline/cline",
+        "url": "https://github.com/cline/cline",
+        "description": "覆盖 IDE、终端与桌面的开源编码 Agent，提供 Plan/Act、逐项操作审批、无头 JSON 模式、SDK、plugins、MCP、多 Agent 团队、定时任务和消息连接器。",
+        "category": "ai-agent",
+        "stack": ["TypeScript", "Bun monorepo", "VS Code/JetBrains", "CLI/Desktop", "MCP", "Agent SDK"],
+        "totalStars": 68379,
+        "dailyStars": 112,
+        "trending": { "period": "daily", "stars": 112 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 68,379 Star、当日新增 112。",
+        "release": "desktop-v0.0.29 · 2026-09-16",
+        "change": "首次收录；最新桌面版允许把新消息排队，在当前运行的下一个安全边界引导任务，并通过原子队头和失败提示改善并发语义。",
+        "relevance": "与 ATLAS 的执行面高度接近：交互审批和自动批准可分层，CLI 可用于 CI，调度、跨渠道消息、持久 Agent 团队及运行中 steering 都可作为接口设计参考。",
+        "maturity": "Apache-2.0、产品形态完整，但 auto-approve、headless、Shell 与消息连接器都能放大权限；运行中插话、重复消息和取消恢复需要专门并发测试，且最新 tag 只对应桌面端。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/cline/cline/blob/main/README.md",
+          "https://github.com/cline/cline/blob/main/package.json",
+          "https://github.com/cline/cline/releases/tag/desktop-v0.0.29"
+        ]
+      },
+      {
+        "repository": "home-assistant/core",
+        "url": "https://github.com/home-assistant/core",
+        "description": "本地优先、强调隐私的家庭自动化平台核心，通过庞大的设备与云服务集成、事件和状态模型，把传感器、控制器与自动化统一在本地服务中。",
+        "category": "application",
+        "stack": ["Python", "asyncio", "MQTT", "Event bus", "Home Assistant integrations"],
+        "totalStars": 90575,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 236 },
+        "heatEvidence": "GitHub Trending 周榜补充；09:01 左右页面快照显示 90,575 Star、本周新增 236。未进日榜，日增量记为未知。",
+        "release": "2026.9.2 · 2026-09-11",
+        "change": "首次收录；最新补丁修复多项集成，并在 go2rtc 日志中补充凭据脱敏，体现真实设备平台对兼容性回归和秘密泄露的持续治理。",
+        "relevance": "是 Agent 进入物理世界后的重要参考：本地控制、能力模型、事件总线、集成生命周期、凭据隔离与人工兜底，均可转化为 ATLAS 的设备工具协议。",
+        "maturity": "生态非常成熟，但硬件、固件和第三方云组合极多；涉及门锁、温控或电力的自动化必须具备安全默认值、限速、离线策略和人工覆盖。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/home-assistant/core/blob/dev/README.md",
+          "https://github.com/home-assistant/core/blob/dev/pyproject.toml",
+          "https://github.com/home-assistant/core/releases/tag/2026.9.2"
+        ]
+      },
+      {
+        "repository": "TauricResearch/TradingAgents",
+        "url": "https://github.com/TauricResearch/TradingAgents",
+        "description": "用 LangGraph 编排分析师、研究员、交易员和风险角色的多 Agent 金融研究框架，通过辩论、历史反思和检查点形成可恢复的决策流程。",
+        "category": "ai-agent",
+        "stack": ["Python 3.12", "LangGraph", "Multi-LLM providers", "SQLite checkpoints", "Docker/CLI"],
+        "totalStars": 107021,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 3350 },
+        "heatEvidence": "GitHub Trending 周榜补充；09:01 左右页面快照显示 107,021 Star、本周新增 3,350。未进日榜，日增量记为未知。",
+        "release": "v0.4.0 · 2026-08-31",
+        "change": "首次收录；v0.4.0 修复多处前视偏差，以 REVIEW 哨兵替代解析失败时可被误当作交易信号的 Hold，并加入按 ticker 隔离的 SQLite checkpoint、可恢复 CLI、token 上限与无虚构对手的辩论开场。",
+        "relevance": "它很适合研究长时 Agent 的诚实失败与恢复：外部数据按时间截断、解析失败不可伪装成业务结论、执行可续跑且成功后清理 checkpoint，历史记忆还要区分已验证与未验证经验。",
+        "maturity": "研究与教育项目，不能保证收益，也不构成投资建议；即使加入时间一致性与检查点，也必须经过独立回测、权限隔离和人工批准，不能直接连接真实资金。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/TauricResearch/TradingAgents/blob/main/README.md",
+          "https://github.com/TauricResearch/TradingAgents/blob/main/pyproject.toml",
+          "https://github.com/TauricResearch/TradingAgents/releases/tag/v0.4.0"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-17T01:01:23.472Z",
+      "completedAt": "2026-09-17T01:09:01.817Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-17",
+      "notes": [
+        "本次自动任务于北京时间约 09:01 正常触发；榜单数字按 09:01 左右实际页面快照记录。",
+        "本期为日榜 8 项、周榜补充 2 项；周榜项目 dailyStars 记为未知，未把周增量冒充日增量。",
+        "本期 10 项均未出现在 9 月 16 日日报中；跳过仍在榜的 Ghidra、OpenResearch 与 agent-skills，避免连续重复。",
+        "README、文档、依赖配置和 Release 均按不可信外部资料读取，未执行任何仓库提供的安装命令或脚本。"
+      ]
+    }
+  }
+}
