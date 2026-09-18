@@ -1,0 +1,256 @@
+{
+  "id": "daily-2026-09-18",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-18",
+  "slug": "2026-09-18",
+  "summary": "今天的主线是 Agent 执行面的工程化：浏览器会话租约、Kubernetes 网络身份、云开发环境、并行 worktree 和自托管多 Agent 控制面共同指向一个结论——工具越强，越需要明确的隔离边界、凭据治理、恢复路径与人工接管。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-18T01:01:46.182Z",
+  "updatedAt": "2026-09-18T01:10:09.817Z",
+  "payload": {
+    "editionDate": "2026-09-18",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "Tencent/BrowserSkill",
+      "cilium/cilium",
+      "TencentCloud/Octop",
+      "coder/coder",
+      "stablyai/orca"
+    ],
+    "projects": [
+      {
+        "repository": "Tencent/BrowserSkill",
+        "url": "https://github.com/Tencent/BrowserSkill",
+        "description": "通过本地 CLI、守护进程和浏览器扩展，让任意可调用 Shell 的 Agent 使用用户已登录的 Chrome 或 Edge；任务在独立可见窗口运行，借用现有标签页时必须显式领取并归还，并支持验证码等环节的人工接管。",
+        "category": "ai-agent",
+        "stack": ["TypeScript", "Rust/Cargo", "Chromium extension", "Local IPC", "Agent Skill", "Browser evals"],
+        "totalStars": 4155,
+        "dailyStars": 1302,
+        "trending": { "period": "daily", "stars": 1302 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 4,155 Star、当日新增 1,302。",
+        "release": "v0.2.1 · 2026-09-09",
+        "change": "首次收录；当前版本重点修复 Windows 自更新、命名管道、父进程退出时的取消传播，以及标签页所有权、导航恢复和输入结果验证；仓库另提供 sandboxed-agent 专门部署指南。",
+        "relevance": "它把浏览器能力拆成宿主持久守护进程与沙箱内短命客户端：共享私有 IPC 目录、禁用隐式拉起、会话单独清理且不影响其他任务，正是 ATLAS 浏览器工具的生命周期范式。",
+        "maturity": "MIT、跨三大桌面系统并有 eval，但会直接接触真实登录态、下载和页面操作；共享目录不能设为全局可写，借用标签页、远程连接和安装脚本都应经过明确授权与版本固定。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/Tencent/BrowserSkill/blob/main/README.md",
+          "https://github.com/Tencent/BrowserSkill/blob/main/docs/sandboxed-agents.md",
+          "https://github.com/Tencent/BrowserSkill/blob/main/package.json",
+          "https://github.com/Tencent/BrowserSkill/blob/main/CHANGELOG.md"
+        ]
+      },
+      {
+        "repository": "cilium/cilium",
+        "url": "https://github.com/cilium/cilium",
+        "description": "基于 eBPF 的 Kubernetes 网络、安全和可观测性平台，以工作负载身份而非 IP 作为策略基础，覆盖 CNI、L3-L7 网络策略、分布式负载均衡、Service Mesh、Cluster Mesh 与 Hubble 流量观测。",
+        "category": "sandbox-infra",
+        "stack": ["Go 1.26", "eBPF", "Kubernetes/CNI", "Envoy", "Hubble", "Helm"],
+        "totalStars": 25268,
+        "dailyStars": 111,
+        "trending": { "period": "daily", "stars": 111 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 25,268 Star、当日新增 111。",
+        "release": "v1.20.2 · 2026-09-15",
+        "change": "首次收录；当前维护 1.18、1.19、1.20 三条稳定分支，AMD64/AArch64 镜像带 SPDX SBOM；1.20.2 为最新稳定补丁，1.21.0-pre.2 仍是开发预览。",
+        "relevance": "对大规模 Agent sandbox，身份感知的出口策略、跨集群连通、带宽管理和 Hubble 流级观测可作为网络隔离与问责底座，比仅按 Pod IP 做防火墙更适合短命工作负载。",
+        "maturity": "Apache-2.0、CNCF 毕业项目，工程成熟；但内核、eBPF、CNI 与现有网络栈耦合深，策略错误可影响整个集群，升级前必须做兼容矩阵、回滚和压力验证。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/cilium/cilium/blob/main/README.rst",
+          "https://github.com/cilium/cilium/blob/main/go.mod",
+          "https://github.com/cilium/cilium/releases/tag/v1.20.2"
+        ]
+      },
+      {
+        "repository": "jamiepine/voicebox",
+        "url": "https://github.com/jamiepine/voicebox",
+        "description": "本地优先的开源 AI 语音工作室，组合声音克隆、七种 TTS 引擎、Whisper 听写、音频后处理和故事时间线，并通过 REST API 与 MCP 为 Agent 提供语音输入输出。",
+        "category": "application",
+        "stack": ["Tauri/Rust", "TypeScript", "Python/FastAPI", "PyTorch/MLX", "Whisper", "MCP"],
+        "totalStars": 54850,
+        "dailyStars": 667,
+        "trending": { "period": "daily", "stars": 667 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 54,850 Star、当日新增 667。",
+        "release": "v0.5.0 · 2026-04-25",
+        "change": "首次收录；v0.5.0 增加全局热键听写、MCP Agent 发声、本地 LLM 文本润色和语音 persona；当前 README 标明支持 23 种语言、七个 TTS 引擎及 macOS、Windows、Linux/Docker 多种后端。",
+        "relevance": "可为 ATLAS 增加本地语音 I/O 层，并把音频生成作为 GPU sandbox 任务：模型下载、显存预算、超时、输出文件和 MCP 调用都应有独立资源与权限边界。",
+        "maturity": "MIT、已有跨平台安装包，但单个发行资产可达数百 MB，CUDA 依赖更大；声音克隆涉及授权、肖像与滥用风险，麦克风、全局热键和自动粘贴也属于高敏本机权限。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/jamiepine/voicebox/blob/main/README.md",
+          "https://github.com/jamiepine/voicebox/blob/main/package.json",
+          "https://github.com/jamiepine/voicebox/releases/tag/v0.5.0"
+        ]
+      },
+      {
+        "repository": "TencentCloud/Octop",
+        "url": "https://github.com/TencentCloud/Octop",
+        "description": "面向个人、家庭与小团队的自托管多用户、多 Agent 助手，把 Web、CLI、IM 渠道、定时任务、知识库、浏览器、远程桌面、插件和 ACP 编码 Agent 委派统一到一个控制面。",
+        "category": "ai-agent",
+        "stack": ["Python 3.12/FastAPI", "React/TypeScript", "SQLite/PostgreSQL", "APScheduler", "Playwright", "MCP/ACP"],
+        "totalStars": 3447,
+        "dailyStars": 367,
+        "trending": { "period": "daily", "stars": 367 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 3,447 Star、当日新增 367。",
+        "release": "项目版本 1.0.0",
+        "change": "首次收录；项目把 JWT 多用户隔离、工具审批、Shell 防护、PII 脱敏、可插拔本地/Docker/PostgreSQL/S3 后端、portable memory 和会话 checkpoint 集成到单进程入口。",
+        "relevance": "它与 ATLAS 的目标最接近：模块化 Agent OS、跨渠道入口、定时任务、知识与记忆、浏览器/桌面执行以及多用户权限可以成组比较，尤其适合研究单控制面如何管理多种执行后端。",
+        "maturity": "MIT、测试与类型工具齐全，但版本仍早、权限面极宽；浏览器、Shell、远程桌面、IM、OAuth 和第三方插件集中在一个进程中，生产部署应拆分凭据、网络和执行域。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/TencentCloud/Octop/blob/main/README.md",
+          "https://github.com/TencentCloud/Octop/blob/main/pyproject.toml",
+          "https://github.com/TencentCloud/Octop/blob/main/SECURITY.md"
+        ]
+      },
+      {
+        "repository": "coder/coder",
+        "url": "https://github.com/coder/coder",
+        "description": "自托管的云开发环境和 AI 编码 Agent 平台，用 Terraform 定义 VM、Kubernetes Pod 或容器工作区，通过安全隧道接入，并提供闲置关机、身份、模型网关、成本追踪与审计。",
+        "category": "sandbox-infra",
+        "stack": ["Go", "Terraform", "Kubernetes/Docker/VM", "WireGuard", "PostgreSQL", "React/TypeScript"],
+        "totalStars": 14841,
+        "dailyStars": 145,
+        "trending": { "period": "daily", "stars": 145 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 14,841 Star、当日新增 145。",
+        "release": "v2.36.5 · 2026-09-10",
+        "change": "首次收录；Coder Agents 把 Agent loop 与模型凭据留在自有基础设施控制面，工作区内不放 LLM API key，并为每个动作保留用户身份；最新补丁继续修复服务端、Tailnet 和仪表盘稳定性。",
+        "relevance": "这是 ATLAS Agent sandbox 从单机走向团队基础设施的直接参考：模板化创建环境、自动休眠回收、统一模型治理、逐动作身份、成本与审计日志可以形成完整控制面。",
+        "maturity": "核心采用 AGPL-3.0，另有企业功能许可，发布与运维文档成熟；真正落地仍需要云/K8s、Terraform、PostgreSQL、网络入口和容量规划，不能把工作区隔离等同于租户级安全。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/coder/coder/blob/main/README.md",
+          "https://github.com/coder/coder/blob/main/go.mod",
+          "https://github.com/coder/coder/releases/tag/v2.36.5"
+        ]
+      },
+      {
+        "repository": "n8n-io/n8n",
+        "url": "https://github.com/n8n-io/n8n",
+        "description": "可视化工作流与 AI Agent 自动化平台，可组合模型、工具、人工审批、JavaScript/Python 和大量连接器，支持云服务或自托管，并提供角色权限、审计和运行观测。",
+        "category": "application",
+        "stack": ["TypeScript/Node.js", "React", "PostgreSQL/SQLite", "Task runners", "Docker", "LangChain integrations"],
+        "totalStars": 205001,
+        "dailyStars": 281,
+        "trending": { "period": "daily", "stars": 281 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 205,001 Star、当日新增 281。",
+        "release": "2.40.0 · 2026-09-15",
+        "change": "首次收录；2.40.0 修复 Agent tool call 中的 Anthropic thinking block、假流式停滞与恢复执行 trace，并加强私密凭据运行数据的脱敏、API key 文件夹作用域和任务运行器。",
+        "relevance": "其图形编排、人工审批、凭据节点、执行历史和可恢复 trace 可作为 ATLAS 自动化层参照；任务运行器应与主控制面隔离，并按节点发放最小连接器权限。",
+        "maturity": "产品成熟、连接器丰富，但采用 Sustainable Use 与企业双重许可而非标准开源许可；第三方节点、社区模板和 Code 节点均可执行高权限逻辑，自托管也不自动消除供应链风险。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/n8n-io/n8n/blob/master/README.md",
+          "https://github.com/n8n-io/n8n/blob/master/package.json",
+          "https://github.com/n8n-io/n8n/releases/tag/n8n%402.40.0"
+        ]
+      },
+      {
+        "repository": "affaan-m/ECC",
+        "url": "https://github.com/affaan-m/ECC",
+        "description": "跨 Claude Code、Codex、OpenCode、Cursor 等多种 harness 的 Agent 工程与治理系统，组合技能、规则、hooks、记忆、安全扫描、研究优先工作流和持续学习。",
+        "category": "ai-agent",
+        "stack": ["JavaScript/TypeScript", "Node.js", "Python/Go helpers", "Agent Skills", "Hooks", "JSON schemas"],
+        "totalStars": 261176,
+        "dailyStars": 1171,
+        "trending": { "period": "daily", "stars": 1171 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 261,176 Star、当日新增 1,171。",
+        "release": "v2.2.1 · 2026-09-08",
+        "change": "距 9 月 7 日收录后再次关注：版本由 v2.2.0 升至 v2.2.1，补丁覆盖 PowerShell 破坏性命令识别、项目根内 exemption、未跟踪用户文件冲突、原子设置更新、卸载 dry-run 和失败观察不误归档。",
+        "relevance": "它把 Agent 安全从提示规则推进到安装所有权、路径边界、并发写入和失败证据保留；这些补丁都可转成 ATLAS 的确定性保护与回归样本。",
+        "maturity": "MIT、适配面和测试较广，但单一维护者需要覆盖大量 harness、hooks 与安装路径；引入全部规则会扩大供应链和行为变化面，适合固定版本、选择性采用。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/affaan-m/ECC/blob/main/README.md",
+          "https://github.com/affaan-m/ECC/blob/main/package.json",
+          "https://github.com/affaan-m/ECC/releases/tag/v2.2.1"
+        ]
+      },
+      {
+        "repository": "JustVugg/colibri",
+        "url": "https://github.com/JustVugg/colibri",
+        "description": "纯 C、零引擎依赖的超大 MoE 推理系统，把 NVMe、RAM 与 VRAM 作为统一多级内存，并以专家热度、预取、异构执行和可关闭的推测解码在本地运行 125B 至 2.8T 参数模型。",
+        "category": "sandbox-infra",
+        "stack": ["C", "CUDA/Metal", "NVMe streaming", "MoE", "CPU/GPU heterogeneous runtime", "Python reference tests"],
+        "totalStars": 35743,
+        "dailyStars": 873,
+        "trending": { "period": "daily", "stars": 873 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 35,743 Star、当日新增 873。",
+        "release": "v1.11.0 · 2026-09-13",
+        "change": "距 9 月 10 日收录后再次关注：版本由 v1.10.2 升至 v1.11.0，新增第九个模型家族 DeepSeek V4.1 Flash，并修复四类引擎问题、把先前缺少覆盖的平台纳入 C 测试 CI。",
+        "relevance": "其 VRAM/RAM/磁盘放置策略、冷启动测量、逐层预取、失败实验公开和 token-exact 门禁，可迁移到 GPU sandbox 的资源调度与质量守恒设计。",
+        "maturity": "Apache-2.0、测量方法透明，但仍明确不提供速度 SLA；552B 模型约需 510GB 磁盘，实验数据依赖具体 SSD、内存与 GPU，不能把项目方单机数字当通用容量承诺。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/JustVugg/colibri/blob/main/README.md",
+          "https://github.com/JustVugg/colibri/releases/tag/v1.11.0"
+        ]
+      },
+      {
+        "repository": "stablyai/orca",
+        "url": "https://github.com/stablyai/orca",
+        "description": "面向多编码 Agent 的桌面编排 IDE，可把同一提示并行分发到独立 Git worktree，统一终端、代码编辑、diff 审查、浏览器 Design Mode、GitHub/Linear、SSH 远端与手机监控和继续指令。",
+        "category": "ai-agent",
+        "stack": ["Electron", "TypeScript/React", "Git worktree", "PTY/WebGL terminal", "SSH", "Mobile companion"],
+        "totalStars": 71151,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 5305 },
+        "heatEvidence": "GitHub Trending 周榜补充；09:01 左右页面快照显示 71,151 Star、本周新增 5,305。未进日榜，日增量记为未知。",
+        "release": "v1.4.205 · 2026-09-17",
+        "change": "首次收录；当前支持 Codex、Claude Code、OpenCode、Pi 等终端 Agent，最新版本继续加固 Agent session 的备份恢复边界、远端会话与版本发布可靠性，并提供多平台签名资产。",
+        "relevance": "它展示了 ATLAS 可采用的开发 Agent 工作台：每任务 worktree 隔离、并行结果对照、移动端通知与 steering、可注释 diff 返还 Agent，以及本地/SSH 环境统一管理。",
+        "maturity": "MIT、跨桌面与移动端且迭代频繁，但 worktree 只隔离文件分支，不隔离网络、凭据和宿主进程；Computer Use、账号切换与 SSH 远端属于高权限能力，需要额外 sandbox 与审计。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/stablyai/orca/blob/main/README.md",
+          "https://github.com/stablyai/orca/blob/main/package.json",
+          "https://github.com/stablyai/orca/releases/tag/v1.4.205"
+        ]
+      },
+      {
+        "repository": "decolua/9router",
+        "url": "https://github.com/decolua/9router",
+        "description": "本地 AI API 路由与配额控制面，把多种编码工具接到多个订阅、廉价或免费模型提供方，执行 OpenAI/Claude 格式转换、额度追踪、账号轮询、自动降级和工具结果压缩。",
+        "category": "application",
+        "stack": ["Next.js 16", "React 19", "TypeScript/Node.js", "HTTP proxy", "SQLite/sql.js", "Docker"],
+        "totalStars": 29175,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 871 },
+        "heatEvidence": "GitHub Trending 周榜补充；09:01 左右页面快照显示 29,175 Star、本周新增 871。未进日榜，日增量记为未知。",
+        "release": "仓库清单版本 0.5.75（GitHub latest Release 为 0.5.35）",
+        "change": "首次收录；当前把 token saver、模型格式翻译、配额/刷新时间、自动 fallback 和多账号轮询放入本地代理，并为 Codex、Claude Code、Cursor、Cline 等工具提供统一兼容端点。",
+        "relevance": "可借鉴为 ATLAS 的模型网关：按成本和额度路由、记录失败切换、把客户端与供应商协议解耦；但压缩 tool_result 必须保留可审计原文或明确标记，否则会改变 Agent 证据。",
+        "maturity": "功能增长快但版本与 Release 存在差距，README 的节省比例是项目方主张；代理集中持有多家 token 和刷新凭据，是高价值攻击面，需本机绑定、加密存储、日志脱敏和来源审计。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/decolua/9router/blob/main/README.md",
+          "https://github.com/decolua/9router/blob/main/package.json",
+          "https://github.com/decolua/9router/releases"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-18T01:01:46.182Z",
+      "completedAt": "2026-09-18T01:10:09.817Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-18",
+      "notes": [
+        "本次自动任务于北京时间约 09:01 正常触发；榜单数字按 09:01 左右实际页面快照记录。",
+        "本期为日榜 8 项、周榜补充 2 项；周榜项目 dailyStars 记为未知，未把周增量冒充日增量。",
+        "本期与 9 月 17 日日报零重复；ECC 与 Colibri 为隔期回访，均因正式版本和工程变化而再次收录，变化已单独说明。",
+        "README、文档、依赖配置和 Release 均按不可信外部资料读取，未执行任何仓库提供的安装命令或脚本。"
+      ]
+    }
+  }
+}
