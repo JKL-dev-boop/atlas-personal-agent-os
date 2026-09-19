@@ -1,0 +1,254 @@
+{
+  "id": "daily-2026-09-19",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-19",
+  "slug": "2026-09-19",
+  "summary": "今天的主线是把 Agent 从“能调用工具”推进到“可约束、可恢复、可长期运行”：规范驱动开发、记忆迁移、对象存储、worktree 生命周期和多 Agent 监督都在提醒我们，真正可靠的系统必须把状态边界、失败证据和恢复路径做成一等能力。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-19T01:01:38.584Z",
+  "updatedAt": "2026-09-19T01:08:59.841Z",
+  "payload": {
+    "editionDate": "2026-09-19",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "Fission-AI/OpenSpec",
+      "supermemoryai/supermemory",
+      "rustfs/rustfs",
+      "alibaba/open-code-review",
+      "max-sixty/worktrunk"
+    ],
+    "projects": [
+      {
+        "repository": "Fission-AI/OpenSpec",
+        "url": "https://github.com/Fission-AI/OpenSpec",
+        "description": "面向 AI 编码助手的规范驱动开发框架，把探索、提案、需求场景、设计、任务、实现与归档串成可审阅的 artifact 工作流，尤其强调棕地项目中的渐进变更。",
+        "category": "ai-agent",
+        "stack": ["TypeScript", "Node.js >=20.19", "pnpm", "Markdown artifacts", "30+ coding agents"],
+        "totalStars": 69356,
+        "dailyStars": 296,
+        "trending": { "period": "daily", "stars": 296 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 69,356 Star、当日新增 296。",
+        "release": "项目版本 1.13.1",
+        "change": "首次收录；1.13.x 增加跨仓库 Stores beta、默认 core profile 的 sync 工作流和缺失前置链提示，并阻止大小写或空白差异造成的重复 requirement 归档。",
+        "relevance": "它与 ATLAS 的 SPEC-first 维护方式高度吻合：先把增量需求变成可追踪 artifacts，再让多个 Agent 共享边界、设计和验收标准；可直接借鉴 proposal → apply → archive 的变更账本。",
+        "maturity": "MIT、支持工具广且文档完整，但 Stores 仍是 beta，规范文件本身不会强制实现正确；生成的 Agent 指令属于供应链输入，匿名遥测默认开启但可关闭。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/Fission-AI/OpenSpec/blob/main/README.md",
+          "https://github.com/Fission-AI/OpenSpec/blob/main/package.json",
+          "https://github.com/Fission-AI/OpenSpec/blob/main/CHANGELOG.md"
+        ]
+      },
+      {
+        "repository": "supermemoryai/supermemory",
+        "url": "https://github.com/supermemoryai/supermemory",
+        "description": "为 Agent 和应用提供长期记忆、RAG、用户画像与连接器的上下文引擎，可通过 API、MCP 和多种编码助手插件写入、召回并按项目或租户标签隔离记忆。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Bun", "Hono", "Drizzle ORM", "PostgreSQL/pgvector", "Cloudflare Workers", "MCP"],
+        "totalStars": 30282,
+        "dailyStars": 140,
+        "trending": { "period": "daily", "stars": 140 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 30,282 Star、当日新增 140。",
+        "release": "server-v0.0.8 · 2026-08-17",
+        "change": "首次收录；最新服务端补丁专门修复升级时 pgvector embedding 列被错误修剪、旧文档仍存在但无法搜索的问题，并增加自动检测、重新嵌入和真实向量迁移测试。",
+        "relevance": "对 ATLAS 记忆层最有价值的不是召回演示，而是迁移安全：内容、向量索引、租户标签和可检索性必须一起验证，发现损坏后要可回填且留下修复状态。",
+        "maturity": "开源且支持自托管和本地模型，但 server 版本仍为 0.0.x；记忆提取会带来隐私、投毒、跨租户泄漏和删除一致性风险，托管版与自托管能力也需分别核验。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/supermemoryai/supermemory/blob/main/README.md",
+          "https://github.com/supermemoryai/supermemory/blob/main/package.json",
+          "https://github.com/supermemoryai/supermemory/releases/tag/server-v0.0.8"
+        ]
+      },
+      {
+        "repository": "rustfs/rustfs",
+        "url": "https://github.com/rustfs/rustfs",
+        "description": "Rust 实现的分布式对象存储，主打 S3 兼容、纠删码、位腐检测、对象锁、修复扫描、复制、生命周期、配额、审计、IAM/OIDC 与 Kubernetes 部署。",
+        "category": "sandbox-infra",
+        "stack": ["Rust 2024", "S3 API", "Erasure coding", "KMS/SSE", "OpenTelemetry", "Helm/Kubernetes"],
+        "totalStars": 33168,
+        "dailyStars": 267,
+        "trending": { "period": "daily", "stars": 267 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 33,168 Star、当日新增 267。",
+        "release": "1.0.1-preview.6 · 2026-09-18",
+        "change": "首次收录；最新预览版修复批量 healing 重试、超大 PUT、复制与分片边界，并在迁移失败或 bucket 配置不可读时拒绝就绪/写入，同时增加受同意约束且有大小限制的诊断采集。",
+        "relevance": "可作为 ATLAS 的 PDF、日报资产、Agent 日志和大文件后端；S3 抽象、配额、审计、加密、复制及 fail-closed readiness 都适合成为执行沙箱之外的持久数据边界。",
+        "maturity": "Apache-2.0、子系统覆盖广，但最新仍是 preview，S3 Tables 与 MinIO 磁盘兼容也标为预览；分布式存储的运维、升级和恢复复杂度不能由性能宣传替代。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/rustfs/rustfs/blob/main/README.md",
+          "https://github.com/rustfs/rustfs/blob/main/Cargo.toml",
+          "https://github.com/rustfs/rustfs/releases/tag/1.0.1-preview.6"
+        ]
+      },
+      {
+        "repository": "alibaba/open-code-review",
+        "url": "https://github.com/alibaba/open-code-review",
+        "description": "面向命令行与 CI 的 AI 代码审查工具，把变更选择、分组、规则、代码位置与反思等确定性步骤同具上下文的 Agent 审查结合，并提供结果查看器和多编辑器集成。",
+        "category": "ai-agent",
+        "stack": ["Go", "Node.js launcher", "Git", "LLM tool use", "GitHub Actions", "AACR-Bench"],
+        "totalStars": 36683,
+        "dailyStars": 2704,
+        "trending": { "period": "daily", "stars": 2704 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 36,683 Star、当日新增 2,704。",
+        "release": "v1.12.6 · 2026-09-18",
+        "change": "距 9 月 14 日收录后再次关注：版本由 v1.12.0 升至 v1.12.6，最新版本重做审查会话查看器，并增加测试对真实 HOME 的隔离、Windows 更新器行为修复和 IDE 插件发布准备。",
+        "relevance": "它把“确定性范围控制 × Agent 判断 × 可回看的审查会话”组合得很清楚；尤其是测试不得污染真实 HOME，正适合纳入 ATLAS 沙箱的本机状态隔离回归。",
+        "maturity": "Apache-2.0、OpenSSF Gold 且有基准与多平台资产，工程能力较完整；AI 审查仍可能误报漏报，外部贡献、模型凭据和自动评论权限应采用最小授权。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/alibaba/open-code-review/blob/main/README.md",
+          "https://github.com/alibaba/open-code-review/blob/main/package.json",
+          "https://github.com/alibaba/open-code-review/releases/tag/v1.12.6"
+        ]
+      },
+      {
+        "repository": "max-sixty/worktrunk",
+        "url": "https://github.com/max-sixty/worktrunk",
+        "description": "为并行 AI 编码任务优化的 Git worktree CLI，统一创建、切换、列表、合并、清理、端口分配、缓存共享、CI/PR 状态与 Agent 插件集成。",
+        "category": "sandbox-infra",
+        "stack": ["Rust 2024", "Git worktree", "TOML/Jinja templates", "GitHub/GitLab CI", "Agent plugins", "Cross-platform CLI"],
+        "totalStars": 8020,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 1104 },
+        "heatEvidence": "GitHub Trending 周榜补充；09:01 左右页面快照显示 8,020 Star、本周新增 1,104。未进日榜，日增量记为未知。",
+        "release": "v0.78.0 · 2026-09-16",
+        "change": "距 9 月 12 日收录后再次关注：版本由 v0.77.0 升至 v0.78.0；它修复隐藏未跟踪文件、继承 GIT_DIR 或 worktree lock 时的误删风险，并为 hook 上下文键迁移提供兼容处理。",
+        "relevance": "这是 ATLAS 并行开发隔离的直接参考：worktree 创建容易，真正困难的是所有权、脏状态、锁、hook、清理与失败恢复；这些新修复可转成仓库生命周期测试清单。",
+        "maturity": "MIT/Apache-2.0 双许可、跨平台发行和文档完善，但 0.78.0 含 hook JSON 键重命名等破坏性变更；worktree 隔离文件分支，不隔离网络、凭据和宿主进程。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/max-sixty/worktrunk/blob/main/README.md",
+          "https://github.com/max-sixty/worktrunk/blob/main/Cargo.toml",
+          "https://github.com/max-sixty/worktrunk/releases/tag/v0.78.0"
+        ]
+      },
+      {
+        "repository": "ankitects/anki",
+        "url": "https://github.com/ankitects/anki",
+        "description": "成熟的间隔重复学习系统，围绕卡片、媒体、同步、插件与 FSRS 调度管理长期知识复习，可桌面运行并扩展到多端生态。",
+        "category": "application",
+        "stack": ["Rust", "Python/PyO3", "Qt", "SQLite", "FSRS", "WebView/TypeScript"],
+        "totalStars": 31211,
+        "dailyStars": 174,
+        "trending": { "period": "daily", "stars": 174 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 31,211 Star、当日新增 174。",
+        "release": "26.09.2 · 2026-09-15",
+        "change": "首次收录；26.09 系列修复笔记编辑器读取本地文件和危险扩展文件打开等安全问题，26.09.2 又封堵牌组描述外链操纵页面，并锁定打包依赖与补充测试。",
+        "relevance": "Anki 值得作为 Agent 长期记忆的反向参照：记忆不是无限堆积，而要有复习调度、衰减、用户纠错和可解释历史；富文本与插件安全也直接对应记忆摄取边界。",
+        "maturity": "AGPL-3.0-or-later、社区和发布体系成熟；它不是 Agent 框架，迁移的是记忆产品原则而非代码架构，插件、牌组 HTML 和媒体仍应视为不可信内容。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/ankitects/anki/blob/main/README.md",
+          "https://github.com/ankitects/anki/blob/main/Cargo.toml",
+          "https://github.com/ankitects/anki/releases/tag/26.09.2"
+        ]
+      },
+      {
+        "repository": "tradesdontlie/tradingview-mcp",
+        "url": "https://github.com/tradesdontlie/tradingview-mcp",
+        "description": "通过 Chrome DevTools Protocol 连接本机 TradingView Desktop 的 MCP 与 CLI，让 Agent 导航图表、运行 Pine Script、截图、管理画线和提醒，并以 JSONL 流读取状态。",
+        "category": "application",
+        "stack": ["JavaScript/Node.js >=18", "MCP SDK", "Chrome DevTools Protocol", "TradingView Desktop", "JSONL"],
+        "totalStars": 6473,
+        "dailyStars": 79,
+        "trending": { "period": "daily", "stars": 79 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 6,473 Star、当日新增 79。",
+        "release": "项目版本 1.0.0（无 GitHub Release）",
+        "change": "首次收录；当前以显式开启的 9222 调试端口连接已登录桌面会话，README 列出 78 个工具，覆盖图表、指标、回放、截图、提醒和 UI 操作。",
+        "relevance": "它是高价值状态桌面工具的典型样本：ATLAS 应把调试端口、会话租约、工具白名单、只读/写操作、人工确认与实时输出截断分别建模，不能只看 MCP 接口。",
+        "maturity": "MIT、接口丰富但依赖未公开的 TradingView 内部 API，升级可能破坏；调试端口权限很大，且金融输出不可视作投资建议，项目也不隶属或代表 TradingView。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/tradesdontlie/tradingview-mcp/blob/main/README.md",
+          "https://github.com/tradesdontlie/tradingview-mcp/blob/main/package.json"
+        ]
+      },
+      {
+        "repository": "ahmedkhaleel2004/gitdiagram",
+        "url": "https://github.com/ahmedkhaleel2004/gitdiagram",
+        "description": "把公开或私有 GitHub 仓库转换为可交互架构图：读取目录树、README 与受限源码片段生成系统图，支持源码跳转、流式生成及 Mermaid/PNG 导出。",
+        "category": "application",
+        "stack": ["Next.js 16", "React 19", "TypeScript", "Bun", "Cloudflare R2", "Upstash Redis", "OpenAI/OpenRouter"],
+        "totalStars": 16469,
+        "dailyStars": 152,
+        "trending": { "period": "daily", "stars": 152 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 16,469 Star、当日新增 152。",
+        "release": "无 GitHub Release",
+        "change": "首次收录；当前架构把短期失败状态、取消与锁放在 Redis，把生成资产放入 R2，私有仓库 token 保留在浏览器本地，并在独立受保护命名空间存放私有图。",
+        "relevance": "可用于 ATLAS 新会话快速建立仓库架构上下文；更值得借鉴的是受限源码摘取、任务取消、并发锁与私有资产命名空间，而不是把 LLM 生成图当成真实依赖图。",
+        "maturity": "功能可在线体验但没有正式 Release，在线运行时明确以 Vercel 为唯一支持环境；私有源码会进入模型处理链，图示也可能遗漏动态依赖，必须允许回源核验。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/ahmedkhaleel2004/gitdiagram/blob/main/README.md",
+          "https://github.com/ahmedkhaleel2004/gitdiagram/blob/main/package.json"
+        ]
+      },
+      {
+        "repository": "asciimoo/hister",
+        "url": "https://github.com/asciimoo/hister",
+        "description": "本地优先的个人全文与语义搜索引擎，可索引访问过的网页和本地文件，从 Web、终端或 MCP 供 AI 助手检索，并支持多用户、浏览器扩展及多种内容提取器。",
+        "category": "application",
+        "stack": ["Go 1.26", "SQLite/PostgreSQL", "sqlite-vec/pgvector", "Vite/TypeScript", "MCP", "Docker/Nix"],
+        "totalStars": 4968,
+        "dailyStars": 889,
+        "trending": { "period": "daily", "stars": 889 },
+        "heatEvidence": "GitHub Trending 日榜；09:01 左右页面快照显示 4,968 Star、当日新增 889。",
+        "release": "v0.19.0 · 2026-09-03",
+        "change": "首次收录；v0.19.0 新增 ChatGPT 与 Hacker News 内容提取，当前主分支继续减少浏览器扩展重复提交、保存最终页面快照并加强 favicon 与纯文本预览的安全处理。",
+        "relevance": "可作为 ATLAS 个人知识检索层参考：默认无遥测、无云同步，语义检索可选；文档版本、来源元数据、MCP 只读能力和重新索引策略都比单纯向量库更完整。",
+        "maturity": "AGPLv3+、已有多用户与多后端，但远程 embedding 会把文档文本发往所选服务；公开搜索模式、浏览器历史和私有文件一旦配置错误，会形成严重的数据暴露面。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/asciimoo/hister/blob/master/README.md",
+          "https://github.com/asciimoo/hister/blob/master/go.mod",
+          "https://github.com/asciimoo/hister/releases/tag/v0.19.0"
+        ]
+      },
+      {
+        "repository": "kunchenguid/firstmate",
+        "url": "https://github.com/kunchenguid/firstmate",
+        "description": "把通用编码 Agent 变成多 Agent 船队监督者的可克隆发行版：单一联络 Agent 分派 crew，每项任务使用独立 worktree 和可见终端，并交付 PR、本地合并或调查报告。",
+        "category": "ai-agent",
+        "stack": ["AGENTS.md/Skills", "Shell scripts", "Git worktree", "tmux/Zellij/Orca", "Codex/Claude/OpenCode adapters", "GitHub CI"],
+        "totalStars": 6558,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 990 },
+        "heatEvidence": "GitHub Trending 周榜补充；09:01 左右页面快照显示 6,558 Star、本周新增 990。未进日榜，日增量记为未知。",
+        "release": "持续交付仓库（无 GitHub Release）",
+        "change": "首次收录；当前将 supervisor contract、crew 角色、项目模式、转向 inbox、持续 secondmate 和事件驱动 watcher 写成可检查的文本与脚本，并明确 Codex Desktop 还不是可由 Shell 调用的正式后端。",
+        "relevance": "它与“跨会话读取 ATLAS SPEC 并持续开发”的目标直接相关：可借鉴单一责任入口、任务 worktree、状态文件、异步监督和只在真正需要决策时升级给用户的运行契约。",
+        "maturity": "MIT、测试和适配说明密集，但核心 AGENTS.md 已很大，仓库 issue 也暴露 worktree 所有权、残留子进程和环境变量污染等真实边界；它是可定制发行版，不是开箱即用托管平台。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/kunchenguid/firstmate/blob/main/README.md",
+          "https://github.com/kunchenguid/firstmate/blob/main/AGENTS.md",
+          "https://github.com/kunchenguid/firstmate/blob/main/docs/architecture.md"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-19T01:01:38.584Z",
+      "completedAt": "2026-09-19T01:08:59.841Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-19",
+      "notes": [
+        "本次自动任务于北京时间约 09:01 正常触发；榜单数字按 09:01 左右实际页面快照记录。",
+        "本期为日榜 8 项、周榜补充 2 项；周榜项目 dailyStars 记为未知，未把周增量冒充日增量。",
+        "本期与 9 月 18 日日报零重复；OpenCodeReview 与 Worktrunk 为隔期回访，均因正式版本和工程变化而再次收录。",
+        "README、文档、依赖配置和 Release 均按不可信外部资料读取，未执行任何仓库提供的安装命令或脚本。"
+      ]
+    }
+  }
+}
