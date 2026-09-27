@@ -1,0 +1,257 @@
+{
+  "id": "daily-2026-09-27",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-27",
+  "slug": "2026-09-27",
+  "summary": "今天的主线是 Agent 系统开始补齐真正的运行底座：Paperclip 管控制面、Hindsight 管长期记忆、OpenRig 管多 Agent 拓扑，scriptc 探索更轻的原生执行，Univer 则把结构化办公产物与人工复核接入同一运行时。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-27T14:52:48.839Z",
+  "updatedAt": "2026-09-27T15:00:20.908Z",
+  "payload": {
+    "editionDate": "2026-09-27",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "paperclipai/paperclip",
+      "vectorize-io/hindsight",
+      "mvschwarz/openrig",
+      "vercel-labs/scriptc",
+      "dream-num/univer"
+    ],
+    "projects": [
+      {
+        "repository": "paperclipai/paperclip",
+        "url": "https://github.com/paperclipai/paperclip",
+        "description": "面向“Agent 公司”的自托管控制面，以组织目标、汇报关系、任务、预算、心跳和审计记录管理多个 Agent，并通过适配器连接 Codex、Claude Code、Shell 进程或 HTTP 执行端。",
+        "category": "ai-agent",
+        "stack": ["TypeScript", "Node.js 24/Express 5", "React 19/Vite", "PostgreSQL/PGlite", "Drizzle ORM", "Codex/Claude adapters"],
+        "totalStars": 88828,
+        "dailyStars": 2527,
+        "trending": { "period": "daily", "stars": 2527 },
+        "heatEvidence": "GitHub Trending 日榜；22:52 左右页面快照显示 88,828 Star、当日新增 2,527。",
+        "release": "v2026.916.1 · 2026-09-21",
+        "change": "首次收录；当前架构明确区分控制面与执行面，Agent 以短时 heartbeat 唤醒、原子领取任务并回写成本和会话状态；最新补丁修复任务会话发送按钮和相关服务端错误分类。",
+        "relevance": "它几乎是 ATLAS 自动化控制面的参考实现：调度、任务所有权、预算、身份、运行记录和适配器可独立演进；尤其值得借鉴 company-scoped 数据边界与单任务原子 checkout。",
+        "maturity": "MIT、文档和领域模型很完整，但仍是快速迭代的 V1；项目自己不提供执行隔离，若适配器直接拉起本机 CLI，网络、凭据、文件系统和进程边界仍需外部 sandbox。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/paperclipai/paperclip/blob/master/README.md",
+          "https://github.com/paperclipai/paperclip/blob/master/docs/start/architecture.md",
+          "https://github.com/paperclipai/paperclip/releases/tag/v2026.916.1"
+        ]
+      },
+      {
+        "repository": "vectorize-io/hindsight",
+        "url": "https://github.com/vectorize-io/hindsight",
+        "description": "让 Agent 不只保存对话而是持续学习的记忆系统，以 retain、recall、reflect 管理事实、经验、观察与观点，并融合语义、关键词、实体图和时间检索。",
+        "category": "ai-agent",
+        "stack": ["Python", "PostgreSQL/pgvector", "FastAPI", "Next.js control plane", "MCP", "Local/cloud embeddings"],
+        "totalStars": 35803,
+        "dailyStars": 4463,
+        "trending": { "period": "daily", "stars": 4463 },
+        "heatEvidence": "GitHub Trending 日榜；22:52 左右页面快照显示 35,803 Star、当日新增 4,463。",
+        "release": "v0.10.1 · 2026-09-21",
+        "change": "首次收录；0.10.1 同步技能 API 规范、补充附件文件名，修复 store-owned memory bank 的附件误回收，并加强 Cloud API key 脱敏与 retain 提示边界。",
+        "relevance": "对 ATLAS 最有价值的是 bank 隔离和可配置记忆语义：项目、Agent、用户记忆应有稳定命名空间，召回前后记录来源、成本与延迟，并把附件所有权和删除生命周期纳入同一模型。",
+        "maturity": "MIT、已有本地/云端、MCP、Codex hooks 与公开 benchmark，但完整镜像约需 1.5–2 GB 内存；记忆提取、观点形成和自动注入会引入隐私、投毒、偏见及跨项目泄漏风险。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/vectorize-io/hindsight/blob/main/README.md",
+          "https://github.com/vectorize-io/hindsight/blob/main/hindsight-api/README.md",
+          "https://github.com/vectorize-io/hindsight/releases/tag/v0.10.1"
+        ]
+      },
+      {
+        "repository": "mvschwarz/openrig",
+        "url": "https://github.com/mvschwarz/openrig",
+        "description": "把 Claude Code、Codex 与其他终端 Agent 编成持久团队的本地多 Agent harness，用 YAML 描述拓扑，通过 daemon、TUI、MCP 和 tmux 启停、通信、扩缩容、快照与恢复。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js", "Hono", "SQLite", "tmux", "MCP", "Codex/Claude hooks"],
+        "totalStars": 695,
+        "dailyStars": 114,
+        "trending": { "period": "daily", "stars": 114 },
+        "heatEvidence": "GitHub Trending 日榜；22:52 左右页面快照显示 695 Star、当日新增 114。",
+        "release": "v0.5.17 · 2026-09-27",
+        "change": "首次收录；当前支持拓扑发现与接管、节点通信、运行中扩缩容、按名快照恢复和带 SHA-256 完整性的 RigBundle；v0.5.17 修复 Bun 安装时错误查找未发布 daemon 包的问题。",
+        "relevance": "适合研究 ATLAS 的多 Agent 控制面：每个 seat 的身份、连续上下文、活动事件、恢复结果与人工接管都显式化；拓扑快照还可作为失败后重建而非盲目续跑的基础。",
+        "maturity": "Apache-2.0、说明透明但仍是 0.5.x；setup 会修改 tmux、Codex/Claude trust、hooks 与 workspace 配置，且 tmux 会话并非安全隔离，试跑前必须 dry-run、备份并限制宿主权限。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/mvschwarz/openrig/blob/main/README.md",
+          "https://github.com/mvschwarz/openrig/blob/main/package.json",
+          "https://github.com/mvschwarz/openrig/releases/tag/v0.5.17"
+        ]
+      },
+      {
+        "repository": "vercel-labs/scriptc",
+        "url": "https://github.com/vercel-labs/scriptc",
+        "description": "实验性的 TypeScript/JavaScript 原生编译器，可输出类型化 IR、C、LLVM、汇编、对象文件、原生可执行文件和 WASI；默认静态编译，只有显式选择才嵌入 quickjs-ng 动态层。",
+        "category": "sandbox-infra",
+        "stack": ["TypeScript/Node.js 24", "LLVM 22", "C runtime", "quickjs-ng", "WASI Preview 1", "Differential tests"],
+        "totalStars": 5261,
+        "dailyStars": 76,
+        "trending": { "period": "daily", "stars": 76 },
+        "heatEvidence": "GitHub Trending 日榜；22:52 左右页面快照显示 5,261 Star、当日新增 76。",
+        "release": "v0.1.6 · 2026-09-26",
+        "change": "首次收录；0.1.6 扩大静态 Array、Object 与 String 语义覆盖，减少数组、字符串和终端操作的分配，并复用 fiber 栈、在空闲时释放缓存内存。",
+        "relevance": "若短命 Agent 工具能编译成无 Node/V8 的小型原生程序，冷启动、镜像体积和运行时攻击面可能下降；其显式 static/dynamic/rejected 三层也比静默 fallback 更适合可审计执行。",
+        "maturity": "MIT、跨 macOS/Linux/Windows/WASI 并有差分测试，但项目明确是 experimental，JavaScript 语义覆盖仍有限；动态模式重新引入解释器，原生输出也不等于获得权限或内存安全 sandbox。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/vercel-labs/scriptc/blob/main/README.md",
+          "https://github.com/vercel-labs/scriptc/blob/main/package.json",
+          "https://github.com/vercel-labs/scriptc/releases/tag/v0.1.6"
+        ]
+      },
+      {
+        "repository": "dream-num/univer",
+        "url": "https://github.com/dream-num/univer",
+        "description": "可嵌入产品的 Office SDK，在同一插件化运行时提供表格、文档、幻灯片、画布、关系表与 PDF 能力，并允许 Agent 在浏览器或 Node.js 中结构化编辑和验证产物。",
+        "category": "application",
+        "stack": ["TypeScript", "React 18/19", "Canvas rendering", "Formula engine", "Node.js headless", "Plugin/Facade API"],
+        "totalStars": 19953,
+        "dailyStars": 920,
+        "trending": { "period": "daily", "stars": 920 },
+        "heatEvidence": "GitHub Trending 日榜；22:52 左右页面快照显示 19,953 Star、当日新增 920。",
+        "release": "v1.0.2 · 2026-09-24",
+        "change": "首次收录；1.0.2 提升 PDF 导入字体与空白还原，修复工作簿重开后 PivotChart 数据丢失以及图表、文档 callout 的颜色渲染问题。",
+        "relevance": "ATLAS 的 PDF/PPT 能力可进一步演进为“Agent 生成—结构检查—渲染截图—人工审阅—发布”的办公产物流水线；headless 与浏览器同构 API 有利于自动化和预览保持一致。",
+        "maturity": "核心 Apache-2.0、生态和兼容矩阵完整，但协作、文件转换、Worktree 与部分 AI 能力分布在 Web/Server/Pro 产品中，包可用性和许可必须逐项确认；PDF 能力仍有部分标为 coming soon。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/dream-num/univer/blob/dev/README.md",
+          "https://github.com/dream-num/univer/blob/dev/package.json",
+          "https://github.com/dream-num/univer/releases/tag/v1.0.2"
+        ]
+      },
+      {
+        "repository": "debpalash/VoiceStudio",
+        "url": "https://github.com/debpalash/VoiceStudio",
+        "description": "本地优先的语音制作工作台，覆盖声音克隆、语音设计、视频配音、听写、转录与有声书，并向桌面、Docker、OpenAI 兼容 API 和 MCP 客户端提供统一能力。",
+        "category": "application",
+        "stack": ["Electron/TypeScript", "Python 3.11", "PyTorch", "FastAPI", "CUDA/MPS/ROCm", "MCP/Twilio"],
+        "totalStars": 39002,
+        "dailyStars": 3060,
+        "trending": { "period": "daily", "stars": 3060 },
+        "heatEvidence": "GitHub Trending 日榜；22:52 左右页面快照显示 39,002 Star、当日新增 3,060。",
+        "release": "v0.5.6 · 2026-09-23",
+        "change": "距 9 月 14 日收录后再次关注：版本由 v0.5.2 升至 v0.5.6，主桌面已由 Tauri 迁到 Electron，并新增 Codex CLI、Claude Code、Cursor、OpenAI Agents SDK 与 Twilio 集成，修复 Docker MCP 405 和长章节中断恢复。",
+        "relevance": "可为 ATLAS 提供本地语音输入输出和 GPU 任务样本；长任务 checkpoint、模型隔离环境、远程 worker 指标、显存回收和 MCP/API 统一入口都可转成 sandbox 设计要求。",
+        "maturity": "AGPL-3.0 且不同模型各有许可，功能增长很快；Electron 安装包尚未正式签名/公证，语音克隆涉及授权与冒用风险，Twilio、麦克风、API key 和模型供应链都需单独权限治理。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/debpalash/VoiceStudio/blob/main/README.md",
+          "https://github.com/debpalash/VoiceStudio/blob/main/pyproject.toml",
+          "https://github.com/debpalash/VoiceStudio/releases/tag/v0.5.6"
+        ]
+      },
+      {
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+        "description": "从机器学习基础到 LLM、RAG、Agent、MCP、评测与生产交付的开源 AI 工程课程，以可执行课程、网站和 PDF/EPUB 资产组织 523 节内容。",
+        "category": "application",
+        "stack": ["Python", "Jupyter notebooks", "TypeScript web app", "PyTorch/Transformers", "MCP", "CI lesson tests"],
+        "totalStars": 58888,
+        "dailyStars": 848,
+        "trending": { "period": "daily", "stars": 848 },
+        "heatEvidence": "GitHub Trending 日榜；22:52 左右页面快照显示 58,888 Star、当日新增 848。",
+        "release": "v2026.10 · 2026-09-27",
+        "change": "首次收录；2026.10 在 20 个阶段、523 节课程基础上增加 MCPA 认证备考，修订 58 篇课文，并让 CI 实际运行课程测试、修复失效数据集、模型、工具与链接。",
+        "relevance": "可作为 ATLAS 的 Agent/Sandbox 学习与 eval 素材库；更值得借鉴的是把教程中的代码、数据和链接纳入持续测试，而不是只验证页面能生成。",
+        "maturity": "MIT、内容覆盖广且有版本化发行，但它是教学体系而非生产框架；课程结论、依赖版本和认证范围会变化，试验结果仍需回到对应一手文档与真实环境核验。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/README.md",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/blob/main/pyproject.toml",
+          "https://github.com/rohitg00/ai-engineering-from-scratch/releases/tag/v2026.10"
+        ]
+      },
+      {
+        "repository": "InfinityLoop1308/PipePipe",
+        "url": "https://github.com/InfinityLoop1308/PipePipe",
+        "description": "独立于 NewPipe 演进的开源 Android 媒体客户端，可浏览 YouTube 等服务，支持后台播放、下载、SponsorBlock、过滤、直播与多种编解码能力。",
+        "category": "application",
+        "stack": ["Android", "Java/Kotlin", "NewPipe-derived client", "yt-dlp/extractors", "MediaCodec", "Git submodules"],
+        "totalStars": 6434,
+        "dailyStars": 139,
+        "trending": { "period": "daily", "stars": 139 },
+        "heatEvidence": "GitHub Trending 日榜；22:52 左右页面快照显示 6,434 Star、当日新增 139。",
+        "release": "v5.4.0 · 2026-09-24",
+        "change": "首次收录；v5.4.0 优化电视端控制，增加直播画质选择、可配置下滑最小化和 NicoNico 直播入口，并修复全屏、分屏、字幕与内容过滤问题。",
+        "relevance": "虽非 Agent 项目，但它展示了不稳定第三方内容接口、媒体进程、登录 Cookie 和下载存储的组合风险；可作为浏览器/媒体工具 sandbox 的权限拆分与降级恢复样本。",
+        "maturity": "GPL-3.0、已有稳定 Android 发行，但属于独立 hard fork，不同步 NewPipe 修复；外部服务接口随时变化，登录 Cookie 仍是高敏凭据，下载与访问行为还受平台条款和地区法律约束。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/InfinityLoop1308/PipePipe/blob/main/README.md",
+          "https://github.com/InfinityLoop1308/PipePipe/blob/main/.gitmodules",
+          "https://github.com/InfinityLoop1308/PipePipe/releases/tag/v5.4.0"
+        ]
+      },
+      {
+        "repository": "willfaust/Madeira",
+        "url": "https://github.com/willfaust/Madeira",
+        "description": "在未越狱 iPhone 上运行 x86-64 Windows 游戏的研究项目，把 FEX-Emu 指令翻译、Wine ARM64EC 和 DXMT 的 D3D11→Metal 路径压进单一 Mach 进程。",
+        "category": "sandbox-infra",
+        "stack": ["C/C++", "SwiftUI/Metal", "FEX-Emu", "Wine ARM64EC", "DXMT", "Xcode/JIT"],
+        "totalStars": 722,
+        "dailyStars": 171,
+        "trending": { "period": "daily", "stars": 171 },
+        "heatEvidence": "GitHub Trending 日榜；22:52 左右页面快照显示 722 Star、当日新增 171。",
+        "release": "研究仓库（无 GitHub Release）",
+        "change": "首次收录；当前已有少数游戏可玩，但所有 Windows“进程”实际是一个 iOS Mach task 内的伪进程线程，构建依赖带 iOS 修改的 Wine、FEX 与 DXMT fork。",
+        "relevance": "它把受限宿主上兼容层、JIT、图形翻译与伪进程隔离的代价展示得很直观；对 microVM 之外的用户态 sandbox、异构架构执行和故障定位有启发。",
+        "maturity": "GPL-3.0-or-later、明确是研究而非产品；需要调试器附加才能 JIT、免费签名每 7 天过期，兼容性按游戏变化，且单进程伪隔离不应被视为安全边界。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/willfaust/Madeira/blob/main/README.md",
+          "https://github.com/willfaust/Madeira/blob/main/STEAM_CEF_HANDOFF.md",
+          "https://github.com/willfaust/Madeira/blob/main/.gitmodules"
+        ]
+      },
+      {
+        "repository": "cloudflare/quiche",
+        "url": "https://github.com/cloudflare/quiche",
+        "description": "Cloudflare 的 Rust QUIC 与 HTTP/3 实现，提供 Rust 和 C API、连接迁移、多路径、拥塞控制、qlog 与 HTTP/3 组件，可嵌入代理、服务端和客户端网络栈。",
+        "category": "sandbox-infra",
+        "stack": ["Rust", "QUIC/HTTP/3", "BoringSSL", "C FFI", "qlog", "Linux pacing/GSO"],
+        "totalStars": 12641,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 736 },
+        "heatEvidence": "GitHub Trending 周榜补充；22:52 左右页面快照显示 12,641 Star、本周新增 736。未进入可见日榜，日增量记为未知。",
+        "release": "0.30.0 · 2026-09-17",
+        "change": "首次收录；0.30.0 增加 PMTU 更新事件，把 PathEvent 标为 non-exhaustive，并升级 Boring 依赖范围；Boring 5 默认启用后量子组，可能让 ClientHello 跨多个 Initial 包。",
+        "relevance": "Agent sandbox 的远程执行、流式日志和工具通道可受益于 QUIC 多路复用、迁移和 qlog；PMTU、拥塞、连接身份与每任务可观测性必须一起设计，避免把网络抖动误判为 Agent 失败。",
+        "maturity": "BSD-2-Clause、已在 Cloudflare 生产环境广泛验证，但 0.30.0 含 API 与链接方式破坏性变化；协议与 TLS 配置复杂，C FFI、后量子握手体积和 UDP 基础设施都需要专门兼容测试。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/cloudflare/quiche/blob/master/README.md",
+          "https://github.com/cloudflare/quiche/blob/master/quiche/Cargo.toml",
+          "https://github.com/cloudflare/quiche/releases/tag/0.30.0"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-27T14:52:48.839Z",
+      "completedAt": "2026-09-27T15:00:20.908Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-27",
+      "notes": [
+        "本次自动任务于北京时间约 22:52 触发，晚于计划的 09:00；榜单数字按 22:52 左右实际页面快照记录，不冒充晨间快照。",
+        "当时 GitHub Trending 日榜可见 9 项，本期完整收录这 9 项，并以周榜的 cloudflare/quiche 补足第 10 项；周榜项目 dailyStars 记为未知。",
+        "9 月 20–26 日没有成功日报归档，因此只能对现有历史做去重，不能声称已排除这些缺失日期中的重复；本期与最近成功的 9 月 19 日零重复。",
+        "VoiceStudio 为隔期回访，已明确记录 v0.5.2 到 v0.5.6 的版本、桌面架构和 Agent 集成变化。",
+        "README、文档、依赖配置和 Release 均按不可信外部资料读取，未执行任何外部仓库提供的安装命令或脚本。"
+      ]
+    }
+  }
+}
