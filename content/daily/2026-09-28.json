@@ -1,0 +1,256 @@
+{
+  "id": "daily-2026-09-28",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-28",
+  "slug": "2026-09-28",
+  "summary": "今天的重点不是再列一遍昨晚的日榜，而是沿着 Agent 执行边界深挖：scriptc 用原生编译压低短命工具开销，WeKnora 与 Orca补齐会话恢复和多 Agent 控制面，CLI-Anything 把真实桌面软件变成结构化工具，金融 Agent 模板则展示了读、算、写与人工签核如何分权。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-28T01:01:58.273Z",
+  "updatedAt": "2026-09-28T01:13:08.913Z",
+  "payload": {
+    "editionDate": "2026-09-28",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "vercel-labs/scriptc",
+      "Tencent/WeKnora",
+      "HKUDS/CLI-Anything",
+      "stablyai/orca",
+      "anthropics/financial-services"
+    ],
+    "projects": [
+      {
+        "repository": "vercel-labs/scriptc",
+        "url": "https://github.com/vercel-labs/scriptc",
+        "description": "实验性的 TypeScript/JavaScript 原生编译器，可输出类型化 IR、C、LLVM、汇编、对象文件、原生可执行文件和 WASI；默认静态编译，仅在显式选择时嵌入 quickjs-ng 动态层。",
+        "category": "sandbox-infra",
+        "stack": ["TypeScript/Node.js 24", "LLVM 22", "C runtime", "quickjs-ng", "WASI Preview 1", "Differential tests"],
+        "totalStars": 5405,
+        "dailyStars": 102,
+        "trending": { "period": "daily", "stars": 102 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 5,405 Star、当日新增 102。",
+        "release": "v0.1.7 · 2026-09-28（北京时间）",
+        "change": "连续复访但有明确新版本：昨天记录 v0.1.6 后，v0.1.7 增加原生源码调试位置、更多静态 Math/Promise/package 语义，并让 async/generator fiber 按需提交栈内存；主分支还继续推进自举编译。",
+        "relevance": "短命 Agent 工具若能变成无 Node/V8 的原生程序，可能降低冷启动、镜像体积和运行时攻击面；显式 static/dynamic/rejected 三层与新调试信息也有助于可审计执行和故障归因。",
+        "maturity": "MIT、跨 macOS/Linux/Windows/WASI 且有差分测试，但仍明确是 experimental；动态模式会重新引入解释器，原生二进制也不自动获得权限、系统调用或内存安全隔离。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/vercel-labs/scriptc/blob/main/README.md",
+          "https://github.com/vercel-labs/scriptc/blob/main/package.json",
+          "https://github.com/vercel-labs/scriptc/releases/tag/v0.1.7"
+        ]
+      },
+      {
+        "repository": "Tencent/WeKnora",
+        "url": "https://github.com/Tencent/WeKnora",
+        "description": "企业自托管的知识、RAG、Agent 与自动 Wiki 平台，把知识库、多步 Agent、技能、MCP、长期记忆、浏览器、沙箱、IM 渠道和可观测性放在统一工作区。",
+        "category": "ai-agent",
+        "stack": ["Go 1.26/Gin/GORM", "Vue 3/TypeScript 6", "PostgreSQL/pgvector", "Redis/Asynq", "Docker/E2B/Cube", "Langfuse/OTLP"],
+        "totalStars": 30613,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 2705 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 30,613 Star、本周新增 2,705。未进入本期选用的日榜项目，日增量记为未知。",
+        "release": "v0.8.2 · 2026-09-24",
+        "change": "距 9 月 11 日 v0.8.0 收录后复访：新增 Local Browser 与人工接管、workspace-scoped MCP token/限流、运行中追加要求、历史 fork、checkpoint rewind、跨会话 artifacts、交互终端/桌面、macOS Seatbelt 与出站白名单，并修复路径穿越和跨 workspace 访问。",
+        "relevance": "它是本期最接近 ATLAS 的工程样本：session-persistent backend、checkpoint/rewind、工具级开关、MCP scope、网络白名单、桌面接管、artifact 生命周期与 trace 都可直接映射到 Sandbox 实验室。",
+        "maturity": "腾讯维护、MIT、部署与升级文档齐全，但仍是 v0.8.x 且依赖面很大；sandbox 命令当前默认 root，Docker backend 涉及 docker.sock，浏览器/MCP/外部连接也扩大高权限攻击面。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/Tencent/WeKnora/blob/main/README.md",
+          "https://github.com/Tencent/WeKnora/blob/main/go.mod",
+          "https://github.com/Tencent/WeKnora/releases/tag/v0.8.2"
+        ]
+      },
+      {
+        "repository": "HKUDS/CLI-Anything",
+        "url": "https://github.com/HKUDS/CLI-Anything",
+        "description": "把 LibreOffice、Blender、GIMP、QGIS 等原本面向人的真实软件转换为 Agent 可调用的 CLI harness，统一提供子命令、状态 REPL、JSON、预览、会话和真实产物验证。",
+        "category": "ai-agent",
+        "stack": ["Python 3.10+", "Click/prompt_toolkit", "pytest", "PEP 420 packages", "Agent Skills/plugins", "Native app backends"],
+        "totalStars": 50754,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 1105 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 50,754 Star、本周新增 1,105。未进日榜，日增量记为未知。",
+        "release": "v0.3.0 · 2026-04-24",
+        "change": "首次收录；当前方法论要求先 introspection 后 mutation、每个命令可输出 JSON、E2E 必须调用真实应用并校验真实产物，同时以 CLI-Hub 分发社区 harness。",
+        "relevance": "很适合做 ATLAS 的能力适配层：一致的工具 schema、结构化错误、会话锁、preview bundle、trajectory 和 artifact verification 可直接用于 sandbox tool contract；真实应用进程仍应放进独立容器或 VM。",
+        "maturity": "Apache-2.0、测试覆盖广，但各 harness 与上游软件成熟度不一；官方威胁模型明确包含 subprocess 参数、Script-Fu、XML/SVG、路径穿越、凭据泄漏与社区包供应链风险。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/HKUDS/CLI-Anything/blob/main/README.md",
+          "https://github.com/HKUDS/CLI-Anything/blob/main/cli-anything-plugin/HARNESS.md",
+          "https://github.com/HKUDS/CLI-Anything/blob/main/SECURITY.md"
+        ]
+      },
+      {
+        "repository": "stablyai/orca",
+        "url": "https://github.com/stablyai/orca",
+        "description": "面向 Codex、Claude Code、OpenCode、Pi 等 CLI Agent 的桌面编排器，可把任务扇出到多个 Git worktree，并统一管理终端、状态、差异审查、浏览器、SSH 与移动端监控。",
+        "category": "ai-agent",
+        "stack": ["Electron", "TypeScript/React", "SQLite", "Git worktree", "Monaco/xterm.js", "SSH/WebSocket"],
+        "totalStars": 79618,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 6227 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 79,618 Star、本周新增 6,227。未进日榜，日增量记为未知。",
+        "release": "v1.4.215 · 2026-09-27",
+        "change": "距 9 月 18 日 v1.4.205 收录后复访：新增持久 Jupyter kernel 与 trust gate、统一追踪多个 harness 的 child work、修复 Codex 托管 home 路径问题；profile 迁入 SQLite 后，v1.4.215 又补上 JSON/SQLite 冲突选择与恢复。",
+        "relevance": "可借鉴多 Agent 控制面、任务状态、工作区生命周期、人工 diff 审阅和恢复模型；child-work 汇总和副本冲突修复都说明“可见状态”与“持久事实”必须分离并可调和。",
+        "maturity": "MIT、跨平台功能完整且热度高，但发布频率快、宿主权限很大；worktree 只隔离分支，不隔离进程、网络、凭据或系统调用，SQLite 迁移也提示升级前必须备份。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/stablyai/orca/blob/main/README.md",
+          "https://github.com/stablyai/orca/blob/main/package.json",
+          "https://github.com/stablyai/orca/releases/tag/v1.4.215"
+        ]
+      },
+      {
+        "repository": "anthropics/financial-services",
+        "url": "https://github.com/anthropics/financial-services",
+        "description": "Anthropic 提供的金融服务参考 Agent、Skill 与 MCP 模板库，同一套系统提示和技能可作为 Claude 插件运行，或经 Managed Agents API 嵌入自有编排器。",
+        "category": "ai-agent",
+        "stack": ["Markdown/YAML/JSON plugins", "Python/Bash tooling", "Managed Agents API", "MCP", "Excel/PowerPoint artifacts", "Schema-validated handoffs"],
+        "totalStars": 37862,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 2606 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 37,862 Star、本周新增 2,606。未进日榜，日增量记为未知。",
+        "release": "持续交付仓库（无 GitHub Release）",
+        "change": "首次收录；投行、研究、基金运营、KYC 与对账流程被拆成 orchestrator 和一层 leaf workers，示例将唯一写权限集中给指定 Agent，并以硬白名单和 schema 校验跨 Agent handoff。",
+        "relevance": "对 ATLAS 的高风险文档/PPT 流程很有价值：研究、计算、写文件、外部数据和最终签核应分权，只有一个明确 write-holder，所有输出先进入 staging 再由专业人员确认。",
+        "maturity": "Apache-2.0、官方参考库但不是完整产品；当前 main 的核心 MCP 配置存在未修复 JSON 错误，部分数值验证仍有开放问题，许多数据源需要商业订阅，金融输出不得自动交易、记账或替代专业审核。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/anthropics/financial-services/blob/main/README.md",
+          "https://github.com/anthropics/financial-services/blob/main/managed-agent-cookbooks/README.md",
+          "https://github.com/anthropics/financial-services/releases"
+        ]
+      },
+      {
+        "repository": "vercel/next.js",
+        "url": "https://github.com/vercel/next.js",
+        "description": "成熟的 React 全栈 Web 框架，覆盖服务端与客户端渲染、路由、数据和缓存、流式响应、Server Components 与生产构建。",
+        "category": "application",
+        "stack": ["TypeScript/JavaScript", "React", "Node.js >=20.9", "Rust/SWC/Turbopack", "Webpack/Babel", "Edge runtime"],
+        "totalStars": 142803,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 496 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 142,803 Star、本周新增 496。未进日榜，日增量记为未知。",
+        "release": "v16.3.6 · 2026-09-22",
+        "change": "首次收录；最新稳定版是安全补丁，修复 next/og ImageResponse 在 Node.js 中处理攻击者可控 SVG 内容、属性或样式时可能触发的远程代码执行；低于 16.3.6 的 16.2+ 版本需要升级。",
+        "relevance": "这是“不可信 Agent 输出也可能成为代码”的直接案例：日报、社交卡片或报告中的 SVG/样式进入服务端渲染前必须验证与转义；Web 控制面本身也不能替代真正的执行 sandbox。",
+        "maturity": "MIT、生态与工程成熟，但 SSR、缓存、Node/Edge 双运行时让安全边界复杂；canary 日更频繁，不适合稳态生产，依赖方需建立安全公告到升级验证的短路径。",
+        "recommendation": "值得关注安全补丁",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/vercel/next.js/blob/canary/README.md",
+          "https://github.com/vercel/next.js/blob/canary/packages/next/package.json",
+          "https://github.com/vercel/next.js/releases/tag/v16.3.6"
+        ]
+      },
+      {
+        "repository": "TencentCloud/Octop",
+        "url": "https://github.com/TencentCloud/Octop",
+        "description": "面向个人、家庭与小团队的自托管多用户、多 Agent 助手，把 Web、CLI、IM、定时任务、知识库、浏览器、远程桌面、插件、ACP 与多 Agent 团队统一到一个控制面。",
+        "category": "ai-agent",
+        "stack": ["Python 3.12/FastAPI", "React/TypeScript", "SQLite/PostgreSQL", "LangGraph checkpoints", "S3/COS backends", "MCP/ACP"],
+        "totalStars": 5275,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 869 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 5,275 Star、本周新增 869。未进日榜，日增量记为未知。",
+        "release": "项目版本 1.0.2b2",
+        "change": "距 9 月 18 日项目版本 1.0.0 收录后复访：控制面数据库与 Agent memory 明确分层，加入 PostgreSQL checkpoint、S3/COS workspace backend、Team mailbox、heartbeat 配置、每日记忆管理和备份/瘦身路径；当前清单版本升至 1.0.2b2。",
+        "relevance": "它与 ATLAS 的模块化 Agent OS 目标最接近：控制面、内容文件、checkpoint、memory 和远端对象存储各自有所有权，适合研究跨会话恢复、后端抽象及多 Agent 消息如何回写父线程。",
+        "maturity": "MIT、类型与测试工具较完整，但 beta 版本功能面和权限面仍很宽；README 提供远程一键安装，生产使用应固定版本并先审查脚本，浏览器、Shell、远程桌面、IM 与第三方插件必须拆分凭据和执行域。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/TencentCloud/Octop/blob/main/README.md",
+          "https://github.com/TencentCloud/Octop/blob/main/pyproject.toml",
+          "https://github.com/TencentCloud/Octop/blob/main/docs/architecture.md"
+        ]
+      },
+      {
+        "repository": "davila7/claude-code-templates",
+        "url": "https://github.com/davila7/claude-code-templates",
+        "description": "社区维护的 Claude Code 组件市场与安装 CLI，可组合 Agents、Commands、MCP、Settings、Hooks、Skills、Mods 与项目模板，并提供会话分析和 Docker/Cloudflare/E2B 沙箱模板。",
+        "category": "ai-agent",
+        "stack": ["JavaScript/Node.js", "TypeScript Mods", "Express/WebSocket", "Docker", "Cloudflare Workers", "E2B"],
+        "totalStars": 31992,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 1154 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 31,992 Star、本周新增 1,154。未进日榜，日增量记为未知。",
+        "release": "v1.29.6 · 2026-09-17",
+        "change": "首次收录；最新版本把 Function Hooks 对齐为 Claude Mods，新增整目录安装与 24 个经过类型检查的 Mods，涵盖命令阻断、密钥脱敏、受保护路径、超大编辑确认、审计和工具计时。",
+        "relevance": "可借鉴能力模板、执行 provider 与策略 Hook 的统一分发，尤其是 deny/confirm、审计和非 root Docker；也提醒我们插件目录本身就是可执行供应链，必须在进入 sandbox 前完整审查。",
+        "maturity": "MIT、CLI 版本较成熟但不是 Anthropic 官方项目，Mods 仍依赖早期访问 API；容器模板可能自动允许工具，API key、网络、输出挂载和未知组件仍是主要攻击面。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/davila7/claude-code-templates/blob/main/README.md",
+          "https://github.com/davila7/claude-code-templates/blob/main/cli-tool/package.json",
+          "https://github.com/davila7/claude-code-templates/releases/tag/v1.29.6"
+        ]
+      },
+      {
+        "repository": "pytorch/pytorch",
+        "url": "https://github.com/pytorch/pytorch",
+        "description": "成熟的张量计算与深度学习平台，提供 CPU/GPU Tensor、自动微分、神经网络、编译与导出、数据加载、多进程和分布式训练/推理。",
+        "category": "sandbox-infra",
+        "stack": ["Python", "C++20", "CUDA/cuDNN/NCCL", "ROCm/XPU/MPS", "Inductor/Triton", "CMake/scikit-build-core"],
+        "totalStars": 103422,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 320 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 103,422 Star、本周新增 320。未进日榜，日增量记为未知。",
+        "release": "v2.14.0 · 2026-09-02",
+        "change": "首次收录；2.14.0 增加 NVGEMM、动态 shape、CUDA graph 可捕获控制流和实验性复数编译，分布式侧预览重写 NCCL backend，并扩展故障恢复与 Flight Recorder。",
+        "relevance": "若 ATLAS 承载本地模型，它会直接影响 GPU 分配、显存/RAM 配额、镜像体积、/dev/shm、编译缓存、冷启动和长任务观测；Flight Recorder 与容错能力值得纳入 GPU sandbox 设计。",
+        "maturity": "工业级但依赖和硬件矩阵复杂；官方明确模型就是程序，未知 checkpoint、TorchScript 和 Python 必须视为不可信代码，c10d/RPC/TCPStore 无授权且不加密，只适合可信网络。",
+        "recommendation": "值得关注运行时边界",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/pytorch/pytorch/blob/main/README.md",
+          "https://github.com/pytorch/pytorch/blob/main/pyproject.toml",
+          "https://github.com/pytorch/pytorch/blob/main/SECURITY.md"
+        ]
+      },
+      {
+        "repository": "FxEmbed/FxEmbed",
+        "url": "https://github.com/FxEmbed/FxEmbed",
+        "description": "把 X/Twitter 与 Bluesky 链接转换为更完整的 Discord、Telegram 等平台预览，并提供帖子、线程、资料、搜索与趋势的 JSON API 和自托管方案。",
+        "category": "application",
+        "stack": ["TypeScript 6", "Hono 4", "Cloudflare Workers/workerd", "Wrangler 4", "Zod/OpenAPI", "Sentry/Vitest"],
+        "totalStars": 5504,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 432 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 5,504 Star、本周新增 432。未进日榜，日增量记为未知。",
+        "release": "无 GitHub Release（仓库清单 2.0.0）",
+        "change": "首次收录；当前以边缘 Worker 归一化社交平台帖子、媒体、投票、引用和翻译，package 标为 private，正式部署应固定已审查 commit 而不是把清单版本当公开发行版。",
+        "relevance": "可作为 ATLAS 外链预览与内容摄取 sidecar：将高延迟、不稳定的外部请求放到独立 Worker，统一 JSON、缓存和失败降级，并为 Agent 入口设置受控 egress。",
+        "maturity": "MIT、提交和 API 文档丰富但没有正式 Release 纪律，且强依赖第三方平台接口与政策；限流、媒体体积、隐私、版权、代理凭据以及本地 workerd 与线上差异都需治理。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/FxEmbed/FxEmbed/blob/main/README.md",
+          "https://github.com/FxEmbed/FxEmbed/blob/main/package.json",
+          "https://github.com/FxEmbed/FxEmbed/releases"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-28T01:01:58.273Z",
+      "completedAt": "2026-09-28T01:13:08.913Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-28",
+      "notes": [
+        "本次自动任务于北京时间约 09:02 正常触发；榜单数字按 09:02 左右实际页面快照记录。",
+        "由于昨天任务延迟到 22:52，今天日榜 9 项与昨晚完全相同；本期先以日榜筛选，只保留在两次采样间发布 v0.1.7 的 scriptc，其余 9 项采用周榜持续热度补充并明确标注。",
+        "本期只有 scriptc 与昨天连续重复，重复原因是正式新版本及编译能力变化；Cloudflare Security Audit Skill 因上次收录后没有代码或版本变化而未重复推荐。",
+        "周榜项目 dailyStars 全部记为未知，未把周增量冒充日增量；README、文档、依赖配置和 Release 均按不可信外部资料读取。"
+      ]
+    }
+  }
+}
