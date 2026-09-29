@@ -1,0 +1,260 @@
+{
+  "id": "daily-2026-09-29",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-29",
+  "slug": "2026-09-29",
+  "summary": "今天的主线是把 Agent 的执行、记忆与观测边界变成可验证的工程契约：OpenRig 新版强化每席权限和人机接管，CUA 把桌面、轨迹与评测串成一体，Cloudflare Sandbox SDK 重做身份、网络与凭据边界，containerd 则提醒我们攻击可能在镜像拉取阶段、代码尚未运行前就发生。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-29T01:01:20.413Z",
+  "updatedAt": "2026-09-29T01:16:29.913Z",
+  "payload": {
+    "editionDate": "2026-09-29",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "cloudflare/sandbox-sdk",
+      "mvschwarz/openrig",
+      "trycua/cua",
+      "akitaonrails/ai-memory",
+      "containerd/containerd"
+    ],
+    "projects": [
+      {
+        "repository": "mvschwarz/openrig",
+        "url": "https://github.com/mvschwarz/openrig",
+        "description": "把 Claude Code、Codex、Pi 等 CLI Agent 编成持久团队的本地多 Agent harness，用独立席位、工作区、消息队列、daemon 与 TUI 协调运行。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js 22/24", "Hono", "SQLite/better-sqlite3", "tmux", "Codex/Claude hooks", "CLI/TUI/UI"],
+        "totalStars": 1723,
+        "dailyStars": 734,
+        "trending": { "period": "daily", "stars": 734 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 1,723 Star、当日新增 734。",
+        "release": "v0.6.0 · 2026-09-29（北京时间）",
+        "change": "距 9 月 27 日 v0.5.17 收录后隔日复访：v0.6.0 新增可审计的 future-launch 权限模式、typing guard、Codex 每席独立 app-server 与 Pi activity generation；其中 full_bypass 会把 Codex 映射到 danger-full-access/never approval，必须视为高风险显式选择。",
+        "relevance": "可直接借鉴每席身份与权限、daemon 分离、代际标识防串线、人机接管边界和权限审计；独立 app-server 也比多个席位共享隐式进程状态更容易归因和回收。",
+        "maturity": "Apache-2.0、发布说明透明但仍快速演进；v0.6.0 的真实安装验证主要覆盖全新 macOS ARM64 与 Node 22，原生 Windows 不支持、WSL2 未验证，setup 还会修改 tmux、Codex/Claude trust、hooks 与 workspace。CLI 权限模式本身也不等于系统级隔离。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/mvschwarz/openrig/blob/main/README.md",
+          "https://github.com/mvschwarz/openrig/blob/main/package.json",
+          "https://github.com/mvschwarz/openrig/releases/tag/v0.6.0"
+        ]
+      },
+      {
+        "repository": "vectorize-io/hindsight",
+        "url": "https://github.com/vectorize-io/hindsight",
+        "description": "让 Agent 持续学习的长期记忆服务，以 retain、recall、reflect 管理事实、经验、观察和观点，并融合语义、关键词、实体图与时间检索。",
+        "category": "ai-agent",
+        "stack": ["Python 3.11+", "FastAPI/Uvicorn", "PostgreSQL/pgvector", "Next.js", "Docker/Helm", "MCP/Prometheus"],
+        "totalStars": 40995,
+        "dailyStars": 4561,
+        "trending": { "period": "daily", "stars": 4561 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 40,995 Star、当日新增 4,561。",
+        "release": "v0.10.1 · 2026-09-21",
+        "change": "距 9 月 27 日收录后隔日复访；最新 Release 未变，但 main 新增记忆 edit/invalidate/revert 的前后置 OperationValidatorExtension，并在 LLM consolidation 期间检查源事实是否被编辑，遇到陈旧输入即丢弃旧批次，避免旧 observation 覆盖新状态。",
+        "relevance": "很适合借鉴记忆写操作的授权钩子、后置计量审计、异步 LLM 结果的陈旧检测，以及用 memory bank 映射租户、项目和 Agent 隔离域。",
+        "maturity": "MIT、本地/云端、MCP、Helm 与 benchmark 较完整，但关键新改动尚未发版；自动提取、观点形成和上下文注入会带来敏感数据、提示注入、记忆污染与跨项目泄漏风险，外层仍需访问控制、保留期和可回滚策略。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/vectorize-io/hindsight/blob/main/README.md",
+          "https://github.com/vectorize-io/hindsight/blob/main/hindsight-api-slim/pyproject.toml",
+          "https://github.com/vectorize-io/hindsight/releases/tag/v0.10.1",
+          "https://github.com/vectorize-io/hindsight/commit/26981c6b4e00bcc391a49c1f418e758dbae80171"
+        ]
+      },
+      {
+        "repository": "paperclipai/paperclip",
+        "url": "https://github.com/paperclipai/paperclip",
+        "description": "多 Agent 的组织控制平面，以身份、目标、任务 checkout、heartbeat、预算、治理、审计、Secrets、插件和运行时 adapter 管理一组 Agent。",
+        "category": "ai-agent",
+        "stack": ["TypeScript", "Node.js 24/Express 5", "React 19/Vite", "PostgreSQL/PGlite", "Drizzle ORM", "Multi-runtime adapters"],
+        "totalStars": 92828,
+        "dailyStars": 3197,
+        "trending": { "period": "daily", "stars": 3197 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 92,828 Star、当日新增 3,197。",
+        "release": "v2026.916.1 · 2026-09-21",
+        "change": "距 9 月 27 日收录后隔日复访；正式版本未变，main 将 execution identity 行锁调整为 FOR NO KEY UPDATE，在保持 writer 串行的同时不再阻塞 audit 外键检查，并为 native runner 的身份、harness 与 provider-pack 失败保留有界诊断原因而不泄露内部路径或原始 provider 输出。",
+        "relevance": "适合作为 Agent 身份、任务租约、运行回执、预算和 provider adapter 控制面的参考；本轮锁粒度与隐私安全诊断尤其适合 ATLAS 的并发执行和失败归因。",
+        "maturity": "MIT、功能广但仍是快速演进的 V1，正式 Release 落后于 master；控制平面不等于执行隔离，部分 adapter 仍会在宿主机启动 CLI，Secrets、插件与外部 provider 需要独立 sandbox 和最小权限。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/paperclipai/paperclip/blob/master/README.md",
+          "https://github.com/paperclipai/paperclip/blob/master/package.json",
+          "https://github.com/paperclipai/paperclip/releases/tag/v2026.916.1",
+          "https://github.com/paperclipai/paperclip/commit/4f6cf5b3ffda14ff8922f2cddeceb52d2bd545b7"
+        ]
+      },
+      {
+        "repository": "debpalash/VoiceStudio",
+        "url": "https://github.com/debpalash/VoiceStudio",
+        "description": "本地优先的语音制作工作台，覆盖 TTS、声音克隆、视频配音、听写、转录与有声书，并向桌面、Docker、Agent SDK、MCP 和电话渠道提供能力。",
+        "category": "application",
+        "stack": ["Electron/TypeScript", "Python 3.11", "FastAPI/Uvicorn", "PyTorch/Transformers", "CUDA/MPS/ROCm", "MCP/gRPC/Twilio"],
+        "totalStars": 44132,
+        "dailyStars": 3221,
+        "trending": { "period": "daily", "stars": 3221 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 44,132 Star、当日新增 3,221。",
+        "release": "v0.5.6 · 2026-09-23",
+        "change": "距 9 月 27 日收录后隔日复访；正式版本未变，main 对 SDK 请求增加最终目标复核、禁止重定向、loopback 绕过代理和共享 client 禁存 Cookie，并在代理/SSL 配置变化时轮换连接池、保留活动 stream，补强 SSRF 与凭据边界。",
+        "relevance": "可借鉴 localhost 与远端流量分界、防 SSRF/redirect、共享会话 Cookie 隔离，以及网络策略热更新时的连接池代际管理；GPU 长任务也适合作为资源回收和 checkpoint 样本。",
+        "maturity": "AGPL-3.0，模型许可需逐项核对；关键网络修复仍只在 main，Electron 安装包未正式签名/公证，GPU/模型依赖重，remote worker、电话和 MCP 会扩大网络、音频隐私与凭据攻击面。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/debpalash/VoiceStudio/blob/main/README.md",
+          "https://github.com/debpalash/VoiceStudio/blob/main/pyproject.toml",
+          "https://github.com/debpalash/VoiceStudio/releases/tag/v0.5.6",
+          "https://github.com/debpalash/VoiceStudio/commit/09382bbbecd8968426a097c236bfbbc7fca1a041"
+        ]
+      },
+      {
+        "repository": "dream-num/univer",
+        "url": "https://github.com/dream-num/univer",
+        "description": "可嵌入产品的 Office SDK，在同一插件运行时提供表格、文档、幻灯片、画布、关系表与 PDF，并支持 Agent 结构化编辑、检查和渲染。",
+        "category": "application",
+        "stack": ["TypeScript 6", "React 19", "Canvas rendering", "Formula engine", "Node.js 22 headless", "pnpm/Turborepo/Vitest"],
+        "totalStars": 21266,
+        "dailyStars": 1099,
+        "trending": { "period": "daily", "stars": 1099 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 21,266 Star、当日新增 1,099。",
+        "release": "v1.0.2 · 2026-09-24",
+        "change": "距 9 月 27 日收录后隔日复访；无新 Release，main 的正确性修复包括把合并网络请求的 termination 传播给全部订阅者、dispose 时使 interceptor pipe 失效、filter 自动扩展后的重新计算以及表格交互修复。",
+        "relevance": "可作为 ATLAS 的结构化办公产物与视觉校验层，把 Agent 生成、内容检查、截图、人工审阅和发布串成流水线；headless worker 应限制公式、外链资源、文件访问与 CPU/内存。",
+        "maturity": "核心 Apache-2.0、已有 1.0 稳定线，但 AI、协作、worktree 与部分 PDF 能力属于 Web SDK/Pro，许可和包可用性需逐项确认；本轮变化以工程修复为主，复访价值弱于 OpenRig。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/dream-num/univer/blob/dev/README.md",
+          "https://github.com/dream-num/univer/blob/dev/package.json",
+          "https://github.com/dream-num/univer/releases/tag/v1.0.2",
+          "https://github.com/dream-num/univer/commit/dac51871d3368cdd1410a80a46471890258c06ee"
+        ]
+      },
+      {
+        "repository": "NawfalMotii79/PLFM_RADAR",
+        "url": "https://github.com/NawfalMotii79/PLFM_RADAR",
+        "description": "开源、低成本的 10.5 GHz AERIS-10 脉冲线性调频相控阵雷达，包含 3/20 km 方案、PCB/BOM、FPGA/MCU 固件、信号处理、Python GUI、地图和传感器集成。",
+        "category": "application",
+        "stack": ["Artix-7 FPGA/Verilog/VHDL", "Vivado", "STM32F746 C/C++", "Python Tk/PyQt6", "ADAR1000/RF chain", "USB FT2232H"],
+        "totalStars": 25764,
+        "dailyStars": 158,
+        "trending": { "period": "daily", "stars": 158 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 25,764 Star、当日新增 158。页面语言标签为 PLSQL，但 README、固件目录和发布资料表明真实主栈是 FPGA、STM32 与 Python。",
+        "release": "v2.0.2-p0-audit · 2026-04-20",
+        "change": "首次收录；最近正式版本完成 bring-up 前 P0 审计闭环，修正 FT2232H timing constraint、400 MHz margin 与 MCU/FPGA T/R ownership，并提供 production bitstream 和 host tests。本次入选来自日榜，不代表近 24 小时发布。",
+        "relevance": "提供少见的硬件在环样本：Agent 操作 USB/FPGA/RF 时需要设备白名单、构建产物隔离、仿真与实机环境分离，以及对具有真实物理副作用的命令做人工审批。",
+        "maturity": "硬件 CERN-OHL-P、软件与固件 MIT，但 README 明示 Alpha/WIP，组装指南尚不完整；高功率 RF 涉及人身安全、频谱法规与出口限制，3/20 km 指标也不能仅凭仓库材料视为独立验证。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/NawfalMotii79/PLFM_RADAR/blob/main/README.md",
+          "https://github.com/NawfalMotii79/PLFM_RADAR/tree/main/9_Firmware",
+          "https://github.com/NawfalMotii79/PLFM_RADAR/releases/tag/v2.0.2-p0-audit"
+        ]
+      },
+      {
+        "repository": "trycua/cua",
+        "url": "https://github.com/trycua/cua",
+        "description": "为 Agent 提供可操作的完整计算机环境：Driver 跨平台控制桌面与浏览器，Fleets 提供池化隔离云桌面，Lume 管理本地 VM，Bench 生成任务、轨迹和评测数据。",
+        "category": "sandbox-infra",
+        "stack": ["Python 3.12/uv", "Rust Cua Driver", "Swift/Virtualization.framework", "FastMCP/Playwright", "Cloud desktop fleets", "OSWorld benchmarks"],
+        "totalStars": 26861,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 1293 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 26,861 Star、本周新增 1,293。未进入当日日榜，日增量记为未知。",
+        "release": "cua-driver-rs v0.30.4 · 2026-09-29（北京时间）",
+        "change": "首次收录；Driver 0.30.4 修复 Linux 分数缩放、浏览器光标、X11 DirectColor、点击时序和按显示器验证前台窗口，并把 trajectory recording 限定到启动它的 session，避免跨任务轨迹串写。",
+        "relevance": "是本期最直接的 Sandbox 样本：可借鉴池化桌面的 claim/release 生命周期、跨 OS driver contract、截图与轨迹证据、动作后状态验证、OSWorld eval，以及本地和云端 backend 共用 SDK。",
+        "maturity": "MIT、跨平台组件与测试丰富，但 Linux Driver 仍是 preview；Driver 是高权限控制面而非隔离层，本机模式需要辅助功能和屏幕录制权限，Fleet 仍需治理凭据注入、网络出口、屏幕数据、销毁证明和持续计费。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/trycua/cua/blob/main/README.md",
+          "https://github.com/trycua/cua/blob/main/pyproject.toml",
+          "https://github.com/trycua/cua/releases/tag/cua-driver-rs-v0.30.4"
+        ]
+      },
+      {
+        "repository": "akitaonrails/ai-memory",
+        "url": "https://github.com/akitaonrails/ai-memory",
+        "description": "跨二十多种 coding Agent 的长期记忆与 handoff 服务；生命周期 Hook 捕获经清洗的工作事实，以 Git 版本化 Markdown Wiki 为事实源、SQLite 为可重建索引。",
+        "category": "ai-agent",
+        "stack": ["Rust 2024/Tokio", "Axum/tower", "SQLite/FTS5", "git2/Markdown Wiki", "rmcp MCP SDK", "Local or remote embeddings"],
+        "totalStars": 8568,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 1110 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 8,568 Star、本周新增 1,110。未进入当日日榜，日增量记为未知。",
+        "release": "v2.4.1 · 2026-09-25",
+        "change": "首次收录；v2.4.1 的恢复流程先解压到 staging、执行 migration 与验证，再原子替换 live wiki/database，失败时保留现有数据；同时直接警告无认证的非 loopback 绑定，并修复多种 hook、时间戳、Windows frontmatter 与 MCP 注册问题。",
+        "relevance": "可直接借鉴事实源与派生索引分离、索引可重建、handoff 精确领取一次、project/actor scope、mutation 审计，以及恢复先 staging 验证再原子切换的记忆生命周期。",
+        "maturity": "MIT、文档和运维说明完整，但仍快速迭代；数据没有静态加密，默认 loopback 无认证，切换云 embedding 会把页面全文及旧语料 backfill 发给 provider。Hook 捕获、团队共享和 LLM consolidation 还存在隐私、投毒与错误归因风险。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/akitaonrails/ai-memory/blob/main/README.md",
+          "https://github.com/akitaonrails/ai-memory/blob/main/Cargo.toml",
+          "https://github.com/akitaonrails/ai-memory/releases/tag/v2.4.1",
+          "https://github.com/akitaonrails/ai-memory/blob/main/DATA_HANDLING.md"
+        ]
+      },
+      {
+        "repository": "cloudflare/sandbox-sdk",
+        "url": "https://github.com/cloudflare/sandbox-sdk",
+        "description": "在 Cloudflare Workers 上运行不可信或生成代码的 Sandbox SDK；由 Durable Object 绑定 Linux Container，并提供流式文件、S3 挂载、R2 目录备份/恢复、终端与预览能力。",
+        "category": "sandbox-infra",
+        "stack": ["TypeScript/ESM", "Cloudflare Workers", "Durable Objects/Containers", "Rust sandbox-shim", "R2/S3", "Zod/aws4fetch"],
+        "totalStars": 1141,
+        "dailyStars": null,
+        "heatEvidence": "版本补充来源（非 Trending）：约 09:12 GitHub 仓库数据为 1,141 Star；@cloudflare/sandbox 1.0.0-rc.1 标签对应提交于 2026-09-29 01:44（北京时间），日增量未知。",
+        "release": "@cloudflare/sandbox 1.0.0-rc.1 标签 · 2026-09-29",
+        "change": "首次收录；1.0 RC 将 Container 生命周期交给应用自己的 Durable Object，SDK 聚焦流式 Files、凭据不进容器的 S3Mounts 与 R2 DirectoryBackups；示例默认 enableInternet: false，rc.1 还加入备份拦截与含挂载目录的恢复修复。",
+        "relevance": "几乎可直接映射 ATLAS 的身份到 sandbox 命名、默认断网、Worker 代签凭据、artifact mount、checkpoint/restore、终端和预览生命周期；控制面与执行面边界也更清晰。",
+        "maturity": "Apache-2.0，但 1.0 仍是 RC，且从 0.x 到 1.0 为破坏性迁移；Cloudflare Container 不是 microVM，租户鉴权、公开预览 URL、端口/终端、S3 path 与 egress 仍需上层强制策略。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/cloudflare/sandbox-sdk/tree/%40cloudflare%2Fsandbox%401.0.0-rc.1",
+          "https://github.com/cloudflare/sandbox-sdk/blob/%40cloudflare%2Fsandbox%401.0.0-rc.1/packages/sandbox/README.md",
+          "https://github.com/cloudflare/sandbox-sdk/blob/%40cloudflare%2Fsandbox%401.0.0-rc.1/packages/sandbox/package.json",
+          "https://github.com/cloudflare/sandbox-sdk/commit/dc8a710318bb16cab8a348ec37f760073a8ee2af"
+        ]
+      },
+      {
+        "repository": "containerd/containerd",
+        "url": "https://github.com/containerd/containerd",
+        "description": "CNCF 毕业级容器运行时，负责镜像传输与存储、容器生命周期、低层存储、网络附件和 CRI，对接 runc、Kubernetes 与多种 snapshotter。",
+        "category": "sandbox-infra",
+        "stack": ["Go 1.26", "CRI/OCI", "gRPC/ttrpc", "CNI", "runc/hcsshim", "OpenTelemetry"],
+        "totalStars": 21346,
+        "dailyStars": null,
+        "heatEvidence": "安全版本补充来源（非 Trending）：约 09:13 GitHub 仓库数据为 21,346 Star；v2.4.1 于 2026-09-25（北京时间）发布，日增量未知。",
+        "release": "v2.4.1 · 2026-09-25（北京时间）",
+        "change": "首次收录；v2.4.1 修复 CVE-2026-53493：恶意 OCI index 的深层或高扇出 descriptor graph 可在镜像拉取、容器尚未执行前造成无界 CPU/内存消耗，官方称无 workaround；同时修复 CRI 启动失败的 task 泄漏、SELinux relabel 与镜像拉取问题。",
+        "relevance": "Agent Sandbox 会频繁拉取用户或模型指定镜像，攻击面在代码执行前就已出现；控制面需要可信 registry、镜像策略、拉取资源配额/超时/并发限制、节点压力观测和快速运行时升级能力。",
+        "maturity": "Apache-2.0、生产成熟，但 containerd 自身不是安全沙箱；仍需 runc/gVisor/Kata、seccomp、AppArmor/SELinux 和 NetworkPolicy。升级还要回归 CRI/Kubernetes、snapshotter、runc 与 CNI 兼容性。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/containerd/containerd/releases/tag/v2.4.1",
+          "https://github.com/containerd/containerd/security/advisories/GHSA-pg57-6jwg-q645",
+          "https://github.com/containerd/containerd/blob/v2.4.1/README.md",
+          "https://github.com/containerd/containerd/blob/v2.4.1/go.mod"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-29T01:01:20.413Z",
+      "completedAt": "2026-09-29T01:16:29.913Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-29",
+      "notes": [
+        "本次自动任务于北京时间约 09:01 正常触发；Trending 数字按 09:02 左右实际页面快照记录。",
+        "当日日榜共 8 项，本期选用其中 6 项；课程教材 cs341-illinois/coursebook 与个人学习指南 byoungd/up 因不是可运行应用或 Sandbox 工程样本而未为凑数收录。",
+        "6 个日榜项目均未与 9 月 28 日连续重复；其中 OpenRig、Hindsight、Paperclip、VoiceStudio 与 Univer 是 9 月 27 日后的隔日复访，并分别说明新版本或主分支实质变化，PLFM_RADAR 为首次收录。",
+        "CUA 与 ai-memory 来自周榜，dailyStars 记为未知；Cloudflare Sandbox SDK 与 containerd 为明确标注的版本/安全补充，不混称为 Trending，日增量同样记为未知。",
+        "Cloudflare Sandbox SDK 的 1.0.0-rc.1 是公开版本标签而非 GitHub Releases API 中的稳定 Latest；内容未把 RC 描述成稳定版本。"
+      ]
+    }
+  }
+}
