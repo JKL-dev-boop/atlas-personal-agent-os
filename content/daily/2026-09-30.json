@@ -1,0 +1,253 @@
+{
+  "id": "daily-2026-09-30",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-09-30",
+  "slug": "2026-09-30",
+  "summary": "今天的主线是把 Agent 的工作区、凭据、网络与资源边界做成可验证的运行时接口：OpenShell 用内核策略与形式化检查约束权限，Pydantic AI 把统一 workspace 接到多种执行后端，OpenSandbox 修复打包事故并继续完善暂停、租户与出口控制，DBX 则展示数据库 Agent 如何把凭据托管、显式上下文和调用确认结合起来。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-09-30T01:00:42.655Z",
+  "updatedAt": "2026-09-30T01:15:01.778Z",
+  "payload": {
+    "editionDate": "2026-09-30",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "NVIDIA/OpenShell",
+      "pydantic/pydantic-ai",
+      "t8y2/dbx",
+      "opensandbox-group/OpenSandbox",
+      "oblien/openship"
+    ],
+    "projects": [
+      {
+        "repository": "NVIDIA/OpenShell",
+        "url": "https://github.com/NVIDIA/OpenShell",
+        "description": "面向自主 Agent fleet 的安全运行时，以 Gateway 管理生命周期、可信 supervisor 代理网络与凭据、不可信 workload 在受控 sandbox 中执行，并在权限放宽前用形式化检查提示风险。",
+        "category": "sandbox-infra",
+        "stack": ["Rust 2024/Rust 1.94", "Tokio/Axum/Tonic", "Landlock/seccomp/Z3", "Docker/Podman/libkrun", "Kubernetes/Helm", "Python/TypeScript/Go/Rust SDK"],
+        "totalStars": 10618,
+        "dailyStars": 990,
+        "trending": { "period": "daily", "stars": 990 },
+        "heatEvidence": "GitHub Trending 日榜；09:03 左右页面快照显示 10,618 Star、当日新增 990。",
+        "release": "v0.1.2 · 2026-09-28",
+        "change": "首次收录；稳定版进入 0.1.x 发布节奏。近 24 小时 main 又加入 OCSF JSONL 审计输出、连接恢复与更小作用域的 provider profile，但这些尚未进入稳定版。",
+        "relevance": "可直接借鉴控制面、可信代理与工作负载三层边界，默认断网、按进程网络归因、凭据只在批准 endpoint 注入、generation-bound 身份以及失联冻结和策略变更证明。",
+        "maturity": "Apache-2.0，架构和 SDK 较完整但仍只有 v0.1.x；Windows 仅 WSL2 experimental，Kubernetes 边界依赖 CNI 真正强制 NetworkPolicy，部分保证还要求特定 Landlock、seccomp 与内核能力。匿名运行指标默认开启但可关闭。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/NVIDIA/OpenShell/blob/main/README.md",
+          "https://github.com/NVIDIA/OpenShell/blob/main/Cargo.toml",
+          "https://github.com/NVIDIA/OpenShell/blob/main/docs/about/architecture.mdx",
+          "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.2"
+        ]
+      },
+      {
+        "repository": "t8y2/dbx",
+        "url": "https://github.com/t8y2/dbx",
+        "description": "约 25 MB 的跨平台数据库客户端，覆盖 100 多种数据库，并同时提供桌面、Web/Docker、CLI、内置 AI 助手和 MCP Server。",
+        "category": "application",
+        "stack": ["Tauri 2/Rust", "Vue 3/Pinia/CodeMirror", "Node.js 22+/pnpm 10", "Native DB drivers/JDBC plugins", "MCP/CLI"],
+        "totalStars": 22021,
+        "dailyStars": 232,
+        "trending": { "period": "daily", "stars": 232 },
+        "heatEvidence": "GitHub Trending 日榜；09:03 左右页面快照显示 22,021 Star、当日新增 232。",
+        "release": "v0.6.28 · 2026-09-30（北京时间）",
+        "change": "首次收录；v0.6.28 新增可选择内容的本地备份导出/恢复、插件 AI 接口、NebulaGraph 3.x 与 CSV 小数分隔符支持；敏感备份以同步密码加密，插件 AI 调用由 DBX 托管凭据并要求用户确认。",
+        "relevance": "是数据库 Agent/MCP 的真实高权限样本，可借鉴凭据代理、每次 AI 调用确认、只把显式选区发送到上下文、MCP 工具白名单、插件命令隔离与审计。",
+        "maturity": "Apache-2.0、跨平台和发布资产完整；但生产数据库连接、插件命令、AI 上下文与 MCP 都能触及敏感数据。备份保护依赖用户密码强度，Web 绑定非 loopback 也会扩大攻击面，宜先用只读账号和测试库。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/t8y2/dbx/blob/main/README.md",
+          "https://github.com/t8y2/dbx/blob/main/package.json",
+          "https://github.com/t8y2/dbx/releases/tag/v0.6.28"
+        ]
+      },
+      {
+        "repository": "oblien/openship",
+        "url": "https://github.com/oblien/openship",
+        "description": "开源自托管部署平台，从仓库检测、构建与发布到路由、TLS 和回滚形成内置 CI/CD，可从桌面、Web、CLI、SDK 或 MCP 驱动。",
+        "category": "application",
+        "stack": ["TypeScript/Bun", "Hono", "Next.js 16/React 19", "PostgreSQL/Redis/BullMQ", "Docker/OpenResty", "k3s/WireGuard/S3"],
+        "totalStars": 13835,
+        "dailyStars": 437,
+        "trending": { "period": "daily", "stars": 437 },
+        "heatEvidence": "GitHub Trending 日榜；09:03 左右页面快照显示 13,835 Star、当日新增 437。",
+        "release": "v0.8.0 · 2026-09-27",
+        "change": "首次收录；v0.8.0 新增多服务器私网与集群、1–100 replicas、k3s 就绪检查、Postgres/Redis 集群、共享卷、Node SDK 和扩展 MCP；candidate release command 失败或超时不会切走活动流量。",
+        "relevance": "可借鉴 candidate/active release 分离、失败不替换活动版本、不可变镜像与回滚、集群安装分步回执、网络拓扑验证，以及先恢复到新实例再显式切换。",
+        "maturity": "Apache-2.0、能力宽但仍快速演进；自托管 API 容器会挂载宿主 Docker socket，host ops 也可经 SSH 控制宿主，本质是高权限控制面而不是不可信构建沙箱。应使用独立管理节点并收紧 webhook、Secrets 与出口。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/oblien/openship/blob/main/README.md",
+          "https://github.com/oblien/openship/blob/main/apps/api/package.json",
+          "https://github.com/oblien/openship/blob/main/docker/docker-compose.yml",
+          "https://github.com/oblien/openship/releases/tag/v0.8.0"
+        ]
+      },
+      {
+        "repository": "VectifyAI/PageIndex",
+        "url": "https://github.com/VectifyAI/PageIndex",
+        "description": "不依赖向量库或固定切块的 reasoning-based RAG，以 PDF 布局生成层级树，再让 LLM 沿树检索；同一客户端可运行本地模式或连接 Cloud。",
+        "category": "ai-agent",
+        "stack": ["Python 3.10+", "OpenAI/openai-agents", "LiteLLM/Anthropic", "MCP", "PyPDF2/pypdfium2", "Poetry"],
+        "totalStars": 37388,
+        "dailyStars": 835,
+        "trending": { "period": "daily", "stars": 835 },
+        "heatEvidence": "GitHub Trending 日榜；09:03 左右页面快照显示 37,388 Star、当日新增 835。",
+        "release": "v0.2.20 · 2026-09-28",
+        "change": "首次收录；v0.2.20 让 Flash 以布局统计生成树、LLM 只负责摘要，并行展开节点与摘要；同时统一 local/cloud API，加入 Agent 工具包、流式响应、模型路由、页/块引用和多语种 fallback。",
+        "relevance": "适合作为“文档是非可信输入”的上下文层：检索工具默认只读、local/cloud 数据边界显式、按 doc_id 授权、限制 LLM/token/并发，并让引用证据随结果返回。",
+        "maturity": "MIT，但 pyproject 仍标 Alpha；本地模式不需要 PageIndex API key 或向量库，不代表文档不会进入所配置的 LLM provider。Cloud 会托管文档，扫描 PDF 能力偏 Cloud，仍需防 prompt injection、成本失控和长文档延迟。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/VectifyAI/PageIndex/blob/main/README.md",
+          "https://github.com/VectifyAI/PageIndex/blob/main/pyproject.toml",
+          "https://github.com/VectifyAI/PageIndex/releases/tag/v0.2.20"
+        ]
+      },
+      {
+        "repository": "vectorize-io/hindsight",
+        "url": "https://github.com/vectorize-io/hindsight",
+        "description": "面向 Agent 的长期记忆服务，以 retain、recall、reflect 管理事实、经验、观察与观点，并融合语义、关键词、实体图和时间检索。",
+        "category": "ai-agent",
+        "stack": ["Python 3.11+", "FastAPI/Uvicorn", "PostgreSQL/pgvector", "Next.js", "Docker/Helm", "MCP/Prometheus"],
+        "totalStars": 42854,
+        "dailyStars": 2575,
+        "trending": { "period": "daily", "stars": 2575 },
+        "heatEvidence": "GitHub Trending 日榜；09:03 左右页面快照显示 42,854 Star、当日新增 2,575。",
+        "release": "v0.10.2 · 2026-09-29（北京时间）",
+        "change": "连续第二天收录，因为稳定版从 v0.10.1 升到 v0.10.2：新增 per-scope consolidation strategy；mental-model delta 不合 schema 时拒绝重试；refresh 失败停止持续触发 LLM 账单；租户指标标签改为配置开关，并修复分页、时区与 Oracle 路径。",
+        "relevance": "除记忆写授权与陈旧结果拒绝外，本次尤其可借鉴按 scope 选择 consolidation policy、失败后停止计费循环，以及默认抑制高基数租户指标。",
+        "maturity": "MIT、本地/云端、MCP、Helm 与 benchmark 较完整，但仍是 v0.10.x；自动记忆存在敏感数据、提示注入、投毒和跨 scope 泄漏风险，外层仍需 ACL、保留期、审计与回滚。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/vectorize-io/hindsight/blob/main/README.md",
+          "https://github.com/vectorize-io/hindsight/blob/main/hindsight-api-slim/pyproject.toml",
+          "https://github.com/vectorize-io/hindsight/releases/tag/v0.10.2"
+        ]
+      },
+      {
+        "repository": "mvschwarz/openrig",
+        "url": "https://github.com/mvschwarz/openrig",
+        "description": "把 Claude Code、Codex、Pi 等 CLI Agent 编成持久团队的本地多 Agent harness，用独立席位、工作区、消息队列、daemon 与 TUI 协调运行。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js 22/24", "Hono", "SQLite/better-sqlite3", "tmux", "Codex/Claude hooks", "CLI/TUI/UI"],
+        "totalStars": 2447,
+        "dailyStars": 737,
+        "trending": { "period": "daily", "stars": 737 },
+        "heatEvidence": "GitHub Trending 日榜；09:03 左右页面快照显示 2,447 Star、当日新增 737。",
+        "release": "v0.6.1 · 2026-09-29（北京时间）",
+        "change": "连续第二天收录，因为稳定版从 v0.6.0 升到 v0.6.1：改善统一帮助路径、execution 解析、Codex fresh prompt/status、非 UTC 启动时间和 linked worktree 识别，并扩充打包、队列耐久性与多界面检查。",
+        "relevance": "可借鉴启动上下文和 generation 时间校验、human/bare-shell typing guard、工作树身份解析、轮询背压，以及用故障种子验证测试确实能捕获失败。",
+        "maturity": "Apache-2.0，仍明确只适合 trusted local/private environment；v0.6.1 实机验证偏 macOS ARM64/Node 24，原生 Windows 和部分 runtime 路径未完整覆盖，CLI 权限模式也不能替代系统级隔离。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/mvschwarz/openrig/blob/main/README.md",
+          "https://github.com/mvschwarz/openrig/blob/v0.6.1/package.json",
+          "https://github.com/mvschwarz/openrig/releases/tag/v0.6.1"
+        ]
+      },
+      {
+        "repository": "pbakaus/impeccable",
+        "url": "https://github.com/pbakaus/impeccable",
+        "description": "面向 Coding Agent 的前端设计 Skill，以持久产品上下文、24 个设计命令、浏览器实时迭代和 61 条确定性规则检查 AI 生成界面。",
+        "category": "ai-agent",
+        "stack": ["Rust 2021 multi-crate engine", "Node.js 22+/Bun", "Playwright/Puppeteer", "Browser extension", "VS Code/Multi-agent adapters"],
+        "totalStars": 72573,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 2644 },
+        "heatEvidence": "GitHub Trending 周榜；09:03 左右页面快照显示 72,573 Star、本周新增 2,644。未进入当日日榜，日增量记为未知。",
+        "release": "engine-v0.1.8 · 2026-09-30（北京时间）",
+        "change": "首次收录；最新 engine artifact 固定了生成 decision comps 前的视觉规则读取路径。main 另有 JSX 注释图片检测修复，但晚于 tag，未当作已发版能力。",
+        "relevance": "其“先记录持久产品事实、再生成；确定性 detector 与 LLM critique 分层；在浏览器中留下可审阅证据”的方式可用于 ATLAS 的 UI 生成评测与回归。",
+        "maturity": "Apache-2.0、测试与 provider 覆盖较广，但 engine 首次使用会下载二进制到用户目录；live browser、端口绑定和代码修改仍需独立权限边界。Skill 指令和自动下载资产应视为供应链输入，而非安全沙箱。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/pbakaus/impeccable/blob/main/README.md",
+          "https://github.com/pbakaus/impeccable/blob/main/Cargo.toml",
+          "https://github.com/pbakaus/impeccable/releases/tag/engine-v0.1.8"
+        ]
+      },
+      {
+        "repository": "pydantic/pydantic-ai",
+        "url": "https://github.com/pydantic/pydantic-ai",
+        "description": "以 Pydantic 类型与验证为核心的生产级 Agent 框架，覆盖工具调用、MCP、评测、OpenTelemetry，以及 Temporal、DBOS、Prefect 等持久工作流集成。",
+        "category": "ai-agent",
+        "stack": ["Python 3.10+", "Pydantic 2", "MCP", "OpenTelemetry/Logfire", "Temporal/DBOS/Prefect", "Bubblewrap/E2B/Sprites/Modal/SSH"],
+        "totalStars": 20273,
+        "dailyStars": null,
+        "heatEvidence": "重要版本补充来源（非 Trending）：约 09:11 GitHub 仓库页面显示 20,273 Star；日增量未知。",
+        "release": "v2.52.0 · 2026-09-30（北京时间）",
+        "change": "版本补充；将 pydantic-ai-harness 纳入单仓发布并加入统一 ctx.workspace，同一工具接口可落到本机、Sprites、E2B、SSH、Bubblewrap、Modal 等后端；同时修复本地 web_fetch 处理恶意深层 HTML 时可能耗尽 CPU/内存的 GHSA-v36g-jcw9-x7cw。",
+        "relevance": "直接提供“工具 API 与执行后端解耦”的 workspace 接口，可借鉴一致的文件操作、预算与子 Agent 计费、轨迹评测、只读目录规则和禁网时阻断 socket。",
+        "maturity": "MIT、生态和文档成熟，但本次版本改动面大；Bubblewrap 仅是 Linux namespace 级隔离，不等于 microVM，SSH/E2B/Sprites/Modal 也各有凭据、网络、成本与供应商信任边界。使用旧版本地 web_fetch 的部署应优先升级。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/pydantic/pydantic-ai/releases/tag/v2.52.0",
+          "https://github.com/pydantic/pydantic-ai/blob/v2.52.0/README.md",
+          "https://github.com/pydantic/pydantic-ai/blob/v2.52.0/pyproject.toml"
+        ]
+      },
+      {
+        "repository": "opensandbox-group/OpenSandbox",
+        "url": "https://github.com/opensandbox-group/OpenSandbox",
+        "description": "通用 AI Sandbox 平台，以统一 API 管理 Docker、Kubernetes、Firecracker、gVisor、Kata 与 Bubblewrap 等运行后端，并提供多语言 SDK、MCP 和 CLI。",
+        "category": "sandbox-infra",
+        "stack": ["Python server", "gRPC/OpenAPI", "Docker/Kubernetes/Helm", "Firecracker/gVisor/Kata/Bubblewrap", "Multi-language SDKs", "Cosign/provenance"],
+        "totalStars": 15594,
+        "dailyStars": null,
+        "heatEvidence": "重要预发布补充来源（非 Trending）：约 09:11 GitHub 仓库页面显示 15,594 Star；日增量未知。",
+        "release": "v1.1.1-rc.1 · 2026-09-28（预发布）",
+        "change": "版本补充；1.1.0 的 opensandbox-server wheel 漏打 FastPath gRPC stub、安装后无法 import，本 RC 修复该问题，并带来 pause/resume、共享 Kubernetes namespace 租户隔离、watch 驱动创建、CONNECT 出口代理和多 overlay。",
+        "relevance": "生命周期状态机、resourceVersion 并发前提、跨租户对象隐藏为 404、网络 fail-closed、暂停/恢复、预热池以及可观测错误分类都可直接参考。",
+        "maturity": "Apache-2.0，但这是 RC 且只发布镜像、不发布 SDK/CLI 包；1.1.0 wheel 已坏且不可替换。未标 tenant 的旧 sandbox 在过期前仍可见，Docker publish_host 默认仍为 0.0.0.0。应固定镜像 digest、验证 Cosign，并避免把 RC 当稳定版。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/opensandbox-group/OpenSandbox/releases/tag/release-1.1.1-rc.1",
+          "https://github.com/opensandbox-group/OpenSandbox/blob/release-1.1.1-rc.1/README.md",
+          "https://github.com/opensandbox-group/OpenSandbox/tree/release-1.1.1-rc.1"
+        ]
+      },
+      {
+        "repository": "siderolabs/talos",
+        "url": "https://github.com/siderolabs/talos",
+        "description": "面向 Kubernetes 的不可变最小化 Linux 节点操作系统，以 API 驱动配置和升级，减少 SSH、包管理器与可变宿主带来的运维面。",
+        "category": "sandbox-infra",
+        "stack": ["Go", "Linux 6.18", "containerd 2.3", "runc 1.5", "Kubernetes 1.37", "Immutable node OS"],
+        "totalStars": 11260,
+        "dailyStars": null,
+        "heatEvidence": "重要版本补充来源（非 Trending）：约 09:11 GitHub 仓库页面显示 11,260 Star；日增量未知。",
+        "release": "v1.14.2 · 2026-09-30（北京时间）",
+        "change": "版本补充；升级 Linux、containerd、runc、Kubernetes 与 Go，并按 kubelet 启动规则校验、清理失效的 CPU/Memory Manager state；同时修复 WireGuard PSK 出现在 LinkStatus、CRI 与 sandboxd 条件以及若干存储/网络问题。",
+        "relevance": "适合作为 Kubernetes Agent Sandbox 的节点底座样本；资源管理状态一致性影响调度容量，运行时补丁、密钥不出状态 API 和 sandboxd 条件也直接关系多租户执行。",
+        "maturity": "生产工程较成熟，但 Talos 是节点 OS 而不是工作负载隔离本身；升级应经过 canary、drain 与回滚，强隔离仍需 gVisor、Kata 或 microVM RuntimeClass。状态校验也只覆盖渲染后的 kubelet extraConfig。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/siderolabs/talos/releases/tag/v1.14.2",
+          "https://github.com/siderolabs/talos/blob/v1.14.2/README.md",
+          "https://github.com/siderolabs/talos/blob/v1.14.2/go.mod"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-09-30T01:00:42.655Z",
+      "completedAt": "2026-09-30T01:15:01.778Z",
+      "status": "succeeded",
+      "sourceDate": "2026-09-30",
+      "notes": [
+        "本次自动任务于北京时间约 09:00 正常触发；Trending 数字按 09:03 左右实际页面快照记录。",
+        "日榜共 14 项，本期选用 6 项；教材、个人学习指南以及缺少近期变化且与 Sandbox 关联较弱的旧工具没有为凑数收录。",
+        "Hindsight 与 OpenRig 连续第二天出现，但分别发布 v0.10.2 与 v0.6.1 稳定版，因此明确说明新增变化后复访；其余昨日项目未重复。",
+        "Impeccable 来自周榜，dailyStars 记为未知；Pydantic AI、OpenSandbox 与 Talos 是明确标注的版本补充，不混称为 Trending。",
+        "OpenSandbox 1.1.1-rc.1 是预发布且只发布镜像，内容未把它描述成稳定版本；所有项目限制均按 README、依赖配置与 Release 交叉核对。"
+      ]
+    }
+  }
+}
