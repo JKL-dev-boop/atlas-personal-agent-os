@@ -1,0 +1,253 @@
+{
+  "id": "daily-2026-10-01",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-10-01",
+  "slug": "2026-10-01",
+  "summary": "今天的主线是把 Agent 执行边界做成可恢复、可计量、可证明的状态机：OpenClaw 用一致快照、隔离 worktree 与重启续跑管理长任务，gVisor 在快照、挂载和控制面失败时收紧到 fail-closed，Kueue 修复准入后扩容绕过配额的问题，Claude Code Action 则把 runner、出口和工具权限策略写进确定性 CI。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-10-01T01:01:35.331Z",
+  "updatedAt": "2026-10-01T01:13:31.066Z",
+  "payload": {
+    "editionDate": "2026-10-01",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "openclaw/openclaw",
+      "google/gvisor",
+      "kubernetes-sigs/kueue",
+      "anthropics/claude-code-action",
+      "heygen-com/hyperframes"
+    ],
+    "projects": [
+      {
+        "repository": "openclaw/openclaw",
+        "url": "https://github.com/openclaw/openclaw",
+        "description": "自托管个人与团队 AI 助手，以本地 Gateway 统一会话、工具、事件和 20 多种聊天渠道，并可接 Claude、Codex、本地模型、技能、插件与跨平台 companion apps。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js 24/26", "pnpm workspace/Express 5", "Playwright", "SQLite", "Native desktop/mobile apps", "Docker/Podman/OpenShell/Crabbox"],
+        "totalStars": 390992,
+        "dailyStars": 136,
+        "trending": { "period": "daily", "stars": 136 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 390,992 Star、当日新增 136。",
+        "release": "v2026.9.7 · 2026-10-01（北京时间）",
+        "change": "首次收录；新版本在更新前为 state 与 Agent 数据库生成一致快照并支持迁移失败回滚，增加 OpenAI Agents API、可隔离的 managed worktree、Gateway 重启后续跑在途 worker turn、Incognito 生命周期、session-scoped preview 与 Crabbox 凭据驻留。",
+        "relevance": "可直接借鉴 session worktree 隔离、Gateway/worker 分层、更新前快照与回滚、按会话预览、角色化模型/工具策略、重启续跑和 worker pool 可观测性。",
+        "maturity": "MIT、工程和发布体系庞大，但 sandbox 默认关闭，主会话工具默认仍在宿主执行，Gateway 也始终留在宿主；tools.elevated 是显式越界口。聊天消息、附件、插件和技能都应按不可信输入处理，凭据与长期记忆集中在本机也扩大单机失陷影响。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/openclaw/openclaw/blob/main/README.md",
+          "https://github.com/openclaw/openclaw/blob/v2026.9.7/package.json",
+          "https://github.com/openclaw/openclaw/releases/tag/v2026.9.7",
+          "https://github.com/openclaw/openclaw/blob/v2026.9.7/docs/gateway/sandboxing.md"
+        ]
+      },
+      {
+        "repository": "mvschwarz/openrig",
+        "url": "https://github.com/mvschwarz/openrig",
+        "description": "把 Claude Code、Codex、Pi 等 CLI Agent 编成持久团队的本地多 Agent harness，以独立席位、工作区、消息队列、daemon 与 TUI 协调运行。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js 22/24", "Hono", "SQLite/better-sqlite3", "tmux", "Codex/Claude hooks", "CLI/TUI/UI"],
+        "totalStars": 3031,
+        "dailyStars": 624,
+        "trending": { "period": "daily", "stars": 624 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 3,031 Star、当日新增 624。",
+        "release": "v0.6.3 · 2026-10-01（北京时间）",
+        "change": "连续第三天收录，因为稳定版由昨日 v0.6.1 连升至 v0.6.3：增加首项目 provider/owner/checker 配方与权限引导，并修复 managed Claude seat 被 shell wrapper 误判为裸 shell、无法收消息的问题；清理失败 snapshot helper 时也要求可证明 ownership。",
+        "relevance": "进程树与 native session identity 双重证明、ownership 可证才清理、archived/live identity 分离、队列保留，以及证据文件类型和显式覆盖语义，都适合多 Agent 控制面。",
+        "maturity": "Apache-2.0，但 v0.6.3 对 Claude 判定的验证主要依赖 synthetic process metadata，仍有“验证后进程退出再输入”的 TOCTOU 风险；项目明确只适合可信本地/私有环境，不是系统级隔离。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/mvschwarz/openrig/blob/main/README.md",
+          "https://github.com/mvschwarz/openrig/blob/v0.6.3/package.json",
+          "https://github.com/mvschwarz/openrig/releases/tag/v0.6.3"
+        ]
+      },
+      {
+        "repository": "t8y2/dbx",
+        "url": "https://github.com/t8y2/dbx",
+        "description": "覆盖 100 多种数据库的跨平台桌面、Web/Docker 与 CLI 客户端，并内置 AI 助手和 MCP Server。",
+        "category": "application",
+        "stack": ["Tauri 2/Rust", "Vue 3/Pinia/CodeMirror", "Node.js 22+/pnpm", "Native DB drivers/JDBC plugins", "MCP/CLI"],
+        "totalStars": 23192,
+        "dailyStars": 1138,
+        "trending": { "period": "daily", "stars": 1138 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 23,192 Star、当日新增 1,138。",
+        "release": "v0.6.29 · 2026-09-30（北京时间）",
+        "change": "连续第二天收录，因为稳定版从 v0.6.28 升到 v0.6.29：新增 DB2 导入/传输、SQL INSERT 批量粘贴、插件 workbench 命令和大值分段预览；修复 Linux Secret Service 查询、CSV/TSV 公式注入、无主键 PostgreSQL 大表传输，并让 MCP 策略只在显式 Apply 后持久化。",
+        "relevance": "可借鉴 MCP policy 显式提交、Secret Service、CSV 公式注入防护、文件路径 allowlist、大值分段与表级限量，以及插件命令和生产环境水印。",
+        "maturity": "Apache-2.0、发布资产和驱动面完整，但数据库凭据、插件命令、AI 上下文与 MCP 都能触及生产数据；插件 workbench 新增执行能力后更需要独立进程、命令白名单与只读数据库账号。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/t8y2/dbx/blob/main/README.md",
+          "https://github.com/t8y2/dbx/blob/main/package.json",
+          "https://github.com/t8y2/dbx/releases/tag/v0.6.29"
+        ]
+      },
+      {
+        "repository": "heygen-com/hyperframes",
+        "url": "https://github.com/heygen-com/hyperframes",
+        "description": "把 HTML、CSS、媒体与可 seek 动画确定性渲染为 MP4，并提供 CLI、Studio 和 Agent skills，覆盖产品视频、PR 演示、字幕、motion graphics 与 slides 等流程。",
+        "category": "application",
+        "stack": ["TypeScript/Node.js 22", "HTML/CSS", "Hono", "Puppeteer/Chromium", "Sharp/FFmpeg", "AWS Lambda/GCP Cloud Run"],
+        "totalStars": 54738,
+        "dailyStars": 349,
+        "trending": { "period": "daily", "stars": 349 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 54,738 Star、当日新增 349。",
+        "release": "v0.8.99 · 2026-10-01（北京时间）",
+        "change": "距 9 月 8 日收录后复访，版本已从 v0.8.31 前进 68 个 patch；最新版保证 reader 不会看到空或半写项目文件，让 staged scene copy 使用自己的 render frame，并改进拖拽、裁剪、timeline 动画同步与 edit-accuracy benchmark。",
+        "relevance": "可借鉴媒体流水线的 intent→lint/check→preview→render 分层、确定性时间轴、项目文件原子写入、视觉误差基线和云 worker 资源隔离；也契合 ATLAS 的 PPT/PDF 到视频预告扩展。",
+        "maturity": "Apache-2.0、文档和测试丰富，但 0.8.x 发布频繁，API 和行为仍快速变化；Chromium 与 FFmpeg 资源开销大，Skills 和媒体依赖也是供应链输入。云渲染还涉及素材许可、上传隐私和费用，应固定版本并限制 worker 资源与网络。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/heygen-com/hyperframes/blob/main/README.md",
+          "https://github.com/heygen-com/hyperframes/blob/v0.8.99/packages/cli/package.json",
+          "https://github.com/heygen-com/hyperframes/releases/tag/v0.8.99"
+        ]
+      },
+      {
+        "repository": "colbymchenry/codegraph",
+        "url": "https://github.com/colbymchenry/codegraph",
+        "description": "为 coding agent 在本地预构建并实时同步代码知识图谱，把 symbol、call、import、路由、前后端 request、事件与变更 blast radius 通过 MCP/CLI 精确返回。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js 20–24", "Rust parsing kernel", "Tree-sitter WASM", "SQLite", "Filesystem watcher", "MCP/CLI"],
+        "totalStars": 72597,
+        "dailyStars": 118,
+        "trending": { "period": "daily", "stars": 118 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 72,597 Star、当日新增 118。",
+        "release": "v1.6.1 · 2026-09-29",
+        "change": "首次收录；v1.6.1 新增多种 Web 框架的 route、navigate 和 request edge，Flow 每一跳携带条件；MCP 重建后跟随新索引，中断同步可恢复到与 clean index 等价的状态，并显式标记 explore 结果截断。",
+        "relevance": "适合作为代码上下文层：用本地预索引和精确检索减少工具往返；可把 watcher/indexer 作为受配额后台 worker，并用截断标记、索引 generation、增量与全量等价性建立结果契约。",
+        "maturity": "MIT、v1.6.x 且多语言覆盖广，但安装包含原生预编译 kernel，需要供应链审查；图谱是派生索引，升级常需重建。本地索引不代表源码不会进入模型，MCP 返回片段仍会发送给所用 provider，大仓库也需要 CPU、内存和磁盘配额。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/colbymchenry/codegraph/blob/main/README.md",
+          "https://github.com/colbymchenry/codegraph/blob/v1.6.1/package.json",
+          "https://github.com/colbymchenry/codegraph/releases/tag/v1.6.1"
+        ]
+      },
+      {
+        "repository": "harry0703/MoneyPrinterTurbo",
+        "url": "https://github.com/harry0703/MoneyPrinterTurbo",
+        "description": "从主题或关键词自动生成脚本、匹配素材、合成 TTS、字幕、背景音乐与高清视频，并提供 WebUI、API、CLI 批处理和自动发布。",
+        "category": "application",
+        "stack": ["Python 3.11+", "Streamlit/FastAPI/Uvicorn", "MoviePy/FFmpeg", "Redis", "faster-whisper", "LiteLLM/OpenAI/Google/Azure"],
+        "totalStars": 127572,
+        "dailyStars": 431,
+        "trending": { "period": "daily", "stars": 431 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 127,572 Star、当日新增 431。",
+        "release": "v1.3.7 · 2026-09-13",
+        "change": "首次收录；正式版加入逐字字幕、动画、BGM 试听、更多 TTS 和显式成本确认。近 24 小时 main 又加入 Redis queue 原子接纳、异步上传 tracking、账号绑定、阶段产物仅在完整编码成功后原子发布和细粒度进度，但这些尚未发版。",
+        "relevance": "是长时多阶段媒体任务样本，可借鉴队列幂等、外部 provider 异步回执、账号绑定、阶段产物原子发布、进度与失败恢复，以及 FFmpeg worker 资源配额。",
+        "maturity": "MIT、provider 丰富，但 API key、发布账号、素材下载、LLM/TTS/视频 provider 形成很大的凭据与供应链面；API key 配置为空时仍保留无认证兼容。关键可靠性修复还在 main，试跑应固定版本、使用测试账号和临时素材卷，并设置版权与发布审批。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/harry0703/MoneyPrinterTurbo/blob/main/README.md",
+          "https://github.com/harry0703/MoneyPrinterTurbo/blob/main/pyproject.toml",
+          "https://github.com/harry0703/MoneyPrinterTurbo/releases/tag/v1.3.7"
+        ]
+      },
+      {
+        "repository": "anthropics/claude-code-action",
+        "url": "https://github.com/anthropics/claude-code-action",
+        "description": "Anthropic 官方 GitHub Action，可在 Issue、PR、评论或自动任务中运行 Claude Code，完成问答、代码审查、修改、分类和结构化输出。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Bun", "Composite GitHub Action", "Claude Agent SDK 0.3.286", "Octokit", "MCP SDK", "Zod/OIDC"],
+        "totalStars": 9283,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 329 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 9,283 Star、本周新增 329。未进入当日日榜，日增量记为未知。",
+        "release": "v1.0.238 · 2026-10-01（北京时间）",
+        "change": "首次收录；新版本把仓库中调用 Claude 的工作流迁到 ubuntu-24.04-firewall runner，使用 enforce 且不允许通配符的出口白名单；无人值守任务显式 auto permission，公共 Issue 分类禁用网络与写工具，并用 CI 阻止未来绕过这些约束。",
+        "relevance": "短期 OIDC、最小 GitHub 权限、出口白名单、工具 deny-list，以及“策略本身也由 CI 校验”的方式，非常适合 ATLAS 后台日报流水线。",
+        "maturity": "MIT、官方且已进入 v1，但 Action 在使用者自己的 runner 上执行；allowed_non_write_users 会绕过主要身份门槛，best-effort 密钥清洗也不能消除提示注入。不可信 checkout、pull_request_target、PR 可控依赖与第三方插件都可能触及 Secret。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/anthropics/claude-code-action/blob/main/README.md",
+          "https://github.com/anthropics/claude-code-action/blob/main/package.json",
+          "https://github.com/anthropics/claude-code-action/releases/tag/v1.0.238"
+        ]
+      },
+      {
+        "repository": "google/gvisor",
+        "url": "https://github.com/google/gvisor",
+        "description": "面向容器的不可信工作负载隔离层，以用户态应用内核和 OCI runsc 拦截系统调用，可接 Docker、containerd 与 Kubernetes。",
+        "category": "sandbox-infra",
+        "stack": ["Go 1.26/Bazel", "runsc OCI runtime", "containerd shim", "User-space kernel", "x86_64/ARM64", "Docker/Kubernetes"],
+        "totalStars": 19470,
+        "dailyStars": null,
+        "heatEvidence": "重要版本补充来源（非 Trending）：约 09:10 GitHub 仓库页面显示 19,470 Star；日增量未知。",
+        "release": "20260928.0 · 2026-10-01（北京时间）",
+        "change": "版本补充；statefile hash 不匹配时 fail closed，VFS 在访问路径强制 noexec/只读，nftables 校验 checksum offset 并拒绝不适用 target；runsc shim 的 kill、Stats、Status 增加 30 秒上限，并新增 cgroup v2 freeze、bwrap personality 与安全文档处理示例。",
+        "relevance": "直接对应不可信代码隔离、快照完整性、只读挂载、冻结/恢复和命令控制面超时，是今天最贴近 Agent Sandbox 运行时的版本。",
+        "maturity": "项目成熟并有生产使用，但周更版本仍应 canary；共享宿主内核上的用户态内核不是硬件 VM，存在 syscall 兼容和性能差异。GPU、nested Docker 与部分网络功能可能要求放宽能力，需逐项验证。本版是安全加固型发布，并非已披露 CVE。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/google/gvisor/releases/tag/release-20260928.0",
+          "https://github.com/google/gvisor/blob/release-20260928.0/README.md",
+          "https://github.com/google/gvisor/blob/release-20260928.0/go.mod",
+          "https://github.com/google/gvisor/blob/release-20260928.0/SECURITY.md"
+        ]
+      },
+      {
+        "repository": "kubernetes-sigs/kueue",
+        "url": "https://github.com/kubernetes-sigs/kueue",
+        "description": "Kubernetes SIG 维护的 Job 级准入与队列管理器，提供配额、公平共享、拓扑感知、设备资源和多集群调度。",
+        "category": "sandbox-infra",
+        "stack": ["Go 1.27", "Kubernetes 1.37 APIs", "CRD/controllers", "KubeRay/Spark/Kubeflow/MPI", "DRA", "Prometheus/KueueViz"],
+        "totalStars": 3021,
+        "dailyStars": null,
+        "heatEvidence": "重要版本补充来源（非 Trending）：约 09:10 GitHub 仓库页面显示 3,021 Star；日增量未知。",
+        "release": "v0.20.0 · 2026-10-01（北京时间）",
+        "change": "版本补充；公平共享在 quota reservation 时计入 LocalQueue 使用量，并修复 LeaderWorkerSet 准入后扩大 group size 绕过预留配额；同时修正 DRA、Pod/Spark overhead 计量，增加动态 quota、设备可行性、排队原因与恢复/执行时长指标。",
+        "relevance": "很适合借鉴多租户 Agent Sandbox 的准入、公平共享、GPU/设备配额、拓扑选择、超时回收，以及“为什么仍在排队”的可观测性。",
+        "maturity": "正式版但仍为 v0.x；升级不再提供 v1beta1，必须迁移到 v1beta2，错误 gate/config 可能阻止 controller 启动。计量修正后已有任务也可能转为 pending，应先迁移、审计 quota 并分阶段升级。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/kubernetes-sigs/kueue/releases/tag/v0.20.0",
+          "https://github.com/kubernetes-sigs/kueue/blob/v0.20.0/README.md",
+          "https://github.com/kubernetes-sigs/kueue/blob/v0.20.0/go.mod"
+        ]
+      },
+      {
+        "repository": "anthropics/claude-agent-sdk-typescript",
+        "url": "https://github.com/anthropics/claude-agent-sdk-typescript",
+        "description": "面向 TypeScript/Node 的 Claude Agent SDK，把 Claude Code 的代码理解、文件编辑、命令执行、子 Agent 与 MCP 能力暴露给可编程工作流。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js", "Claude Code runtime", "MCP", "JSON Schema", "npm package", "Multi-agent/task tracking"],
+        "totalStars": 1780,
+        "dailyStars": null,
+        "heatEvidence": "重要版本补充来源（非 Trending）：约 09:10 GitHub 仓库页面显示 1,780 Star；日增量未知。",
+        "release": "v0.3.286 · 2026-10-01（北京时间）",
+        "change": "版本补充；foreground subagent 现在能获得 tools/allowedTools 中的任务跟踪工具；单个 MCP tool schema 无法转换时只跳过该工具并点名告警，不再清空整个 server；同时修复 in-process MCP 断开/重启，并明确用户 now 消息对后台 shell、Agent 与 MCP 调用的处理。",
+        "relevance": "子 Agent 工具传递、单工具失败时的局部降级、MCP 生命周期，以及中断后后台化/加入当前 turn 的语义，都适合 Agent 执行控制面。",
+        "maturity": "正式 GitHub Release 但 SDK 仍为 0.x；省略 permissionMode 现在会交给 Claude Code 设置，第三方 provider 或关闭 telemetry 时可能以 auto mode 启动。需要人工审批的系统应显式传 default 并做回归测试；SDK 本身也不是隔离边界。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.286",
+          "https://github.com/anthropics/claude-agent-sdk-typescript/blob/v0.3.286/README.md",
+          "https://github.com/anthropics/claude-agent-sdk-typescript/blob/v0.3.286/CHANGELOG.md"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-10-01T01:01:35.331Z",
+      "completedAt": "2026-10-01T01:13:31.066Z",
+      "status": "succeeded",
+      "sourceDate": "2026-10-01",
+      "notes": [
+        "本次自动任务于北京时间约 09:01 正常触发；Trending 数字按 09:02 左右实际页面快照记录。",
+        "日榜共 17 项，本期选用 6 项；资料清单、旧 Skill 包、教材、关联较弱的 SDK 以及没有新增变化的复访项目未为凑数收录。",
+        "OpenRig 与 DBX 连续出现，但分别发布 v0.6.3 与 v0.6.29 稳定版，因此明确说明变化后复访；OpenShell 只有预发布和未发版修复，今天不再占位。",
+        "HyperFrames 是距 9 月 8 日后的版本复访，并非连续重复；其余日榜入选项目均为首次收录。",
+        "Claude Code Action 来自周榜，dailyStars 记为未知；gVisor、Kueue 与 Claude Agent SDK TypeScript 是明确标注的版本补充，不混称为 Trending。"
+      ]
+    }
+  }
+}
