@@ -1,0 +1,258 @@
+{
+  "id": "daily-2026-10-02",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-10-02",
+  "slug": "2026-10-02",
+  "summary": "今天的主线是把 Agent 系统从“能运行”推进到“可控制、可恢复、可追责”：Kubernetes Agent Sandbox 把命令、文件和流式传输接入 SDK，Agent Substrate 收紧出口、身份与快照边界，Pi v1.0.0 加固 MCP OAuth，StarNet 则把预算熔断、逐步试跑和中断续跑做进可见工作流。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-10-02T01:00:57.474Z",
+  "updatedAt": "2026-10-02T01:13:58.144Z",
+  "payload": {
+    "editionDate": "2026-10-02",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "kubernetes-sigs/agent-sandbox",
+      "moby/buildkit",
+      "agent-substrate/substrate",
+      "earendil-works/pi",
+      "pbakaus/impeccable"
+    ],
+    "projects": [
+      {
+        "repository": "NVIDIA/OpenShell",
+        "url": "https://github.com/NVIDIA/OpenShell",
+        "description": "面向自主 Agent fleet 的安全运行时，以 Gateway 管理生命周期、可信 supervisor 代理网络与凭据、不可信 workload 在受控 sandbox 中执行，并在放宽策略前检查新增风险。",
+        "category": "sandbox-infra",
+        "stack": ["Rust 2024/Rust 1.94", "Tokio/Axum/Tonic", "Landlock/seccomp/Z3", "Docker/Podman/libkrun", "Kubernetes/Helm", "Python/TypeScript/Go/Rust SDK"],
+        "totalStars": 14021,
+        "dailyStars": 2456,
+        "trending": { "period": "daily", "stars": 2456 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 14,021 Star、当日新增 2,456，为今日最高增量。",
+        "release": "v0.1.3-pre.2 · 2026-10-01（预发布；稳定版仍为 v0.1.2）",
+        "change": "距 9 月 30 日收录后复访；今天新增 2,456 Star，并出现新的 v0.1.3-pre.2 预发布版：把 sandbox identity 与 TLS identity 分离，澄清 Gateway mTLS，并把 workspace scope 纳入 TLS authorization tests。近 24 小时 main 还加入 Agent 输出写入容器日志、Jupyter sandbox 示例和交互 TTY readiness 测试，但这些尚未进入稳定版。",
+        "relevance": "可直接借鉴控制面、可信代理与工作负载三层边界，默认断网、按进程网络归因、凭据只在批准 endpoint 注入、generation-bound 身份，以及失联冻结和策略变更证明。",
+        "maturity": "Apache-2.0，架构、文档和多语言 SDK 已较完整，但仍是 v0.1.x，今天的身份变化只在预发布版；Windows 仅支持实验性的 WSL2，Kubernetes 部署还要求 CNI 真正强制 NetworkPolicy，部分保证依赖特定 Landlock、seccomp 与内核能力。试跑应固定 tag 并用独立 canary。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/NVIDIA/OpenShell/blob/main/README.md",
+          "https://github.com/NVIDIA/OpenShell/blob/v0.1.3-pre.2/Cargo.toml",
+          "https://github.com/NVIDIA/OpenShell/blob/main/docs/about/architecture.mdx",
+          "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.3-pre.2"
+        ]
+      },
+      {
+        "repository": "obra/superpowers",
+        "url": "https://github.com/obra/superpowers",
+        "description": "跨 Claude Code、Codex、Cursor、Pi 等 harness 的可组合 Agent 工程方法，以 skills 串联需求澄清、设计批准、计划、TDD、调试、执行和独立审查。",
+        "category": "ai-agent",
+        "stack": ["Markdown Agent Skills", "Shell/JavaScript helpers", "Plugin manifests", "Claude Code/Codex/Cursor/Pi", "Git worktree/task ledger"],
+        "totalStars": 293976,
+        "dailyStars": 455,
+        "trending": { "period": "daily", "stars": 455 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 293,976 Star、当日新增 455。",
+        "release": "v6.4.2 · 2026-09-26（北京时间）",
+        "change": "距 9 月 10 日收录时的 v6.3.0 后复访；v6.4.1/6.4.2 增加 session 诊断、低开销原地执行的 Native mode、任务账本、计划显式批准与 Review Focus，并把计划压缩到接口、测试断言和规格值，减少冗余执行文本。",
+        "relevance": "可借鉴设计与计划的显式批准、任务账本、fresh reviewer、失败证据引用，以及清理 worktree 时不强删未跟踪文件；这些适合继续校准 ATLAS 的开发规范和多 Agent 交接。",
+        "maturity": "MIT、版本已到 6.x、覆盖多种 harness，但本质是行为指导而不是权限或资源隔离。自动触发的外部 skill 仍是提示与脚本供应链，可能和仓库 AGENTS 规则冲突；每个 harness 都应单独审计且避免重复安装。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/obra/superpowers/blob/v6.4.2/README.md",
+          "https://github.com/obra/superpowers/blob/v6.4.2/.claude-plugin/plugin.json",
+          "https://github.com/obra/superpowers/releases/tag/v6.4.2",
+          "https://github.com/obra/superpowers/releases/tag/v6.4.1"
+        ]
+      },
+      {
+        "repository": "cursor/plugins",
+        "url": "https://github.com/cursor/plugins",
+        "description": "Cursor 官方插件规范与市场仓库；每个插件可组合 manifest、Agent skills、规则、命令、hooks 和 MCP 连接，覆盖研发流程、浏览器、云服务、办公与业务系统。",
+        "category": "ai-agent",
+        "stack": ["JSON/Markdown", "Cursor plugin manifests", "Agent Skills/rules/hooks", "MCP", "TypeScript/Shell per plugin"],
+        "totalStars": 9323,
+        "dailyStars": 150,
+        "trending": { "period": "daily", "stars": 150 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 9,323 Star、当日新增 150。",
+        "release": "持续交付仓库（无 GitHub Release）",
+        "change": "首次收录；仓库把 continual learning、并行编排、兼容性审计、CLI 设计、PR/文档画布与大量第三方连接拆成独立插件，并用根 marketplace 与每插件 manifest 建立可发现的扩展契约。",
+        "relevance": "适合参考 ATLAS 未来插件层：稳定的 manifest、按插件独立说明和变更记录、能力分类、连接器与 skills 分离；还应在此基础上补上来源签名、权限声明、版本锁定、数据范围和撤销流程。",
+        "maturity": "MIT 且由 Cursor 官方维护，但仓库聚合的第三方插件成熟度和数据权限不一致；manifest 只描述能力，不构成运行时隔离。含交易、邮件、云平台等写操作的插件必须逐个审计 MCP server、OAuth scope 和确认门槛。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/cursor/plugins/blob/main/README.md",
+          "https://github.com/cursor/plugins/blob/main/.cursor-plugin/marketplace.json"
+        ]
+      },
+      {
+        "repository": "earendil-works/pi",
+        "url": "https://github.com/earendil-works/pi",
+        "description": "模块化 AI Agent harness，包含统一多模型 API、工具调用与状态管理核心、编码 Agent CLI、TUI、MCP、RPC/插件运行时和厂商中立遥测契约。",
+        "category": "ai-agent",
+        "stack": ["TypeScript 7/Node.js 22", "npm workspaces", "MCP/OAuth", "TUI/codemode", "Multi-provider LLM API", "Agent core/Chord/telemetry"],
+        "totalStars": 111230,
+        "dailyStars": 298,
+        "trending": { "period": "daily", "stars": 298 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 111,230 Star、当日新增 298。",
+        "release": "v1.0.0 · 2026-10-02（北京时间）",
+        "change": "距 9 月 16 日收录后复访，因为今天刚发布 v1.0.0：默认全屏 TUI，codemode 默认提示约从 5,300 降至 3,300 token，脚本可调用图像模型；MCP OAuth 新增 RFC 9207 issuer 校验、按 server 名称与 URL 分离凭据、保留已授权 scope，并修复延迟加载工具在恢复后丢失。",
+        "relevance": "可借鉴统一 provider/agent/tool 契约、按需加载工具与上下文减重、OAuth 凭据分区、错误可恢复提示和会话恢复；同时提醒 ATLAS 把 Agent loop 与真正的文件、进程、网络隔离层分开设计。",
+        "maturity": "正式进入 v1.0，包、测试和发布源归档校验较完整；但编码工具默认继承启动用户的宿主权限，sandbox 只是可选集成而非自动边界。扩展、项目配置和 MCP server 都应视为受信执行代码。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/earendil-works/pi/blob/main/README.md",
+          "https://github.com/earendil-works/pi/blob/v1.0.0/package.json",
+          "https://github.com/earendil-works/pi/releases/tag/v1.0.0"
+        ]
+      },
+      {
+        "repository": "tile-ai/tilelang",
+        "url": "https://github.com/tile-ai/tilelang",
+        "description": "面向 GPU、CPU 与其他加速器高性能 kernel 的 tile 级 Python DSL，以编译器、JIT 和多后端抽象生成 CUDA、ROCm、Metal 等代码。",
+        "category": "application",
+        "stack": ["Python 3.10+", "C++/CUDA/HIP/Metal/LLVM", "Apache TVM FFI", "PyTorch", "Z3", "CMake/scikit-build-core"],
+        "totalStars": 8114,
+        "dailyStars": 163,
+        "trending": { "period": "daily", "stars": 163 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 8,114 Star、当日新增 163。",
+        "release": "v0.1.15 · 2026-09-30（北京时间）",
+        "change": "首次收录；v0.1.15 以 LLVM backend 与 backend registry 重构为主，同时加入 compile-only CLI、Agent skills、损坏 kernel cache 自愈和强制二进制哈希校验，并让 GPU CI 的性能回退直接失败。",
+        "relevance": "对 GPU 型 Agent Sandbox 的启发在于：运行环境需要按 backend、架构和驱动做资源标签，JIT 缓存必须校验与可重建，性能基线应成为准入门槛，编译阶段也要单独限时、限盘与隔离。",
+        "maturity": "MIT、支持的后端和 benchmark 很丰富，但项目仍标为 Beta 且版本是 0.1.x；CUDA、ROCm、Metal 与不同 GPU 世代的工具链组合复杂，源码构建和 JIT 会显著消耗磁盘、内存和编译时间。它是 kernel DSL，不是隔离运行时。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/tile-ai/tilelang/blob/main/README.md",
+          "https://github.com/tile-ai/tilelang/blob/v0.1.15/pyproject.toml",
+          "https://github.com/tile-ai/tilelang/releases/tag/v0.1.15"
+        ]
+      },
+      {
+        "repository": "pbakaus/impeccable",
+        "url": "https://github.com/pbakaus/impeccable",
+        "description": "面向 coding agent 的前端设计与质量系统，把设计 skill、浏览器实时迭代、确定性 detector、组件/首屏人工审批和可切换 UI 方案组合成可验证工作流。",
+        "category": "application",
+        "stack": ["Rust 2021 engine", "Node.js 22/Bun", "Playwright/Puppeteer", "Svelte 5", "Zod/AI SDK", "WASM/browser extension"],
+        "totalStars": 73682,
+        "dailyStars": 495,
+        "trending": { "period": "daily", "stars": 495 },
+        "heatEvidence": "GitHub Trending 日榜；09:02 左右页面快照显示 73,682 Star、当日新增 495。",
+        "release": "skill-v4.4.0 / engine-v0.1.10 · 2026-10-02（北京时间）",
+        "change": "距 9 月 30 日收录后复访，因为今天正式发布新版本：组件和首屏可在浏览器逐项人工审批，跨轮次保留 approval，重复组件分组，文件变化触发重审；无人值守时等待而不是自批。另可一句话生成多套 UI variants，并按真实 browser layout 与主要触控手势做检测。",
+        "relevance": "非常适合借鉴“Agent 生成→确定性规则→浏览器证据→人工 checkpoint→继续”的闭环；批准必须绑定资产哈希或 revision，源码变化后自动失效，不能由 Agent 自己宣布通过。",
+        "maturity": "Apache-2.0，skill、CLI、engine 和多 harness 分发已较完整，但发布节奏快且各组件独立版本。安装器会下载原生 engine 并写入项目 hooks/skills；试跑必须固定 tag、校验二进制和 hook diff，并使用隔离的浏览器 profile。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/pbakaus/impeccable/blob/main/README.md",
+          "https://github.com/pbakaus/impeccable/blob/main/package.json",
+          "https://github.com/pbakaus/impeccable/releases/tag/skill-v4.4.0",
+          "https://github.com/pbakaus/impeccable/releases/tag/engine-v0.1.10"
+        ]
+      },
+      {
+        "repository": "agent-substrate/substrate",
+        "url": "https://github.com/agent-substrate/substrate",
+        "description": "面向大规模、长时而间歇活跃 Agent 的 Kubernetes 执行底座，把大量有状态 actor 多路复用到较少 worker，并以快照在 gVisor 或 microVM worker 间 suspend、resume 和迁移。",
+        "category": "sandbox-infra",
+        "stack": ["Go 1.27", "Kubernetes/controller-runtime", "gVisor/microVM", "Envoy/gRPC", "PostgreSQL/object storage", "SPIFFE/OpenFGA/OpenTelemetry"],
+        "totalStars": 4110,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 365 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 4,110 Star、本周新增 365。未进入当日日榜，日增量记为未知。",
+        "release": "v0.3.0 · 2026-10-01（北京时间）",
+        "change": "首次收录；v0.3.0 增加出口策略与凭据注入链路、actor/运行时身份拆分、可配置 JWT issuer 与运行时授权、actor usage event 和 activation epoch；同时校验快照路径、在 microVM 恢复后重置 guest CRNG，并在新快照提交后释放被替换快照。",
+        "relevance": "几乎正中 Agent Sandbox 的调度层：actor 与 worker 解耦、闲时休眠和跨 worker 恢复、快照所有权、出口凭据、租户身份、activation 计量，以及用少量预热 worker 承载大量间歇任务。",
+        "maturity": "Apache-2.0、架构雄心和基准齐全，但项目明确仍是 preview，安全修复只进 main、没有支持分支或响应 SLO；“百万 sandbox、10 倍密度、亚 500ms 恢复”等是项目方目标或基准，需要在自己的负载和故障模型上复现。完整试跑还依赖 Kubernetes、存储和网络组件。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/agent-substrate/substrate/blob/v0.3.0/README.md",
+          "https://github.com/agent-substrate/substrate/blob/v0.3.0/go.mod",
+          "https://github.com/agent-substrate/substrate/releases/tag/v0.3.0",
+          "https://github.com/agent-substrate/substrate/security"
+        ]
+      },
+      {
+        "repository": "androoAGI/starnet",
+        "url": "https://github.com/androoAGI/starnet",
+        "description": "本地优先的桌面多 Agent harness，用像素空间站呈现真实任务、工作流、预算、记忆和工具状态；支持云模型、本地 Ollama、MCP、定时任务与多 Agent 协作。",
+        "category": "application",
+        "stack": ["Vanilla JavaScript/Node.js 18+", "Tauri 2/Rust", "HTTP/NDJSON/SSE", "MCP/ACP", "OS keychain", "Ollama/OpenRouter/multi-provider"],
+        "totalStars": 891,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 592 },
+        "heatEvidence": "GitHub Trending 周榜；09:02 左右页面快照显示 891 Star、本周新增 592。未进入当日日榜，日增量记为未知。",
+        "release": "v0.12.5 · 2026-09-28（北京时间）",
+        "change": "首次收录；v0.12.5 新增可逐步暂停、编辑交接、重跑或回滚的 workflow line，以及文件夹和 webhook 触发；长任务逐 turn 保存、可续跑，24 小时花费达到 25 美元默认熔断，无进展循环会暂停，并修正 Windows 命令误报成功、URL 泄露 token、频道 owner pairing、污染追踪和密钥存储。",
+        "relevance": "适合作为控制面 UX 样本：界面只显示运行时能证明的状态，工作流先逐步试跑再无人值守，预算和停滞都是硬停止条件，中断、恢复和未知成本不会被伪装成成功。",
+        "maturity": "代码为 MIT 且发布门槛包含签名、notarization 和多层 QA，但仍是早期 0.x；Windows 覆盖最好，macOS 实际覆盖较少，品牌与像素资产不随 MIT 授权。模型、频道、Google Workspace 和本机命令连接扩大了凭据与提示注入面。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/androoAGI/starnet/blob/feat/harness-backend/README.md",
+          "https://github.com/androoAGI/starnet/blob/feat/harness-backend/package.json",
+          "https://github.com/androoAGI/starnet/releases/tag/v0.12.5"
+        ]
+      },
+      {
+        "repository": "kubernetes-sigs/agent-sandbox",
+        "url": "https://github.com/kubernetes-sigs/agent-sandbox",
+        "description": "Kubernetes SIG Apps 维护的 Agent sandbox 编排器，以 Sandbox CRD 管理单实例、有状态、稳定身份的执行环境，并通过 Template、Claim 与 WarmPool 扩展实现低延迟分配。",
+        "category": "sandbox-infra",
+        "stack": ["Go 1.26/1.27", "Kubernetes 1.37 APIs", "CRD/controller-runtime", "gRPC/Protobuf", "Python/TypeScript/Go SDK", "gVisor/Kata/urunc via RuntimeClass"],
+        "totalStars": 4118,
+        "dailyStars": null,
+        "heatEvidence": "重要版本补充来源（非 Trending）：约 09:10 GitHub 仓库页面显示 4,118 Star；日增量未知。",
+        "release": "v1.0.5 · 2026-10-02（北京时间）",
+        "change": "版本补充；新版本给 TypeScript Sandbox handle 增加命令、文件、健康与元数据 API，支持流式文件传输，并让 Python/TypeScript client 原生连接集群内 sandboxd；同时加入 WebMCP→MCP、OpenShell/NemoClaw、urunc microVM 示例、确定性 claim adoption、REST client 指标和大规模 controller 调优。Deep Agents adapter 升级到 0.7.10+，执行失败改为抛原生异常。",
+        "relevance": "这是今天最直接的参考：把生命周期 CRD、预热池、claim、运行时 transport、文件流、路由、SDK 与观测统一起来，同时仍把低层隔离交给 RuntimeClass，边界清晰。",
+        "maturity": "Kubernetes SIG 项目且已发布 v1.0.x，但 API 仍为 v1beta1；它是编排器，不会单独提供 gVisor/Kata 级隔离。升级需要处理 Deep Agents breaking change，真正多租户还要验证网络、存储、身份、RuntimeClass 和 warm pool 回收策略。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/kubernetes-sigs/agent-sandbox/blob/v1.0.5/README.md",
+          "https://github.com/kubernetes-sigs/agent-sandbox/blob/v1.0.5/go.mod",
+          "https://github.com/kubernetes-sigs/agent-sandbox/releases/tag/v1.0.5",
+          "https://github.com/kubernetes-sigs/agent-sandbox/blob/v1.0.5/docs/security/threat_model.md"
+        ]
+      },
+      {
+        "repository": "moby/buildkit",
+        "url": "https://github.com/moby/buildkit",
+        "description": "Docker/OCI 生态的并发镜像构建引擎，以 buildkitd、buildctl 和 LLB 执行可缓存的构建图，也是 Docker Buildx 与大量 Agent 镜像流水线的底层。",
+        "category": "sandbox-infra",
+        "stack": ["Go 1.26.8", "buildkitd/buildctl", "LLB/Protobuf/gRPC", "OCI/runc/containerd workers", "Snapshotters/rootless", "OpenTelemetry/Prometheus"],
+        "totalStars": 10300,
+        "dailyStars": null,
+        "heatEvidence": "重要安全版本补充来源（非 Trending）：约 09:10 GitHub 仓库页面显示约 10,300 Star；日增量未知。",
+        "release": "v0.33.1 · 2026-10-01（北京时间）",
+        "change": "安全版本补充；官方一次修复 10 个 GHSA，覆盖代理 CA 清理越出 rootfs、CDI 或恶意 frontend 触发 daemon panic、未校验 blob/DiffID 污染共享缓存、特殊文件或畸形 LLB 越界，以及超大 Dockerfile、gateway 或嵌套 LLB 内存耗尽和 Git bundle source-policy 绕过。内置 Dockerfile frontend 升至 1.27.1、containerd v2 升至 2.3.6。",
+        "relevance": "Agent build service 会直接接收不可信 Dockerfile、LLB 和 context；这批修复提醒我们把 daemon 可用性、缓存完整性、归档边界、source policy 与 frontend 信任都纳入 sandbox 威胁模型，而不是只隔离最终容器。",
+        "maturity": "Apache-2.0，虽然版本仍为 0.x，但已是 Docker/Buildx 等大规模生产构建链的核心。升级前必须确认宿主 Docker、Buildx 或托管构建器实际捆绑的 BuildKit 版本；其中代理 CA 问题只影响启用相应注入的路径，其余拒绝服务和缓存风险覆盖更广。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/moby/buildkit/releases/tag/v0.33.1",
+          "https://github.com/moby/buildkit/blob/v0.33.1/README.md",
+          "https://github.com/moby/buildkit/blob/v0.33.1/go.mod",
+          "https://github.com/moby/buildkit/security/advisories/GHSA-2f5p-x9ph-g97x"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-10-02T01:00:57.474Z",
+      "completedAt": "2026-10-02T01:13:58.144Z",
+      "status": "succeeded",
+      "sourceDate": "2026-10-02",
+      "notes": [
+        "本次自动任务于北京时间约 09:00 正常触发；Trending 数字按 09:02 左右实际页面快照记录。",
+        "日榜共 15 项，本期选用 6 项；周榜选用 2 项；另外加入 2 个明确标注的正式版本补充，未把它们混称为每日热榜。",
+        "今日没有连续复用 10 月 1 日的任何项目。OpenShell、Pi、Superpowers 与 Impeccable 是较早归档后的复访，分别因新预发布与高增速、v1.0.0、v6.4.2 版本跨度和今天的新 skill/engine 正式版而说明原因。",
+        "Kubernetes Agent Sandbox v1.0.5 于北京时间今天凌晨发布；BuildKit v0.33.1 是明确标注的重要安全版本补充，dailyStars 均记为未知。",
+        "Star 日增量仅记录 Trending 页面明确显示的数据；周榜与版本补充不推算日增量。"
+      ]
+    }
+  }
+}
