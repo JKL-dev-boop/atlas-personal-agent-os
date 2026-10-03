@@ -1,0 +1,257 @@
+{
+  "id": "daily-2026-10-03",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-10-03",
+  "slug": "2026-10-03",
+  "summary": "今天最值得关注的是 Agent 工作负载开始形成清晰分层：Google AX 用声明式 Task、Workspace 与 Model 管理集群级编排，OpenAI Agents SDK 把长任务 sandbox、审批、历史与资源上限收进 SDK，Paperclip 则继续补强租约、fencing、预算和人工审批。与此同时，GitHub Action 与本地 MCP 工具都在提醒我们：权限、出口、上下文和日志必须默认收紧。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-10-03T01:01:20.170Z",
+  "updatedAt": "2026-10-03T01:15:17.406Z",
+  "payload": {
+    "editionDate": "2026-10-03",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "google/ax",
+      "openai/openai-agents-python",
+      "paperclipai/paperclip",
+      "heygen-com/hyperframes",
+      "mvschwarz/openrig"
+    ],
+    "projects": [
+      {
+        "repository": "Panniantong/Agent-Reach",
+        "url": "https://github.com/Panniantong/Agent-Reach",
+        "description": "给 AI Agent 统一安装、选择、体检和路由互联网读取能力，覆盖网页、GitHub、RSS、YouTube、Twitter、Reddit、B站、小红书等渠道，并为受限平台保留多后端降级路径。",
+        "category": "ai-agent",
+        "stack": ["Python 3.10+", "requests/feedparser/PyYAML", "yt-dlp", "Playwright（可选）", "MCP/OpenCLI/多 CLI 路由"],
+        "totalStars": 88647,
+        "dailyStars": 696,
+        "trending": { "period": "daily", "stars": 696 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 88,647 Star、当日新增 696。",
+        "release": "v1.5.0 · 2026-06-11",
+        "change": "距 9 月 15 日收录后再次进入日榜；今天值得重看，不是因为新版本，而是其 README 已把默认安装改成只读环境检查，只有显式传入 --system 才安装外部工具，并公开列出每个平台的首选、备选、doctor 结果和 Cookie 风险。",
+        "relevance": "可借鉴“能力注册表＋有序后端＋健康检查＋显式授权安装”；同时它也是很好的出口与凭据威胁模型：每个站点连接器都应有独立网络策略、短期凭据、来源审计、失败降级和可撤销配置。",
+        "maturity": "MIT、文档和诊断路径清楚，但仍标为 Beta，实际能力依赖多个外部 CLI、MCP server、浏览器会话、Cookie 与站点反爬策略。Cookie 等同完整账号权限，自动下载和远程安装说明也扩大供应链面；还须遵守各平台条款。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/Panniantong/Agent-Reach/blob/main/README.md",
+          "https://github.com/Panniantong/Agent-Reach/blob/main/pyproject.toml",
+          "https://github.com/Panniantong/Agent-Reach/releases/tag/v1.5.0"
+        ]
+      },
+      {
+        "repository": "mattpocock/skills",
+        "url": "https://github.com/mattpocock/skills",
+        "description": "一组小而可组合的工程 Agent skills，把需求追问、领域文档、规格、任务图、TDD、系统化调试、实现、代码审查和复盘拆成可单独采用的工作流。",
+        "category": "ai-agent",
+        "stack": ["Markdown Agent Skills", "Claude Code plugin", "skills.sh/Codex", "Node.js helper scripts", "GitHub/Linear/local issue tracker"],
+        "totalStars": 274714,
+        "dailyStars": 955,
+        "trending": { "period": "daily", "stars": 955 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 274,714 Star、当日新增 955，为本期入选项目中最高日增量。",
+        "release": "v1.2.3 · 2026-08-06",
+        "change": "距 9 月 6 日收录后再次进入日榜；虽无新 Release，但今天新增 955 Star，且当前目录已把 to-spec、任务依赖图、implement-spec 并行前沿、分阶段诊断、TDD、独立 review 和 retro 串成更完整的工程闭环，值得作为 ATLAS 开发规范的对照样本。",
+        "relevance": "最可借鉴的是把人机对齐、规格、可执行任务图、验证和独立审查分开，并让每个 skill 只承担一个清晰职责；这与 ATLAS 的长期 SPEC、增量需求和跨会话开发正好对应。",
+        "maturity": "MIT、技能文件可审计且不绑定单一模型，但它主要约束 Agent 行为，不提供真正的权限隔离。插件订阅与 skills.sh 复制安装不能同时使用，否则会重复加载；自动更新的只读插件也仍需版本锁定和变更审查。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/mattpocock/skills/blob/main/README.md",
+          "https://github.com/mattpocock/skills/blob/main/package.json",
+          "https://github.com/mattpocock/skills/releases/tag/v1.2.3"
+        ]
+      },
+      {
+        "repository": "heygen-com/hyperframes",
+        "url": "https://github.com/heygen-com/hyperframes",
+        "description": "把 HTML、CSS、媒体与可寻址动画确定性渲染为 MP4 的开源框架，可由 CLI、Studio 或 21 个按需 Agent skills 完成规划、预览、检查和导出。",
+        "category": "application",
+        "stack": ["TypeScript/Bun/Node.js 22+", "HTML/CSS/GSAP", "Chromium/FFmpeg", "React 19", "AWS Lambda/GCP Cloud Run"],
+        "totalStars": 55907,
+        "dailyStars": 580,
+        "trending": { "period": "daily", "stars": 580 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 55,907 Star、当日新增 580。",
+        "release": "v0.8.114 · 2026-10-03（北京时间）",
+        "change": "距 10 月 1 日收录后复访，因为今天 08:18 发布 v0.8.114：文件重命名只改写真正指向它的引用，keyframe 编辑不再复制其他 tween channel，手动编辑维持每帧 8ms 内；前两个 patch 还修复了动画闪烁、精确时点截图、输出目录越界检查和后台预览子进程归属。",
+        "relevance": "适合 ATLAS 未来演示资产流水线：把“Agent 生成→lint→真实浏览器预览→确定性渲染→制品校验”拆成可观察步骤，并对浏览器、FFmpeg、输出目录、子进程和云渲染预算分别设限。",
+        "maturity": "Apache-2.0、文档与自动检查丰富，但仍是快速发布的 0.8.x；Chromium、FFmpeg 和媒体处理会消耗大量 CPU、内存与磁盘，远程素材还带来 SSRF、版权、隐私和费用风险。应固定版本、限制网络与输出根目录。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/heygen-com/hyperframes/blob/main/README.md",
+          "https://github.com/heygen-com/hyperframes/blob/main/package.json",
+          "https://github.com/heygen-com/hyperframes/releases/tag/v0.8.114"
+        ]
+      },
+      {
+        "repository": "mksglu/context-mode",
+        "url": "https://github.com/mksglu/context-mode",
+        "description": "用 MCP 工具、hooks、SQLite/FTS5 索引和受控代码执行减少原始工具输出占用的上下文，并在压缩或重启前后保存、恢复任务状态。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js 22.5+", "MCP SDK", "SQLite/FTS5/BM25", "better-sqlite3", "esbuild/hooks/plugin adapters"],
+        "totalStars": 25040,
+        "dailyStars": 282,
+        "trending": { "period": "daily", "stars": 282 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 25,040 Star、当日新增 282。",
+        "release": "v1.0.169 · 2026-06-30（北京时间）",
+        "change": "距 9 月 14 日收录后再次进入日榜；今天值得重看，因为当前文档已把 Codex、Claude Code、Copilot CLI、Cursor、OpenCode、OpenClaw 等适配器的路由、压缩恢复和 fail-open 限制分别说明，并明确 Codex 的 PreToolUse 当前只能拒绝危险调用、不能安全重写输入。",
+        "relevance": "可借鉴“原始大结果留在隔离数据层，只向模型返回查询与聚合结果”、压缩前生成恢复快照，以及按客户端能力降级；ATLAS 还应给索引数据设置租户 ACL、保留期、来源追踪和删除能力。",
+        "maturity": "已到 1.0、客户端覆盖广，但使用 Elastic License 2.0；98% 节省是项目方特定场景数据。它会拦截工具、执行代码并持久化会话内容，SQLite、hooks、postinstall 和全局插件都成为敏感边界，所谓 sandbox 仍需独立验证。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/mksglu/context-mode/blob/main/README.md",
+          "https://github.com/mksglu/context-mode/blob/main/package.json",
+          "https://github.com/mksglu/context-mode/releases/tag/v1.0.169"
+        ]
+      },
+      {
+        "repository": "mvschwarz/openrig",
+        "url": "https://github.com/mvschwarz/openrig",
+        "description": "本地或私有网络中的多 Agent 运行台，以 daemon、CLI、TUI、tmux seat、队列、proof 与 bundle 管理不同编码 Agent 的会话、交接和恢复。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js 22或24", "daemon/CLI/TUI", "tmux", "Web UI（可选）", "agent packages/context packs"],
+        "totalStars": 4315,
+        "dailyStars": 683,
+        "trending": { "period": "daily", "stars": 683 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 4,315 Star、当日新增 683。",
+        "release": "v0.6.4 · 2026-10-02（北京时间）",
+        "change": "距 10 月 1 日收录后再次复访，因为 v0.6.4 已由 RC 转为稳定版：Web UI 默认关闭，浏览器访问校验 Host 与 Origin；bundle 保留二进制文件，非默认端口能正确连接已启动 daemon，fresh 单 seat 可恢复，并延长 Claude capability check、修复升级后的 seat 启动。",
+        "relevance": "默认关闭非必要 Web 面、把允许 Host 与 Origin 显式列举、为会话和辅助进程证明 ownership、保留 proof 与恢复证据，都是本地 Agent 控制面的实用模式。",
+        "maturity": "Apache-2.0、CLI/TUI 已是主要支持面，但仍是 0.6.x，项目明确面向可信本地或私有环境，不是系统级 sandbox。tmux seat 和 daemon 继承宿主权限，允许 Host/Origin 只解决浏览器入口，不替代身份、网络和进程隔离。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/mvschwarz/openrig/blob/main/README.md",
+          "https://github.com/mvschwarz/openrig/blob/main/package.json",
+          "https://github.com/mvschwarz/openrig/releases/tag/v0.6.4"
+        ]
+      },
+      {
+        "repository": "pablostanley/yoinks",
+        "url": "https://github.com/pablostanley/yoinks",
+        "description": "终端视频下载器，用 Ink TUI 调用 yt-dlp 与 FFmpeg，从 YouTube、X、Instagram、Threads、TikTok 等大量站点选择清晰度、下载视频或提取 MP3。",
+        "category": "application",
+        "stack": ["TypeScript 7/Node.js 18+", "Ink 7/React 19", "yt-dlp", "FFmpeg/ffmpeg-static", "tsup"],
+        "totalStars": 3505,
+        "dailyStars": 623,
+        "trending": { "period": "daily", "stars": 623 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 3,505 Star、当日新增 623；同时位于周榜，本周新增 1,415。",
+        "release": "v0.3.1 · 2026-07-17",
+        "change": "首次收录；它把不可信 URL、自动下载可执行文件、原生媒体解析器和大体积输出集中在一个很小的 CLI 中，适合作为 Agent 媒体摄取 sandbox 的具体安全样本。",
+        "relevance": "ATLAS 若接入视频或媒体，应按重定向后的最终域名控制出口，固定并校验 yt-dlp/FFmpeg，隔离解析进程，限制时长、CPU、内存、磁盘和输出目录，并把下载许可与版权确认放在执行前。",
+        "maturity": "MIT、界面简单，但项目年轻、版本仍为 0.3.1；首次运行会下载独立 yt-dlp，README 与发布状态存在轻微漂移，默认写入用户下载目录。站点兼容性、条款与版权风险不能由工具本身解决。",
+        "recommendation": "简单了解",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/pablostanley/yoinks/blob/main/README.md",
+          "https://github.com/pablostanley/yoinks/blob/main/package.json",
+          "https://github.com/pablostanley/yoinks/releases/tag/v0.3.1"
+        ]
+      },
+      {
+        "repository": "google/ax",
+        "url": "https://github.com/google/ax",
+        "description": "Google 的声明式高吞吐 Agent 编排器，以 Task、Workspace、Model 三类 v1alpha1 对象连接 Agent Substrate，管理不可信任务、代码与工具工作区、模型凭据、观察、调试和挂起恢复。",
+        "category": "sandbox-infra",
+        "stack": ["Go 1.27.1", "Kubernetes/ko", "Agent Substrate", "gRPC/Protobuf", "Redis/go-redis"],
+        "totalStars": 12909,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 1783 },
+        "heatEvidence": "GitHub Trending 周榜；北京时间约 09:02 页面快照显示 12,909 Star、本周新增 1,783。未进入当日日榜，日增量记为未知。",
+        "release": "v0.3.1 · 2026-09-25",
+        "change": "首次收录；它直接承接昨日的 Agent Substrate：Substrate 负责有状态隔离执行，AX 再用声明式任务、预装 Git/MCP/skills 的 Workspace、Kubernetes Secret 模型配置、watch/ssh 与 suspend/resume 组成编排层。",
+        "relevance": "对 Agent Sandbox 最直接的启发是把执行层与控制层解耦，并避免让大量短任务直接压垮 etcd；预热工作区、细粒度锁、挂起恢复、模型配置和调试入口都应有独立生命周期与审计。",
+        "maturity": "Apache-2.0，但 README 明示仍在重度开发，API 是 v1alpha1、版本仅 0.3.1，未来可能有破坏性变化。“单集群十亿任务”是项目目标而非本次独立验证结果；Redis 持久性、锁正确性和 ssh 调试权限是关键风险。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/google/ax/blob/main/README.md",
+          "https://github.com/google/ax/blob/main/DESIGN.md",
+          "https://github.com/google/ax/blob/main/go.mod",
+          "https://github.com/google/ax/releases/tag/v0.3.1"
+        ]
+      },
+      {
+        "repository": "paperclipai/paperclip",
+        "url": "https://github.com/paperclipai/paperclip",
+        "description": "把多 Agent 团队当作组织来管理的控制面，提供组织图、任务、预算、权限、审批、运行历史、skills、连接器、schedule 与多种编码 Agent 适配器。",
+        "category": "application",
+        "stack": ["TypeScript 7/Node.js 24+", "React 19", "PostgreSQL/S3", "Rust native runner", "ACP/MCP/多 Agent adapters"],
+        "totalStars": 96311,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 12825 },
+        "heatEvidence": "GitHub Trending 周榜；北京时间约 09:02 页面快照显示 96,311 Star、本周新增 12,825。未进入当日日榜，日增量记为未知。",
+        "release": "v2026.1001.0 · 2026-10-02（GitHub 发布时间）",
+        "change": "距 9 月 29 日收录后复访，因为新版本包含 77 个 commits：加入运行中审批/回答队列、带一次性凭据回执的 webhook、GitHub PR review、CreateOS sandbox provider、从完成工作提炼 skill，以及 Daytona sandbox adoption、PID 复用防护、bridge fencing、孤儿 lease 清理和更窄的 reviewer 工具。",
+        "relevance": "最值得研究的是 session 连续性、lease/fencing/回收、Stop 与审批竞态、预算上限、执行锁、vault、受限 reviewer 工具和控制器重启后的 sandbox 接管，这些都是长时 Agent 平台不可回避的故障路径。",
+        "maturity": "热度和工程覆盖都高，但仍快速变化，适配器、插件和连接器扩大攻击面。尤其执行 harness 可默认 full auto，Claude/ACPX approve-all、OpenCode allow、Codex 绕过 approval/sandbox；ATLAS 不能继承这些默认值，只应在隔离环境显式使用 restrictive mode。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/paperclipai/paperclip/blob/master/README.md",
+          "https://github.com/paperclipai/paperclip/blob/master/package.json",
+          "https://github.com/paperclipai/paperclip/releases/tag/v2026.1001.0"
+        ]
+      },
+      {
+        "repository": "anthropics/claude-code-action",
+        "url": "https://github.com/anthropics/claude-code-action",
+        "description": "在 GitHub Issue、PR 和定时工作流中运行 Claude Code 的官方 Action，可回答问题、实现改动、审查代码、生成结构化输出，并支持直接 API、Bedrock、Vertex 与 Foundry 身份。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Bun", "GitHub composite Action", "Claude Code CLI/SDK", "GitHub App/OIDC", "Bedrock/Vertex/Foundry"],
+        "totalStars": 9375,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 417 },
+        "heatEvidence": "GitHub Trending 周榜；北京时间约 09:02 页面快照显示 9,375 Star、本周新增 417；同时于今天发布 v1 正式版。日增量未知。",
+        "release": "v1.0.240 · 2026-10-03（北京时间；v1 GA 于 2025-08-27）",
+        "change": "距 10 月 1 日收录后补丁从 v1.0.238 推进到 v1.0.240，但补丁页只给出完整 diff，没有足够说明可包装为重大新功能；今天复访的主要依据是重新进入周榜，以及 v1 稳定主线已统一 prompt 与 claude_args、自动识别交互/自动化模式并支持结构化输出和多云身份。",
+        "relevance": "可借鉴单一执行入口、结构化结果、工作负载 OIDC 与进度状态；更重要的是把 PR/Issue 文本视为不可信输入，按事件来源收紧 token、工具、网络与 checkout 权限，并禁止将完整模型输出写入公开日志。",
+        "maturity": "MIT、Anthropic 官方且已 GA，但仍在用户自己的 runner 上执行。Action 明确警告 show_full_output 可能泄露密钥，display_report 会公开模型内容；外部贡献者、pull_request_target、可变插件和额外 GitHub 权限仍需要逐项威胁建模。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/anthropics/claude-code-action/blob/main/README.md",
+          "https://github.com/anthropics/claude-code-action/blob/main/action.yml",
+          "https://github.com/anthropics/claude-code-action/releases/tag/v1"
+        ]
+      },
+      {
+        "repository": "openai/openai-agents-python",
+        "url": "https://github.com/openai/openai-agents-python",
+        "description": "OpenAI 的轻量多 Agent Python SDK，统一 agents、tools、handoffs、guardrails、human-in-the-loop、sessions、tracing、realtime/voice，以及可在容器中持续工作的 SandboxAgent。",
+        "category": "ai-agent",
+        "stack": ["Python 3.10+", "Pydantic 2", "OpenAI SDK/MCP", "Docker与托管 sandbox clients", "SQLite/Redis/Temporal/多 provider extras"],
+        "totalStars": 29811,
+        "dailyStars": null,
+        "heatEvidence": "重要版本补充来源（非 Trending）：北京时间约 09:10 GitHub 仓库页面显示 29,811 Star；日增量未知。",
+        "release": "v0.23.1 · 2026-10-02（北京时间）",
+        "change": "正式版本补充；v0.23.1 恢复 release tests 与 required readiness check，本身只改运行时版本号，同时首次发布 0.23 系列到 PyPI。v0.23.0 则带来 MCP 分页上限、Docker 删除保护、记忆合并轮次、加密历史扫描预算，以及 host grant、删除授权、快照链接/特殊文件、outbox 读取、工具回调 backlog、审批归属和异常脱敏等 sandbox hardening。",
+        "relevance": "它把长任务 sandbox、工作区 manifest、审批、会话与 tracing 放进同一 SDK；尤其值得借鉴 host mount 与权限 grant 规范化、快照恢复校验、递归删除保护、资源上限、审批归属、嵌套 Agent 状态隔离、历史导入预算和敏感 trace 控制。",
+        "maturity": "MIT、官方维护、类型和发布检查完整，但仍是 0.x 且 0.23 包含迁移要求。UnixLocalSandboxClient 只支持 macOS/Linux且继承本机用户权限，不等于安全隔离；Docker socket、托管 provider 凭据、MCP server、持久历史和 tracing 都需独立最小权限配置。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/openai/openai-agents-python/blob/main/README.md",
+          "https://github.com/openai/openai-agents-python/blob/main/pyproject.toml",
+          "https://github.com/openai/openai-agents-python/releases/tag/v0.23.1",
+          "https://github.com/openai/openai-agents-python/releases/tag/v0.23.0"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-10-03T01:01:20.170Z",
+      "completedAt": "2026-10-03T01:15:17.406Z",
+      "status": "succeeded",
+      "sourceDate": "2026-10-03",
+      "notes": [
+        "本次自动任务于北京时间约 09:01 正常触发；Trending 数字按 09:02 左右实际页面快照记录。",
+        "日榜共 17 项，本期选用 6 项；周榜选用 3 项；另加入 1 个明确标注的正式版本补充，未把它混称为每日热榜。",
+        "今日没有连续复用 10 月 2 日的任何项目。HyperFrames、OpenRig、Paperclip 与 Claude Code Action 都因新正式版或实质版本跨度说明复访原因；其余重复项目明确写出今天重新关注的依据。",
+        "OpenAI Agents SDK v0.23.1 是非 Trending 的重要版本补充；Star 日增量仅记录日榜页面明确显示的数据，周榜与版本补充均记为未知。",
+        "项目宣称的吞吐、节省比例、生产采用和安全保证均按上游陈述处理，未把它们当作本次独立验证结论。"
+      ]
+    }
+  }
+}
