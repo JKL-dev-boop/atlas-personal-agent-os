@@ -1,0 +1,257 @@
+{
+  "id": "daily-2026-10-04",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-10-04",
+  "slug": "2026-10-04",
+  "summary": "今天最值得关注的是 Agent 平台开始把能力边界写进实现：Cloudflare OS 用 Gatekeeper 和 capability binding 隔离外部资源，Claude Code 与 Pydantic AI 同时修补权限绕过并改为失败即关闭，Pi 则允许按项目收紧 MCP 暴露。T3 Code 和 GPUI Kit 进一步展示了多机控制面、插件能力授权与运行时观测应如何分层。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-10-04T01:01:12.576Z",
+  "updatedAt": "2026-10-04T01:21:31.931Z",
+  "payload": {
+    "editionDate": "2026-10-04",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "cloudflare/cloudflare-os",
+      "anthropics/claude-code",
+      "pydantic/pydantic-ai",
+      "earendil-works/pi",
+      "pingdotgg/t3code"
+    ],
+    "projects": [
+      {
+        "repository": "cloudflare/cloudflare-os",
+        "url": "https://github.com/cloudflare/cloudflare-os",
+        "description": "Cloudflare 的 AI productivity OS：每个用户拥有私有工作区与 Gadget，Agent 通过 Gatekeeper 获取外部服务的窄能力，并可把有副作用的操作排队等待人工批准。",
+        "category": "sandbox-infra",
+        "stack": ["TypeScript", "Cloudflare Workers/workerd", "Durable Objects/Dynamic Worker Facets", "Cap’n Web RPC", "pnpm/Wrangler/Vite"],
+        "totalStars": 10572,
+        "dailyStars": 85,
+        "trending": { "period": "daily", "stars": 85 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 10,572 Star、当日新增 85。",
+        "change": "首次收录；当前 v2 是完整重写，近期 main 除了 Google Chat 账户绑定和 AI Gateway 模型管理，还补了 workspace 循环耗尽后的重启路径与评测中的成本、prompt cache 指标。",
+        "relevance": "它把 Agent 与 Gadget 的默认无权限、服务能力绑定、外部资源代理、审计和模拟异步审批放在同一模型中；尤其适合参考到 ATLAS 的租户工作区、最小能力 token、出站代理和人工确认队列。",
+        "maturity": "Apache-2.0，核心架构与本地开发路径已公开，但 README 明示仍处于 early access，自托管 workerd 的生产文档尚未完成。Gatekeeper 只是能力中介，仍需验证具体连接器、身份撤销和跨租户隔离。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/cloudflare/cloudflare-os/blob/main/README.md",
+          "https://github.com/cloudflare/cloudflare-os/blob/main/package.json",
+          "https://github.com/cloudflare/cloudflare-os/blob/main/pnpm-workspace.yaml"
+        ]
+      },
+      {
+        "repository": "thedotmack/claude-mem",
+        "url": "https://github.com/thedotmack/claude-mem",
+        "description": "为编码 Agent 保存跨会话记忆：采集工具观察，生成压缩摘要，并以 SQLite FTS5、Chroma 和 MCP 提供搜索、时间线与原始观察读取。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js 20.12+", "Bun", "SQLite/FTS5/Chroma", "MCP", "React/Express/BullMQ/Redis"],
+        "totalStars": 95587,
+        "dailyStars": 79,
+        "trending": { "period": "daily", "stars": 79 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 95,587 Star、当日新增 79。",
+        "release": "v13.29.0 · 2026-10-03",
+        "change": "首次收录；v13.29.0 加入 append-only work state 与待办注入、Codex subscription/OpenAI-compatible provider、hook fail-open 和 Host allowlist，并默认分离主 Agent 与子 Agent 观察。",
+        "relevance": "可借鉴“先搜索、再看时间线、最后读取原文”的分层取回，以及把工作状态与长期观察分开存储；ATLAS 还应给记忆条目附来源、租户 ACL、保留期、删除能力和敏感字段策略。",
+        "maturity": "Apache-2.0，插件、Worker 与搜索界面较完整，但它会持久化敏感工具输出，也可接云端 provider。work state 依赖 Worker，server runtime 的 SessionStart 尚未直接读取；部署前应选择本地 provider、设置排除规则并验证删除路径。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/thedotmack/claude-mem/blob/main/README.md",
+          "https://github.com/thedotmack/claude-mem/blob/main/package.json",
+          "https://github.com/thedotmack/claude-mem/releases/tag/v13.29.0"
+        ]
+      },
+      {
+        "repository": "pingdotgg/t3code",
+        "url": "https://github.com/pingdotgg/t3code",
+        "description": "面向 Codex、Claude、Cursor、Grok、OpenCode 等编码 Agent 的本地多机控制面，通过 Web、Electron、iOS 与 Android 统一管理线程、终端、Git、项目与远程机器。",
+        "category": "application",
+        "stack": ["TypeScript/Node.js 24", "Effect 4 RC", "React 19/Electron 44", "Expo 58/React Native", "Rust resource monitor"],
+        "totalStars": 24697,
+        "dailyStars": 252,
+        "trending": { "period": "daily", "stars": 252 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 24,697 Star、当日新增 252。",
+        "release": "v0.0.45 · 2026-10-02；0.0.46 nightly 持续更新",
+        "change": "首次收录；最新 nightly 修复中断的 Claude 命令、编辑器发现延迟、plan mode 和子 Agent 详情，并优化 usage 扫描、命令面板虚拟化与 Mermaid 展示；这些变化尚未形成稳定版。",
+        "relevance": "它把执行环境、工作区、provider 凭据和机器路由放在资源所有者一侧，并以 event log、transaction/outbox 和幂等 receipt 协调多端；这是 ATLAS 多设备控制面与故障恢复的直接参考。",
+        "maturity": "MIT，功能覆盖广但仍是 0.0.x，且依赖多项 RC 版本。它是控制面而不是 sandbox，Agent 与终端仍继承宿主权限；配对链接相当于密码，Full access 默认值及不同 provider 的权限语义都需额外收紧。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/pingdotgg/t3code/blob/main/README.md",
+          "https://github.com/pingdotgg/t3code/blob/main/package.json",
+          "https://github.com/pingdotgg/t3code/blob/main/docs/internals/overview.md",
+          "https://github.com/pingdotgg/t3code/releases/tag/v0.0.45"
+        ]
+      },
+      {
+        "repository": "earendil-works/pi",
+        "url": "https://github.com/earendil-works/pi",
+        "description": "极简、可扩展的编码 Agent harness，以多模型、TUI、MCP、OAuth、扩展和 codemode 组成可替换的运行核心，同时明确把真正的隔离交给外部 sandbox。",
+        "category": "ai-agent",
+        "stack": ["TypeScript 7/Node.js 22", "npm workspaces", "MCP/OAuth", "TUI/codemode", "OpenTelemetry"],
+        "totalStars": 112162,
+        "dailyStars": 408,
+        "trending": { "period": "daily", "stars": 408 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 112,162 Star、当日新增 408。",
+        "release": "v1.0.2 · 2026-10-04（北京时间）",
+        "change": "距 10 月 2 日 v1.0.0 收录后复访：v1.0.1 允许项目级 .pi/mcp.json 覆盖 server enabled、exposure 与 toolExposure，补 MCP OAuth CIMD、超大输出失败上限和 OAuth 端口 fail-fast；今天 08:56 的 v1.0.2 又加入按 thinking level 配置 temperature/top_p。",
+        "relevance": "项目级 MCP 暴露覆盖能把“某仓库允许哪些 server、哪些工具可见”写进可审查配置；超大输出硬失败和 OAuth fail-fast 也适合 ATLAS 的工具边界、上下文预算与授权回调。",
+        "maturity": "已到 v1 且扩展机制成熟，但 README 明确说明内置工具以宿主权限运行，没有内建权限系统，建议外接 Gondolin、OpenShell 或容器。项目配置、扩展和 MCP server 都应视为可信代码，并锁定版本与允许清单。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/earendil-works/pi/blob/main/README.md",
+          "https://github.com/earendil-works/pi/blob/main/package.json",
+          "https://github.com/earendil-works/pi/releases/tag/v1.0.1",
+          "https://github.com/earendil-works/pi/releases/tag/v1.0.2"
+        ]
+      },
+      {
+        "repository": "anthropics/claude-code",
+        "url": "https://github.com/anthropics/claude-code",
+        "description": "Anthropic 的终端编码 Agent，集成 IDE、GitHub、MCP、plugins、hooks 与多云模型身份，并支持团队 Agent 的生成、统一标识和等待状态。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js 18+", "Claude Code CLI", "MCP/plugins/hooks", "Terminal/IDE/GitHub", "Anthropic/Bedrock/Vertex"],
+        "totalStars": 149222,
+        "dailyStars": 128,
+        "trending": { "period": "daily", "stars": 128 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 149,222 Star、当日新增 128。",
+        "release": "v2.1.289 · 2026-10-04（北京时间）",
+        "change": "距 9 月 17 日收录后复访：今天 07:07 发布的 v2.1.289 修复复合 shell 命令批准后 deny/ask 失效、环境变量前缀与裸赋值绕过 sandbox auto-allow、符号链接经 @mention/IDE Read 绕过拒绝，以及用户插件改写组织级 MCP auth 描述。",
+        "relevance": "这些修复说明命令授权必须对完整 AST 与执行环境求值，文件访问要在解析符号链接后检查，组织策略也不能被用户层覆盖；新增统一 Agent id、spawn hook 和 idle/waiting 状态则有助于审计团队 Agent 生命周期。",
+        "maturity": "官方产品、发布频繁，但仓库并不包含完整客户端源码，使用与数据处理受 Anthropic 条款约束。今天的安全修复也表明 shell、IDE、插件与 MCP 的组合边界很复杂；生产环境应升级后继续使用独立 sandbox 和最小权限。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/anthropics/claude-code/blob/main/README.md",
+          "https://github.com/anthropics/claude-code/releases/tag/v2.1.289"
+        ]
+      },
+      {
+        "repository": "Effect-TS/effect",
+        "url": "https://github.com/Effect-TS/effect",
+        "description": "TypeScript 生产系统的运行时与标准库，提供 typed errors、依赖注入、structured concurrency、调度、tracing、schema，并扩展到 AI、RPC、cluster、workflow、workers 与 SQL。",
+        "category": "application",
+        "stack": ["TypeScript 5.9+", "Node.js 18+", "Effect runtime/structured concurrency", "OpenTelemetry", "AI/RPC/Cluster/Workflow/SQL packages"],
+        "totalStars": 16821,
+        "dailyStars": 302,
+        "trending": { "period": "daily", "stars": 302 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 16,821 Star、当日新增 302；同时位于周榜，本周新增 466。",
+        "release": "effect@4.0.0 · 2026-10-01",
+        "change": "首次收录；Effect 4 是首个稳定 v4，并承诺至少三年 LTS，统一所有 effect/@effect 包版本，重写 fiber runtime，同时修复并发 workflow 恢复、Atom 结果、queue starvation、race loser 清理和 socket missed-pong 等故障路径。",
+        "relevance": "typed failure、Scope/finalizer、structured concurrency、interruptibility、workflow/worker/cluster 与 tracing 适合把 sandbox 启动、执行、取消、清理、重试和观测建模成可组合状态，而不是散落在异常处理里。",
+        "maturity": "MIT，v4 已承诺长期支持，但 v3 到 v4 需要结构性迁移；stable、unstable 与 experimental API 的兼容保证不同，严格类型和函数式抽象学习成本较高。它提供控制流原语，不提供进程或租户隔离。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/Effect-TS/effect/blob/main/README.md",
+          "https://github.com/Effect-TS/effect/blob/main/packages/effect/package.json",
+          "https://github.com/Effect-TS/effect/releases/tag/effect%404.0.0"
+        ]
+      },
+      {
+        "repository": "DietrichGebert/ponytail",
+        "url": "https://github.com/DietrichGebert/ponytail",
+        "description": "用 skills 与 lifecycle hooks 约束编码 Agent 先证明需求、复用现有能力、选择标准库或已有依赖，最后才写最小实现，并附带 review、audit 和技术债工作流。",
+        "category": "ai-agent",
+        "stack": ["Markdown Agent Skills", "Node.js lifecycle hooks", "Promptfoo evals", "Python checks", "多 coding-agent adapters"],
+        "totalStars": 153430,
+        "dailyStars": 1281,
+        "trending": { "period": "daily", "stars": 1281 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 153,430 Star、当日新增 1,281，为本期入选项目中最高日增量。",
+        "release": "v4.10.3 · 2026-10-03",
+        "change": "距 9 月 16 日 v4.10.0 收录后复访：v4.10.3 把 live mode 改为项目级，避免并行会话互相覆盖；移除 Codex SessionStart 的黄色警告、补 ZCode rule 输出，并修正直接调用 /ponytail 的行为。",
+        "relevance": "项目级而非全局的 Agent 策略可避免并行任务串扰；其“需求证明→复用→最小实现→独立审查”也能继续对照 ATLAS 的增量开发规范、变更预算和技术债收口。",
+        "maturity": "技能文本可审计且已适配约 20 种 Agent，但它不是安全 sandbox，hooks 会持续注入主会话与子 Agent。项目方节省比例来自 12 个任务、单一模型与单一代码库，应视为基准声明；使用时应固定版本并审查 hook 作用域。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/DietrichGebert/ponytail/blob/main/README.md",
+          "https://github.com/DietrichGebert/ponytail/blob/main/package.json",
+          "https://github.com/DietrichGebert/ponytail/releases/tag/v4.10.3"
+        ]
+      },
+      {
+        "repository": "affaan-m/ECC",
+        "url": "https://github.com/affaan-m/ECC",
+        "description": "跨 coding-agent harness 的工程系统，组合规划、测试、实现、审查、记忆、命令与 AgentShield 扫描，并提供可离线复制的精简 pi/core 技能包。",
+        "category": "ai-agent",
+        "stack": ["JavaScript/TypeScript", "Node.js 18+/Yarn 4", "AJV/SQL.js", "hooks/skills/JSON Schema", "Python/Go helpers"],
+        "totalStars": 272259,
+        "dailyStars": 897,
+        "trending": { "period": "daily", "stars": 897 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 272,259 Star、当日新增 897。",
+        "release": "v2.2.3 · 2026-10-01",
+        "change": "距 9 月 18 日 v2.2.1 收录后复访：v2.2.2 新增可离线复制的 pi/core，以显式 manifest 固定 123 个 skills 与 24 个 prompts，CI 拒绝非允许 URL、pipe-to-shell、秘密、个人绝对路径、符号链接和异常 frontmatter；v2.2.3 又修正包名与发布轮询。",
+        "relevance": "可借鉴离线技能包、显式允许清单和 CI 供应链门槛，把 Agent 资产当作可审计制品；ATLAS 可对 skills、hooks、prompts 和 helper scripts 分别记录来源、哈希、网络声明与最低权限。",
+        "maturity": "覆盖 68 个 agents、293 个 skills 和大量命令适配，但由单一维护者主导，整体供应链面积很大。应优先采用 pi/core 或更小子集，固定 release 与哈希，并在隔离环境审查 hooks，而不是整体全局安装。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/affaan-m/ECC/blob/main/README.md",
+          "https://github.com/affaan-m/ECC/blob/main/package.json",
+          "https://github.com/affaan-m/ECC/releases/tag/v2.2.2",
+          "https://github.com/affaan-m/ECC/releases/tag/v2.2.3"
+        ]
+      },
+      {
+        "repository": "longbridge/gpui-kit",
+        "url": "https://github.com/longbridge/gpui-kit",
+        "description": "面向高性能跨平台桌面应用的 Rust/GPUI 组件与基础设施套件，提供 75+ 组件、WASM、AccessKit、UI 集成测试、大数据虚拟化和可选的 JavaScript 扩展运行时。",
+        "category": "application",
+        "stack": ["Rust 2024", "GPUI/AccessKit", "WASM", "QuickJS/LLRT（可选 gpui-shell）", "cap-std/Serde/Smol"],
+        "totalStars": 15848,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 960 },
+        "heatEvidence": "GitHub Trending 周榜；北京时间约 09:02 页面快照显示 15,848 Star、本周新增 960。未进入当日日榜，日增量记为未知。",
+        "release": "v0.7.0 · 2026-09-28",
+        "change": "首次收录；v0.7.0 新增 Toolbar、Questionnaire、TimeField，以 Base-owned Root 统一窗口启动和 overlay 承载，并增强 Dock、可访问性、流式与大数据性能。10 月 3 日 main 的输入与中文 IME 修复尚未形成新 Release。",
+        "relevance": "gpui-shell 把 manifest capability 明确视为请求而非批准，文件、存储和 HostModule 默认零权限，宿主可为每个 VM/应用下发独立 Policy；退出也只是交给宿主裁决的请求，并暴露渲染、native time 和 materialization 指标。",
+        "maturity": "Apache-2.0，组件已用于 Longbridge Pro，但整体仍是 0.7.x，并精确锁定 gpui-pre 快照。gpui-shell 仍是 M0/preview 且脚本与宿主同进程，capability policy 不能替代进程级隔离；部分最新输入修复只在 macOS 验证。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/longbridge/gpui-kit/blob/main/README.md",
+          "https://github.com/longbridge/gpui-kit/blob/main/Cargo.toml",
+          "https://github.com/longbridge/gpui-kit/releases/tag/v0.7.0",
+          "https://github.com/longbridge/gpui-kit/blob/main/website/shell/hosting.md"
+        ]
+      },
+      {
+        "repository": "pydantic/pydantic-ai",
+        "url": "https://github.com/pydantic/pydantic-ai",
+        "description": "Pydantic 团队的 Python Agent 框架，统一多模型、工具、MCP、durable execution、eval、观测与可插拔代码执行环境，并为本地、Bubblewrap、SSH、E2B、Sprites 和 Modal 提供 harness。",
+        "category": "ai-agent",
+        "stack": ["Python 3.10+", "Pydantic 2", "MCP/多模型 providers", "Logfire/OpenTelemetry", "Local/Bubblewrap/SSH/E2B/Modal sandboxes"],
+        "totalStars": 20393,
+        "dailyStars": null,
+        "heatEvidence": "重要正式版本补充来源（非 Trending）：北京时间约 09:10 GitHub 仓库页面显示 20,393 Star；日增量未知。",
+        "release": "v2.54.0 · 2026-10-03",
+        "change": "正式版本补充；距 9 月 30 日 v2.52.0 收录后，v2.54.0 让 shell realpath fallback 在符号链接不可读时失败即关闭，拒绝由其他用户拥有的 LocalFileStore root，并阻止 BubblewrapWorkspace 经 SSH host shell/PATH 启动代码，同时完善工具输出溢出、后台异常、durable engine 绑定和观测。",
+        "relevance": "它把工作区所有权、符号链接解析、远程 shell、输出预算、后台工具终止与 durable execution 生命周期放进同一安全边界；这些 fail-closed 修复可直接转化为 ATLAS sandbox provider 的验收用例。",
+        "maturity": "MIT，PyPI classifier 为 Production/Stable，模型、评测、持久执行与观测集成完整，但版本推进很快。Bubblewrap 是 Linux namespace 而非 microVM；SSH 与托管 provider 仍引入凭据、网络和供应商边界，必须逐 provider 建模。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/pydantic/pydantic-ai/blob/main/README.md",
+          "https://github.com/pydantic/pydantic-ai/blob/main/pyproject.toml",
+          "https://github.com/pydantic/pydantic-ai/releases/tag/v2.54.0"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-10-04T01:01:12.576Z",
+      "completedAt": "2026-10-04T01:21:31.931Z",
+      "status": "succeeded",
+      "sourceDate": "2026-10-04",
+      "notes": [
+        "本次自动任务于北京时间约 09:01 正常触发；Trending 数字按 09:02 左右实际页面快照记录。",
+        "日榜共 19 项，本期选用 8 项；周榜选用 1 项；另加入 1 个明确标注的正式版本补充，未把它混称为每日热榜。",
+        "本期没有连续复用 10 月 3 日的任何项目。Pi、Claude Code、Ponytail、ECC 与 Pydantic AI 均因新正式版或明确安全变化说明复访原因，其余项目为首次收录。",
+        "Pydantic AI v2.54.0 是非 Trending 的正式版本补充；Star 日增量仅记录日榜页面明确显示的数据，周榜与版本补充均记为未知。",
+        "nightly、main 提交、项目基准和安全声明都按上游信息处理，并与正式 Release 明确区分；未把它们当作本次独立验证结论。"
+      ]
+    }
+  }
+}
