@@ -1,0 +1,263 @@
+{
+  "id": "daily-2026-10-05",
+  "module": "daily",
+  "title": "GitHub 日报｜AI · 应用 · Agent Sandbox｜2026-10-05",
+  "slug": "2026-10-05",
+  "summary": "今天的共同信号是 Agent 平台正从“能执行”转向“能证明、能恢复、不能误报成功”：E2E 用语义探索和效果验证生成可重放证据，gstack 让安全扫描覆盖不完整时保持未评估，Claude Mem 用幂等落盘队列和实时回退避免丢事件或注入陈旧上下文，Octop 与 pstack 则分别收紧审批、远端存储和子进程凭据边界。",
+  "status": "published",
+  "tags": ["github-trending", "ai-agent", "application", "sandbox-infra"],
+  "createdAt": "2026-10-05T01:01:05.089Z",
+  "updatedAt": "2026-10-05T01:17:27.464Z",
+  "payload": {
+    "editionDate": "2026-10-05",
+    "timezone": "Asia/Shanghai",
+    "featured": [
+      "tester-army/e2e",
+      "TencentCloud/Octop",
+      "garrytan/gstack",
+      "thedotmack/claude-mem",
+      "michael-denyer/pstack-claude"
+    ],
+    "projects": [
+      {
+        "repository": "tester-army/e2e",
+        "url": "https://github.com/tester-army/e2e",
+        "description": "面向 Web 与移动端的 Agent E2E 框架：用自然语言描述目标，由 Agent 驱动应用，再用 locator 与 assertion 验证；成功步骤会录制动作，页面未变化时可无模型重放。",
+        "category": "application",
+        "stack": ["TypeScript 7", "Node.js", "pnpm 12", "Playwright Core", "Zod", "Chromium/Firefox/WebKit", "agent-device"],
+        "totalStars": 3127,
+        "dailyStars": 345,
+        "trending": { "period": "daily", "stars": 345 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 3,127 Star、当日新增 345。",
+        "release": "@e2e-dev/web@0.12.0 · 2026-10-04（同批 mobile 0.9.2、GitHub reporter 0.3.3）",
+        "change": "首次收录；新版本精确锁定 Playwright Core，并把浏览器导航改为只允许 http、https 与 about:blank，拒绝 file、blob、view-source 和 filesystem。Agent 探索录制后的重放还会验证真实界面效果，而不是只确认动作调用成功。",
+        "relevance": "可把“语义探索→确定性定位与断言→效果验证→低成本重放”迁移到 sandbox 验收；导航协议允许清单也说明浏览器工具的出站边界不应只依赖 URL 拒绝列表。",
+        "maturity": "Apache-2.0，多包工作区、浏览器矩阵和测试基础较完整，但仍是 0.x，次版本可能改变 API。真实购买、发信等副作用仍需隔离测试账号、环境和人工批准。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/tester-army/e2e/blob/main/README.md",
+          "https://github.com/tester-army/e2e/blob/main/package.json",
+          "https://github.com/tester-army/e2e/blob/main/pnpm-workspace.yaml",
+          "https://github.com/tester-army/e2e/releases/tag/%40e2e-dev%2Fweb%400.12.0"
+        ]
+      },
+      {
+        "repository": "thedotmack/claude-mem",
+        "url": "https://github.com/thedotmack/claude-mem",
+        "description": "为 Claude Code、Codex 等编码 Agent 持久化跨会话记忆：采集 hook 事件、压缩观察与摘要，并通过 SQLite FTS5、Chroma 和 MCP 提供分层检索与上下文恢复。",
+        "category": "ai-agent",
+        "stack": ["TypeScript/Node.js 20.12+", "Bun", "SQLite/FTS5/Chroma", "MCP", "React/Express/BullMQ/Redis"],
+        "totalStars": 96133,
+        "dailyStars": 628,
+        "trending": { "period": "daily", "stars": 628 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 96,133 Star、当日新增 628。",
+        "release": "v13.30.0 · 2026-10-05 06:45（北京时间，稳定 Latest）",
+        "change": "连续收录原因：今天的 v13.30.0 将 hook 改为写入本地 spool 后立即返回，由 Worker 异步、幂等消费并清理七天过期事件；SessionStart 优先使用预生成上下文，但在缺失、超过 24 小时、服务不健康或云同步滞后时回退实时生成。版本还补了 MCP 心跳、分阶段 readiness 和超大 transcript 的有界尾部读取。",
+        "relevance": "幂等落盘摄取适合处理 Agent 事件不丢失且不阻塞前台；把上下文缓存同时绑定新鲜度、同步水位和健康状态，可避免 ATLAS 把旧记忆伪装成当前事实，并为启动阶段、重试预算和故障观测提供范式。",
+        "maturity": "Apache-2.0，插件、Worker、搜索和 UI 较完整，但会存储敏感工具输出，也可接入云端 provider。应配置排除规则、目录权限、本地 provider、删除与撤销流程，并按项目隔离 spool、缓存和记忆库。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/thedotmack/claude-mem/blob/main/README.md",
+          "https://github.com/thedotmack/claude-mem/blob/main/package.json",
+          "https://github.com/thedotmack/claude-mem/releases/tag/v13.30.0"
+        ]
+      },
+      {
+        "repository": "garrytan/gstack",
+        "url": "https://github.com/garrytan/gstack",
+        "description": "把产品澄清、架构与设计评审、浏览器/非网页 QA、安全审计、外部模型复核、发布、部署监测、复盘和长期记忆串成本地 Agent 软件工厂，适配 Claude、Codex、OpenCode 与 Cursor。",
+        "category": "ai-agent",
+        "stack": ["TypeScript 7", "Bun >=1.4", "Agent Skills/Markdown", "Playwright", "Docker", "Anthropic SDK", "HuggingFace Transformers", "ngrok", "compiled helper CLIs"],
+        "totalStars": 135165,
+        "dailyStars": 125,
+        "trending": { "period": "daily", "stars": 125 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 135,165 Star、当日新增 125。",
+        "release": "仓库版本 1.91.22.0 · 2026-10-05（非 GitHub Release）",
+        "change": "首次收录；今天的仓库版本为 gitleaks、OSV、Semgrep、zizmor、Trivy 与 Schemathesis 固定经审查的双架构镜像，验证 SLSA、SPDX、digest 与离线哈希，并在 catalog 尚未合并时保持“未评估”。近期修复还禁止跳过的扫描被误报为绿色，并收紧浏览器 daemon 的环境注入、metadata SSRF 和符号链接输出逃逸。",
+        "relevance": "最值得借鉴的是 fail-closed 覆盖状态、离线供应链证明和“检查完整前不得绿色”的发布门槛；环境变量隔离、link-local/metadata 拒绝与输出路径解析也可转化为 sandbox 的默认策略。",
+        "maturity": "MIT，流程、确定性检查和 eval 很丰富，但安装面覆盖 hooks、浏览器、Docker、扫描器、模型 CLI 与多类凭据；非 Claude 适配仍偏实验，且仓库快速版本并非 GitHub Release。建议锁定提交并按需启用子集。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/garrytan/gstack/blob/main/README.md",
+          "https://github.com/garrytan/gstack/blob/main/package.json",
+          "https://github.com/garrytan/gstack/blob/main/CHANGELOG.md",
+          "https://github.com/garrytan/gstack/blob/main/SECURITY.md"
+        ]
+      },
+      {
+        "repository": "michael-denyer/pstack-claude",
+        "url": "https://github.com/michael-denyer/pstack-claude",
+        "description": "把 Cursor pstack 移植到 Claude、Codex、Pi 等 coding-agent harness；poteto-mode 会按 bug、feature、refactor、性能与发布任务路由 playbook，并组合子 Agent、worktree、调查、审查与验证。",
+        "category": "ai-agent",
+        "stack": ["Agent Skills/Markdown", "TypeScript", "Bun", "Pi extension", "TypeBox", "POSIX shell", "PowerShell", "Claude/Codex hooks", "GitHub CLI"],
+        "totalStars": 1142,
+        "dailyStars": 232,
+        "trending": { "period": "daily", "stars": 232 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 1,142 Star、当日新增 232。",
+        "release": "v0.9.67 · 2026-10-05（北京时间）",
+        "change": "首次收录；v0.9.65 的 /correct 按架构、类型与 lint、测试、文档逐层追根因，并扩展到 33 个 skills 和 24 条原则；v0.9.66 至 v0.9.67 又统一 Windows Codex SessionStart、POSIX 与 Pi 对 BOM、CRLF、不可读覆盖表的处理。",
+        "relevance": "它把只读任务剥离编辑能力、写入任务放入 worktree，并给子 Agent 设深度边界；此前版本也停止把完整环境复制到子进程。跨 harness 的等价行为矩阵和安全降级方式值得纳入 ATLAS 的兼容测试。",
+        "maturity": "MIT，不自带服务或遥测，主要由本地脚本和技能组成；但 0.9 版本推进很快，不同宿主的 hook、权限和 shell 语义复杂，内容仍会发送到用户选择的模型 provider。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/michael-denyer/pstack-claude/blob/main/README.md",
+          "https://github.com/michael-denyer/pstack-claude/blob/main/package.json",
+          "https://github.com/michael-denyer/pstack-claude/blob/main/CHANGES.md",
+          "https://github.com/michael-denyer/pstack-claude/releases/tag/v0.9.67"
+        ]
+      },
+      {
+        "repository": "TencentCloud/Octop",
+        "url": "https://github.com/TencentCloud/Octop",
+        "description": "可自托管的多用户、多 Agent 助手控制面，覆盖 Web、CLI、即时通信、定时任务、知识库、浏览器、远程桌面、邮件、插件和双向 ACP。",
+        "category": "ai-agent",
+        "stack": ["Python 3.12/FastAPI/Uvicorn", "React 18/TypeScript/Vite/Ant Design", "SQLite/PostgreSQL/LangGraph checkpoints", "APScheduler/Playwright/MCP/ACP", "Docker/COS/S3 workspace backends", "Octop Harness/Memory/Gateway/Browser"],
+        "totalStars": 6744,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 1496 },
+        "heatEvidence": "GitHub Trending 周榜；北京时间约 09:02 页面快照显示 6,744 Star、本周新增 1,496。未进入当日日榜，日增量记为未知。",
+        "release": "v1.0.2b6 · 2026-10-05（北京时间）",
+        "change": "距 9 月 28 日 v1.0.2b2 收录后复访：今天约 08:00 的 b6 加入 Agent Mail、LDAP、多架构 Docker 与 ARM NAS 支持，并修复“批准全部/这些工具”仍反复询问、TLS 下 MCP、远端存储阻塞启动、超长工具名以及 S3/PostgreSQL 工作区浏览问题。",
+        "relevance": "这是本期最接近 ATLAS 大而全方向的参照：审批必须持久化到真实执行路径，远端存储失败不应阻塞整个控制面，邮件、LDAP、内部 MCP、Docker 工作区、checkpoint、memory 与数据库状态也应分层隔离。",
+        "maturity": "MIT，功能广但仍是 beta，单一进程承载的权限面很大；可选 Docker 不代表所有操作都已隔离。远程安装器、浏览器 profile、LDAP 与邮件连接器需要固定版本并分离网络、身份和密钥权限。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/TencentCloud/Octop/blob/main/README.md",
+          "https://github.com/TencentCloud/Octop/blob/main/pyproject.toml",
+          "https://github.com/TencentCloud/Octop/releases/tag/v1.0.2b6"
+        ]
+      },
+      {
+        "repository": "getsentry/sentry",
+        "url": "https://github.com/getsentry/sentry",
+        "description": "成熟的错误、追踪、日志、性能、profile 与 session replay 平台；当前也覆盖 AI conversation 和 Agent trace、token 使用及跨 SDK 调用链。",
+        "category": "sandbox-infra",
+        "stack": ["Python 3.13", "Django 5.2", "PostgreSQL", "Redis", "Kafka", "Snuba/ClickHouse", "TypeScript", "React 19", "Rspack", "OpenTelemetry/Sentry SDKs"],
+        "totalStars": 45386,
+        "dailyStars": 152,
+        "trending": { "period": "daily", "stars": 152 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 45,386 Star、当日新增 152。",
+        "release": "26.9.0 · 2026-09-15（UTC）",
+        "change": "首次收录；近期稳定版完善 Agent monitoring 的 token 分解、Cloudflare Agents SDK 接入、conversation 查询/排序/项目链接与公开端点，并为 action log 加入 outbox 和权限审计。",
+        "relevance": "相比只留 stdout，它展示了如何把模型调用、工具 span、token、成本、错误与真实用户影响串成可查询 trace；action-log outbox 和去重也适合 Agent 异步事件不丢失且不重复执行。",
+        "maturity": "生产级平台、生态与自托管能力完整，但基础设施很重；当前版本采用 FSL-1.1-Apache-2.0，存在商业使用限制，并在两年后转为 Apache-2.0，采用前需确认许可和数据保留策略。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/getsentry/sentry/blob/master/README.md",
+          "https://github.com/getsentry/sentry/blob/master/pyproject.toml",
+          "https://github.com/getsentry/sentry/blob/master/package.json",
+          "https://github.com/getsentry/sentry/releases/tag/26.9.0",
+          "https://github.com/getsentry/sentry/blob/master/LICENSE"
+        ]
+      },
+      {
+        "repository": "earthtojake/text-to-cad",
+        "url": "https://github.com/earthtojake/text-to-cad",
+        "description": "本地 CAD、制造与机器人 Agent 技能集，覆盖 STEP、GLB、STL、3MF、DFM/DfAM、工程图、DXF、URDF/SRDF/SDF、切片、打印和可视化。",
+        "category": "application",
+        "stack": ["Python 3.11+", "cadgen 0.7.11", "build123d", "Open CASCADE 7.9", "TypeScript/Node 20+", "MCP", "React/Vite", "uv"],
+        "totalStars": 16868,
+        "dailyStars": 83,
+        "trending": { "period": "daily", "stars": 83 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 16,868 Star、当日新增 83。",
+        "release": "v0.7.11 · 2026-10-04（北京时间）",
+        "change": "距 9 月 12 日 v0.5.1 收录后复访：0.7.9 加入跨宿主 CAD MCP viewer，并验证 OrcaSlicer/Bambu Studio 交接；0.7.11 又增加 Cursor plugin，并修复导入 STEP 为空时的处理。",
+        "relevance": "它展示了“领域技能＋本地工具/MCP＋可视化人工复核”的完整闭环；CAD、切片和真实打印具有材料与设备成本，ATLAS 应把生成制品、版本固定、模拟预览和物理执行的人审门槛分开。",
+        "maturity": "MIT，依赖固定、CI 和隐私说明较清楚，但 Windows Smart App Control 可能阻止 wheel，且不能只为单个应用例外。插件会下载运行时，任何制造输出都仍需工程人员验证。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/earthtojake/text-to-cad/blob/main/README.md",
+          "https://github.com/earthtojake/text-to-cad/blob/main/pyproject.toml",
+          "https://github.com/earthtojake/text-to-cad/releases/tag/v0.7.11"
+        ]
+      },
+      {
+        "repository": "calesthio/OpenMontage",
+        "url": "https://github.com/calesthio/OpenMontage",
+        "description": "让 coding Agent 用 YAML pipeline 与 Markdown skills 编排视频生产的控制面，配套 Python 工具、schema、预算、checkpoint、素材库与人工审批。",
+        "category": "application",
+        "stack": ["Python 3.10+", "Pydantic", "JSON Schema/YAML pipelines", "FastAPI/Uvicorn", "FFmpeg", "Remotion/React", "HyperFrames/GSAP", "local/cloud media providers"],
+        "totalStars": 63229,
+        "dailyStars": 245,
+        "trending": { "period": "daily", "stars": 245 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 63,229 Star、当日新增 245。",
+        "change": "距 9 月 14 日收录后复访；仓库尚无正式 Release。10 月 3 日 main 更新 provider/model catalog，加入 HeyGen Avatar、Cartesia/Gemini TTS 与约 600 行契约测试，并扩展 Backlot 的场景、素材、成本、评分和人工批准流程。",
+        "relevance": "checkpoint 状态机、schema 化制品、provider 能力注册表和“估算→预留→对账”预算模型很适合长任务；达到付费阈值或进入外部媒体生成前的人审，也可复用到昂贵或不可逆工具调用。",
+        "maturity": "AGPL，格式、工具与本地 fallback 丰富，但没有独立运行时编排器，主要依赖 Agent 遵循 Markdown。API key、版权、GPU、FFmpeg、Node 与付费 provider 都增加门槛；本次变化只是 main 提交，不是稳定版。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/calesthio/OpenMontage/blob/main/README.md",
+          "https://github.com/calesthio/OpenMontage/blob/main/ARCHITECTURE.md",
+          "https://github.com/calesthio/OpenMontage/blob/main/requirements.txt",
+          "https://github.com/calesthio/OpenMontage/blob/main/LICENSE"
+        ]
+      },
+      {
+        "repository": "antirez/ds4",
+        "url": "https://github.com/antirez/ds4",
+        "description": "DwarfStar 是面向 DS4、GLM 5.x、Qwen3.8 等模型的窄范围本地推理引擎，提供本地 HTTP server、coding agent、KV session、工具调用、评测和分布式执行。",
+        "category": "sandbox-infra",
+        "stack": ["C99/C11", "Metal", "CUDA", "ROCm/HIP", "GGUF", "native HTTP server/agent", "Make", "RDMA/tensor & pipeline parallelism"],
+        "totalStars": 23448,
+        "dailyStars": 211,
+        "trending": { "period": "daily", "stars": 211 },
+        "heatEvidence": "GitHub Trending 日榜；北京时间约 09:02 页面快照显示 23,448 Star、当日新增 211。",
+        "change": "首次收录；仓库尚无正式 Release。main 已把模型加载、prompt、工具、KV、HTTP 与 Agent 测试整合起来，覆盖 Metal/CUDA/ROCm、SSD 流式加载、多 CUDA session，以及两机 RDMA 的 tensor 与 pipeline parallelism。",
+        "relevance": "本地推理能减少数据外发与调用成本；session/KV 的快照、恢复、SSD 分层和跨机器执行方式，可参考到 Agent 执行池、缓存与调度。但它不是工具 sandbox，不能替代进程、文件和网络隔离。",
+        "maturity": "MIT，处于 beta 且按模型机会式支持；大型模型常需 96–512 GB 内存，示例权重可达 137 GB。即便本地运行，对话与 trace 仍属私密数据，部署需要单独的身份、网络和存储策略。",
+        "recommendation": "值得读源码",
+        "sources": [
+          "https://github.com/trending?since=daily",
+          "https://github.com/antirez/ds4/blob/main/README.md",
+          "https://github.com/antirez/ds4/blob/main/Makefile",
+          "https://github.com/antirez/ds4/blob/main/SERVER.md",
+          "https://github.com/antirez/ds4/blob/main/DISTRIBUTED.md",
+          "https://github.com/antirez/ds4/blob/main/LICENSE"
+        ]
+      },
+      {
+        "repository": "NVIDIA/OpenShell",
+        "url": "https://github.com/NVIDIA/OpenShell",
+        "description": "面向自治 Agent fleet 的安全运行时，以 sandbox、内核级文件/系统调用/网络策略、端点凭据、策略证明、本地与 Kubernetes 部署组成执行边界。",
+        "category": "sandbox-infra",
+        "stack": ["Rust 1.94/Edition 2024", "Tokio/Axum/Tonic gRPC", "Rustls/SPIFFE/SQLx", "Z3 policy prover", "Docker/Podman/host virtualization", "Kubernetes/Helm/NetworkPolicy", "OpenTelemetry/Prometheus"],
+        "totalStars": 14869,
+        "dailyStars": null,
+        "trending": { "period": "weekly", "stars": 5996 },
+        "heatEvidence": "GitHub Trending 周榜；北京时间约 09:02 页面快照显示 14,869 Star、本周新增 5,996。未进入当日日榜，日增量记为未知。",
+        "release": "v0.1.3-pre.3 · 2026-10-02（预发布；稳定版仍为 v0.1.2）",
+        "change": "距 10 月 2 日 pre.2 收录后复访：同日稍后的 pre.3 把独立 policy prover 纳入 Snap 包，使打包安装也能在应用策略前证明约束；这是窄范围预发布变化，并非新的稳定版。",
+        "relevance": "它把身份/TLS、文件、进程、网络、端点凭据、策略 diff、证明、审计和 Kubernetes 执行放在同一安全模型里；将 prover 与分发版本绑定，可防止控制面声称已证明而实际运行不同证明器。",
+        "maturity": "Apache-2.0，由 NVIDIA 开发，具备 SDK、Kubernetes 和观测能力，但仍是 0.1 预发布，安全声明尚未由本次日报独立验证。需要容器或虚拟化；WSL 支持仍实验性，Kubernetes 依赖 CNI 策略，并默认包含可关闭遥测。",
+        "recommendation": "值得试跑",
+        "sources": [
+          "https://github.com/trending?since=weekly",
+          "https://github.com/NVIDIA/OpenShell/blob/main/README.md",
+          "https://github.com/NVIDIA/OpenShell/blob/main/Cargo.toml",
+          "https://github.com/NVIDIA/OpenShell/releases/tag/v0.1.3-pre.3"
+        ]
+      }
+    ],
+    "collection": {
+      "startedAt": "2026-10-05T01:01:05.089Z",
+      "completedAt": "2026-10-05T01:17:27.464Z",
+      "status": "succeeded",
+      "sourceDate": "2026-10-05",
+      "notes": [
+        "本次自动任务于北京时间约 09:01 正常触发；Trending 数字按 09:02 左右实际页面快照记录。",
+        "日榜共 16 项，本期选用 8 项；周榜共 19 项，本期选用 2 项；没有另加非 Trending 项目，正式版本只用于丰富已入选项目。",
+        "昨日 10 项中只有 Claude Mem 连续出现，因为今天 06:45 的稳定版实质重做事件落盘与陈旧上下文回退；Text-to-CAD、OpenMontage 与 OpenShell 是有明确变化的历史复访，其余 6 项首次收录。",
+        "日增 Star 只记录日榜页面明确显示的 8 项；两个周榜项目的日增量记为未知。正式 Release、预发布、仓库版本与 main 提交均已明确区分。",
+        "项目方的安全、性能和成熟度声明均按上游资料转述；本次日报未将其视为独立审计结论。"
+      ]
+    }
+  }
+}
