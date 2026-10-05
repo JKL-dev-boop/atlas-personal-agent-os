@@ -84,7 +84,7 @@ The report should show, in order:
 3. traceability matrix: PR change or criterion -> risk -> case -> oracle -> result -> diagnosis/runbook;
 4. filterable case results with collapsible details;
 5. evidence index with case, type, source, summary, integrity hash, and local file link;
-6. diagnostic-provider evidence and confidence for failures;
+6. Miracle-Ops evidence and confidence for failures;
 7. new or updated runbook candidates;
 8. artifact and audit links.
 

@@ -1,6 +1,6 @@
 # PR Self-Test Orchestrator
 
-这是一个可安装的 Skill 框架，用于把 PR 转成“用例设计、用户选择、受控执行、证据留存、可插拔诊断、Runbook 沉淀”的闭环。
+这是一个可安装的 Skill 框架，用于把 PR 转成“用例设计、用户选择、自动执行、证据留存、Miracle-Ops 诊断、Runbook 沉淀”的闭环。
 
 ```text
 PR
@@ -13,7 +13,7 @@ PR
                      ↙           ↘
                   PASS           FAIL
                                    ↓
-                              诊断 Provider
+                              Miracle-Ops
                                    ↓
                          证据化诊断与失败分类
                                    ↓
@@ -24,20 +24,30 @@ HTML/Markdown 报告 ←──── Runbook 候选与验证
 
 - Skill：理解 PR、编排流程、生成测试计划和报告。
 - 确定性 Runner：调用登记过的 API、执行断言、记录证据、清理资源。
-- 诊断 Provider：仅负责失败后的机器侧诊断和根因分析，需由项目显式配置。
+- Miracle-Ops：仅负责失败后的机器侧诊断和根因分析。
 - `.pr-selftest/`：保存项目背景、运行记录和可审计的长期知识。
 
-本包提供 Skill 指令、项目模板、健康检查、证据与报告辅助脚本。它不是开箱即用的测试 Runner；真实诊断能力、项目 API、Runner 与证据采集器需要在首次接入时由你登记并审查。
+本包提供 Skill 指令、项目模板、健康检查、报告渲染和安装脚本。Miracle-Ops 的真实调用方式及项目 API 需要在首次接入时由你填写。
 
 ## 安装
 
-下载页提供固定版本 ZIP、SHA-256 和一段供 Codex Agent 使用的受限安装 Prompt。推荐由 Agent 先核对哈希、归档路径与文件白名单，再把整个 `pr-selftest-orchestrator` 目录复制到项目级或个人 Skills 目录。
+PowerShell：
 
-不要直接执行下载包中的任意脚本。先审查脚本；安装与项目初始化完成后，也不代表已经授权运行测试、调用真实服务或访问生产环境。
+```powershell
+.\scripts\install.ps1
+```
+
+Linux/macOS：
+
+```bash
+./scripts/install.sh
+```
+
+也可以把整个 `pr-selftest-orchestrator` 目录复制到个人 Skills 目录。
 
 ## 项目首次接入
 
-审查安装副本后，可以在项目根目录执行：
+在项目根目录执行：
 
 ```bash
 python <skill目录>/scripts/init_project.py --project .
@@ -49,7 +59,7 @@ python <skill目录>/scripts/doctor.py --project .
 1. `PROJECT.md`：模块、PR 和测试背景。
 2. `API_CATALOG.md`：cURL、用途、断言与清理关系。
 3. `ENVIRONMENTS.md`：测试环境、版本和凭据引用。
-4. `DIAGNOSTICS.md`：诊断 Provider 的调用契约和能力边界。
+4. `MIRACLE_OPS.md`：Miracle-Ops 调用契约和能力边界。
 5. `TEST_POLICY.md`：允许的环境、动作和运行预算。
 6. `EVIDENCE.md`：日志窗口、数据库/API 快照和证据大小上限。
 
@@ -59,7 +69,7 @@ python <skill目录>/scripts/doctor.py --project .
 Use $pr-selftest-orchestrator to test PR <URL-or-number>.
 ```
 
-Skill 会先展示候选用例，并暂停等待你选择；只有选中的用例才会执行。项目必须先接入经过审查的确定性 Runner 与证据采集器；本包不会从任意 cURL、SQL 或 Shell 文本自动生成执行权限。
+Skill 会先展示候选用例，并暂停等待你选择；只有选中的用例才会执行。证据采集不需要逐项选择：每个用例会按 `EVIDENCE.md` 自动保存请求/响应、受限日志上下文、状态前后快照、结构化差异和清理后状态。
 
 ## 运行产物
 
@@ -84,11 +94,11 @@ Skill 会先展示候选用例，并暂停等待你选择；只有选中的用�
 │       │   ├── after/
 │       │   ├── diff/
 │       │   └── cleanup/
-│       └── diagnostics/
+│       └── miracle-ops/
 └── artifacts/
 ```
 
-`evidence/manifest.json` 记录每份证据的来源、用例、关联 ID、时间、大小和 SHA-256；报告直接链接到对应文件。日志必须按请求/Trace ID 或时间窗口截取，数据库证据只允许登记过的只读查询或 API，并设定字段与行数上限。辅助脚本仅接受 `.pr-selftest/runs/<run-id>`，拒绝 link-like 路径、单文件超过 5 MiB、单次运行超过 25 MiB及高置信凭据模式。
+`evidence/manifest.json` 记录每份证据的来源、用例、关联 ID、时间、大小和 SHA-256；报告直接链接到对应文件。日志必须按请求/Trace ID 或时间窗口截取，数据库证据只允许登记过的只读查询或 API，并设定字段与行数上限。
 
 执行器可用随包脚本统一登记证据：
 

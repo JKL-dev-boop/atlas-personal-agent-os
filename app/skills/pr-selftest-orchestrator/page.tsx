@@ -33,18 +33,18 @@ const permissionTone = {
 
 export default function SkillDetailPage() {
   return (
-    <SectionShell eyebrow="SKILL / VERIFIED PACKAGE" title={featuredSkill.title} description={featuredSkill.summary}>
+    <SectionShell eyebrow="SKILL / SOURCE-EXACT RELEASE" title={featuredSkill.title} description={featuredSkill.summary}>
       <section className="rounded-2xl border border-cyan-300/18 bg-card p-5 md:p-6">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <Badge className="bg-cyan-400/10 text-cyan-300">Agent Skill</Badge>
               <Badge variant="outline" className="border-white/10 text-slate-400">{skill.lifecycle}</Badge>
-              <Badge className="bg-emerald-400/10 text-emerald-300"><CheckCircle2 />包结构与合成流程已验证</Badge>
+              <Badge className="bg-emerald-400/10 text-emerald-300"><CheckCircle2 />原始 ZIP 哈希与结构已核对</Badge>
             </div>
             <h2 className="mt-5 text-lg font-semibold text-white">固定版本，可下载，也可交给 Agent 安装</h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
-              下载包只包含经白名单审查的 Skill 指令、模板与辅助脚本。Agent 可以自动完成校验、项目级安装和安全配置草稿；执行测试、访问环境或读取密钥仍需要独立授权。
+              此下载包与“小分析师”会话最后生成的 ZIP 保持逐字节一致，包含 Skill 指令、模板、辅助脚本及明确标注为合成的预览/示例。Agent 可按下方 Prompt 完成受限校验和项目级安装；执行测试、访问环境或读取密钥仍需要独立授权。
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               <a href={skill.download.href} download={skill.download.fileName} className={buttonVariants({ className: 'bg-cyan-300 text-slate-950 hover:bg-cyan-200' })}>
@@ -63,8 +63,8 @@ export default function SkillDetailPage() {
               <div><p className="text-slate-500">验证</p><p className="mt-1 text-emerald-300">package-validated</p></div>
               <div><p className="text-slate-500">分发</p><p className="mt-1 text-slate-200">ZIP + 源码</p></div>
               <div><p className="text-slate-500">范围</p><p className="mt-1 text-slate-200">项目级优先</p></div>
-              <div><p className="text-slate-500">包内文件</p><p className="mt-1 text-slate-200">{skill.download.entryCount} 项</p></div>
-              <div><p className="text-slate-500">许可</p><p className="mt-1 text-amber-200">个人 / 授权内部评估</p></div>
+              <div><p className="text-slate-500">ZIP 条目</p><p className="mt-1 text-slate-200">{skill.download.entryCount} 项</p></div>
+              <div><p className="text-slate-500">许可</p><p className="mt-1 text-amber-200">未声明</p></div>
             </div>
             <div className="mt-4 border-t border-white/7 pt-4">
               <p className="text-[10px] uppercase tracking-[0.14em] text-slate-600">SHA-256</p>

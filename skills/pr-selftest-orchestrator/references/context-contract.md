@@ -11,7 +11,7 @@ Project-specific information lives under the repository, not the installed skill
 │   ├── PROJECT.md
 │   ├── API_CATALOG.md
 │   ├── ENVIRONMENTS.md
-│   ├── DIAGNOSTICS.md
+│   ├── MIRACLE_OPS.md
 │   ├── TEST_POLICY.md
 │   └── EVIDENCE.md
 ├── runbooks/
@@ -28,7 +28,7 @@ Project-specific information lives under the repository, not the installed skill
             └── <case-id>/
 ```
 
-`scripts/init_project.py` creates this layout from a template without overwriting existing files. `scripts/doctor.py` performs structural checks and reports known placeholders; passing it is necessary but not sufficient. The Skill must still verify that environment endpoints, operation oracles, cleanup, and the diagnostic-provider invocation are semantically usable for the current PR.
+`scripts/init_project.py` creates this layout from a template without overwriting existing files. `scripts/doctor.py` performs structural checks and reports known placeholders; passing it is necessary but not sufficient. The Skill must still verify that environment endpoints, operation oracles, cleanup, and the Miracle-Ops invocation are semantically usable for the current PR.
 
 ## Authority and mutability
 
@@ -67,7 +67,7 @@ cURL text is an example, not executable authority. Normalize it to an operation 
 
 Define environment IDs, kind (`test`, `staging`, or other), base endpoints, deployed-version lookup, namespace or tenant, allowed services, secret references, health checks, fixture strategy, reset/cleanup behavior, and explicitly forbidden targets.
 
-### `DIAGNOSTICS.md`
+### `MIRACLE_OPS.md`
 
 Define the real invocation mechanism, version, capabilities, required inputs, returned fields, timeouts, concurrency limits, evidence conventions, and whether it can access hosts automatically. Do not place the general diagnostic prompt here; the skill's dedicated prompt is versioned separately.
 
@@ -84,7 +84,7 @@ Define which registered collectors provide bounded log context, database snapsho
 - Store secret names or references only.
 - Resolve values at execution time through the approved runtime.
 - Redact authorization headers, cookies, tokens, passwords, and private keys from artifacts.
-- Do not pass raw secrets to the model or a diagnostic provider unless its approved contract explicitly requires and protects them.
+- Do not pass raw secrets to the model or Miracle-Ops unless its approved contract explicitly requires and protects them.
 
 ## First-run behavior
 

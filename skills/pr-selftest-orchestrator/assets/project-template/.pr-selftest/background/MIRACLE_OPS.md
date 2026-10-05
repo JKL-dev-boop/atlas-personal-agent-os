@@ -1,10 +1,10 @@
-# Diagnostic provider integration
+# Miracle-Ops integration
 
-This file describes how to make a real diagnostic call. The dedicated invocation prompt remains in the installed Skill at `references/diagnostic-provider-prompt.md`.
+This file describes how to make the real Miracle-Ops call. The dedicated invocation prompt remains in the installed Skill at `references/miracle-ops-prompt.md`.
 
 ## Capability
 
-- Installed Skill/tool/MCP/CLI/API name: `TODO_REQUIRED`
+- Installed Skill/tool/API name: `TODO_REQUIRED`
 - Version: `TODO_REQUIRED`
 - Invocation mechanism: `skill | CLI | MCP | HTTP API | other`
 - Exact invocation reference or command template: `TODO_REQUIRED`
@@ -15,7 +15,7 @@ This file describes how to make a real diagnostic call. The dedicated invocation
 
 ## Required input
 
-List exact field names and formats expected by the diagnostic provider.
+List exact field names and formats expected by Miracle-Ops.
 
 - Environment/service/instance: `TODO_REQUIRED`
 - Time window: `TODO_REQUIRED`
@@ -25,7 +25,7 @@ List exact field names and formats expected by the diagnostic provider.
 
 ## Returned output
 
-Map the provider output into these concepts:
+Map Miracle-Ops output into these concepts:
 
 - Run ID: `TODO_REQUIRED`
 - Classification: `TODO_REQUIRED`
@@ -40,3 +40,4 @@ Map the provider output into these concepts:
 - Read-only diagnostic abilities: `TODO_REQUIRED`
 - Mutating abilities that must not be called by this Skill: `TODO_REQUIRED`
 - Known limitations or unsupported failure classes: `TODO_REQUIRED`
+

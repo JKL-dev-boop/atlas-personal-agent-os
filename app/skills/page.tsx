@@ -68,7 +68,7 @@ export default function SkillsPage() {
                   <p className="mt-4 text-slate-500">兼容性</p>
                   <p className="mt-1 text-slate-200">Codex · 项目级优先</p>
                   <p className="mt-4 text-slate-500">公开内容</p>
-                  <p className="mt-1 leading-5 text-slate-400">审查后的源码与模板；不包含真实运行证据、预览报告或线程导出。</p>
+                  <p className="mt-1 leading-5 text-slate-400">小分析师原始最新包；含合成示例与预览，不含真实运行证据或线程导出。</p>
                 </aside>
               </div>
             </article>

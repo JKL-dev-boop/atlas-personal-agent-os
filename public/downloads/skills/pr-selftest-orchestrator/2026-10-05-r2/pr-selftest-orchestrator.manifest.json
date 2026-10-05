@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "skillSlug": "pr-selftest-orchestrator",
+  "packageVersion": "2026-10-05-r2",
+  "generatedAt": "2026-10-05T11:09:24Z",
+  "source": "https://github.com/JKL-dev-boop/atlas-personal-agent-os/tree/master/skills/pr-selftest-orchestrator",
+  "provenance": {
+    "conversationTitle": "小分析师",
+    "artifactCompletedAt": "2026-10-05T09:27:17Z",
+    "archiveBytesPreserved": true
+  },
+  "licenseStatus": "not-declared",
+  "fileCount": 36,
+  "directoryEntryCount": 1,
+  "unpackedBytes": 102382,
+  "files": [
+    {
+      "path": "SKILL.md",
+      "sizeBytes": 7007,
+      "sha256": "7e10ae0523a534dae31433b56a189ff28d54b0cda76cb7a54f55427330c318ba"
+    },
+    {
+      "path": "QUICKSTART.md",
+      "sizeBytes": 4307,
+      "sha256": "9f0fed054652c262cf746190efdacf1502ba51e730064a39a10c8a86ace56cd8"
+    },
+    {
+      "path": "agents/openai.yaml",
+      "sizeBytes": 469,
+      "sha256": "4d68c030e4f048c6a4ea85064d536517b5272d3dfa3ae242fc83a47c66214781"
+    },
+    {
+      "path": "assets/icon.svg",
+      "sizeBytes": 767,
+      "sha256": "9e6aca88c9e9d63773a0d6c252f626543577e4d51ab3d8dde3263c1be95d1504"
+    },
+    {
+      "path": "assets/report-preview.html",
+      "sizeBytes": 14478,
+      "sha256": "1083f3b8c56822b41d49d67693a94f3706e8482dd917965d243872648d5dd703"
+    },
+    {
+      "path": "assets/report-template.html",
+      "sizeBytes": 10512,
+      "sha256": "4e6f7130652e8553861f14bfdd9ed1c08c68194ffe68bf1f84db371b9731e372"
+    },
+    {
+      "path": "assets/sample-results.json",
+      "sizeBytes": 4884,
+      "sha256": "84744e114962b03262bebd1c3e90fc6d4c83c070f8a8fe9c8c7e96d4b7c0ed67"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/.gitignore",
+      "sizeBytes": 44,
+      "sha256": "77aa4eb13cc2ca9a8b208530018c16834c08167948f2f8fb9f8b13435fc931e0"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/config.json",
+      "sizeBytes": 425,
+      "sha256": "62c8ebd5ef22ce3cf817cf4162404e88a5426295c651cb148464ed6fb9f47c9e"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/background/API_CATALOG.md",
+      "sizeBytes": 1147,
+      "sha256": "2c3ce9624934b1c372ae2259e1036be49983d7d8ae8d6c78e56bd9270a7434d6"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/background/ENVIRONMENTS.md",
+      "sizeBytes": 741,
+      "sha256": "965166363d45db57de9e49907aa9fba0e0cd4fe4ffc99884bcef1b9583ba1dbf"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/background/EVIDENCE.md",
+      "sizeBytes": 2199,
+      "sha256": "713f4495903e878992e48c9671f21337228ff2cafef4dd836c51307319e809de"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/background/MIRACLE_OPS.md",
+      "sizeBytes": 1408,
+      "sha256": "39f5931631d876c9e417ea99d25bbdd8a633de809e8a384fe23b9c81dbc53689"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/background/PROJECT.md",
+      "sizeBytes": 1255,
+      "sha256": "b49ed7ec6f60d358c54be6171b7391f25fa99d176d84df98217be118b8c09d73"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/background/TEST_POLICY.md",
+      "sizeBytes": 1378,
+      "sha256": "a29664d77c6d2db33ddd5c064cfd399c6f246fd0f8b2e503bd055d5926e7a46a"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/runbooks/index.json",
+      "sizeBytes": 85,
+      "sha256": "9443c1348b1f0f2cb797cf1cf4c5a3110be89ab2d4229e8e1b59bdd890e8c0ee"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/runbooks/archive/.gitkeep",
+      "sizeBytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/runbooks/candidates/.gitkeep",
+      "sizeBytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/runbooks/quarantined/.gitkeep",
+      "sizeBytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/runbooks/shadow/.gitkeep",
+      "sizeBytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/runbooks/verified/.gitkeep",
+      "sizeBytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "assets/project-template/.pr-selftest/runs/.gitkeep",
+      "sizeBytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "references/context-contract.md",
+      "sizeBytes": 4507,
+      "sha256": "719534a9b74bfa9feb8473526250788905580529075055d5bc58604e03fd6d41"
+    },
+    {
+      "path": "references/evidence-contract.md",
+      "sizeBytes": 4238,
+      "sha256": "a6334dfa454250766376516420e7f915761fc640132c4c395f99aee3c22cfea1"
+    },
+    {
+      "path": "references/learning-lifecycle.md",
+      "sizeBytes": 3933,
+      "sha256": "5a30880878102dd518f23a159df2a018330545225c22545d80838c350cabe887"
+    },
+    {
+      "path": "references/miracle-ops-prompt.md",
+      "sizeBytes": 2715,
+      "sha256": "0c033f1e9e54844b0fb1dab599e9a347f1b06049b74fdd32d77c29eae7af40b8"
+    },
+    {
+      "path": "references/report-contract.md",
+      "sizeBytes": 2571,
+      "sha256": "0995df30d9bf6c901a552eeaf9e1c6c40aa11927fd607e69885ee62b08bc5d0c"
+    },
+    {
+      "path": "references/runner-adapter.md",
+      "sizeBytes": 3092,
+      "sha256": "81d336225b18583325ffa872e033faedca3074dc12bb02ec05215043005e2240"
+    },
+    {
+      "path": "references/test-plan-contract.md",
+      "sizeBytes": 4579,
+      "sha256": "7ce2d68edd042021c9ce2d5827fd518daaae7cf579806b4e32723a1816cf88a1"
+    },
+    {
+      "path": "references/workflow.md",
+      "sizeBytes": 4974,
+      "sha256": "86cd3676d5c16515b4f9bbde0b263d8c2ee9812922efd5efb02736d192635b25"
+    },
+    {
+      "path": "scripts/doctor.py",
+      "sizeBytes": 4149,
+      "sha256": "91b77f8d5379974254ee961bfef1e74c22abcf02ff2ca0cff57fec42712a5927"
+    },
+    {
+      "path": "scripts/evidence_store.py",
+      "sizeBytes": 10793,
+      "sha256": "361e401de9fccbbf6f552f0538e8e5ea9ac15c4d5e948d15a6923b0e9b9237dc"
+    },
+    {
+      "path": "scripts/init_project.py",
+      "sizeBytes": 1918,
+      "sha256": "179e52c4d8883aba1fce5266979ea562e6576f6cb9f36b8768d1ff135285342f"
+    },
+    {
+      "path": "scripts/install.ps1",
+      "sizeBytes": 1008,
+      "sha256": "a81dc96229b4528a89f9a79ab02a4c8716295a2264d18d4cd12ffad9ca92c202"
+    },
+    {
+      "path": "scripts/install.sh",
+      "sizeBytes": 672,
+      "sha256": "53b11ea66078071daeacbebb039af6ced552221584bb1fe584edba128a7c4106"
+    },
+    {
+      "path": "scripts/render_report.py",
+      "sizeBytes": 2121,
+      "sha256": "b8ab9be1d2a86a38c44e6b00cd59df0c556529e6bd999e7934aaa720cdeaea16"
+    }
+  ],
+  "archive": {
+    "fileName": "pr-selftest-orchestrator.zip",
+    "sha256": "0796bdf734cb33be41f93b7c6f045b28673dab2f6ebfd948d6824f95e5002e4a",
+    "sizeBytes": 50463,
+    "entryCount": 37
+  }
+}

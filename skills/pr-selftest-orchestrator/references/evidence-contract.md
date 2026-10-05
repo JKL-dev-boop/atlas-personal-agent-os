@@ -15,7 +15,7 @@ Evidence makes each test result independently reviewable. Collection is automati
     │   ├── after/
     │   ├── diff/
     │   └── cleanup/
-    └── diagnostics/
+    └── miracle-ops/
 ```
 
 Every evidence item records an ID, case ID, type, source, capture time, content path, byte size, SHA-256 hash, correlation IDs, and source-specific metadata. Finalized items are immutable; a recapture creates a new item.
@@ -29,7 +29,7 @@ For each approved case:
 3. Record the exact approved request metadata, redacted request body, response, request ID, trace ID, and timing.
 4. Capture the post-action state and compute a deterministic before/after diff.
 5. On failure, collect bounded log context using correlation IDs and a configured time window. Store both the raw bounded excerpt and a smaller human-readable excerpt.
-6. Pass only relevant evidence references to the configured diagnostic provider; retain its raw and normalized output.
+6. Pass only relevant evidence references to Miracle-Ops; retain its raw and normalized output.
 7. Execute cleanup, capture the cleanup state, and verify restoration against the baseline or cleanup oracle.
 8. Finalize the manifest and expose links in the report.
 
@@ -102,7 +102,5 @@ Database evidence should be narrow enough to review. A full database dump is not
 - Compute SHA-256 when adding each file and again before finalization.
 - Do not overwrite finalized evidence.
 - Use the retention and size limits from `EVIDENCE.md`.
-- The bundled helper enforces a 5 MiB file limit, 25 MiB run limit, a `.pr-selftest/runs/<run-id>` path boundary, and rejects link-like destinations. Project policy may be stricter but not looser without a reviewed code change.
 - Default filtering may preserve full business values inside an approved internal environment, but credentials, tokens, passwords, private keys, and session secrets must still be excluded.
-- Treat helper scanning as defense in depth. Registered collectors must redact at source; a possible credential match is rejected rather than silently archived.
 - Run directories are local and ignored by Git by default.

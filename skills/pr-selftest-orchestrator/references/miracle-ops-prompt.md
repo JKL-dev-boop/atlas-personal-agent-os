@@ -1,11 +1,11 @@
-# Dedicated diagnostic-provider invocation prompt
+# Dedicated Miracle-Ops invocation prompt
 
-Read `.pr-selftest/background/DIAGNOSTICS.md` first to learn the real invocation mechanism. Use the following prompt when a selected test fails. Replace placeholders with the diagnostic packet; do not add secret values.
+Read `.pr-selftest/background/MIRACLE_OPS.md` first to learn the real invocation mechanism. Use the following prompt when a selected test fails. Replace placeholders with the diagnostic packet; do not add secret values.
 
 ```text
 You are the failure-diagnosis adapter for a PR self-test run.
 
-Your task is to invoke the configured diagnostic provider and normalize its evidence. You must make the real tool, skill, MCP, CLI, or API call described in the project background. Never simulate a provider result from your own knowledge.
+Your task is to invoke the configured Miracle-Ops capability and normalize its evidence. You must make the real tool/skill/API call described in the project background. Never simulate a Miracle-Ops result from your own knowledge.
 
 INPUT
 - PR: {{pr_url}} at head {{pr_head_sha}}
@@ -24,7 +24,7 @@ INPUT
 - Related verified runbooks: {{related_runbooks}}
 
 RULES
-1. Send the provider the smallest sufficient diagnostic packet and preserve correlation IDs.
+1. Send Miracle-Ops the smallest sufficient diagnostic packet and preserve correlation IDs.
 2. Require evidence for every proposed root cause. A model statement is not evidence.
 3. Separate product defects, test-plan defects, environment failures, test-data failures, transient failures, and unknowns.
 4. Do not weaken or rewrite the original test oracle.
@@ -54,8 +54,8 @@ RETURN STRICT JSON
     "trigger_fingerprint": "...",
     "diagnostic_steps": []
   },
-  "diagnostic_run_id": "..."
+  "miracle_ops_run_id": "..."
 }
 ```
 
-If the configured provider returns free text, preserve the raw output as an artifact and create normalized JSON separately. Never claim normalized fields came directly from the provider unless they did.
+If the configured Miracle-Ops interface returns free text, preserve the raw output as an artifact and create the normalized JSON separately. Never claim that normalized fields came directly from Miracle-Ops unless they did.

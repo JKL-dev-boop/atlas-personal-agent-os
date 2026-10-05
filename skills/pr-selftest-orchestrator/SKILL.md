@@ -1,13 +1,13 @@
 ---
 name: pr-selftest-orchestrator
-description: Analyze a pull request, propose traceable test cases for user selection, execute only approved cases, diagnose failures through a configured diagnostic provider, and preserve verified runbooks for later PR self-tests. Use for PR-level functional or regression self-testing; do not use for unapproved production testing or unrestricted shell execution.
+description: Analyze a pull request, propose traceable test cases for user selection, execute only approved cases, diagnose failures through Miracle-Ops, and preserve verified runbooks for later PR self-tests. Use for PR-level functional or regression self-testing; do not use for unapproved production testing or unrestricted shell execution.
 ---
 
 # PR Self-Test Orchestrator
 
 Turn a PR into an auditable self-test loop:
 
-`PR -> impact analysis -> selectable test plan -> approved execution -> evidence capture -> configured diagnosis -> report -> verified learning`
+`PR -> impact analysis -> selectable test plan -> approved execution -> evidence capture -> Miracle-Ops diagnosis -> report -> verified learning`
 
 ## Project memory
 
@@ -29,7 +29,7 @@ Read [references/context-contract.md](references/context-contract.md) when initi
 5. Present the plan before execution. Show each case's ID, scenario, source, main assertion, evidence to retain, environment impact, risk, estimated duration, recommendation, and feasibility. Let the user run all, run recommended, select IDs, exclude IDs, revise cases, or stop.
 6. **Pause for explicit user selection. Do not execute any case before approval.** Freeze the selected case IDs, PR head SHA, plan hash, and environment. If any of them changes, present the revised plan again.
 7. Execute only approved cases through registered operations and deterministic assertions. Read [references/runner-adapter.md](references/runner-adapter.md) when wiring or selecting an execution adapter. Follow [references/evidence-contract.md](references/evidence-contract.md): capture registered database state before and after state-changing cases, compute a structured diff, retain request/response and correlation IDs, and preserve bounded log context around the run or failure. Always attempt cleanup, including after cancellation or failure, and capture the post-cleanup verification state.
-8. For an assertion failure, timeout, setup error, or cleanup error, build a diagnostic packet and follow [references/diagnostic-provider-prompt.md](references/diagnostic-provider-prompt.md). Invoke the real configured diagnostic capability; never simulate its result.
+8. For an assertion failure, timeout, setup error, or cleanup error, build a diagnostic packet and follow [references/miracle-ops-prompt.md](references/miracle-ops-prompt.md). Invoke the real configured Miracle-Ops capability; never simulate its result.
 9. Classify the failure as `PRODUCT_DEFECT`, `TEST_DEFECT`, `ENVIRONMENT`, `TEST_DATA`, `TRANSIENT`, or `UNKNOWN`. Diagnosis may trigger one bounded re-plan only for `TEST_DEFECT`; it must never silently weaken an oracle or reinterpret a product failure as success.
 10. Produce Markdown and, when the renderer is available, a single-file HTML report. Read [references/report-contract.md](references/report-contract.md) for the artifact schema and visual layout.
 11. Distill supported new knowledge according to [references/learning-lifecycle.md](references/learning-lifecycle.md). Report what was learned, its evidence, scope, status, and whether it affected this run.
@@ -48,7 +48,7 @@ The detailed state machine and interaction rules are in [references/workflow.md]
 - Never expose secret values in prompts, reports, runbooks, or artifacts. Use secret references supplied by the runtime.
 - Evidence is local, content-hashed, source-attributed, and bounded by the project evidence policy. Never collect an unrestricted database dump or unbounded log stream.
 - A result that claims a database or service-state change must link the before snapshot, after snapshot, and computed diff or explicitly state why evidence is unavailable.
-- Bound requests, concurrency, retries, replans, duration, and diagnostic-provider calls. Stop safely when a configured limit is reached.
+- Bound requests, concurrency, retries, replans, duration, and Miracle-Ops calls. Stop safely when a configured limit is reached.
 
 ## Learning invariants
 
@@ -64,7 +64,7 @@ Lead with the merge/self-test recommendation, then provide:
 
 - approved cases and outcomes;
 - coverage from PR change or acceptance criterion to assertion and result;
-- diagnostic-provider evidence for failures;
+- Miracle-Ops evidence for failures;
 - request/response, log-context, database before/after/diff, and cleanup evidence links;
 - cleanup status and remaining risks;
 - new or updated runbook candidates;

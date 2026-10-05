@@ -64,7 +64,7 @@ Each case produces:
 }
 ```
 
-The adapter does not diagnose root causes. The orchestrator packages failed results for the configured diagnostic provider.
+The adapter does not diagnose root causes. The orchestrator packages failed results for Miracle-Ops.
 
 ## Safety boundary
 

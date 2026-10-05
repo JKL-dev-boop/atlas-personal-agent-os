@@ -18,7 +18,7 @@ Replace required values and keep this file under normal project review.
 - Maximum concurrency: `1`
 - Maximum retry per step: `1`
 - Maximum re-plans: `1`
-- Maximum diagnostic-provider calls: `5`
+- Maximum Miracle-Ops calls: `5`
 - Maximum run duration: `30m`
 - Stop after failed-case ratio: `TODO_REQUIRED`
 

@@ -81,7 +81,7 @@ Use registered operations, not arbitrary generated shell. Evidence collection is
 证据基线          CAPTURED
 执行 3/8          TC-003 FAIL
 日志与状态差异    CAPTURED
-已配置诊断能力    RUNNING
+Miracle-Ops 诊断  RUNNING
 环境清理          PASS
 清理后状态        VERIFIED
 报告生成          PASS
@@ -96,8 +96,8 @@ Retry only faults declared retryable by the API background or policy. A retry of
 On failure:
 
 1. Preserve the original oracle; never edit it to match the observed result.
-2. Build the diagnostic packet defined in `diagnostic-provider-prompt.md`.
-3. Invoke the configured diagnostic capability.
+2. Build the diagnostic packet defined in `miracle-ops-prompt.md`.
+3. Invoke the configured Miracle-Ops capability.
 4. Normalize its result and link evidence to the failed step.
 5. Classify the failure.
 6. Allow at most one re-plan when the failure is `TEST_DEFECT`, and present the revised case for approval before rerunning.

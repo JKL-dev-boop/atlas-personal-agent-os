@@ -20,7 +20,7 @@ Configure this file once for the project. During normal runs, evidence collectio
 - Correlation fields: `request_id, trace_id, resource_id`
 - Time window before/after case: `30s / 30s`
 - Maximum lines per case: `2000`
-- Maximum bytes per evidence file: `5MB`
+- Maximum bytes per case: `10MB`
 - Include levels: `ERROR, WARN, INFO`
 - Exclude fields: `authorization, cookie, set-cookie, access_token, refresh_token`
 
@@ -45,8 +45,8 @@ Add more profiles by copying the block above. Do not place connection strings, p
 
 ## Size and cleanup limits
 
-- Maximum evidence per case: `10MB`
-- Maximum evidence per run: `25MB`
+- Maximum evidence per case: `25MB`
+- Maximum evidence per run: `200MB`
 - If a limit is reached: stop collecting that evidence type, record truncation in the manifest, and continue only if the test oracle remains valid.
-- `evidence_store.py` is a final safety gate, not a redaction service: it rejects high-confidence credential patterns and redacts sensitive-key values in metadata and JSON diffs. Collectors must still redact at source.
 - Evidence cleanup follows local retention policy and must never delete project source or files outside `.pr-selftest/runs/`.
+

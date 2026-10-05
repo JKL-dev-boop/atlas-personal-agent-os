@@ -9,7 +9,6 @@ import json
 import os
 import re
 import shutil
-import stat
 import tempfile
 import uuid
 from datetime import datetime, timezone
@@ -24,25 +23,9 @@ TYPE_FOLDERS = {
     "db_after": ("db", "after"),
     "db_diff": ("db", "diff"),
     "db_cleanup": ("db", "cleanup"),
-    "diagnostics": ("diagnostics",),
+    "miracle_ops": ("miracle-ops",),
     "other": ("other",),
 }
-
-MAX_EVIDENCE_FILE_BYTES = 5 * 1024 * 1024
-MAX_RUN_EVIDENCE_BYTES = 25 * 1024 * 1024
-MAX_DIFF_CHANGES = 2_000
-SENSITIVE_KEY = re.compile(
-    r"(?:authorization|cookie|set-cookie|password|passwd|secret|token|credential|api[_-]?key|private[_-]?key)",
-    re.IGNORECASE,
-)
-SENSITIVE_BYTES = (
-    re.compile(br"-----BEGIN [A-Z ]*PRIVATE KEY-----"),
-    re.compile(br"Authorization\s*:\s*Bearer\s+(?!\$\{|<|TODO_)[^\s'\"]+", re.IGNORECASE),
-    re.compile(
-        br"(?:password|passwd|secret|token|api[_-]?key)\s*[:=]\s*['\"]?[A-Za-z0-9_./+=-]{12,}",
-        re.IGNORECASE,
-    ),
-)
 
 
 def utc_now() -> str:
@@ -56,82 +39,6 @@ def safe_segment(value: str, label: str) -> str:
     return cleaned
 
 
-def is_link_like(path: Path) -> bool:
-    if path.is_symlink():
-        return True
-    if hasattr(os.path, "isjunction") and os.path.isjunction(path):
-        return True
-    try:
-        attributes = getattr(path.lstat(), "st_file_attributes", 0)
-    except FileNotFoundError:
-        return False
-    return bool(attributes & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0))
-
-
-def reject_link_components(path: Path, boundary: Path | None = None) -> None:
-    current = path.absolute()
-    boundary = boundary.absolute() if boundary else None
-    while True:
-        if is_link_like(current):
-            raise ValueError(f"Refusing symlink, junction, or reparse path: {current}")
-        if boundary is not None and current == boundary:
-            return
-        if current.parent == current:
-            if boundary is not None:
-                raise ValueError(f"Path is outside the run boundary: {path}")
-            return
-        current = current.parent
-
-
-def validate_run_dir(raw: str) -> Path:
-    requested = Path(raw).expanduser().absolute()
-    if requested.parent.name != "runs" or requested.parent.parent.name != ".pr-selftest":
-        raise ValueError("--run-dir must be <project>/.pr-selftest/runs/<run-id>")
-    if requested.name != safe_segment(requested.name, "run ID"):
-        raise ValueError(f"Invalid run directory name: {requested.name!r}")
-    reject_link_components(requested.parent)
-    if not requested.parent.is_dir():
-        raise ValueError(f"Initialized runs directory does not exist: {requested.parent}")
-    if is_link_like(requested):
-        raise ValueError(f"Refusing link-like run directory: {requested}")
-    return requested.parent.resolve(strict=True) / requested.name
-
-
-def validate_input_file(raw: str, label: str) -> Path:
-    requested = Path(raw).expanduser().absolute()
-    reject_link_components(requested)
-    path = requested.resolve(strict=True)
-    if not path.is_file():
-        raise ValueError(f"{label} does not exist: {path}")
-    if path.stat().st_size > MAX_EVIDENCE_FILE_BYTES:
-        raise ValueError(f"{label} exceeds {MAX_EVIDENCE_FILE_BYTES} bytes: {path}")
-    return path
-
-
-def reject_embedded_secrets(path: Path) -> None:
-    payload = path.read_bytes()
-    for pattern in SENSITIVE_BYTES:
-        if pattern.search(payload):
-            raise ValueError(f"Possible credential material in {path.name}; redact it before capture")
-
-
-def redact_sensitive(value: Any, key: str = "") -> Any:
-    if key and SENSITIVE_KEY.search(key):
-        return "<redacted>"
-    if isinstance(value, dict):
-        return {item_key: redact_sensitive(item_value, str(item_key)) for item_key, item_value in value.items()}
-    if isinstance(value, list):
-        return [redact_sensitive(item) for item in value]
-    if isinstance(value, str):
-        value = re.sub(
-            r"Bearer\s+(?!\$\{|<|TODO_)[^\s'\"]+",
-            "Bearer <redacted>",
-            value,
-            flags=re.IGNORECASE,
-        )
-    return value
-
-
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -141,9 +48,6 @@ def sha256_file(path: Path) -> str:
 
 
 def ensure_under(path: Path, root: Path) -> Path:
-    reject_link_components(path.parent, root)
-    if is_link_like(path):
-        raise ValueError(f"Refusing link-like evidence path: {path}")
     resolved = path.resolve()
     try:
         resolved.relative_to(root.resolve())
@@ -158,8 +62,6 @@ def manifest_path(run_dir: Path) -> Path:
 
 def load_manifest(run_dir: Path) -> dict[str, Any]:
     path = manifest_path(run_dir)
-    if is_link_like(path):
-        raise ValueError(f"Refusing link-like evidence manifest: {path}")
     if not path.exists():
         return {
             "schema_version": "1.0",
@@ -181,9 +83,7 @@ def ensure_mutable(run_dir: Path) -> None:
 
 def save_manifest(run_dir: Path, manifest: dict[str, Any]) -> None:
     path = manifest_path(run_dir)
-    ensure_under(path, run_dir)
     path.parent.mkdir(parents=True, exist_ok=True)
-    reject_link_components(path.parent, run_dir)
     handle, temp_name = tempfile.mkstemp(prefix="manifest-", suffix=".json", dir=path.parent)
     try:
         with os.fdopen(handle, "w", encoding="utf-8", newline="\n") as temp:
@@ -201,7 +101,7 @@ def parse_metadata(raw: str | None) -> dict[str, Any]:
     value = json.loads(raw)
     if not isinstance(value, dict):
         raise ValueError("--metadata-json must be a JSON object")
-    return redact_sensitive(value)
+    return value
 
 
 def new_evidence_id(case_id: str, evidence_type: str) -> str:
@@ -222,9 +122,6 @@ def register_file(
     if manifest.get("finalized"):
         raise ValueError("Evidence manifest is finalized and cannot be changed")
     stored_path = ensure_under(stored_path, run_dir)
-    current_size = sum(int(existing.get("size_bytes", 0)) for existing in manifest["evidence"])
-    if current_size + stored_path.stat().st_size > MAX_RUN_EVIDENCE_BYTES:
-        raise ValueError(f"Run evidence would exceed {MAX_RUN_EVIDENCE_BYTES} bytes")
     relative = stored_path.relative_to(run_dir).as_posix()
     item = {
         "id": new_evidence_id(case_id, evidence_type),
@@ -236,7 +133,7 @@ def register_file(
         "size_bytes": stored_path.stat().st_size,
         "sha256": sha256_file(stored_path),
         "correlation_ids": correlation_ids,
-        "metadata": redact_sensitive(metadata),
+        "metadata": metadata,
     }
     manifest["evidence"].append(item)
     manifest["updated_at"] = utc_now()
@@ -248,37 +145,23 @@ def destination_for(run_dir: Path, case_id: str, evidence_type: str, filename: s
     folder = run_dir / "evidence" / safe_segment(case_id, "case ID")
     for segment in TYPE_FOLDERS[evidence_type]:
         folder /= segment
-    ensure_under(folder, run_dir)
     folder.mkdir(parents=True, exist_ok=True)
-    reject_link_components(folder, run_dir)
     clean_name = safe_segment(filename, "file name")
     candidate = folder / clean_name
-    ensure_under(candidate, run_dir)
     if not candidate.exists():
         return candidate
     return folder / f"{candidate.stem}-{uuid.uuid4().hex[:8]}{candidate.suffix}"
 
 
 def command_add(args: argparse.Namespace) -> int:
-    run_dir = validate_run_dir(args.run_dir)
-    source_file = validate_input_file(args.file, "Evidence file")
-    reject_embedded_secrets(source_file)
+    run_dir = Path(args.run_dir).expanduser().resolve()
+    source_file = Path(args.file).expanduser().resolve()
+    if not source_file.is_file():
+        raise ValueError(f"Evidence file does not exist: {source_file}")
     run_dir.mkdir(parents=True, exist_ok=True)
-    reject_link_components(run_dir, run_dir.parent)
     ensure_mutable(run_dir)
-    manifest = load_manifest(run_dir)
-    current_size = sum(int(item.get("size_bytes", 0)) for item in manifest["evidence"])
-    if current_size + source_file.stat().st_size > MAX_RUN_EVIDENCE_BYTES:
-        raise ValueError(f"Run evidence would exceed {MAX_RUN_EVIDENCE_BYTES} bytes")
     destination = destination_for(run_dir, args.case_id, args.type, source_file.name)
-    handle, temp_name = tempfile.mkstemp(prefix="evidence-", suffix=".tmp", dir=destination.parent)
-    os.close(handle)
-    try:
-        shutil.copy2(source_file, temp_name)
-        os.replace(temp_name, destination)
-    finally:
-        if os.path.exists(temp_name):
-            os.unlink(temp_name)
+    shutil.copy2(source_file, destination)
     item = register_file(
         run_dir,
         args.case_id,
@@ -319,20 +202,13 @@ def json_diff(before: Any, after: Any, path: str = "$") -> dict[str, list[dict[s
 
 
 def command_diff_json(args: argparse.Namespace) -> int:
-    run_dir = validate_run_dir(args.run_dir)
-    run_dir.mkdir(parents=True, exist_ok=True)
-    reject_link_components(run_dir, run_dir.parent)
+    run_dir = Path(args.run_dir).expanduser().resolve()
     ensure_mutable(run_dir)
-    before_path = validate_input_file(args.before, "Before JSON")
-    after_path = validate_input_file(args.after, "After JSON")
-    reject_embedded_secrets(before_path)
-    reject_embedded_secrets(after_path)
-    before = redact_sensitive(json.loads(before_path.read_text(encoding="utf-8")))
-    after = redact_sensitive(json.loads(after_path.read_text(encoding="utf-8")))
+    before_path = Path(args.before).expanduser().resolve()
+    after_path = Path(args.after).expanduser().resolve()
+    before = json.loads(before_path.read_text(encoding="utf-8"))
+    after = json.loads(after_path.read_text(encoding="utf-8"))
     changes = json_diff(before, after)
-    change_count = sum(len(items) for items in changes.values())
-    if change_count > MAX_DIFF_CHANGES:
-        raise ValueError(f"Diff contains {change_count} changes; limit is {MAX_DIFF_CHANGES}")
     payload = {
         "schema_version": "1.0",
         "source": args.source,
@@ -341,16 +217,8 @@ def command_diff_json(args: argparse.Namespace) -> int:
         "summary": {category: len(items) for category, items in changes.items()},
         "changes": changes,
     }
-    rendered = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
-    rendered_size = len(rendered.encode("utf-8"))
-    if rendered_size > MAX_EVIDENCE_FILE_BYTES:
-        raise ValueError(f"Rendered diff exceeds {MAX_EVIDENCE_FILE_BYTES} bytes")
-    manifest = load_manifest(run_dir)
-    current_size = sum(int(item.get("size_bytes", 0)) for item in manifest["evidence"])
-    if current_size + rendered_size > MAX_RUN_EVIDENCE_BYTES:
-        raise ValueError(f"Run evidence would exceed {MAX_RUN_EVIDENCE_BYTES} bytes")
     destination = destination_for(run_dir, args.case_id, "db_diff", f"{safe_segment(args.source, 'source')}-diff.json")
-    destination.write_text(rendered, encoding="utf-8")
+    destination.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     item = register_file(
         run_dir,
         args.case_id,
@@ -365,7 +233,7 @@ def command_diff_json(args: argparse.Namespace) -> int:
 
 
 def command_finalize(args: argparse.Namespace) -> int:
-    run_dir = validate_run_dir(args.run_dir)
+    run_dir = Path(args.run_dir).expanduser().resolve()
     manifest = load_manifest(run_dir)
     if manifest.get("finalized"):
         print(f"Already finalized: {manifest_path(run_dir)}")

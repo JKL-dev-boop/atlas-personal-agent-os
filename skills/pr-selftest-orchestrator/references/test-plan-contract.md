@@ -65,7 +65,7 @@ The model produces a structured plan; the runner executes it. Prefer JSON for ma
       "cleanup": [
         {"operation": "delete_resource", "inputs": {"id": "${resource_id}"}}
       ],
-      "on_failure": {"diagnose_with": "configured-provider"}
+      "on_failure": {"diagnose_with": "miracle-ops"}
     }
   ]
 }

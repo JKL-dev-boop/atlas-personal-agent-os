@@ -5,9 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
-import stat
 from pathlib import Path
 
 
@@ -15,37 +13,10 @@ REQUIRED_BACKGROUND = (
     "PROJECT.md",
     "API_CATALOG.md",
     "ENVIRONMENTS.md",
-    "DIAGNOSTICS.md",
+    "MIRACLE_OPS.md",
     "TEST_POLICY.md",
     "EVIDENCE.md",
 )
-
-
-def is_link_like(path: Path) -> bool:
-    if path.is_symlink():
-        return True
-    if hasattr(os.path, "isjunction") and os.path.isjunction(path):
-        return True
-    try:
-        attributes = getattr(path.lstat(), "st_file_attributes", 0)
-    except FileNotFoundError:
-        return False
-    return bool(attributes & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0))
-
-
-def reject_link_components(path: Path, boundary: Path | None = None) -> None:
-    current = path.absolute()
-    boundary = boundary.absolute() if boundary else None
-    while True:
-        if is_link_like(current):
-            raise ValueError(f"Refusing symlink, junction, or reparse path: {current}")
-        if boundary is not None and current == boundary:
-            return
-        if current.parent == current:
-            if boundary is not None:
-                raise ValueError(f"Path is outside the project boundary: {path}")
-            return
-        current = current.parent
 
 
 def emit(level: str, message: str) -> None:
@@ -54,9 +25,6 @@ def emit(level: str, message: str) -> None:
 
 def load_json(path: Path, label: str, errors: list[str]) -> object | None:
     try:
-        if is_link_like(path):
-            errors.append(f"Refusing link-like {label}: {path}")
-            return None
         return json.loads(path.read_text(encoding="utf-8"))
     except FileNotFoundError:
         errors.append(f"Missing {label}: {path}")
@@ -70,19 +38,11 @@ def main() -> int:
     parser.add_argument("--project", default=".", help="Repository root.")
     args = parser.parse_args()
 
-    requested_project = Path(args.project).expanduser().absolute()
-    try:
-        reject_link_components(requested_project)
-        project = requested_project.resolve(strict=True)
-    except (OSError, ValueError) as exc:
-        parser.error(str(exc))
+    project = Path(args.project).expanduser().resolve()
     root = project / ".pr-selftest"
     errors: list[str] = []
     warnings: list[str] = []
 
-    if is_link_like(root):
-        emit("ERROR", f"Refusing link-like project context: {root}")
-        return 1
     if not root.is_dir():
         emit("ERROR", f"Missing project context: {root}")
         emit("INFO", "Run init_project.py before using the Skill.")
@@ -99,9 +59,6 @@ def main() -> int:
     combined_text: list[tuple[Path, str]] = []
     for name in REQUIRED_BACKGROUND:
         path = background / name
-        if is_link_like(path):
-            errors.append(f"Refusing link-like background file: {path}")
-            continue
         if not path.is_file():
             errors.append(f"Missing required background file: {path}")
             continue
@@ -128,9 +85,6 @@ def main() -> int:
     )
     for name in required_dirs:
         path = root / "runbooks" / name
-        if is_link_like(path):
-            errors.append(f"Refusing link-like runbook directory: {path}")
-            continue
         if not path.is_dir():
             errors.append(f"Missing runbook directory: {path}")
 

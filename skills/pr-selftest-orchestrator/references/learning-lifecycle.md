@@ -47,7 +47,7 @@ verified -> quarantined or archived when contradicted, stale, or out of scope
   "provenance": {
     "run_ids": ["run-..."],
     "pr_shas": ["..."],
-    "diagnostic_run_ids": ["..."]
+    "miracle_ops_run_ids": ["..."]
   },
   "verification": {
     "independent_runs": 1,
@@ -73,7 +73,7 @@ Create a candidate only when:
 
 - a selected case produced preserved evidence;
 - the failure classification is not merely environment noise or missing information;
-- the diagnostic provider returned traceable evidence, or a deterministic before/after assertion confirmed the root cause;
+- Miracle-Ops returned traceable evidence, or a deterministic before/after assertion confirmed the root cause;
 - the candidate has a narrow scope and version range;
 - proposed diagnostic actions reference registered operations.
 
@@ -103,3 +103,4 @@ Any knowledge that changes an oracle, adds write/cleanup behavior, widens enviro
 ## Versioning and rollback
 
 Runbook versions are immutable. Create a new version for every behavioral change. Keep active and fallback pointers in `runbooks/index.json`. On regression or contradiction, move the active pointer to the fallback and quarantine the failing version; do not delete evidence.
+
