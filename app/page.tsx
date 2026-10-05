@@ -3,6 +3,7 @@ import {
   BookOpen,
   Bot,
   Box,
+  Boxes,
   CheckCircle2,
   ChevronRight,
   Clock3,
@@ -17,6 +18,7 @@ import {
   Sparkles,
   Star,
   TerminalSquare,
+  TrendingUp,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -36,7 +38,9 @@ const projects = featuredProjects.slice(0, 3).map((project, index) => ({
 const nav = [
   { label: '总览', icon: LayoutGrid, href: '/', active: true },
   { label: '情报日报', icon: BookOpen, href: '/daily' },
+  { label: '周度全景', icon: TrendingUp, href: '/weekly' },
   { label: '项目雷达', icon: CodeXml, href: '/projects' },
+  { label: 'Skill 库', icon: Boxes, href: '/skills' },
   { label: '演示资料', icon: GalleryVerticalEnd, href: '/presentations' },
   { label: '知识库', icon: Library, href: '/knowledge' },
   { label: '自动任务', icon: Bot, href: '/automations' },
@@ -76,6 +80,14 @@ export default function Home() {
           </div>
         </div>
       </header>
+
+      <nav className="mx-auto flex max-w-[1560px] gap-1 overflow-x-auto border-b border-white/7 px-4 py-2 lg:hidden" aria-label="移动端主导航">
+        {nav.map((item) => (
+          <Link key={item.label} href={item.href} className={`flex shrink-0 items-center gap-2 rounded-lg px-3 py-2 text-xs ${item.active ? 'bg-cyan-400/10 text-cyan-300' : 'text-slate-400 hover:bg-white/5 hover:text-slate-100'}`}>
+            <item.icon className="size-3.5" />{item.label}
+          </Link>
+        ))}
+      </nav>
 
       <div className="mx-auto grid max-w-[1560px] grid-cols-1 lg:grid-cols-[210px_minmax(0,1fr)]">
         <aside className="hidden min-h-[calc(100vh-64px)] border-r border-white/7 px-4 py-6 lg:flex lg:flex-col">
@@ -193,7 +205,7 @@ export default function Home() {
             <div className="mb-4"><h2 className="font-semibold text-white">能力模块</h2><p className="mt-1 text-xs text-slate-500">工作台会随你的需求持续生长，而不是被日报形态限制。</p></div>
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
               {[
-                [Bot, 'AI 工作流', '组织可复用的 Agent 任务与提示词'],
+                [Boxes, 'Skill 库', '管理可下载、可验证、可复用的 Agent 能力'],
                 [Library, '个人知识库', '收藏、笔记、文档与语义检索'],
                 [Box, 'Sandbox 实验室', '运行与比较隔离执行环境'],
                 [GitBranch, '项目控制台', '集中追踪仓库、版本与待办'],

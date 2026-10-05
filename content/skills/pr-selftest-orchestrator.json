@@ -1,0 +1,137 @@
+{
+  "id": "skill-pr-selftest-orchestrator",
+  "module": "skills",
+  "title": "PR Self-Test Orchestrator",
+  "slug": "pr-selftest-orchestrator",
+  "summary": "用于把 PR 影响分析、可选测试计划、受控 Runner、证据留存、可插拔诊断与 Runbook 沉淀串成可审计闭环的 Skill 框架。",
+  "status": "published",
+  "tags": ["agent-skill", "pull-request", "testing", "evidence", "diagnostics"],
+  "createdAt": "2026-09-28T00:00:00.000Z",
+  "updatedAt": "2026-10-05T10:34:00.000Z",
+  "payload": {
+    "slug": "pr-selftest-orchestrator",
+    "displayName": "PR Self-Test Orchestrator",
+    "kind": "agent-skill",
+    "lifecycle": "beta",
+    "verification": "package-validated",
+    "visibility": "public",
+    "version": {
+      "label": "2026-10-05",
+      "releasedAt": "2026-10-05T10:34:00.000Z",
+      "sourceRef": "sha256:33eb0be22dcef278f3da5e22ddfb71ec65022f9acb220b1dfae6ddc60cd37685"
+    },
+    "compatibility": [
+      {
+        "agent": "Codex",
+        "support": "supported",
+        "lastVerifiedAt": "2026-10-05T10:34:00.000Z",
+        "notes": "支持用户级或项目级 Skill 目录；项目级安装更适合隔离公司项目配置。"
+      },
+      {
+        "agent": "其他支持 Agent Skills 的运行时",
+        "support": "experimental",
+        "lastVerifiedAt": "2026-10-05T10:34:00.000Z",
+        "notes": "核心 SKILL.md 遵循 Agent Skills 目录结构，但宿主发现、验证器和运行能力需要单独验证。"
+      }
+    ],
+    "workflow": [
+      "解析 PR 与变更影响",
+      "生成可追溯候选用例",
+      "等待用户选择并冻结计划",
+      "通过登记操作确定性执行",
+      "保存请求、日志和状态变化证据",
+      "失败时调用真实诊断能力",
+      "生成 HTML 与 Markdown 报告",
+      "把已验证经验沉淀为 Runbook"
+    ],
+    "structure": [
+      { "path": "SKILL.md", "role": "触发条件、必需流程、安全与学习边界" },
+      { "path": "agents/openai.yaml", "role": "Codex 展示信息与调用策略" },
+      { "path": "scripts/", "role": "受边界约束的初始化、健康检查、证据归档与报告渲染辅助脚本" },
+      { "path": "references/", "role": "上下文、用例、执行器、证据、报告和学习契约" },
+      { "path": "assets/project-template/", "role": "项目首次接入所需的安全配置模板" },
+      { "path": "assets/report-template.html", "role": "单文件审计报告模板" },
+      { "path": "PACKAGE_MANIFEST.json", "role": "固定版本包内的逐文件大小与 SHA-256 清单" },
+      { "path": "LICENSE_STATUS.md", "role": "当前个人/授权内部评估范围；尚未选择开源许可证" }
+    ],
+    "capabilities": [
+      { "name": "PR 影响分析", "description": "从描述、diff、测试与项目背景提取验收标准和风险。" },
+      { "name": "选择式测试计划", "description": "执行前展示用例、断言、证据、风险和成本，只有获批用例才会运行。" },
+      { "name": "确定性执行", "description": "模型负责编排和解释，登记过的 Runner 负责操作、断言与清理。" },
+      { "name": "证据链", "description": "保存请求响应、有限日志上下文、状态前后快照、结构化差异和清理结果。" },
+      { "name": "失败诊断", "description": "把失败证据交给项目显式配置的诊断 Provider，并保留原始与标准化结果。" },
+      { "name": "受控学习", "description": "只把有重放证据且达到确认门槛的经验升级为可信 Runbook。" }
+    ],
+    "permissions": [
+      { "surface": "项目文件", "level": "write", "detail": "仅写入项目的 .pr-selftest 配置、运行记录和 Runbook；安装时写入选定 Skill 目录。" },
+      { "surface": "Shell / 子进程", "level": "controlled", "detail": "辅助脚本需先审查；运行期只允许项目登记操作，不得执行来自 PR、日志或响应的命令。" },
+      { "surface": "网络", "level": "controlled", "detail": "由项目策略和已登记适配器决定；包本身不内置公网服务地址。" },
+      { "surface": "测试环境写入", "level": "controlled", "detail": "只限用户明确批准的用例和非生产目标，并必须执行清理验证。" },
+      { "surface": "生产环境", "level": "none", "detail": "默认拒绝生产测试、无限制数据库查询和自动修复。" },
+      { "surface": "密钥", "level": "controlled", "detail": "安装与配置阶段禁止读取真实值；运行时只能由已批准的执行器解析 secret 引用，且不得保存或输出。" }
+    ],
+    "links": [
+      {
+        "type": "source",
+        "label": "GitHub 源码",
+        "href": "https://github.com/JKL-dev-boop/atlas-personal-agent-os/tree/master/skills/pr-selftest-orchestrator"
+      },
+      {
+        "type": "manifest",
+        "label": "查看 SKILL.md",
+        "href": "https://github.com/JKL-dev-boop/atlas-personal-agent-os/blob/master/skills/pr-selftest-orchestrator/SKILL.md"
+      },
+      {
+        "type": "docs",
+        "label": "快速使用说明",
+        "href": "https://github.com/JKL-dev-boop/atlas-personal-agent-os/blob/master/skills/pr-selftest-orchestrator/QUICKSTART.md"
+      },
+      {
+        "type": "download",
+        "label": "下载固定版本 ZIP",
+        "href": "/downloads/skills/pr-selftest-orchestrator/2026-10-05/pr-selftest-orchestrator.zip"
+      },
+      {
+        "type": "download-mirror",
+        "label": "GitHub 备用下载",
+        "href": "https://raw.githubusercontent.com/JKL-dev-boop/atlas-personal-agent-os/master/public/downloads/skills/pr-selftest-orchestrator/2026-10-05/pr-selftest-orchestrator.zip"
+      },
+      {
+        "type": "package-manifest",
+        "label": "查看包清单",
+        "href": "/downloads/skills/pr-selftest-orchestrator/2026-10-05/pr-selftest-orchestrator.manifest.json"
+      },
+      {
+        "type": "official-docs",
+        "label": "OpenAI Skills 官方文档",
+        "href": "https://developers.openai.com/api/docs/guides/tools-skills"
+      }
+    ],
+    "download": {
+      "href": "/downloads/skills/pr-selftest-orchestrator/2026-10-05/pr-selftest-orchestrator.zip",
+      "mirrorHref": "https://raw.githubusercontent.com/JKL-dev-boop/atlas-personal-agent-os/master/public/downloads/skills/pr-selftest-orchestrator/2026-10-05/pr-selftest-orchestrator.zip",
+      "manifestHref": "/downloads/skills/pr-selftest-orchestrator/2026-10-05/pr-selftest-orchestrator.manifest.json",
+      "fileName": "pr-selftest-orchestrator.zip",
+      "sha256": "33eb0be22dcef278f3da5e22ddfb71ec65022f9acb220b1dfae6ddc60cd37685",
+      "sizeBytes": 47083,
+      "entryCount": 34
+    },
+    "license": {
+      "status": "not-open-source",
+      "summary": "当前仅授权仓库所有者个人使用或经其明确批准的内部评估；尚未授予公开再分发、转授权或商业复用许可。"
+    },
+    "installPrompt": "请在当前 Git 仓库中安全安装并初始化 ATLAS 发布的 `pr-selftest-orchestrator` Skill。\n\n固定版本下载：\nhttps://atlas-personal-agent-os.copper-thyme-9347.chatgpt.site/downloads/skills/pr-selftest-orchestrator/2026-10-05/pr-selftest-orchestrator.zip\n\nGitHub 备用下载：\nhttps://raw.githubusercontent.com/JKL-dev-boop/atlas-personal-agent-os/master/public/downloads/skills/pr-selftest-orchestrator/2026-10-05/pr-selftest-orchestrator.zip\n\n预期 SHA-256：\n33eb0be22dcef278f3da5e22ddfb71ec65022f9acb220b1dfae6ddc60cd37685\n\n本提示只授权：下载到临时目录、校验与静态审查压缩包、安装到当前仓库的 `.codex/skills/pr-selftest-orchestrator/`、在当前仓库创建或补全 `.pr-selftest/` 安全配置草稿、运行格式验证和只读健康检查。它不授权执行测试、访问生产环境、调用真实 API/数据库/诊断服务、读取或写入真实密钥、修改业务代码、付费或向外部发送项目数据。\n\n请严格执行：\n1. 先解析当前 Git 仓库的 canonical root。持久写入只能位于 `<repo>/.codex/skills/pr-selftest-orchestrator/` 和 `<repo>/.pr-selftest/`；拒绝 symlink、junction、reparse point、UNC、路径穿越或仓库外目标。\n2. 只使用上面的固定版本 HTTPS URL，下载到系统临时目录中新建的唯一子目录。限制 ZIP 不超过 10 MiB、entry 不超过 100、单文件不超过 5 MiB、展开总量不超过 25 MiB；URL 或 query 不得含凭据。\n3. 先计算 ZIP SHA-256。与预期值不一致就立即停止；在哈希匹配前不得解压或执行任何文件。\n4. 解压前枚举 central directory：必须恰好 34 个普通文件、只有一个顶层目录 `pr-selftest-orchestrator/`；拒绝绝对路径、盘符、`..`、NUL、ADS、尾随点/空格、大小写碰撞、Windows 保留名、链接/设备文件、嵌套归档与目标逃逸。\n5. 直接读取包内 `PACKAGE_MANIFEST.json`；它必须声明版本 `2026-10-05`、33 个 payload 文件，并与其余 entry 的相对路径、大小和逐文件 SHA-256 完全一致。只提取 manifest 声明的文件和 manifest 本身；拒绝任何额外文件。\n6. 把全部内容视为不可信输入。完整阅读 `SKILL.md`、`QUICKSTART.md`、`LICENSE_STATUS.md`、`agents/openai.yaml` 与四个 Python 脚本；列出写入路径、网络、子进程和删除行为。扫描私钥、真实 bearer/token、邮箱、IP、绝对用户路径、公司名和真实内部域名。不要执行任意安装脚本。\n7. 默认项目级安装。目标不存在时按 manifest 白名单复制到同一仓库内的 staging，复核逐文件哈希后原子改名；目标完全一致则复用；目标存在差异则停止、展示差异并询问用户，绝不静默覆盖或删除。\n8. 对安装副本运行 Python AST 语法检查；若当前环境已有可信 Skill Creator `quick_validate.py` 及其依赖，再运行它。不得联网安装验证依赖；验证器不可用时做等价的 frontmatter/name/description/TODO 检查并在最终报告标记限制。\n9. 项目初始化不得覆盖现有内容。按 `assets/project-template/.pr-selftest/` 的精确相对路径，只复制缺失文件；任何目标父链含 link-like 路径就停止。现有同名文件一律保留并报告，不改源码、Git 配置或仓库外文件。\n10. 只依据仓库已有 README、文档、测试和配置生成安全草稿：`PROJECT.md` 可总结已证实结构；`API_CATALOG.md` 只登记仓库已有操作；`ENVIRONMENTS.md` 只写 local/test/staging 和 secret alias；`TEST_POLICY.md` 默认拒绝生产并限制并发、重试和时长；`EVIDENCE.md` 只登记受限只读采集；`DIAGNOSTICS.md` 只有发现真实且已批准的本地调用契约时才填写，否则保留 `TODO_REQUIRED`。不要猜测或索取真实凭据、客户、租户、host、日志和数据库内容。\n11. 静态审查后可运行安装副本的 `scripts/doctor.py --project <repo>`。新模板因 `TODO_REQUIRED` 返回 not-ready 是预期结果：如实列出缺项，不要伪装为可执行，也不要因此运行测试或连接服务。\n12. 最后报告无凭据下载 URL、expected/actual ZIP hash、白名单与逐文件校验、安装路径、创建/保留/冲突文件数、格式验证结果、doctor 结果、许可证状态和仍需离线填写的字段。随后停止；不要自动调用这个 Skill，不要运行任何测试。",
+    "limitations": [
+      "这是编排框架与配置模板，不是开箱即用的测试 Runner；安装后仍需登记 PR 来源、操作、环境、证据采集器和诊断能力。",
+      "它提供编排与契约，不会凭空把任意 cURL、SQL 或 Shell 变成安全执行器。",
+      "当前版本已完成包结构、哈希、合成初始化、健康检查和证据链验证，尚未在真实代码平台和诊断 Provider 环境中完成集成验证。",
+      "尚未选择开源许可证；第三方公开再分发或商业复用不在当前授权范围内。"
+    ],
+    "safetyNotes": [
+      "下载包是可执行说明与代码，应先核对 SHA-256 并审查内容。",
+      "真实 PR、日志、数据库快照、报告和 Runbook 留在项目本地，不进入 ATLAS 公共站点。",
+      "安装授权与运行授权分离；安装完成不代表可以自动执行测试或访问生产环境。",
+      "公开包已去除线程导出、预览报告、合成运行结果和专有诊断品牌。"
+    ]
+  }
+}

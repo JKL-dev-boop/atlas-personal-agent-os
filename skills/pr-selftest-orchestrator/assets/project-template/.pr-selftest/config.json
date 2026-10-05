@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "default_environment": "TODO_REQUIRED",
+  "run": {
+    "max_cases": 20,
+    "max_requests": 100,
+    "max_concurrency": 1,
+    "max_retries_per_step": 1,
+    "max_replans": 1,
+    "max_miracle_ops_calls": 5,
+    "max_duration_seconds": 1800
+  },
+  "learning": {
+    "independent_confirmations_for_promotion": 2,
+    "allow_low_risk_auto_promotion": false,
+    "candidate_expiry_days": 90
+  }
+}

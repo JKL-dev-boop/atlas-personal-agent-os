@@ -5,7 +5,9 @@ ATLAS 是一个面向个人长期使用的模块化数字工作台。它把信�
 当前首批能力：
 
 - GitHub 日报：AI / Agent、应用项目、K8s / 容器 / Sandbox 三个分区。
+- GitHub 周度全景：完整观察 Trending weekly，并按十个长期大类浏览跨领域项目。
 - 项目雷达：保存每日快照，追踪 Star、Release 和重复项目的新增变化。
+- Skill 库：展示 Agent Skill 的结构、功能、权限、兼容性、源码、固定版本下载与安全安装 Prompt。
 - 演示资料：管理对外展示的 PDF、封面、版本和分享入口。
 - 自动任务：北京时间 09:00 生成并推送每日重点，同时更新完整网站内容。
 - 状态透明：区分内容日期、最后成功时间和失败状态。
@@ -32,8 +34,12 @@ ATLAS 是一个面向个人长期使用的模块化数字工作台。它把信�
 app/                    网站界面与页面
 components/             可复用界面组件
 content/daily/           每日结构化内容
+content/weekly/          GitHub Trending weekly 全域快照
+content/skills/          Skill 目录元数据与安装 Prompt
+skills/                  公开审查后的 Skill 源码
 lib/content-model.ts     统一领域模型
 lib/module-registry.ts   功能模块注册表
+public/downloads/skills/ 固定版本 Skill ZIP 与逐文件 manifest
 public/presentations/    可公开预览的 PDF
 ```
 
@@ -44,4 +50,4 @@ pnpm install
 pnpm dev
 ```
 
-项目仍在第一阶段：界面骨架、扩展模型、GitHub 仓库和网站发布已经建立，真实采集与个人身份层将按模块逐步接入。
+项目仍在第一阶段：真实日报、首期全域周榜、首个可下载 Skill、扩展模型、GitHub 仓库和网站发布已经建立；自动采集、更多 Skill、PDF 内容和个人身份层将按模块逐步接入。

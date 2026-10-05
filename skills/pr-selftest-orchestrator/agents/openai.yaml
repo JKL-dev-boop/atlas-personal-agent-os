@@ -1,0 +1,9 @@
+interface:
+  display_name: "PR Self-Test Orchestrator"
+  short_description: "从 PR 生成可选测试计划、受控执行并联动已配置诊断能力"
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon.svg"
+  brand_color: "#2563EB"
+  default_prompt: "Use $pr-selftest-orchestrator to analyze this PR, present selectable test cases, run only the cases I approve, diagnose failures, and retain verified learnings."
+policy:
+  allow_implicit_invocation: true

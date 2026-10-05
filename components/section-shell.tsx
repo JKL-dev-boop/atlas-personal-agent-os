@@ -1,5 +1,11 @@
-import { ArrowLeft, TerminalSquare } from 'lucide-react';
+import { ArrowLeft, Boxes, BookOpen, TerminalSquare, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
+
+const sectionNav = [
+  { href: '/daily', label: '日报', icon: BookOpen },
+  { href: '/weekly', label: '周度全景', icon: TrendingUp },
+  { href: '/skills', label: 'Skill 库', icon: Boxes },
+];
 
 export function SectionShell({
   eyebrow,
@@ -20,7 +26,16 @@ export function SectionShell({
             <span className="grid size-8 place-items-center rounded-lg border border-cyan-400/25 bg-cyan-400/10 text-cyan-300"><TerminalSquare className="size-4" /></span>
             <span className="font-semibold text-white">ATLAS</span>
           </Link>
-          <Link href="/" className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-cyan-300"><ArrowLeft className="size-3.5" />返回总览</Link>
+          <div className="flex items-center gap-1">
+            <nav className="flex items-center gap-0.5" aria-label="内容导航">
+              {sectionNav.map((item) => (
+                <Link key={item.href} href={item.href} className="flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-xs text-slate-400 hover:bg-white/5 hover:text-cyan-300">
+                  <item.icon className="size-3.5" /><span className="hidden sm:inline">{item.label}</span>
+                </Link>
+              ))}
+            </nav>
+            <Link href="/" className="ml-1 flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-xs text-slate-400 hover:bg-white/5 hover:text-cyan-300"><ArrowLeft className="size-3.5" /><span className="hidden sm:inline">总览</span></Link>
+          </div>
         </div>
       </header>
       <div className="mx-auto max-w-6xl px-5 py-10">

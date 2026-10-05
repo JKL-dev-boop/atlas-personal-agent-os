@@ -2,8 +2,8 @@
 
 > 文档角色：人类与 AI Agent 共同遵守的 living engineering guide  
 > 状态：有效  
-> 版本：0.1.2  
-> 最近复核：2026-09-07  
+> 版本：0.1.3
+> 最近复核：2026-10-05
 > 复核触发：重大需求、架构变化、安全事件、失败复盘或权威实践更新
 
 ## 1. 使用方式
@@ -73,6 +73,20 @@ OpenAI 建议尽早且持续评测、采用任务特定测试、记录日志并�
 OWASP 对 Prompt Injection 的建议包括约束模型行为、验证输出、最小权限、外部内容隔离和高风险操作人工批准；这些是 ATLAS Agent 工具边界的基线。[OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
 
 NIST SSDF 将实践分为准备组织、保护软件、产出安全软件和响应漏洞四组，并强调按风险持续改进，而非一次性清单。[NIST SSDF](https://csrc.nist.gov/projects/ssdf)
+
+### 5.1 公开 Skill 供应链
+
+- 把 Skill 视为高权限不可信输入：发布和安装前完整阅读 `SKILL.md`、Agent 元数据、脚本、模板和引用文件，不因来源是自己或另一个会话就跳过审查。
+- 公开包使用固定版本目录，不提供会静默变化的 `latest` 下载；同时公布 ZIP SHA-256、大小、entry 数和逐文件 manifest。已发布版本内容变化必须产生新版本路径。
+- 打包使用显式文件白名单；拒绝线程导出、工作目录、真实 run/evidence、日志、数据库文件、`.env`、证书、密钥、缓存、截图、嵌套归档与不必要预览产物。
+- ZIP 必须只有一个顶层 Skill 目录；安装前检查绝对路径、盘符、`..`、ADS、大小写碰撞、链接/reparse、设备文件和展开大小，防止 Zip Slip 与归档炸弹。
+- 自动安装 Prompt 必须给出固定 HTTPS URL 和可信页面独立公布的 SHA-256，默认使用项目级 Skills 目录，解析 canonical path，限制写入根目录并对既有目标先比对、后确认，绝不静默覆盖。
+- 安装授权只覆盖下载、校验、安装、占位配置、格式验证和只读健康检查。执行测试、调用 API/数据库/诊断服务、访问生产、解析真实密钥或修改业务代码必须另行授权。
+- 配置草稿只可基于仓库已有证据；secret 只保存 alias，不保存值。未知环境、内部接口、Runner、证据采集器和诊断 Provider 保持 `TODO_REQUIRED`，不得猜测。
+- 公开详情页准确标注验证级别、兼容性、成熟度、非目标和许可证状态。框架/模板不得宣传为开箱即用 Runner；`doctor` 的 not-ready 不能伪装成成功。
+- Skill 辅助脚本的写入路径、链接/重解析点、证据大小、敏感字段和原子写入必须由确定性代码约束；Prompt 中的“请勿越界”不能替代代码级边界。
+
+OpenAI 官方说明 Skills 是包含 `SKILL.md` 的目录，固定 ZIP 需要单一顶层目录；同时要求在启用前审查 Skill，因为其指令与代码会获得 Agent 权限。ATLAS 将这些要求落为白名单、哈希、manifest 和安装/运行授权分离。[OpenAI Skills](https://developers.openai.com/api/docs/guides/tools-skills)
 
 ## 6. GitHub Actions 规范
 
@@ -161,9 +175,11 @@ GitHub 官方建议最小化 `GITHUB_TOKEN` 权限、避免明文 Secret、固�
 | [OWASP LLM01:2025](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) | Prompt Injection、输出校验、最小权限、人工批准 | 2026-09-06 |
 | [NIST SSDF](https://csrc.nist.gov/projects/ssdf) | 风险驱动的安全开发和持续改进 | 2026-09-06 |
 | [GitHub Actions secure use](https://docs.github.com/en/actions/reference/security/secure-use) | Token 最小权限、Secret、安全触发、Action 固定版本 | 2026-09-06 |
+| [OpenAI Skills](https://developers.openai.com/api/docs/guides/tools-skills) | Skill 目录/ZIP 结构、安装前审查与权限风险 | 2026-10-05 |
 
 ## 14. 变更记录
 
+- 2026-10-05 / 0.1.3：新增公开 Skill 供应链规范；原因是首个可下载 Skill 暴露出固定版本、哈希、白名单、归档路径、许可证、脚本边界和安装/运行授权必须一同设计。
 - 2026-09-07 / 0.1.2：把日报日期、完成时间、计数和状态的数据驱动展示写入规范；原因是首个跨日更新暴露出硬编码会制造陈旧状态风险。
 - 2026-09-06 / 0.1.1：记录生成 UI 层的 lint 基线例外，防止例外被误用于业务代码。
 - 2026-09-06 / 0.1.0：建立 AI 开发规范，纳入跨会话读取、增量需求同步、eval、安全、GitHub Actions、测试和文档刷新规则；用基础质量工作流执行规范入口、lint 和 build 检查。

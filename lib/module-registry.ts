@@ -30,6 +30,15 @@ export const moduleRegistry: AtlasModule[] = [
     capabilities: ['collect', 'rank', 'publish', 'archive'],
   },
   {
+    id: 'weekly',
+    name: '周度全景',
+    description: 'GitHub Trending 周榜全量分类与跨领域发现。',
+    href: '/weekly',
+    version: 1,
+    enabled: true,
+    capabilities: ['collect', 'classify', 'compare', 'archive'],
+  },
+  {
     id: 'projects',
     name: '项目雷达',
     description: '长期追踪项目热度、Release 与重要变化。',
@@ -37,6 +46,15 @@ export const moduleRegistry: AtlasModule[] = [
     version: 1,
     enabled: true,
     capabilities: ['track', 'compare', 'snapshot'],
+  },
+  {
+    id: 'skills',
+    name: 'Skill 库',
+    description: '可追溯的 Agent Skill、版本、权限、安装与示例。',
+    href: '/skills',
+    version: 1,
+    enabled: true,
+    capabilities: ['catalog', 'inspect', 'download', 'configure'],
   },
   {
     id: 'presentations',
